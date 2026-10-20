@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="ViDiELAnomalyDetectHelp_AutosetAnomalyThresholdDesc" xml:space="preserve"><value>- Turn on to override the Anomaly Detect Threshold with an automatically determined value.</value></data>
+  <data name="PassCount" xml:space="preserve"><value>Pass Count</value></data>
+  <data name="Storage" xml:space="preserve"><value>Storage</value></data>
+  <data name="RetrainWithExistingImage" xml:space="preserve"><value>Retrain with existing image</value></data>
+  <data name="SampleCollectionMode" xml:space="preserve"><value>Sample Collection Mode</value></data>
+  <data name="TimestampFormat" xml:space="preserve"><value>Timestamp Format</value></data>
+  <data name="ShowResults" xml:space="preserve"><value>Show Results</value></data>
+  <data name="DataBarExpanded" xml:space="preserve"><value>DataBar Expanded</value></data>
+  <data name="HeightDescription" xml:space="preserve"><value>Measures the height of the area in the region of interest relative to the reference plane.</value></data>
+  <data name="AztecCode" xml:space="preserve"><value>Aztec Code</value></data>
+  <data name="PasteWithoutShifting" xml:space="preserve"><value>Paste {0} without shifting</value></data>
+  <data name="Boundary" xml:space="preserve"><value>Boundary</value></data>
+  <data name="PlaneToolDirections" xml:space="preserve"><value>Position the regions over three separate points on the plane.</value></data>
+  <data name="MeasurementTools" xml:space="preserve"><value>Measurement Tools</value></data>
+  <data name="ProjectionImageResolution" xml:space="preserve"><value>Projection Image Resolution</value></data>
+  <data name="Brightness" xml:space="preserve"><value>Brightness</value></data>
+  <data name="PixelCircle" xml:space="preserve"><value>Pixel Circle</value></data>
+  <data name="SortReference" xml:space="preserve"><value>Sort Reference</value></data>
+  <data name="MathAndLogicTools" xml:space="preserve"><value>Math and Logic Tools</value></data>
+  <data name="GroupToolDescription" xml:space="preserve"><value>Combines multiple tools into a group.</value></data>
+  <data name="UndoRemoveTool" xml:space="preserve"><value>Remove tool {0}</value></data>
+  <data name="ExpandUPC_E" xml:space="preserve"><value>Expand UPC-E</value></data>
+  <data name="FormatStringMoveDown" xml:space="preserve"><value>Format String: Move Down {0}</value></data>
+  <data name="ToolMove" xml:space="preserve"><value>Tool Move ({0})</value></data>
+  <data name="MissingProperty" xml:space="preserve"><value>Missing Property</value></data>
+  <data name="EnableROIEdit" xml:space="preserve"><value>Enable Edit Region</value></data>
+  <data name="UndoMathToolExpression" xml:space="preserve"><value>Expression ({0} {1})</value></data>
+  <data name="MeasureHeight" xml:space="preserve"><value>Measure Height</value></data>
+  <data name="PixelCount" xml:space="preserve"><value>Pixel Count</value></data>
+  <data name="InitializingEasyBuilder" xml:space="preserve"><value>Initializing EasyBuilder</value></data>
+  <data name="CellNameAlreadyExistsOnMainSheet" xml:space="preserve"><value>The cell name already exists on the main sheet</value></data>
+  <data name="IncludeInJobPass" xml:space="preserve"><value>Include In Job Pass</value></data>
+  <data name="FlexibleFielding" xml:space="preserve"><value>Flexible Fielding</value></data>
+  <data name="SnippetVersion" xml:space="preserve"><value>Snippet Version</value></data>
+  <data name="MinimumArea" xml:space="preserve"><value>Minimum Area</value></data>
+  <data name="MaximumHeight" xml:space="preserve"><value>Maximum Height</value></data>
+  <data name="SheetParsingError" xml:space="preserve"><value>Sheet Parsing Error</value></data>
+  <data name="PassFailRangeLimit" xml:space="preserve"><value>Pass Fail Range Limit</value></data>
+  <data name="Append" xml:space="preserve"><value>Append</value></data>
+  <data name="UnlabeledImageCount" xml:space="preserve"><value>Unlabeled Image Count</value></data>
+  <data name="Filter" xml:space="preserve"><value>Filter</value></data>
+  <data name="FindBy" xml:space="preserve"><value>Find By</value></data>
+  <data name="ViDiELClassifyDescription" xml:space="preserve"><value>Classifies an image; reports a Pass if the image is classified, fail if it is not classified.</value></data>
+  <data name="CircularReference" xml:space="preserve"><value>Circular reference</value></data>
+  <data name="AnomalyScore" xml:space="preserve"><value>Anomaly Score</value></data>
+  <data name="Executing" xml:space="preserve"><value>Executing...</value></data>
+  <data name="FindEdgeDescription" xml:space="preserve"><value>Finds an edge; reports a Pass if the edge is found; a Fail if it is not found.</value></data>
+  <data name="CircleFixture" xml:space="preserve"><value>Circle Fixture</value></data>
+  <data name="ViDiELAnomalyDetectHelp_FeatureSizeHeader" xml:space="preserve"><value>Feature Size</value></data>
+  <data name="InvertPixels" xml:space="preserve"><value>Invert Pixels</value></data>
+  <data name="CommunicationError" xml:space="preserve"><value>Communication Error</value></data>
+  <data name="MathHelp_CellValuesInExprDesc1" xml:space="preserve"><value>Use mathematical operators and functions to compute cell values. Enter numeric literals directly; precede string literals with a single quote. You can also reference tool properties in expressions using dot notation.</value></data>
+  <data name="MathHelp_CellValuesInExprDesc2" xml:space="preserve"><value>Cell Contents </value></data>
+  <data name="MathHelp_CellValuesInExprDesc3" xml:space="preserve"><value>A1   Classify_1.Confidence 
+       // Tool property
+A2   Classify_2.Confidence
+       // Tool property
+A3   'MARGINAL                
+       // String literal
+A4   45                       
+       // Numeric literal
+B1   (A1 + A2) / 2             
+       // Mean confidence for 2 tools
+B2   Max(A1,A2)               
+       // Maximum confidence of 2 tools
+B3   IF(A1 &gt; A2, "Classify_1", "Classify_2")
+       // Return high-scoring tool name
+B4   IF(A1 &lt; A4, "WARN", "OK")
+       // Returns 'WARN' if confidence is 
+       // below 45, "OK" otherwise
+B4   Exact(Classify_1.PredictedClass, A3)
+       // Return TRUE if the class is 
+       // 'MARGINAL', FALSE otherwise
+B5   PlotString(Acquired,B4,100,100,0xFFFFFF,1)
+       // Display the contents of cell B4 at 
+       // 100,100 on the image</value></data>
+  <data name="ClassLabel" xml:space="preserve"><value>Class Label</value></data>
+  <data name="FailCount" xml:space="preserve"><value>Fail Count</value></data>
+  <data name="KernelRows" xml:space="preserve"><value>Kernel Rows</value></data>
+  <data name="InputLine" xml:space="preserve"><value>Input Line</value></data>
+  <data name="ProjectionMode" xml:space="preserve"><value>Projection Mode</value></data>
+  <data name="AppendValue" xml:space="preserve"><value>Append Value</value></data>
+  <data name="Terminator" xml:space="preserve"><value>Terminator</value></data>
+  <data name="Button" xml:space="preserve"><value>Button</value></data>
+  <data name="Direction" xml:space="preserve"><value>Direction</value></data>
+  <data name="Coarse" xml:space="preserve"><value>Coarse</value></data>
+  <data name="Code93" xml:space="preserve"><value>Code 93</value></data>
+  <data name="Code25" xml:space="preserve"><value>Code 25</value></data>
+  <data name="Code39" xml:space="preserve"><value>Code 39</value></data>
+  <data name="SetupImageCategory" xml:space="preserve"><value>1. Start</value></data>
+  <data name="Smoothness" xml:space="preserve"><value>Smoothness</value></data>
+  <data name="NumberOfResults" xml:space="preserve"><value>Number of Results</value></data>
+  <data name="Circle" xml:space="preserve"><value>Circle</value></data>
+  <data name="CountBlobsDescription" xml:space="preserve"><value>Counts the number of blobs in a region; reports a Pass if the number of blobs is within the limits; a Fail if it is outside the limits.</value></data>
+  <data name="EanUccComposite" xml:space="preserve"><value>EAN.UCC Composite</value></data>
+  <data name="SendRawBytes" xml:space="preserve"><value>Send Raw Bytes</value></data>
+  <data name="ViDiELAnomalyDetectHelp_SampleImageDesc" xml:space="preserve"><value>- Open the training sample images editor.
+- Sample images can be viewed, relabeled, or deleted.</value></data>
+  <data name="KernelColumns" xml:space="preserve"><value>Kernel Columns</value></data>
+  <data name="ViDiELReadHelp_CharacterSizeRoiHead" xml:space="preserve"><value>Character Size and ROI</value></data>
+  <data name="PredictedClass" xml:space="preserve"><value>Predicted Class</value></data>
+  <data name="Invert" xml:space="preserve"><value>Invert</value></data>
+  <data name="NumberToFind" xml:space="preserve"><value>Number To Find</value></data>
+  <data name="AdvancedDecodeMode" xml:space="preserve"><value>Advanced Decode Mode</value></data>
+  <data name="MeasurementType" xml:space="preserve"><value>Measurement Type</value></data>
+  <data name="EnabledStatus" xml:space="preserve"><value>Enabled Status</value></data>
+  <data name="ViDiELReadHelp_PreTrainedModeDesc1" xml:space="preserve"><value>- In this mode, no training is required for proper tool operation. Select a proper character size and an ROI (Region of Interest) to get results.
+- If the results are not sufficient for your application, consider using fielding or switch to a User-Trained Mode.</value></data>
+  <data name="EasyModeButtonToggleToAdvanced" xml:space="preserve"><value>Click to view advanced acquisition settings</value></data>
+  <data name="Communication" xml:space="preserve"><value>Communication</value></data>
+  <data name="PatMaxPatternPresence" xml:space="preserve"><value>Detect Pattern</value></data>
+  <data name="SortKey" xml:space="preserve"><value>Sort Key</value></data>
+  <data name="UndoTrain" xml:space="preserve"><value>{0}</value></data>
+  <data name="ViDiELAnomalyDetectHelp_FeatureSizeDesc" xml:space="preserve"><value>- The anomaly feature size to detect in pixels.
+- This value can be set manually or optimized automatically for the current sample image set.
+- Optimize requires at least two labeled OK images and one labeled NG image.</value></data>
+  <data name="BrightCount" xml:space="preserve"><value>Bright Count</value></data>
+  <data name="MeasureStepHeight" xml:space="preserve"><value>Measure Step Height</value></data>
+  <data name="PlaneDisabledDescription" xml:space="preserve"><value>Maximum number of planes already added.</value></data>
+  <data name="Output" xml:space="preserve"><value>Output</value></data>
+  <data name="Locate" xml:space="preserve"><value>Locate</value></data>
+  <data name="SelectedItemFormatString" xml:space="preserve"><value>{0} Selected Item</value></data>
+  <data name="UpcEan" xml:space="preserve"><value>UPC/EAN</value></data>
+  <data name="DataBarLimited" xml:space="preserve"><value>DataBar Limited</value></data>
+  <data name="Interleaved2of5" xml:space="preserve"><value>Interleaved 2 of 5</value></data>
+  <data name="MeasureDistance" xml:space="preserve"><value>Measure Distance</value></data>
+  <data name="BackgroundColor" xml:space="preserve"><value>Background Color</value></data>
+  <data name="RangeLimitsMax" xml:space="preserve"><value>Max</value></data>
+  <data name="RangeLimitsMin" xml:space="preserve"><value>Min</value></data>
+  <data name="GeometryTools" xml:space="preserve"><value>Geometry Tools</value></data>
+  <data name="Height" xml:space="preserve"><value>Height</value></data>
+  <data name="Removing0Snippet_FormatString" xml:space="preserve"><value>Removing {0} snippet</value></data>
+  <data name="StepHeightToolDirections" xml:space="preserve"><value>Position the regions over the areas whose height difference the tool should measure.
+
+When finished press OK.</value></data>
+  <data name="CharacterSize" xml:space="preserve"><value>Character Size</value></data>
+  <data name="PropertyLinks" xml:space="preserve"><value>Property Links</value></data>
+  <data name="FactoryProtocol" xml:space="preserve"><value>Factory Protocol</value></data>
+  <data name="QrCode" xml:space="preserve"><value>QR Code</value></data>
+  <data name="OCCUPIED" xml:space="preserve"><value>OCCUPIED</value></data>
+  <data name="ValidationDescription" xml:space="preserve"><value>Verify that the job is working correctly.</value></data>
+  <data name="Publish" xml:space="preserve"><value>Publish</value></data>
+  <data name="QRMode" xml:space="preserve"><value>QR Mode</value></data>
+  <data name="IntelligentMailBarcode" xml:space="preserve"><value>Intelligent Mail Barcode</value></data>
+  <data name="AutoThreshold" xml:space="preserve"><value>Auto Threshold</value></data>
+  <data name="IndustrialEthernetFormat" xml:space="preserve"><value>Industrial Ethernet - {0}</value></data>
+  <data name="Volume" xml:space="preserve"><value>Volume</value></data>
+  <data name="SortMode" xml:space="preserve"><value>Sort Mode</value></data>
+  <data name="GroupTool" xml:space="preserve"><value>Group</value></data>
+  <data name="FillHoles" xml:space="preserve"><value>Fill Holes</value></data>
+  <data name="FindCircleDescription" xml:space="preserve"><value>Finds a circle; reports a Pass if the circle is found; a Fail if it is not found.</value></data>
+  <data name="MaximumVolume" xml:space="preserve"><value>Maximum Volume</value></data>
+  <data name="PatMaxPatternCount" xml:space="preserve"><value>Count Patterns</value></data>
+  <data name="UndoChangeProtocol" xml:space="preserve"><value>Change protocol
+{0} 🡒 {1}</value></data>
+  <data name="AustraliaPost" xml:space="preserve"><value>Austrailia Post</value></data>
+  <data name="MathHelp_UsingFunctionsHead" xml:space="preserve"><value>Using Functions</value></data>
+  <data name="ViDiELSegment3DHelp_LabelImagesHead" xml:space="preserve"><value>Labeled Images</value></data>
+  <data name="AddToEasyViewFormatString" xml:space="preserve"><value>Add {0} To EasyView</value></data>
+  <data name="MaxPacketSize" xml:space="preserve"><value>Max Packet Size</value></data>
+  <data name="ReadId" xml:space="preserve"><value>Read ID</value></data>
+  <data name="Region" xml:space="preserve"><value>Region</value></data>
+  <data name="RemovingTool" xml:space="preserve"><value>Removing tool</value></data>
+  <data name="WriteDataSerial" xml:space="preserve"><value>Write Data Serial</value></data>
+  <data name="CountEdgesDirections" xml:space="preserve"><value>Position the region over the edges to be counted.
+
+When finished, press OK.</value></data>
+  <data name="Status" xml:space="preserve"><value>Status</value></data>
+  <data name="ContrastThreshold" xml:space="preserve"><value>Contrast Threshold</value></data>
+  <data name="String" xml:space="preserve"><value>String</value></data>
+  <data name="FormatStringPropertyChange" xml:space="preserve"><value>Format String: Adjust {0}
+    {1} 🡒 {2}</value></data>
+  <data name="InputRegionLabel" xml:space="preserve"><value>Input Region</value></data>
+  <data name="AllowIdentical1dSym" xml:space="preserve"><value>Allow Identical 1D Symbols</value></data>
+  <data name="PDF417" xml:space="preserve"><value>PDF 417</value></data>
+  <data name="Server" xml:space="preserve"><value>Server</value></data>
+  <data name="Search" xml:space="preserve"><value>Search</value></data>
+  <data name="ViDiELAnomalyDetectHelp_AutoThresholdOptionsHeader" xml:space="preserve"><value>Auto-Threshold Options</value></data>
+  <data name="Timeout" xml:space="preserve"><value>Timeout</value></data>
+  <data name="SurfaceFx" xml:space="preserve"><value>SurfaceFx</value></data>
+  <data name="MathHelp_LinkCellsHead" xml:space="preserve"><value>Link Cells to Tool Properties</value></data>
+  <data name="OutputCircle" xml:space="preserve"><value>Output Circle</value></data>
+  <data name="Planet" xml:space="preserve"><value>PLANET</value></data>
+  <data name="PolylinePath" xml:space="preserve"><value>Polyline Path</value></data>
+  <data name="IgnorePolarity" xml:space="preserve"><value>Ignore Polarity</value></data>
+  <data name="ShowModelRegion" xml:space="preserve"><value>Show Model Region</value></data>
+  <data name="ViDiELAnomalyDetectHelp_SampleImageHeader" xml:space="preserve"><value>Sample Image</value></data>
+  <data name="ReadDataSerial" xml:space="preserve"><value>Read Data Serial</value></data>
+  <data name="MaskedRegion" xml:space="preserve"><value>Masked Region</value></data>
+  <data name="SpreadsheetJobInEzbWarning" xml:space="preserve"><value>Cannot view Spreadsheet job. Please create a new EasyBuilder job</value></data>
+  <data name="ConfidenceThreshold" xml:space="preserve"><value>Confidence Threshold</value></data>
+  <data name="FindCircle" xml:space="preserve"><value>Find Circle</value></data>
+  <data name="CompositeRegionDirections" xml:space="preserve"><value>Position the region over the feature you want to measure.
+
+Once you have configured the region press OK.</value></data>
+  <data name="RunCategory" xml:space="preserve"><value>4. Run</value></data>
+  <data name="ViDiELSegment3DHelp_ProjectionModeDesc" xml:space="preserve"><value>- Specifies the mode used to create the sample image from the point cloud.
+- Auto-Tune adjusts your projection parameters to optimal values based on your labeled samples. Auto-Tune becomes enabled once a sample has been labeled.</value></data>
+  <data name="SetupImage" xml:space="preserve"><value>Image</value></data>
+  <data name="ViDiELReadHelp_FieldingDesc1" xml:space="preserve"><value>- Fielding can be used to narrow the expected set of characters and can lead to improved prediction accuracy. Please follow the instructions in the fielding menu for proper configuration.</value></data>
+  <data name="AddToolNoImageErrorMessage" xml:space="preserve"><value>An image is required to run this tool. Complete Image Setup before continuing.</value></data>
+  <data name="StandardCustomDelimiter" xml:space="preserve"><value>Standard/Custom Delimiter</value></data>
+  <data name="ViDiELAnomalyDetectHelp_AutoThresholdOptionsDesc" xml:space="preserve"><value>- To set an auto-threshold option, at least two OK and one NG image must be in the sample set.
+- The Auto-Threshold option is only used when the value is set automatically</value></data>
+  <data name="ViDiELSegment3DHelp_ConfidenceThreshold" xml:space="preserve"><value>- Specifies the minimum confidence score (0 to 100) to determine pixel to class asignment. 
+- The larger the threshold, the more strict class assignment is. </value></data>
+  <data name="DefaultLabelText" xml:space="preserve"><value>Label</value></data>
+  <data name="ExecutionTime" xml:space="preserve"><value>Execution Time</value></data>
+  <data name="JapanPost" xml:space="preserve"><value>Japan Post</value></data>
+  <data name="JobPass" xml:space="preserve"><value>Job Pass</value></data>
+  <data name="CustomDelimiter" xml:space="preserve"><value>Custom Delimiter</value></data>
+  <data name="Code128" xml:space="preserve"><value>Code 128</value></data>
+  <data name="CodaBar" xml:space="preserve"><value>Codabar</value></data>
+  <data name="Patterns" xml:space="preserve"><value>Patterns</value></data>
+  <data name="Copying" xml:space="preserve"><value>Copying {0}...</value></data>
+  <data name="ModelHealth" xml:space="preserve"><value>ModelHealth</value></data>
+  <data name="MeasureDistanceDescription" xml:space="preserve"><value>Measure the distance between two features; reports a Pass if the distance is within range; a Fail if it is not.</value></data>
+  <data name="Password" xml:space="preserve"><value>Password</value></data>
+  <data name="VgrDescription" xml:space="preserve"><value>VGR Description</value></data>
+  <data name="ReferencePlane" xml:space="preserve"><value>Reference Plane</value></data>
+  <data name="PastingTool" xml:space="preserve"><value>Pasting tool</value></data>
+  <data name="Threshold" xml:space="preserve"><value>Threshold</value></data>
+  <data name="CustomTerminator" xml:space="preserve"><value>Custom Terminator</value></data>
+  <data name="UndoRedoAddCompositeExpressionFormatString" xml:space="preserve"><value>Add {0} to {1}</value></data>
+  <data name="InspectDescription" xml:space="preserve"><value>Inspect Description</value></data>
+  <data name="HostName" xml:space="preserve"><value>Host Name</value></data>
+  <data name="WriteImageFtp" xml:space="preserve"><value>Write Image FTP</value></data>
+  <data name="PropertyLinkErrorCaption" xml:space="preserve"><value>Unable to link properties</value></data>
+  <data name="RemoveToolFromGroup" xml:space="preserve"><value>Remove {0} from {1} group</value></data>
+  <data name="MinimumVolume" xml:space="preserve"><value>Minimum Volume</value></data>
+  <data name="SegmentRegion" xml:space="preserve"><value>Segment Region</value></data>
+  <data name="InputSearchRegionLabel" xml:space="preserve"><value>Input Search Region</value></data>
+  <data name="DataBar" xml:space="preserve"><value>DataBar</value></data>
+  <data name="CircleFixtureDescription" xml:space="preserve"><value>Find an circle to use as a fixture.</value></data>
+  <data name="ResultString" xml:space="preserve"><value>Result String</value></data>
+  <data name="UndoRemoveSnippet" xml:space="preserve"><value>Remove snippet {0}</value></data>
+  <data name="Acquired" xml:space="preserve"><value>Acquired</value></data>
+  <data name="UndoClearMathToolCellRange" xml:space="preserve"><value>Clear ({0} {1})</value></data>
+  <data name="MathHelp_ComputedCellValuesHead" xml:space="preserve"><value>Using Computed Cell Values</value></data>
+  <data name="MathHelp_LinkCellsDesc2" xml:space="preserve"><value>Classify_1.Confidence
+  // Confidence score from Classify_1
+Brightness_1.Brightness
+  // Brightness value from Brightness_1</value></data>
+  <data name="MathHelp_LinkCellsDesc1" xml:space="preserve"><value>Click the link button in the active cell (or the expression editor) to select a tool property. Links are displayed in dot notation:</value></data>
+  <data name="OptimizingTool" xml:space="preserve"><value>Optimizing Tool...</value></data>
+  <data name="UpdateJob" xml:space="preserve"><value>Update Job</value></data>
+  <data name="SetupToolsCategory" xml:space="preserve"><value>2. Setup Tools</value></data>
+  <data name="SFTP Server" xml:space="preserve"><value>SFTP Server</value></data>
+  <data name="ViDiELReadHelp_PreTrainedModeHead" xml:space="preserve"><value>Pre-Trained Mode</value></data>
+  <data name="SortTolerance" xml:space="preserve"><value>Sort Tolerance</value></data>
+  <data name="ViDiELSegment3DDescription" xml:space="preserve"><value>Segments a 3D image</value></data>
+  <data name="InputAnnulus" xml:space="preserve"><value>Input Annulus</value></data>
+  <data name="CountBlobsDirections" xml:space="preserve"><value>Position the region over the blobs to be counted.
+
+When finished, press OK.</value></data>
+  <data name="TotalCount" xml:space="preserve"><value>TotalCount</value></data>
+  <data name="FieldingPattern" xml:space="preserve"><value>Fielding Pattern</value></data>
+  <data name="PatternCountDescription" xml:space="preserve"><value>Counts the number of patterns in a search region and range checks that number</value></data>
+  <data name="FormatStringAddArgument" xml:space="preserve"><value>Format String: Add {0}</value></data>
+  <data name="ToolExecutionTimes" xml:space="preserve"><value>Tool Execution Times</value></data>
+  <data name="NormalizeScore" xml:space="preserve"><value>Normalize Score</value></data>
+  <data name="LeadingText" xml:space="preserve"><value>Leading Text</value></data>
+  <data name="ViDiELClassify" xml:space="preserve"><value>Classify</value></data>
+  <data name="ViDiELSegment3DHelp_PassFailRangeLimitDesc" xml:space="preserve"><value>- Pass Fail condition based on the number of segments found within the region of interest.</value></data>
+  <data name="Polyline" xml:space="preserve"><value>Polyline</value></data>
+  <data name="Polarity" xml:space="preserve"><value>Polarity</value></data>
+  <data name="MidLineDescription" xml:space="preserve"><value>Compute the line between to given lines.</value></data>
+  <data name="ViDiELAnomalyDetectHelp_AutosetAnomalyThresholdHeader" xml:space="preserve"><value>Autoset Anomaly Threshold</value></data>
+  <data name="PatternPresenceDescription" xml:space="preserve"><value>Verifies the presence of a pattern in a search region; reports a Pass if the pattern is found</value></data>
+  <data name="WriteDataFtp" xml:space="preserve"><value>Write Data FTP</value></data>
+  <data name="AddToEasyView" xml:space="preserve"><value>Add to EasyView</value></data>
+  <data name="WriteDataTcpIp" xml:space="preserve"><value>Write Data TCP/IP</value></data>
+  <data name="EnableTraining" xml:space="preserve"><value>Enable Training</value></data>
+  <data name="PostNet" xml:space="preserve"><value>POSTNET</value></data>
+  <data name="EdgeContrast" xml:space="preserve"><value>Edge Contrast</value></data>
+  <data name="Polygon" xml:space="preserve"><value>Polygon</value></data>
+  <data name="Y" xml:space="preserve"><value>Y</value></data>
+  <data name="X" xml:space="preserve"><value>X</value></data>
+  <data name="Z" xml:space="preserve"><value>Z</value></data>
+  <data name="ReadIdDescription" xml:space="preserve"><value>Reads, and optionally verifies, alphanumeric strings contained in 1D and 2D barcodes and symbologies.</value></data>
+  <data name="Enabled" xml:space="preserve"><value>Enabled</value></data>
+  <data name="NG" xml:space="preserve"><value>NG</value></data>
+  <data name="OK" xml:space="preserve"><value>OK</value></data>
+  <data name="Validation" xml:space="preserve"><value>Validation</value></data>
+  <data name="AddToolToGroup" xml:space="preserve"><value>Add {0} to {1} group</value></data>
+  <data name="ShowOutputImage" xml:space="preserve"><value>Show Output Image</value></data>
+  <data name="ViDiELReadHelp_UserTrainedModeHead" xml:space="preserve"><value>User-Trained Mode</value></data>
+  <data name="MaximumArea" xml:space="preserve"><value>Maximum Area</value></data>
+  <data name="DataMatrix" xml:space="preserve"><value>Data Matrix</value></data>
+  <data name="ViDiELAnomalyDetectHelp_AnomalyDetectThresholdHeader" xml:space="preserve"><value>Anomaly Detect Threshold</value></data>
+  <data name="AngleStart" xml:space="preserve"><value>Angle Start</value></data>
+  <data name="AngleRange" xml:space="preserve"><value>Angle Range</value></data>
+  <data name="ViDiELReadDescription" xml:space="preserve"><value>Reads and/or verifies a text string; reports a Pass if the text is read or verified, fail if it is not.</value></data>
+  <data name="EnableInputGraphic" xml:space="preserve"><value>Enable Input Graphic</value></data>
+  <data name="BlobColor" xml:space="preserve"><value>Blob Color</value></data>
+  <data name="LineFixture" xml:space="preserve"><value>Edge Fixture</value></data>
+  <data name="Pharmacode" xml:space="preserve"><value>Pharmacode</value></data>
+  <data name="UndoAddSnippet" xml:space="preserve"><value>Add snippet {0}</value></data>
+  <data name="TrailingText" xml:space="preserve"><value>Trailing Text</value></data>
+  <data name="Adding0Snippet_FormatString" xml:space="preserve"><value>Adding {0} snippet</value></data>
+  <data name="MathHelp_UsingFunctionsDesc4" xml:space="preserve"><value>If(condition, expr1, expr2)
+  // Return expr1 if condition is true, 
+  // expr2 otherwise
+Choose(index, expr1, expr2, expr3 ...)  
+  // Return the expression specified by 
+  // index
+Exact(str1, str2)
+  // Return TRUE if the strings match, 
+  // FALSE otherwise
+PlotString(image, string, X, Y, color, show)
+  // Supply Acquired for image argument. 
+  // String is displayed at specified 
+  // location. Specify RGB color (OxFFFFFF 
+  // for white). Toggle visibility with 
+  // show argument.
+Mean(), Mode(), Min(), Max()   
+  // Statistics functions
+Abs(), Exp(), Mod(), Power()   
+  // Math functions</value></data>
+  <data name="MathHelp_UsingFunctionsDesc1" xml:space="preserve"><value>Click the function button ('f') in the expression editor to display available functions. Select a function and hit Enter, then hover over the expression editor to display the function signature and description.</value></data>
+  <data name="MathHelp_UsingFunctionsDesc3" xml:space="preserve"><value>Selected Functions</value></data>
+  <data name="MathHelp_UsingFunctionsDesc2" xml:space="preserve"><value>Use the 'Acquired' keyword to specify the current image for functions that take an Image argument.</value></data>
+  <data name="SelectedItemsFormatString" xml:space="preserve"><value>{0} Selected Items</value></data>
+  <data name="ErrorCount" xml:space="preserve"><value>Error Count</value></data>
+  <data name="Add" xml:space="preserve"><value>Add</value></data>
+  <data name="All" xml:space="preserve"><value>All</value></data>
+  <data name="Msi" xml:space="preserve"><value>MSI</value></data>
+  <data name="Upu" xml:space="preserve"><value>UPU</value></data>
+  <data name="HMI" xml:space="preserve"><value>HMI</value></data>
+  <data name="Run" xml:space="preserve"><value>Run</value></data>
+  <data name="Edges" xml:space="preserve"><value>Edges</value></data>
+  <data name="Error" xml:space="preserve"><value>Error</value></data>
+  <data name="EMPTY" xml:space="preserve"><value>EMPTY</value></data>
+  <data name="Angle" xml:space="preserve"><value>Angle</value></data>
+  <data name="False" xml:space="preserve"><value>False</value></data>
+  <data name="Focus" xml:space="preserve"><value>Focus</value></data>
+  <data name="Group" xml:space="preserve"><value>Group</value></data>
+  <data name="Model" xml:space="preserve"><value>Model</value></data>
+  <data name="Blobs" xml:space="preserve"><value>Blobs</value></data>
+  <data name="Color" xml:space="preserve"><value>Color</value></data>
+  <data name="Count" xml:space="preserve"><value>Count</value></data>
+  <data name="Clear" xml:space="preserve"><value>Clear</value></data>
+  <data name="Input" xml:space="preserve"><value>Input</value></data>
+  <data name="Image" xml:space="preserve"><value>Image</value></data>
+  <data name="Timestamp" xml:space="preserve"><value>Timestamp</value></data>
+  <data name="Order" xml:space="preserve"><value>Order</value></data>
+  <data name="Label" xml:space="preserve"><value>Label</value></data>
+  <data name="Local" xml:space="preserve"><value>Local</value></data>
+  <data name="Width" xml:space="preserve"><value>Width</value></data>
+  <data name="Train" xml:space="preserve"><value>Train</value></data>
+  <data name="Reset" xml:space="preserve"><value>Reset</value></data>
+  <data name="Score" xml:space="preserve"><value>Score</value></data>
+  <data name="Paste" xml:space="preserve"><value>Paste {0}</value></data>
+  <data name="Point" xml:space="preserve"><value>Point</value></data>
+  <data name="Plane" xml:space="preserve"><value>Plane</value></data>
+  <data name="ShowGraphics" xml:space="preserve"><value>Show Graphics</value></data>
+  <data name="MaximumMax" xml:space="preserve"><value>Maximum Max</value></data>
+  <data name="DotCode" xml:space="preserve"><value>DotCode</value></data>
+  <data name="PixelCountDescription" xml:space="preserve"><value>Determines whether or not a feature is present or absent, based upon the number of dark or light pixels in a region; reports a Pass if the score of the region's area is within the limits; a Fail if it is outside the limits.</value></data>
+  <data name="UserName" xml:space="preserve"><value>User Name</value></data>
+  <data name="ToolsPass" xml:space="preserve"><value>Tools Pass</value></data>
+  <data name="MinimumDecodesBeforeOutput" xml:space="preserve"><value>Minimum Decodes Before Output</value></data>
+  <data name="DataMatrixMaxNumField" xml:space="preserve"><value>DataMatrixMaxNumField</value></data>
+  <data name="ViDiELRead" xml:space="preserve"><value>Read</value></data>
+  <data name="Contrast" xml:space="preserve"><value>Contrast</value></data>
+  <data name="FormatStringDeleteArgument" xml:space="preserve"><value>Format String: Delete {0}</value></data>
+  <data name="UndoToolNameChange" xml:space="preserve"><value>Tool Name Change
+    {0} 🡒 {1}</value></data>
+  <data name="CountEdgesDescription" xml:space="preserve"><value>Counts the number of edges in a region; reports a Pass if the number of edges is within the limits; a Fail if it is outside the limits.</value></data>
+  <data name="MaxAppendValue" xml:space="preserve"><value>Max Append Value</value></data>
+  <data name="ErrorClearingDuplicate" xml:space="preserve"><value>Error Clearing Duplicate</value></data>
+  <data name="HeightMap" xml:space="preserve"><value>Height Map</value></data>
+  <data name="ExecutingAutoExposure" xml:space="preserve"><value>Executing Auto Exposure</value></data>
+  <data name="UpdateJobText" xml:space="preserve"><value>The loaded job is not compatible with this vision system. To configure this job to this vision system, go to File and click Update Job</value></data>
+  <data name="Unclassified" xml:space="preserve"><value>Unclassified</value></data>
+  <data name="PropertyLinkErrorMessage" xml:space="preserve"><value>An error occurred linking {0}. Performing rollback of:
+{1}</value></data>
+  <data name="MaxiCode" xml:space="preserve"><value>MaxiCode</value></data>
+  <data name="Colorize" xml:space="preserve"><value>Colorize</value></data>
+  <data name="Distance" xml:space="preserve"><value>Distance</value></data>
+  <data name="ModelRegion" xml:space="preserve"><value>Model Region</value></data>
+  <data name="DeenergizeOffline" xml:space="preserve"><value>De-Energize While Offline</value></data>
+  <data name="ViDiELReadHelp_CharacterFindThresholdDesc1" xml:space="preserve"><value>- Set a minimum threshold (0 - 100; default = 50) for classifying a candidate as a character. Candidates below this threshold are excluded. 
+- Final scores combine the likelihood of being a character and matching a specific character class. As a result, lower-scoring candidates may still be included in the final result string if they are likely to be characters. 
+- Supports only v2 pre-trained models (Standard and Complete).</value></data>
+  <data name="Rectangle" xml:space="preserve"><value>Rectangle</value></data>
+  <data name="InputAnnulusLabel" xml:space="preserve"><value>Input Annulus</value></data>
+  <data name="SignalType" xml:space="preserve"><value>Signal Type</value></data>
+  <data name="ShowDecodedResult" xml:space="preserve"><value>Show Decoded Results</value></data>
+  <data name="AllowIdentical1DResults" xml:space="preserve"><value>Allow Identical 1D Results</value></data>
+  <data name="AutoExposure" xml:space="preserve"><value>Auto Exposure</value></data>
+  <data name="MeasureColor" xml:space="preserve"><value>_MeasureColor</value></data>
+  <data name="MeasureAngle" xml:space="preserve"><value>Measure Angle</value></data>
+  <data name="PatMaxPatternCountDescription" xml:space="preserve"><value>Counts the number of PatMax patterns in a search region and range checks that number</value></data>
+  <data name="BaseHeight" xml:space="preserve"><value>Base Height</value></data>
+  <data name="AutoTuneProjectionParameters" xml:space="preserve"><value>Auto Tune Projection Parameters</value></data>
+  <data name="OutputMask" xml:space="preserve"><value>Output Mask</value></data>
+  <data name="OutputLine" xml:space="preserve"><value>Output Line</value></data>
+  <data name="Annulus" xml:space="preserve"><value>Annulus</value></data>
+  <data name="MinimumHeight" xml:space="preserve"><value>Minimum Height</value></data>
+  <data name="ViDiELReadHelp_CharacterFindThresholdHeader" xml:space="preserve"><value>Character Find Threshold</value></data>
+  <data name="ErrorString" xml:space="preserve"><value>Error String</value></data>
+  <data name="NumberFound" xml:space="preserve"><value>Number Found</value></data>
+  <data name="UsePretrainedModel" xml:space="preserve"><value>Use Pretrained Model</value></data>
+  <data name="AcceptThreshold" xml:space="preserve"><value>Accept Threshold</value></data>
+  <data name="UndoRedoRemoveLink" xml:space="preserve"><value>Remove Link
+    {0} 🡒 {1}</value></data>
+  <data name="FindPattern" xml:space="preserve"><value>Find Pattern</value></data>
+  <data name="UndoRedoAddLink" xml:space="preserve"><value>Add Link
+    {0} 🡒 {1}</value></data>
+  <data name="CountBlobs" xml:space="preserve"><value>Count Blobs</value></data>
+  <data name="CountEdges" xml:space="preserve"><value>Count Edges</value></data>
+  <data name="OutputsName" xml:space="preserve"><value>Outputs</value></data>
+  <data name="UndoAddTool" xml:space="preserve"><value>Add tool {0}</value></data>
+  <data name="UndoRedoRemoveCompositeExpressionFormatString" xml:space="preserve"><value>Remove {0} from {1}</value></data>
+  <data name="HmiDescription" xml:space="preserve"><value>HMI Description</value></data>
+  <data name="OutputPoint" xml:space="preserve"><value>Output Point</value></data>
+  <data name="SearchRegion" xml:space="preserve"><value>Search Region</value></data>
+  <data name="OutputImage" xml:space="preserve"><value>Output Image</value></data>
+  <data name="PlaneDescription" xml:space="preserve"><value>Adds a plane</value></data>
+  <data name="EdgeWidth" xml:space="preserve"><value>Edge Width</value></data>
+  <data name="ViDiELReadHelp_CharacterReviewDesc1" xml:space="preserve"><value>- The bottom menu selection labeled “X number of samples in X number of images” can be used to review trained characters.
+- Low confidence scores in this menu indicate characters that the model is unsure of.
+- Make sure to review all characters and adjust if necessary before deployment.</value></data>
+  <data name="ViDiELSegment3DHelp_LabelImagesDesc1" xml:space="preserve"><value>- View and edit your labeled images.</value></data>
+  <data name="Unpublish" xml:space="preserve"><value>Unpublish</value></data>
+  <data name="SymbolDamage" xml:space="preserve"><value>Symbol Damage</value></data>
+  <data name="AnomalyThreshold" xml:space="preserve"><value>Anomaly Threshold</value></data>
+  <data name="EasyModeButtonToggleToSimplified" xml:space="preserve"><value>Click to view simplified acquisition settings</value></data>
+  <data name="MathHelp_QuickRefHead" xml:space="preserve"><value>Math Tool Quick Reference</value></data>
+  <data name="RangeLimitsInvert" xml:space="preserve"><value>Invert</value></data>
+  <data name="ViDiELSegment3DHelp_ProjectionImageResolutionDesc" xml:space="preserve"><value>- Resolution of the projection image to be generated from the point cloud points within the region of interest. </value></data>
+  <data name="MaxThreshold" xml:space="preserve"><value>Max Threshold</value></data>
+  <data name="OutputFixture" xml:space="preserve"><value>Output Fixture</value></data>
+  <data name="InputRegion" xml:space="preserve"><value>Input Region</value></data>
+  <data name="ImageFilter" xml:space="preserve"><value>Image Filter</value></data>
+  <data name="FixtureValue" xml:space="preserve"><value>❒Fixture</value></data>
+  <data name="Geometry" xml:space="preserve"><value>Geometry</value></data>
+  <data name="PixelLine" xml:space="preserve"><value>Pixel Line</value></data>
+  <data name="RenameTool" xml:space="preserve"><value>Renaming tool...</value></data>
+  <data name="Average" xml:space="preserve"><value>Average</value></data>
+  <data name="ClearAll" xml:space="preserve"><value>Clear All</value></data>
+  <data name="ClassifyRegion" xml:space="preserve"><value>Classify Region</value></data>
+  <data name="StepHeightDescription" xml:space="preserve"><value>Measures the height between two features; reports a Pass if the measured height is within range; a Fail if it is not.</value></data>
+  <data name="MathHelp_QuickRefDesc1" xml:space="preserve"><value>This tool performs math and logic operations on properties in your job using a spreadsheet. Refer to the help file for detailed information and examples.</value></data>
+  <data name="PerspectiveDistortion" xml:space="preserve"><value>Perspective Distortion</value></data>
+  <data name="OutputsDescription" xml:space="preserve"><value>Outputs Description</value></data>
+  <data name="RemovingInputReferenceToFormat" xml:space="preserve"><value>Removing input reference to {0}</value></data>
+  <data name="DarkCount" xml:space="preserve"><value>Dark Count</value></data>
+  <data name="RegionArea" xml:space="preserve"><value>Region Area</value></data>
+  <data name="MinThreshold" xml:space="preserve"><value>Min Threshold</value></data>
+  <data name="IntFormatString" xml:space="preserve"><value>{0}</value></data>
+  <data name="NoneWithinLtGt" xml:space="preserve"><value>&lt;None&gt;</value></data>
+  <data name="MathHelp_CellValuesInExprHead" xml:space="preserve"><value>Use Cell Values in Expressions</value></data>
+  <data name="CommDescription" xml:space="preserve"><value>Communication Description</value></data>
+  <data name="MidLine" xml:space="preserve"><value>Mid-Line</value></data>
+  <data name="Segment3D" xml:space="preserve"><value>Segment3D</value></data>
+  <data name="Minimum" xml:space="preserve"><value>Minimum</value></data>
+  <data name="MinArea" xml:space="preserve"><value>Min Area</value></data>
+  <data name="Removing0Tool_FormatString" xml:space="preserve"><value>Removing {0} tool</value></data>
+  <data name="FindPlane" xml:space="preserve"><value>Find Plane</value></data>
+  <data name="WriteFtpSettings" xml:space="preserve"><value>Write FTP Settings</value></data>
+  <data name="InputPoint0" xml:space="preserve"><value>Input Point {0}</value></data>
+  <data name="Adding0Tool_FormatString" xml:space="preserve"><value>Adding {0} tool</value></data>
+  <data name="UseDelimiter" xml:space="preserve"><value>Use Delimiter</value></data>
+  <data name="Outputs" xml:space="preserve"><value>Outputs</value></data>
+  <data name="CompositeRegion" xml:space="preserve"><value>Composite Region</value></data>
+  <data name="InputFixtureArray" xml:space="preserve"><value>Input Fixture Array</value></data>
+  <data name="LocatePatMaxPatternDescription" xml:space="preserve"><value>Attempts to find a pattern in a search region; reports a Pass if the pattern is found.</value></data>
+  <data name="FileName" xml:space="preserve"><value>File Name</value></data>
+  <data name="FilePath" xml:space="preserve"><value>File Path</value></data>
+  <data name="FileType" xml:space="preserve"><value>File Type</value></data>
+  <data name="RemoveFromEasyViewFormatString" xml:space="preserve"><value>Remove {0} From EasyView</value></data>
+  <data name="FixtureFormat" xml:space="preserve"><value>({0,8:F1}, {1,8:F1}), {2,7:F1}°</value></data>
+  <data name="StandardDelimiter" xml:space="preserve"><value>Standard Delimiter</value></data>
+  <data name="LogisticsDetectorClassifier" xml:space="preserve"><value>Logistics Detector - Classifier</value></data>
+  <data name="FindEdge" xml:space="preserve"><value>Find Edge</value></data>
+  <data name="UnclassifiedDetectionMode" xml:space="preserve"><value>Unclassified Detection</value></data>
+  <data name="VgrCalibration" xml:space="preserve"><value>VGR Calibration</value></data>
+  <data name="Orientation" xml:space="preserve"><value>Orientation</value></data>
+  <data name="FloatWithThreeDecimalPlaces" xml:space="preserve"><value>{0:F3}</value></data>
+  <data name="AngleFmt" xml:space="preserve"><value>{0:F1}°</value></data>
+  <data name="AngleEnd" xml:space="preserve"><value>Angle End</value></data>
+  <data name="UndoRedoSwitchLink" xml:space="preserve"><value>Switch Link
+    {0} 🡒 {1}</value></data>
+  <data name="RunDescription" xml:space="preserve"><value>Run Description</value></data>
+  <data name="AutoGranularity" xml:space="preserve"><value>Auto Granularity</value></data>
+  <data name="ViDiELReadHelp_CharacterSizeRoiDesc1" xml:space="preserve"><value>- Ensure the character size bounding box is sized closely around the boundaries of the characters.
+- Leave space in the ROI for the characters to fit with some buffer around the edges.</value></data>
+  <data name="NotConnected" xml:space="preserve"><value>Not Connected</value></data>
+  <data name="SetupImageDescription" xml:space="preserve"><value>Setup Image Description</value></data>
+  <data name="ViDiELReadHelp_FieldingHead" xml:space="preserve"><value>Fielding</value></data>
+  <data name="IsTrainingEnabled" xml:space="preserve"><value>Is Training Enabled</value></data>
+  <data name="LocatePatMaxPattern" xml:space="preserve"><value>PatMax Pattern</value></data>
+  <data name="ProtocolDescription" xml:space="preserve"><value>Protocol Description</value></data>
+  <data name="ImageFilterDescription" xml:space="preserve"><value>Processes an image to produce an enhanced image.</value></data>
+  <data name="MaxPropertyLinks" xml:space="preserve"><value>Maximum number of property links is {0}</value></data>
+  <data name="Maximum" xml:space="preserve"><value>Maximum</value></data>
+  <data name="MaxArea" xml:space="preserve"><value>Max Area</value></data>
+  <data name="UndoPasteMathToolCellRange" xml:space="preserve"><value>Paste ({0} {1})</value></data>
+  <data name="BrightnessDescription" xml:space="preserve"><value>Determines whether or not a feature is present or absent, based upon an average greyscale (i.e. brightness) value; reports a Pass if the score of the region's area is within the limits; a Fail if it is outside the limits.</value></data>
+  <data name="PatMaxPatternPresenceDescription" xml:space="preserve"><value>Verifies the presence of a pattern in a search region; reports a Pass if the pattern is found</value></data>
+  <data name="MultiModelPatMaxToolDescription" xml:space="preserve"><value>Searches for a trained pattern within the search region; reports a Pass if the pattern is found.</value></data>
+  <data name="PredictedClassScore" xml:space="preserve"><value>Predicted Class Score</value></data>
+  <data name="NotEnoughSpaceInJob" xml:space="preserve"><value>There is not enough space in the job to add this tool.</value></data>
+  <data name="ZMillimetersWithThreeDecimalPlaces" xml:space="preserve"><value>Z: {0:F3} mm</value></data>
+  <data name="OutputFixtures" xml:space="preserve"><value>Output Fixtures</value></data>
+  <data name="SortOrder_" xml:space="preserve"><value>Sort Order</value></data>
+  <data name="EdgeIntersectionDescription" xml:space="preserve"><value>Determine a fixture based on two intersecting line segments.</value></data>
+  <data name="MathHelp_ComputedCellValuesDesc1" xml:space="preserve"><value>A Math tool's cell values can be used like any other tool's properties. You can link other tools' properties to cell values, display cell values on the HMI, and send them as output using Communications tools.</value></data>
+  <data name="MathHelp_ComputedCellValuesDesc3" xml:space="preserve"><value>Math_1.B3
+  // Contents of cell B3 in Math_1 tool</value></data>
+  <data name="MathHelp_ComputedCellValuesDesc2" xml:space="preserve"><value>Each non-empty cell appears as a property of the Math tool:</value></data>
+  <data name="OneDMaxResults" xml:space="preserve"><value>1D Symbology Maximum Results</value></data>
+  <data name="Checksum" xml:space="preserve"><value>Checksum</value></data>
+  <data name="HeightMapDescription" xml:space="preserve"><value>Process a Point Cloud to create an image where brighter colors represent higher heights.</value></data>
+  <data name="Measure" xml:space="preserve"><value>Measure</value></data>
+  <data name="DebounceDuration" xml:space="preserve"><value>Debounce Duration</value></data>
+  <data name="ExpandUpcEEnabled" xml:space="preserve"><value>ExpandUpcEEnabled</value></data>
+  <data name="ResultsCategory" xml:space="preserve"><value>3. Results</value></data>
+  <data name="PresenceAbsenceTools" xml:space="preserve"><value>Presence/Absence Tools</value></data>
+  <data name="PatternPresence" xml:space="preserve"><value>Detect Pattern</value></data>
+  <data name="CharacterFindThreshold" xml:space="preserve"><value>Character Find Threshold</value></data>
+  <data name="RectangularExtension" xml:space="preserve"><value>Rectangular Extension</value></data>
+  <data name="InputsName" xml:space="preserve"><value>Inputs</value></data>
+  <data name="ImageFilterTools" xml:space="preserve"><value>Image Filter Tools</value></data>
+  <data name="Fixtures" xml:space="preserve"><value>Fixtures</value></data>
+  <data name="InputPoint" xml:space="preserve"><value>Input Point</value></data>
+  <data name="InputPlane" xml:space="preserve"><value>Input Plane</value></data>
+  <data name="InputFixture" xml:space="preserve"><value>Input Fixture</value></data>
+  <data name="SnippetParsingError" xml:space="preserve"><value>Parsing Error {0} @ {1}</value></data>
+  <data name="InputImage" xml:space="preserve"><value>Input Image</value></data>
+  <data name="JobPassFailName" xml:space="preserve"><value>Job</value></data>
+  <data name="InputLine0" xml:space="preserve"><value>Input Line {0}</value></data>
+  <data name="PacketType" xml:space="preserve"><value>Packet Type</value></data>
+  <data name="Description" xml:space="preserve"><value>Description</value></data>
+  <data name="GetLearnedSymbologyResult" xml:space="preserve"><value>GetLearnedSymbology</value></data>
+  <data name="FixturesDetailHeader" xml:space="preserve"><value>Fixtures:</value></data>
+  <data name="ByteWordOrder" xml:space="preserve"><value>Byte/Word Order</value></data>
+  <data name="AllowFlexibleGridSize" xml:space="preserve"><value>Allow Flexible Grid Size</value></data>
+  <data name="Inspect" xml:space="preserve"><value>Inspect</value></data>
+  <data name="BaseColor" xml:space="preserve"><value>_BaseColor</value></data>
+  <data name="Confidence" xml:space="preserve"><value>Confidence</value></data>
+  <data name="OverlayGraphics" xml:space="preserve"><value>Overlay Graphics</value></data>
+  <data name="ContrastDescription" xml:space="preserve"><value>Determines whether or not a feature is present or absent, based upon the contrast between features; reports a Pass if the score of the region's area is within the limits; a Fail if it is outside the limits.</value></data>
+  <data name="ViDiELReadHelp_UserTrainedModeDesc1" xml:space="preserve"><value>- In this mode, characters must be trained to create a usable model. 
+- 2-3 examples of each character in the application should be trained at minimum.
+- After 3 images are trained, the tool will start predicting characters from untrained images. Make sure to correct any incorrect character assignments in the training screen.</value></data>
+  <data name="InputCompositeRegionLabel" xml:space="preserve"><value>Input Composite Region</value></data>
+  <data name="IsSampleUnclassified" xml:space="preserve"><value>Is Sample Unclassified</value></data>
+  <data name="Fixture" xml:space="preserve"><value>Fixture</value></data>
+  <data name="FormatStringMoveUp" xml:space="preserve"><value>Format String: Move Up {0}</value></data>
+  <data name="MaxResults" xml:space="preserve"><value>Maximum Results</value></data>
+  <data name="WorldFixture" xml:space="preserve"><value>World Fixture</value></data>
+  <data name="Symbology" xml:space="preserve"><value>Symbology</value></data>
+  <data name="ViDiELSegment3D" xml:space="preserve"><value>Segment 3D</value></data>
+  <data name="CountingTools" xml:space="preserve"><value>Counting Tools</value></data>
+  <data name="EdgeIntersection" xml:space="preserve"><value>Edge Intersection</value></data>
+  <data name="FixtureString" xml:space="preserve"><value>Fixture String</value></data>
+  <data name="LineFixtureDescription" xml:space="preserve"><value>Find an edge to use as a fixture.</value></data>
+  <data name="MathToolDescription" xml:space="preserve"><value>Use a spreadsheet to create expressions.</value></data>
+  <data name="LineToLineAngleDescription" xml:space="preserve"><value>Measure the angle between two edges; reports a Pass if the angle is within range; a Fail if it is not.</value></data>
+  <data name="UndoRedoValueFormatString" xml:space="preserve"><value>Adjust {0}
+    {1} 🡒 {2}</value></data>
+  <data name="Measurement" xml:space="preserve"><value>Measurement</value></data>
+  <data name="InputSearchRegion" xml:space="preserve"><value>Input Search Region</value></data>
+  <data name="ShowImage" xml:space="preserve"><value>Show Image</value></data>
+  <data name="IdTools" xml:space="preserve"><value>ID Tools</value></data>
+  <data name="ViDiELAnomalyDetectHelp_AnomalyDetectThresholdDesc" xml:space="preserve"><value>- Specifies the manually set value for the Anomaly Threshold. If Autoset Anomaly Threshold is turned on, this value will not be used.
+- Turning Autoset Anomaly Threshold on or off does not change the manually set value.</value></data>
+  <data name="FileNamePreview" xml:space="preserve"><value>File Name Preview</value></data>
+  <data name="InputCompositeRegion" xml:space="preserve"><value>Input Composite Region</value></data>
+  <data name="Area" xml:space="preserve"><value>Area</value></data>
+  <data name="Fail" xml:space="preserve"><value>Fail</value></data>
+  <data name="Fine" xml:space="preserve"><value>Fine</value></data>
+  <data name="Gain" xml:space="preserve"><value>Gain</value></data>
+  <data name="Mode" xml:space="preserve"><value>Mode</value></data>
+  <data name="Math" xml:space="preserve"><value>Math</value></data>
+  <data name="Base" xml:space="preserve"><value>Base</value></data>
+  <data name="None" xml:space="preserve"><value>None</value></data>
+  <data name="Name" xml:space="preserve"><value>Name</value></data>
+  <data name="Line" xml:space="preserve"><value>Line</value></data>
+  <data name="True" xml:space="preserve"><value>True</value></data>
+  <data name="Pass" xml:space="preserve"><value>Pass</value></data>
+  <data name="Port" xml:space="preserve"><value>Port</value></data>
+  <data name="ViDiELReadHelp_CharacterReviewHead" xml:space="preserve"><value>Character Review</value></data>
+  <data name="PatMaxRedLinePattern" xml:space="preserve"><value>PatMax RedLine Pattern</value></data>
+  <data name="InspectStepToggleToAdvanced" xml:space="preserve"><value>Click to view advanced tool settings</value></data>
+  <data name="InspectStepToggleToSimplified" xml:space="preserve"><value>Click to view simplified tool settings</value></data>
+  <data name="PatternCount" xml:space="preserve"><value>Count Patterns</value></data>
+  <data name="UpdatingJob" xml:space="preserve"><value>Updating Job</value></data>
+  </root>

@@ -1,0 +1,117 @@
+[
+  {
+    "Ordinal": 0,
+    "Mangled": "corehost_initialize",
+    "Demangled": "corehost_initialize"
+  },
+  {
+    "Ordinal": 1,
+    "Mangled": "corehost_load",
+    "Demangled": "corehost_load"
+  },
+  {
+    "Ordinal": 2,
+    "Mangled": "corehost_main",
+    "Demangled": "corehost_main"
+  },
+  {
+    "Ordinal": 3,
+    "Mangled": "corehost_main_with_output_buffer",
+    "Demangled": "corehost_main_with_output_buffer"
+  },
+  {
+    "Ordinal": 4,
+    "Mangled": "corehost_resolve_component_dependencies",
+    "Demangled": "corehost_resolve_component_dependencies"
+  },
+  {
+    "Ordinal": 5,
+    "Mangled": "corehost_set_error_writer",
+    "Demangled": "corehost_set_error_writer"
+  },
+  {
+    "Ordinal": 6,
+    "Mangled": "corehost_unload",
+    "Demangled": "corehost_unload"
+  },
+  {
+    "Ordinal": 7,
+    "Mangled": "hostfxr_close",
+    "Demangled": "hostfxr_close"
+  },
+  {
+    "Ordinal": 8,
+    "Mangled": "hostfxr_get_available_sdks",
+    "Demangled": "hostfxr_get_available_sdks"
+  },
+  {
+    "Ordinal": 9,
+    "Mangled": "hostfxr_get_native_search_directories",
+    "Demangled": "hostfxr_get_native_search_directories"
+  },
+  {
+    "Ordinal": 10,
+    "Mangled": "hostfxr_get_runtime_delegate",
+    "Demangled": "hostfxr_get_runtime_delegate"
+  },
+  {
+    "Ordinal": 11,
+    "Mangled": "hostfxr_get_runtime_properties",
+    "Demangled": "hostfxr_get_runtime_properties"
+  },
+  {
+    "Ordinal": 12,
+    "Mangled": "hostfxr_get_runtime_property_value",
+    "Demangled": "hostfxr_get_runtime_property_value"
+  },
+  {
+    "Ordinal": 13,
+    "Mangled": "hostfxr_initialize_for_dotnet_command_line",
+    "Demangled": "hostfxr_initialize_for_dotnet_command_line"
+  },
+  {
+    "Ordinal": 14,
+    "Mangled": "hostfxr_initialize_for_runtime_config",
+    "Demangled": "hostfxr_initialize_for_runtime_config"
+  },
+  {
+    "Ordinal": 15,
+    "Mangled": "hostfxr_main",
+    "Demangled": "hostfxr_main"
+  },
+  {
+    "Ordinal": 16,
+    "Mangled": "hostfxr_main_bundle_startupinfo",
+    "Demangled": "hostfxr_main_bundle_startupinfo"
+  },
+  {
+    "Ordinal": 17,
+    "Mangled": "hostfxr_main_startupinfo",
+    "Demangled": "hostfxr_main_startupinfo"
+  },
+  {
+    "Ordinal": 18,
+    "Mangled": "hostfxr_resolve_sdk",
+    "Demangled": "hostfxr_resolve_sdk"
+  },
+  {
+    "Ordinal": 19,
+    "Mangled": "hostfxr_resolve_sdk2",
+    "Demangled": "hostfxr_resolve_sdk2"
+  },
+  {
+    "Ordinal": 20,
+    "Mangled": "hostfxr_run_app",
+    "Demangled": "hostfxr_run_app"
+  },
+  {
+    "Ordinal": 21,
+    "Mangled": "hostfxr_set_error_writer",
+    "Demangled": "hostfxr_set_error_writer"
+  },
+  {
+    "Ordinal": 22,
+    "Mangled": "hostfxr_set_runtime_property_value",
+    "Demangled": "hostfxr_set_runtime_property_value"
+  }
+]

@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cognex.InSight.Liger.SpreadsheetEditor.Shell</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <UseWPF>True</UseWPF>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="xm4UWucYres6Jj9elX.2sEeirvrOxywyhZDB9" />
+    <EmbeddedResource Include="xm4UWucYres6Jj9elX.2sEeirvrOxywyhZDB9" LogicalName="xm4UWucYres6Jj9elX.2sEeirvrOxywyhZDB9" />
+    <Page Remove="Cognex.InSight.Liger.SpreadsheetEditor.Shell\SpreadsheetEditor.xaml" />
+    <Page Include="Cognex.InSight.Liger.SpreadsheetEditor.Shell\SpreadsheetEditor.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="spreadsheeteditor.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Cognex.Explorer.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Explorer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.IDE.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.IDE.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.CogNamer.Client">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.CogNamer.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.ServiceLocator">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.ServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.Runtime.Wpf">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.Runtime.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Cognex.Diagnostics">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Explorer.Integration">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Explorer.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.Runtime.ViewModels">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.Runtime.ViewModels.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight3D">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight3D.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.ViDiEL.WPF">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.ViDiEL.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Designer.Utils">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Designer.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Insight.Controls.Acquisition3D">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Insight.Controls.Acquisition3D.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.Controls.Display3D">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.Controls.Display3D.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.ThreeD.Controls">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.ThreeD.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.AttributedModel">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\System.Composition.AttributedModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Documentation">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Documentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

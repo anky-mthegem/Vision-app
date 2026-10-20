@@ -1,0 +1,11 @@
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+namespace std;
+
+[StructLayout(LayoutKind.Sequential, Size = 112)]
+[NativeCppClass]
+internal struct basic_ostream_003Cwchar_t_002Cstd_003A_003Achar_traits_003Cwchar_t_003E_0020_003E
+{
+	private long u;
+}

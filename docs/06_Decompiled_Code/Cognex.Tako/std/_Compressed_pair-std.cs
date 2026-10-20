@@ -1,0 +1,111 @@
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+namespace std;
+
+[StructLayout(LayoutKind.Sequential, Size = 32)]
+[NativeCppClass]
+[UnsafeValueType]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Cchar32_t_003E_0020_003E_002Cstd_003A_003A_String_val_003Cstd_003A_003A_Simple_types_003Cchar32_t_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 32)]
+[UnsafeValueType]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Cchar16_t_003E_0020_003E_002Cstd_003A_003A_String_val_003Cstd_003A_003A_Simple_types_003Cchar16_t_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 32)]
+[UnsafeValueType]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Cwchar_t_003E_0020_003E_002Cstd_003A_003A_String_val_003Cstd_003A_003A_Simple_types_003Cwchar_t_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 32)]
+[UnsafeValueType]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Cchar_003E_0020_003E_002Cstd_003A_003A_String_val_003Cstd_003A_003A_Simple_types_003Cchar_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 24)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Cint_003E_0020_003E_002Cstd_003A_003A_Vector_val_003Cstd_003A_003A_Simple_types_003Cint_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Adefault_delete_003Ccognex_003A_003Aegl_003A_003Atako_003A_003APBuffer_003E_002Ccognex_003A_003Aegl_003A_003Atako_003A_003APBuffer_0020_002A_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 24)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Ccognex_003A_003Atako_003A_003AChrono_003A_003AResult_003E_0020_003E_002Cstd_003A_003A_Vector_val_003Cstd_003A_003A_Simple_types_003Ccognex_003A_003Atako_003A_003AChrono_003A_003AResult_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Adefault_delete_003Ccognex_003A_003Atako_003A_003ATrackingTarget_003E_002Ccognex_003A_003Atako_003A_003ATrackingTarget_0020_002A_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Adefault_delete_003Ccognex_003A_003Atako_003A_003ACameraSettings_003E_002Ccognex_003A_003Atako_003A_003ACameraSettings_0020_002A_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 24)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Ccognex_003A_003Atako_003A_003AColor_003E_0020_003E_002Cstd_003A_003A_Vector_val_003Cstd_003A_003A_Simple_types_003Ccognex_003A_003Atako_003A_003AColor_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Aallocator_003Cint_003E_002Cvoid_0020_0028__cdecl_002A_0029_0028int_0020const_0020_0026_002Cenum_0020cognex_003A_003Atako_003A_003ACreatorMode_0029_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Aallocator_003Cint_003E_002Cvoid_0020_0028__cdecl_002A_0029_0028int_0029_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Aallocator_003Cint_003E_002Cbool_0020_0028__cdecl_002A_0029_0028int_002Cenum_0020cognex_003A_003Atako_003A_003ADragEvent_002Cstd_003A_003Aarray_003Cfloat_002C3_003E_0020const_0020_0026_0029_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Aallocator_003Cint_003E_002Cvoid_0020_0028__cdecl_002A_0029_0028cognex_003A_003Atako_003A_003AViewMousePos_0020const_0020_0026_0029_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Aallocator_003Cint_003E_002Cvoid_0020_0028__cdecl_002A_0029_0028int_0020const_0020_0026_002Cint_0020const_0020_0026_0029_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 24)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003A_Wrap_alloc_003Cstd_003A_003Aallocator_003Cfloat_003E_0020_003E_002Cstd_003A_003A_Vector_val_003Cstd_003A_003A_Simple_types_003Cfloat_003E_0020_003E_002C1_003E
+{
+	private long u;
+}
+[StructLayout(LayoutKind.Sequential, Size = 8)]
+[NativeCppClass]
+internal struct _Compressed_pair_003Cstd_003A_003Aallocator_003Cint_003E_002Cvoid_0020_0028__cdecl_002A_0029_0028void_0029_002C1_003E
+{
+	private long u;
+}

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="Connected" xml:space="preserve"><value>Connected</value></data>
+  <data name="ResponseNotReceived" xml:space="preserve"><value>Response not received from device.</value></data>
+  <data name="CouldNotResolveHost" xml:space="preserve"><value>Could not resolve host '{0}'.</value></data>
+  <data name="InvalidAddressException_1" xml:space="preserve"><value>Invalid IP Address {0}.</value></data>
+  <data name="FileNotFoundException" xml:space="preserve"><value>Could not find the file on the remote file system.</value></data>
+  <data name="ConfigurationException_1" xml:space="preserve"><value>An error in the file {0} caused the configuration to fail to load.</value></data>
+  <data name="FileAlreadyExists" xml:space="preserve"><value>The destination file already exists.</value></data>
+  <data name="CogNamerErrorCode_ErrorInsufficientPrivilege" xml:space="preserve"><value>The user account does not have sufficient privileges to perform the command.</value></data>
+  <data name="FirmwareNotSupported" xml:space="preserve"><value>The firmware version does not support the requested operation.</value></data>
+  <data name="NotConnectedException" xml:space="preserve"><value>Not connected.</value></data>
+  <data name="CogNamerErrorCode_Failed" xml:space="preserve"><value>Command failed.</value></data>
+  <data name="FileOperationFailedException" xml:space="preserve"><value>The requested file operation failed.</value></data>
+  <data name="LimitExceededException" xml:space="preserve"><value>Operation would cause a specified limit to be exceeded.</value></data>
+  <data name="SerializationTypeException" xml:space="preserve"><value>An invalid data type was encountered during serialization.</value></data>
+  <data name="TimeoutException" xml:space="preserve"><value>Operation timed out.</value></data>
+  <data name="NotRecognizedException" xml:space="preserve"><value>System not recognized.</value></data>
+  <data name="CommunicationException" xml:space="preserve"><value>A communication error occurred attempting to complete the requested operation.</value></data>
+  <data name="InsufficientReadPermissions" xml:space="preserve"><value>Insufficient read permissions to perform the requested operation.</value></data>
+  <data name="AttemptingToContact" xml:space="preserve"><value>Attempting to contact device...</value></data>
+  <data name="InvalidHostName" xml:space="preserve"><value>The specified Device Name is invalid.</value></data>
+  <data name="FileStoreFailed" xml:space="preserve"><value>The specified file could not be stored on the In-Sight sensor.</value></data>
+  <data name="CompletedSuccessfully" xml:space="preserve"><value>Completed Successfully.</value></data>
+  <data name="FileReadFailed" xml:space="preserve"><value>Could not successfully read the specified file.</value></data>
+  <data name="InsufficientWritePermissions" xml:space="preserve"><value>Insufficient write permissions to perform the requested operation.</value></data>
+  <data name="ChangingNetworkSettings" xml:space="preserve"><value>Changing network settings...</value></data>
+  <data name="InvalidPassword" xml:space="preserve"><value>The specified password is incorrect.</value></data>
+  <data name="ConnectingTo" xml:space="preserve"><value>Connecting to {0}...</value></data>
+  <data name="USBDriveNotFoundException" xml:space="preserve"><value>No USB drive detected.</value></data>
+  <data name="CogNamerErrorCode_ErrorInvalidNetworkSettings" xml:space="preserve"><value>The supplied network settings are invalid.</value></data>
+  <data name="CogNamerErrorCode_ErrorInvalidUsername" xml:space="preserve"><value>The specified user name is not valid on this device.</value></data>
+  <data name="InvalidResponse" xml:space="preserve"><value>Invalid response received.</value></data>
+  <data name="FileTransferError" xml:space="preserve"><value>Could not find an acceptable IP Address to perform the file transfer.</value></data>
+  <data name="InsufficientPermissions" xml:space="preserve"><value>Insufficient permissions to perform the requested operation.</value></data>
+  <data name="CogNamerErrorCode_ErrorInvalidPassword" xml:space="preserve"><value>The supplied password is not valid for the specified user name.</value></data>
+  <data name="NotConnected" xml:space="preserve"><value>Not connected</value></data>
+  <data name="TheOperationWasCanceled" xml:space="preserve"><value>The operation was canceled.</value></data>
+  <data name="SymbolicTagNotFoundException" xml:space="preserve"><value>Could not find the symbolic tag.</value></data>
+  <data name="FtpConnect" xml:space="preserve"><value>Could not establish an FTP connection with the system.</value></data>
+  <data name="CogNamerErrorCode_ErrorUnsupportedCommand" xml:space="preserve"><value>The command is not supported on this device.</value></data>
+  <data name="UnknownSensorType" xml:space="preserve"><value>Unknown Sensor Type</value></data>
+  <data name="InvalidLogonException" xml:space="preserve"><value>An invalid user name or password was specified.</value></data>
+  <data name="CogNamerErrorCode_ErrorMissingRequiredRecord" xml:space="preserve"><value>The command was missing a required record.</value></data>
+  <data name="Move" xml:space="preserve"><value>Move</value></data>
+  </root>

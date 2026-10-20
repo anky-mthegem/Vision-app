@@ -1,0 +1,39 @@
+{
+  "enable_delta": false,
+  "enable_siemens": false,
+  "enable_beckhoff": false,
+  "enable_ethernet": false,
+  "enable_gpio": false,
+  "delta": {
+    "host": "192.168.1.50",
+    "port": 502,
+    "unit_id": 1,
+    "d_start": 100
+  },
+  "siemens": {
+    "host": "192.168.1.10",
+    "rack": 0,
+    "slot": 1,
+    "db_number": 1
+  },
+  "beckhoff": {
+    "host": "192.168.1.20",
+    "ams_net_id": "192.168.1.20.1.1",
+    "ads_port": 851
+  },
+  "ethernet": {
+    "target_ip": "192.168.1.100",
+    "port": 9000,
+    "protocol": "TCP",
+    "mode": "Client",
+    "data_format": "JSON"
+  },
+  "gpio": {
+    "host": "192.168.1.200",
+    "pass_pin": 17,
+    "fail_pin": 27,
+    "ready_pin": 22,
+    "strobe_pin": 23,
+    "trigger_pin": 4
+  }
+}

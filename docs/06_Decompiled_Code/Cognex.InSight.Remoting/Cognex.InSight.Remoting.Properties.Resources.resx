@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="HdrMode" xml:space="preserve"><value>HDR Mode</value></data>
+  <data name="TriggerInterval" xml:space="preserve"><value>Trigger Interval</value></data>
+  <data name="IlluminationBanksEnabledDescription" xml:space="preserve"><value>Specifies the LED illumination banks.</value></data>
+  <data name="HdrKernelSizeDescription" xml:space="preserve"><value>Select the kernel size in HDR+ processing.</value></data>
+  <data name="HdrKernelSizeName" xml:space="preserve"><value>HDR+ Kernel Size</value></data>
+  <data name="FocusPosition" xml:space="preserve"><value>Focus Position</value></data>
+  <data name="IlluminationGroupDisplayTitle" xml:space="preserve"><value>Illumination</value></data>
+  <data name="WhiteBalanceGroupHelp" xml:space="preserve"><value>White Balance configuration settings for the camera</value></data>
+  <data name="StrobePolarityDescription" xml:space="preserve"><value>Defines the signal that will fire a connected strobe. </value></data>
+  <data name="WhiteBalanceRegionName" xml:space="preserve"><value>White Balance Region</value></data>
+  <data name="ExposureName" xml:space="preserve"><value>Exposure (ms)</value></data>
+  <data name="NumberOfColumnsDescription" xml:space="preserve"><value>Defines the number of image sensor columns to be transferred into memory on the camera.</value></data>
+  <data name="IlluminationModeDescription" xml:space="preserve"><value>Defines the illumination device.</value></data>
+  <data name="DelayName" xml:space="preserve"><value>Delay (ms)</value></data>
+  <data name="IlluminationMode" xml:space="preserve"><value>Mode</value></data>
+  <data name="IlluminationGroupHelp" xml:space="preserve"><value>Configures settings for the In-Sight illumination accessory.</value></data>
+  <data name="HdrGroupHelp" xml:space="preserve"><value>Parameters for configuring High Dynamic Range (HDR) preprocessing on the input image. Changes only take effect while Offline or Paused.</value></data>
+  <data name="StartRowDescription" xml:space="preserve"><value>Defines the first row to be transferred from the image sensor into memory on the camera.</value></data>
+  <data name="IlluminationGroupTitle" xml:space="preserve"><value>Illumination</value></data>
+  <data name="WhiteBalanceGroupDisplayTitle" xml:space="preserve"><value>White Balance</value></data>
+  <data name="IlluminationIntensity" xml:space="preserve"><value>Intensity</value></data>
+  <data name="NumberOfRowsDescription" xml:space="preserve"><value>Defines the number of image sensor rows to be transferred into memory on the camera.</value></data>
+  <data name="NumberOfRowsName" xml:space="preserve"><value>Number of Rows</value></data>
+  <data name="FocusRegion" xml:space="preserve"><value>Focus Region</value></data>
+  <data name="AutofocusDescription" xml:space="preserve"><value>Automatically focus the lens on the vision system.</value></data>
+  <data name="StartColumnDescription" xml:space="preserve"><value>Defines the first column to be transferred from the image sensor into memory on the camera.</value></data>
+  <data name="FocusGroupDisplayTitle" xml:space="preserve"><value>Focus</value></data>
+  <data name="TriggerModeName" xml:space="preserve"><value>Trigger Mode</value></data>
+  <data name="Low" xml:space="preserve"><value>Low</value></data>
+  <data name="IlluminationIntensityDescription" xml:space="preserve"><value>Specifies the intensity of the illumination LED banks, as a percentage.</value></data>
+  <data name="NumberOfBuffersName" xml:space="preserve"><value>Image Buffers</value></data>
+  <data name="StrobeStartDescription" xml:space="preserve"><value>Defines when the strobe should start.</value></data>
+  <data name="GainName" xml:space="preserve"><value>Gain</value></data>
+  <data name="HdrGroupTitle" xml:space="preserve"><value>High Dynamic Range</value></data>
+  <data name="StartRowName" xml:space="preserve"><value>Start Row</value></data>
+  <data name="TriggerDebounceDescription" xml:space="preserve"><value>Defines the time (μs) that a camera trigger must be sustained to trigger an acquisition.</value></data>
+  <data name="StrobePolarityName" xml:space="preserve"><value>Strobe Polarity</value></data>
+  <data name="FocusPositionDescription" xml:space="preserve"><value>Defines a specific focus position of the lens on supported vision systems, and moves the lens to that position.</value></data>
+  <data name="FocusRegionDescription" xml:space="preserve"><value>Defines the size and position of the region used to calculate the lens focus.</value></data>
+  <data name="Autofocus" xml:space="preserve"><value>Autofocus</value></data>
+  <data name="DelayDescription" xml:space="preserve"><value>Defines the delay between the time that a trigger to acquire an image is received, and the time camera begins the image acquisition.</value></data>
+  <data name="HdrModeDescription" xml:space="preserve"><value>Enables or disables HDR preprocessing.</value></data>
+  <data name="OffsetDescription" xml:space="preserve"><value>Defines a Direct Current (DC) level that is added or subtracted from the camera's analog signal before the analog-to-digital conversion.</value></data>
+  <data name="StrobeStartName" xml:space="preserve"><value>Strobe Start</value></data>
+  <data name="HdrGroupDisplayTitle" xml:space="preserve"><value>High Dynamic Range</value></data>
+  <data name="OrientationName" xml:space="preserve"><value>Orientation</value></data>
+  <data name="NumberOfBuffersDescription" xml:space="preserve"><value>Defines the number of image buffers.</value></data>
+  <data name="OrientationDescription" xml:space="preserve"><value>Defines the orientation at which the acquired image will be processed.</value></data>
+  <data name="GainDescription" xml:space="preserve"><value>Defines the gain of the amplifier stage that precedes the analog-to-digital conversion.</value></data>
+  <data name="OffsetName" xml:space="preserve"><value>Offset</value></data>
+  <data name="FocusGroupTitle" xml:space="preserve"><value>Focus</value></data>
+  <data name="TriggerModeDescription" xml:space="preserve"><value>Specifies the trigger source for acquisitions.</value></data>
+  <data name="SetWhiteBalance" xml:space="preserve"><value>Set White Balance</value></data>
+  <data name="IlluminationBanksEnabled" xml:space="preserve"><value>Banks Enabled</value></data>
+  <data name="SetWhiteBalanceDescription" xml:space="preserve"><value>Calculate and set the white balance gain offsets</value></data>
+  <data name="StartColumnName" xml:space="preserve"><value>Start Column</value></data>
+  <data name="WhiteBalanceGroupTitle" xml:space="preserve"><value>White Balance</value></data>
+  <data name="WhiteBalanceRegionDescription" xml:space="preserve"><value>Defines the region used to calculate the white balance gain offsets.</value></data>
+  <data name="NumberOfColumnsName" xml:space="preserve"><value>Number of Columns</value></data>
+  <data name="TriggerDebounceName" xml:space="preserve"><value>Debounce (μs)</value></data>
+  <data name="High" xml:space="preserve"><value>High</value></data>
+  <data name="ExposureDescription" xml:space="preserve"><value>Defines the exposure time. When the camera receives an image acquisition trigger signal, light is integrated into the image sensor array for the specified duration.</value></data>
+  <data name="TriggerIntervalDescription" xml:space="preserve"><value>Determines the interval for timer triggers.</value></data>
+  </root>

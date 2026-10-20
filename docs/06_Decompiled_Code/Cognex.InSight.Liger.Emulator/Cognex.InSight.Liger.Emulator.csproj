@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cognex.InSight.Liger.Emulator</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <UseWPF>True</UseWPF>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <Page Remove="Cognex.InSight.Liger.Emulator\ConfigureWindow.xaml" />
+    <Page Remove="numericupdownstyle.xaml" />
+    <Page Include="Cognex.InSight.Liger.Emulator\ConfigureWindow.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="configurewindow.xaml" />
+    <Page Include="numericupdownstyle.xaml" Generator="MSBuild:Compile" SubType="Designer" LogicalName="numericupdownstyle.xaml" />
+    <Resource Remove="appicon.ico" />
+    <Resource Include="appicon.ico" LogicalName="appicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Cognex.Explorer.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Cognex.Explorer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="NLog">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Cognex.Utilities.Sdk">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Cognex.Utilities.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Cognex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Mvvm">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Cognex.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Foundations.Mvvm">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Cognex.Foundations.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Foundations.Wpf">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Cognex.Foundations.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Explorer.Integration">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Cognex.Explorer.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\Emulators\In-Sight Emulator 25.1.0\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+  </ItemGroup>
+</Project>

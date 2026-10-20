@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cognex.InSight.Remoting</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="AB3oWuyKvTuTWfAfQ9.MZwvVsehmukFMDpGkd" />
+    <EmbeddedResource Include="AB3oWuyKvTuTWfAfQ9.MZwvVsehmukFMDpGkd" LogicalName="AB3oWuyKvTuTWfAfQ9.MZwvVsehmukFMDpGkd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Adapters\In-Sight Adapter\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Cognex.Remoting.CogSocket">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Adapters\In-Sight Adapter\Cognex.Remoting.CogSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Adapters\In-Sight Adapter\Cognex.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3392 @@
+[
+  {
+    "Ordinal": 0,
+    "Mangled": "??0?$enable_shared_from_this@VContext@egl@cognex@@@std@@IEAA@AEBV01@@Z",
+    "Demangled": "protected: __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E(class std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 1,
+    "Mangled": "??0?$enable_shared_from_this@VContext@egl@cognex@@@std@@IEAA@XZ",
+    "Demangled": "protected: __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E(void) __ptr64"
+  },
+  {
+    "Ordinal": 2,
+    "Mangled": "??0?$enable_shared_from_this@VSurface@egl@cognex@@@std@@IEAA@AEBV01@@Z",
+    "Demangled": "protected: __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E(class std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 3,
+    "Mangled": "??0?$enable_shared_from_this@VSurface@egl@cognex@@@std@@IEAA@XZ",
+    "Demangled": "protected: __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E(void) __ptr64"
+  },
+  {
+    "Ordinal": 4,
+    "Mangled": "??0AnnularCylinder@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::AnnularCylinder::AnnularCylinder(class cognex::tako::AnnularCylinder \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 5,
+    "Mangled": "??0AnnularCylinder@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::AnnularCylinder::AnnularCylinder(class cognex::tako::AnnularCylinder const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 6,
+    "Mangled": "??0AnnularCylinder@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::AnnularCylinder::AnnularCylinder(void) __ptr64"
+  },
+  {
+    "Ordinal": 7,
+    "Mangled": "??0Arc@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Arc::Arc(class cognex::tako::Arc \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 8,
+    "Mangled": "??0Arc@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Arc::Arc(class cognex::tako::Arc const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 9,
+    "Mangled": "??0Arc@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Arc::Arc(void) __ptr64"
+  },
+  {
+    "Ordinal": 10,
+    "Mangled": "??0Blob@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Blob::Blob(class cognex::tako::Blob \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 11,
+    "Mangled": "??0Blob@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Blob::Blob(class cognex::tako::Blob const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 12,
+    "Mangled": "??0Blob@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Blob::Blob(void) __ptr64"
+  },
+  {
+    "Ordinal": 13,
+    "Mangled": "??0Box@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Box::Box(class cognex::tako::Box \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 14,
+    "Mangled": "??0Box@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Box::Box(class cognex::tako::Box const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 15,
+    "Mangled": "??0Box@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Box::Box(void) __ptr64"
+  },
+  {
+    "Ordinal": 16,
+    "Mangled": "??0Chrono@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Chrono::Chrono(class cognex::tako::Chrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 17,
+    "Mangled": "??0Chrono@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Chrono::Chrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 18,
+    "Mangled": "??0Circle@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Circle::Circle(class cognex::tako::Circle \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 19,
+    "Mangled": "??0Circle@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Circle::Circle(class cognex::tako::Circle const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 20,
+    "Mangled": "??0Circle@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Circle::Circle(void) __ptr64"
+  },
+  {
+    "Ordinal": 21,
+    "Mangled": "??0Context@egl@cognex@@QEAA@AEBVDisplay@12@V?$shared_ptr@VSurface@egl@cognex@@@std@@@Z",
+    "Demangled": "public: __cdecl cognex::egl::Context::Context(class cognex::egl::Display const \u0026 __ptr64,class std::shared_ptr\u003Cclass cognex::egl::Surface\u003E) __ptr64"
+  },
+  {
+    "Ordinal": 22,
+    "Mangled": "??0ConvexPolygon2D@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ConvexPolygon2D::ConvexPolygon2D(class cognex::tako::ConvexPolygon2D \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 23,
+    "Mangled": "??0ConvexPolygon2D@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ConvexPolygon2D::ConvexPolygon2D(class cognex::tako::ConvexPolygon2D const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 24,
+    "Mangled": "??0ConvexPolygon2D@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::ConvexPolygon2D::ConvexPolygon2D(void) __ptr64"
+  },
+  {
+    "Ordinal": 25,
+    "Mangled": "??0Cylinder@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Cylinder::Cylinder(class cognex::tako::Cylinder \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 26,
+    "Mangled": "??0Cylinder@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Cylinder::Cylinder(class cognex::tako::Cylinder const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 27,
+    "Mangled": "??0Cylinder@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Cylinder::Cylinder(void) __ptr64"
+  },
+  {
+    "Ordinal": 28,
+    "Mangled": "??0DirectionalHeightColor@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::DirectionalHeightColor::DirectionalHeightColor(class cognex::tako::DirectionalHeightColor const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 29,
+    "Mangled": "??0DirectionalHeightColor@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::DirectionalHeightColor::DirectionalHeightColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 30,
+    "Mangled": "??0Display@egl@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::egl::Display::Display(class cognex::egl::Display const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 31,
+    "Mangled": "??0Display@egl@cognex@@QEAA@PEAUHDC__@@@Z",
+    "Demangled": "public: __cdecl cognex::egl::Display::Display(struct HDC__ * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 32,
+    "Mangled": "??0Display@egl@cognex@@QEAA@W4RendererType@12@@Z",
+    "Demangled": "public: __cdecl cognex::egl::Display::Display(enum cognex::egl::RendererType) __ptr64"
+  },
+  {
+    "Ordinal": 33,
+    "Mangled": "??0Display@egl@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::egl::Display::Display(void) __ptr64"
+  },
+  {
+    "Ordinal": 34,
+    "Mangled": "??0Ellipse@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Ellipse::Ellipse(class cognex::tako::Ellipse \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 35,
+    "Mangled": "??0Ellipse@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Ellipse::Ellipse(class cognex::tako::Ellipse const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 36,
+    "Mangled": "??0Ellipse@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Ellipse::Ellipse(void) __ptr64"
+  },
+  {
+    "Ordinal": 37,
+    "Mangled": "??0Engine@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Engine::Engine(class cognex::tako::Engine \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 38,
+    "Mangled": "??0Engine@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Engine::Engine(class cognex::tako::Engine const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 39,
+    "Mangled": "??0Engine@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Engine::Engine(void) __ptr64"
+  },
+  {
+    "Ordinal": 40,
+    "Mangled": "??0Error@egl@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::egl::Error::Error(class cognex::egl::Error \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 41,
+    "Mangled": "??0Error@egl@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::egl::Error::Error(class cognex::egl::Error const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 42,
+    "Mangled": "??0Error@egl@cognex@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "Demangled": "public: __cdecl cognex::egl::Error::Error(class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E) __ptr64"
+  },
+  {
+    "Ordinal": 43,
+    "Mangled": "??0ExtrudedInSightRegion@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ExtrudedInSightRegion::ExtrudedInSightRegion(class cognex::tako::ExtrudedInSightRegion \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 44,
+    "Mangled": "??0ExtrudedInSightRegion@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ExtrudedInSightRegion::ExtrudedInSightRegion(class cognex::tako::ExtrudedInSightRegion const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 45,
+    "Mangled": "??0ExtrudedInSightRegion@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::ExtrudedInSightRegion::ExtrudedInSightRegion(void) __ptr64"
+  },
+  {
+    "Ordinal": 46,
+    "Mangled": "??0HasChrono@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::HasChrono::HasChrono(class cognex::tako::HasChrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 47,
+    "Mangled": "??0HasChrono@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::HasChrono::HasChrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 48,
+    "Mangled": "??0HasRenderChrono@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::HasRenderChrono::HasRenderChrono(class cognex::tako::HasRenderChrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 49,
+    "Mangled": "??0HasRenderChrono@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::HasRenderChrono::HasRenderChrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 50,
+    "Mangled": "??0Image@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Image::Image(class cognex::tako::Image const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 51,
+    "Mangled": "??0Image@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Image::Image(void) __ptr64"
+  },
+  {
+    "Ordinal": 52,
+    "Mangled": "??0InteractiveModel@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::InteractiveModel::InteractiveModel(class cognex::tako::InteractiveModel const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 53,
+    "Mangled": "??0InteractiveModel@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::InteractiveModel::InteractiveModel(void) __ptr64"
+  },
+  {
+    "Ordinal": 54,
+    "Mangled": "??0Label@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Label::Label(class cognex::tako::Label \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 55,
+    "Mangled": "??0Label@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Label::Label(class cognex::tako::Label const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 56,
+    "Mangled": "??0Label@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Label::Label(void) __ptr64"
+  },
+  {
+    "Ordinal": 57,
+    "Mangled": "??0LineSeg@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::LineSeg::LineSeg(class cognex::tako::LineSeg \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 58,
+    "Mangled": "??0LineSeg@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::LineSeg::LineSeg(class cognex::tako::LineSeg const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 59,
+    "Mangled": "??0LineSeg@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::LineSeg::LineSeg(void) __ptr64"
+  },
+  {
+    "Ordinal": 60,
+    "Mangled": "??0LineSegArray@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::LineSegArray::LineSegArray(class cognex::tako::LineSegArray \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 61,
+    "Mangled": "??0LineSegArray@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::LineSegArray::LineSegArray(class cognex::tako::LineSegArray const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 62,
+    "Mangled": "??0LineSegArray@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::LineSegArray::LineSegArray(void) __ptr64"
+  },
+  {
+    "Ordinal": 63,
+    "Mangled": "??0Mesh@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Mesh::Mesh(class cognex::tako::Mesh \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 64,
+    "Mangled": "??0Mesh@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Mesh::Mesh(class cognex::tako::Mesh const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 65,
+    "Mangled": "??0Mesh@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Mesh::Mesh(void) __ptr64"
+  },
+  {
+    "Ordinal": 66,
+    "Mangled": "??0MeshStrip@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::MeshStrip::MeshStrip(class cognex::tako::MeshStrip \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 67,
+    "Mangled": "??0MeshStrip@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::MeshStrip::MeshStrip(class cognex::tako::MeshStrip const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 68,
+    "Mangled": "??0MeshStrip@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::MeshStrip::MeshStrip(void) __ptr64"
+  },
+  {
+    "Ordinal": 69,
+    "Mangled": "??0ModelBase@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ModelBase::ModelBase(class cognex::tako::ModelBase \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 70,
+    "Mangled": "??0ModelBase@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ModelBase::ModelBase(class cognex::tako::ModelBase const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 71,
+    "Mangled": "??0ModelBase@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::ModelBase::ModelBase(void) __ptr64"
+  },
+  {
+    "Ordinal": 72,
+    "Mangled": "??0ModelBaseWithTextureDefaultCoords@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ModelBaseWithTextureDefaultCoords::ModelBaseWithTextureDefaultCoords(class cognex::tako::ModelBaseWithTextureDefaultCoords \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 73,
+    "Mangled": "??0ModelBaseWithTextureDefaultCoords@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ModelBaseWithTextureDefaultCoords::ModelBaseWithTextureDefaultCoords(class cognex::tako::ModelBaseWithTextureDefaultCoords const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 74,
+    "Mangled": "??0ModelBaseWithTextureDefaultCoords@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::ModelBaseWithTextureDefaultCoords::ModelBaseWithTextureDefaultCoords(void) __ptr64"
+  },
+  {
+    "Ordinal": 75,
+    "Mangled": "??0ModelBaseWithTextureOrVertexColors@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ModelBaseWithTextureOrVertexColors::ModelBaseWithTextureOrVertexColors(class cognex::tako::ModelBaseWithTextureOrVertexColors \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 76,
+    "Mangled": "??0ModelBaseWithTextureOrVertexColors@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ModelBaseWithTextureOrVertexColors::ModelBaseWithTextureOrVertexColors(class cognex::tako::ModelBaseWithTextureOrVertexColors const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 77,
+    "Mangled": "??0ModelBaseWithTextureOrVertexColors@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::ModelBaseWithTextureOrVertexColors::ModelBaseWithTextureOrVertexColors(void) __ptr64"
+  },
+  {
+    "Ordinal": 78,
+    "Mangled": "??0Node@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Node::Node(class cognex::tako::Node const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 79,
+    "Mangled": "??0Node@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Node::Node(void) __ptr64"
+  },
+  {
+    "Ordinal": 80,
+    "Mangled": "??0PBuffer@tako@egl@cognex@@QEAA@AEBV0123@@Z",
+    "Demangled": "public: __cdecl cognex::egl::tako::PBuffer::PBuffer(class cognex::egl::tako::PBuffer const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 81,
+    "Mangled": "??0PBuffer@tako@egl@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::egl::tako::PBuffer::PBuffer(void) __ptr64"
+  },
+  {
+    "Ordinal": 82,
+    "Mangled": "??0Plane@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Plane::Plane(class cognex::tako::Plane \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 83,
+    "Mangled": "??0Plane@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Plane::Plane(class cognex::tako::Plane const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 84,
+    "Mangled": "??0Plane@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Plane::Plane(void) __ptr64"
+  },
+  {
+    "Ordinal": 85,
+    "Mangled": "??0PlaneLineSeg@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::PlaneLineSeg::PlaneLineSeg(class cognex::tako::PlaneLineSeg \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 86,
+    "Mangled": "??0PlaneLineSeg@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::PlaneLineSeg::PlaneLineSeg(class cognex::tako::PlaneLineSeg const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 87,
+    "Mangled": "??0PlaneLineSeg@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::PlaneLineSeg::PlaneLineSeg(void) __ptr64"
+  },
+  {
+    "Ordinal": 88,
+    "Mangled": "??0Point@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Point::Point(class cognex::tako::Point \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 89,
+    "Mangled": "??0Point@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Point::Point(class cognex::tako::Point const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 90,
+    "Mangled": "??0Point@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Point::Point(void) __ptr64"
+  },
+  {
+    "Ordinal": 91,
+    "Mangled": "??0PointCloud@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::PointCloud::PointCloud(class cognex::tako::PointCloud \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 92,
+    "Mangled": "??0PointCloud@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::PointCloud::PointCloud(class cognex::tako::PointCloud const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 93,
+    "Mangled": "??0PointCloud@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::PointCloud::PointCloud(void) __ptr64"
+  },
+  {
+    "Ordinal": 94,
+    "Mangled": "??0Polygon2D@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Polygon2D::Polygon2D(class cognex::tako::Polygon2D \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 95,
+    "Mangled": "??0Polygon2D@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Polygon2D::Polygon2D(class cognex::tako::Polygon2D const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 96,
+    "Mangled": "??0Polygon2D@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Polygon2D::Polygon2D(void) __ptr64"
+  },
+  {
+    "Ordinal": 97,
+    "Mangled": "??0Polyline@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Polyline::Polyline(class cognex::tako::Polyline \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 98,
+    "Mangled": "??0Polyline@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Polyline::Polyline(class cognex::tako::Polyline const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 99,
+    "Mangled": "??0Polyline@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Polyline::Polyline(void) __ptr64"
+  },
+  {
+    "Ordinal": 100,
+    "Mangled": "??0QuadMesh@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::QuadMesh::QuadMesh(class cognex::tako::QuadMesh \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 101,
+    "Mangled": "??0QuadMesh@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::QuadMesh::QuadMesh(class cognex::tako::QuadMesh const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 102,
+    "Mangled": "??0QuadMesh@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::QuadMesh::QuadMesh(void) __ptr64"
+  },
+  {
+    "Ordinal": 103,
+    "Mangled": "??0QuadMeshData@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::QuadMeshData::QuadMeshData(class cognex::tako::QuadMeshData const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 104,
+    "Mangled": "??0QuadMeshData@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::QuadMeshData::QuadMeshData(void) __ptr64"
+  },
+  {
+    "Ordinal": 105,
+    "Mangled": "??0Rectangle@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Rectangle::Rectangle(class cognex::tako::Rectangle \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 106,
+    "Mangled": "??0Rectangle@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Rectangle::Rectangle(class cognex::tako::Rectangle const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 107,
+    "Mangled": "??0Rectangle@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Rectangle::Rectangle(void) __ptr64"
+  },
+  {
+    "Ordinal": 108,
+    "Mangled": "??0RenderChrono@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::RenderChrono::RenderChrono(class cognex::tako::RenderChrono \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 109,
+    "Mangled": "??0RenderChrono@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::RenderChrono::RenderChrono(class cognex::tako::RenderChrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 110,
+    "Mangled": "??0RenderChrono@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::RenderChrono::RenderChrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 111,
+    "Mangled": "??0ScreenLabel@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ScreenLabel::ScreenLabel(class cognex::tako::ScreenLabel \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 112,
+    "Mangled": "??0ScreenLabel@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ScreenLabel::ScreenLabel(class cognex::tako::ScreenLabel const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 113,
+    "Mangled": "??0ScreenLabel@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::ScreenLabel::ScreenLabel(void) __ptr64"
+  },
+  {
+    "Ordinal": 114,
+    "Mangled": "??0Sphere@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Sphere::Sphere(class cognex::tako::Sphere \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 115,
+    "Mangled": "??0Sphere@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Sphere::Sphere(class cognex::tako::Sphere const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 116,
+    "Mangled": "??0Sphere@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Sphere::Sphere(void) __ptr64"
+  },
+  {
+    "Ordinal": 117,
+    "Mangled": "??0Surface@egl@cognex@@AEAA@AEBVDisplay@12@HH@Z",
+    "Demangled": "private: __cdecl cognex::egl::Surface::Surface(class cognex::egl::Display const \u0026 __ptr64,int,int) __ptr64"
+  },
+  {
+    "Ordinal": 118,
+    "Mangled": "??0Text@tako@cognex@@QEAA@$$QEAV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Text::Text(class cognex::tako::Text \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 119,
+    "Mangled": "??0Text@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::Text::Text(class cognex::tako::Text const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 120,
+    "Mangled": "??0Text@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::Text::Text(void) __ptr64"
+  },
+  {
+    "Ordinal": 121,
+    "Mangled": "??0TrackingTarget@tako@cognex@@IEAA@W4Set@012@H@Z",
+    "Demangled": "protected: __cdecl cognex::tako::TrackingTarget::TrackingTarget(enum cognex::tako::TrackingTarget::Set,int) __ptr64"
+  },
+  {
+    "Ordinal": 122,
+    "Mangled": "??0VertexColor@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::VertexColor::VertexColor(class cognex::tako::VertexColor const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 123,
+    "Mangled": "??0VertexColor@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::VertexColor::VertexColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 124,
+    "Mangled": "??0Viewer@impl@tako@cognex@@QEAA@V?$function@$$A6AHXZ@std@@0@Z",
+    "Demangled": "public: __cdecl cognex::tako::impl::Viewer::Viewer(class std::function\u003Cint __cdecl(void)\u003E,class std::function\u003Cint __cdecl(void)\u003E) __ptr64"
+  },
+  {
+    "Ordinal": 125,
+    "Mangled": "??0ZHeightColor@tako@cognex@@QEAA@AEBV012@@Z",
+    "Demangled": "public: __cdecl cognex::tako::ZHeightColor::ZHeightColor(class cognex::tako::ZHeightColor const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 126,
+    "Mangled": "??0ZHeightColor@tako@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::tako::ZHeightColor::ZHeightColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 127,
+    "Mangled": "??1?$enable_shared_from_this@VContext@egl@cognex@@@std@@IEAA@XZ",
+    "Demangled": "protected: __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E::~enable_shared_from_this\u003Cclass cognex::egl::Context\u003E(void) __ptr64"
+  },
+  {
+    "Ordinal": 128,
+    "Mangled": "??1?$enable_shared_from_this@VSurface@egl@cognex@@@std@@IEAA@XZ",
+    "Demangled": "protected: __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E::~enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E(void) __ptr64"
+  },
+  {
+    "Ordinal": 129,
+    "Mangled": "??1AnnularCylinder@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::AnnularCylinder::~AnnularCylinder(void) __ptr64"
+  },
+  {
+    "Ordinal": 130,
+    "Mangled": "??1Arc@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Arc::~Arc(void) __ptr64"
+  },
+  {
+    "Ordinal": 131,
+    "Mangled": "??1Blob@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Blob::~Blob(void) __ptr64"
+  },
+  {
+    "Ordinal": 132,
+    "Mangled": "??1Box@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Box::~Box(void) __ptr64"
+  },
+  {
+    "Ordinal": 133,
+    "Mangled": "??1Chrono@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Chrono::~Chrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 134,
+    "Mangled": "??1Circle@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Circle::~Circle(void) __ptr64"
+  },
+  {
+    "Ordinal": 135,
+    "Mangled": "??1Context@egl@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::egl::Context::~Context(void) __ptr64"
+  },
+  {
+    "Ordinal": 136,
+    "Mangled": "??1ConvexPolygon2D@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::ConvexPolygon2D::~ConvexPolygon2D(void) __ptr64"
+  },
+  {
+    "Ordinal": 137,
+    "Mangled": "??1Cylinder@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Cylinder::~Cylinder(void) __ptr64"
+  },
+  {
+    "Ordinal": 138,
+    "Mangled": "??1DirectionalHeightColor@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::DirectionalHeightColor::~DirectionalHeightColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 139,
+    "Mangled": "??1Display@egl@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::egl::Display::~Display(void) __ptr64"
+  },
+  {
+    "Ordinal": 140,
+    "Mangled": "??1Ellipse@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Ellipse::~Ellipse(void) __ptr64"
+  },
+  {
+    "Ordinal": 141,
+    "Mangled": "??1Engine@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Engine::~Engine(void) __ptr64"
+  },
+  {
+    "Ordinal": 142,
+    "Mangled": "??1Error@egl@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::egl::Error::~Error(void) __ptr64"
+  },
+  {
+    "Ordinal": 143,
+    "Mangled": "??1ExtrudedInSightRegion@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::ExtrudedInSightRegion::~ExtrudedInSightRegion(void) __ptr64"
+  },
+  {
+    "Ordinal": 144,
+    "Mangled": "??1HasChrono@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::HasChrono::~HasChrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 145,
+    "Mangled": "??1HasRenderChrono@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::HasRenderChrono::~HasRenderChrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 146,
+    "Mangled": "??1Image@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Image::~Image(void) __ptr64"
+  },
+  {
+    "Ordinal": 147,
+    "Mangled": "??1InteractiveModel@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::InteractiveModel::~InteractiveModel(void) __ptr64"
+  },
+  {
+    "Ordinal": 148,
+    "Mangled": "??1Label@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Label::~Label(void) __ptr64"
+  },
+  {
+    "Ordinal": 149,
+    "Mangled": "??1LineSeg@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::LineSeg::~LineSeg(void) __ptr64"
+  },
+  {
+    "Ordinal": 150,
+    "Mangled": "??1LineSegArray@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::LineSegArray::~LineSegArray(void) __ptr64"
+  },
+  {
+    "Ordinal": 151,
+    "Mangled": "??1Mesh@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Mesh::~Mesh(void) __ptr64"
+  },
+  {
+    "Ordinal": 152,
+    "Mangled": "??1MeshStrip@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::MeshStrip::~MeshStrip(void) __ptr64"
+  },
+  {
+    "Ordinal": 153,
+    "Mangled": "??1ModelBase@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::ModelBase::~ModelBase(void) __ptr64"
+  },
+  {
+    "Ordinal": 154,
+    "Mangled": "??1ModelBaseWithTextureDefaultCoords@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::ModelBaseWithTextureDefaultCoords::~ModelBaseWithTextureDefaultCoords(void) __ptr64"
+  },
+  {
+    "Ordinal": 155,
+    "Mangled": "??1ModelBaseWithTextureOrVertexColors@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::ModelBaseWithTextureOrVertexColors::~ModelBaseWithTextureOrVertexColors(void) __ptr64"
+  },
+  {
+    "Ordinal": 156,
+    "Mangled": "??1Node@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Node::~Node(void) __ptr64"
+  },
+  {
+    "Ordinal": 157,
+    "Mangled": "??1PBuffer@tako@egl@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::egl::tako::PBuffer::~PBuffer(void) __ptr64"
+  },
+  {
+    "Ordinal": 158,
+    "Mangled": "??1Plane@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Plane::~Plane(void) __ptr64"
+  },
+  {
+    "Ordinal": 159,
+    "Mangled": "??1PlaneLineSeg@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::PlaneLineSeg::~PlaneLineSeg(void) __ptr64"
+  },
+  {
+    "Ordinal": 160,
+    "Mangled": "??1Point@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Point::~Point(void) __ptr64"
+  },
+  {
+    "Ordinal": 161,
+    "Mangled": "??1PointCloud@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::PointCloud::~PointCloud(void) __ptr64"
+  },
+  {
+    "Ordinal": 162,
+    "Mangled": "??1Polygon2D@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Polygon2D::~Polygon2D(void) __ptr64"
+  },
+  {
+    "Ordinal": 163,
+    "Mangled": "??1Polyline@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Polyline::~Polyline(void) __ptr64"
+  },
+  {
+    "Ordinal": 164,
+    "Mangled": "??1QuadMesh@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::QuadMesh::~QuadMesh(void) __ptr64"
+  },
+  {
+    "Ordinal": 165,
+    "Mangled": "??1QuadMeshData@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::QuadMeshData::~QuadMeshData(void) __ptr64"
+  },
+  {
+    "Ordinal": 166,
+    "Mangled": "??1Rectangle@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Rectangle::~Rectangle(void) __ptr64"
+  },
+  {
+    "Ordinal": 167,
+    "Mangled": "??1RenderChrono@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::RenderChrono::~RenderChrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 168,
+    "Mangled": "??1ScreenLabel@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::ScreenLabel::~ScreenLabel(void) __ptr64"
+  },
+  {
+    "Ordinal": 169,
+    "Mangled": "??1Sphere@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Sphere::~Sphere(void) __ptr64"
+  },
+  {
+    "Ordinal": 170,
+    "Mangled": "??1Surface@egl@cognex@@QEAA@XZ",
+    "Demangled": "public: __cdecl cognex::egl::Surface::~Surface(void) __ptr64"
+  },
+  {
+    "Ordinal": 171,
+    "Mangled": "??1Text@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::Text::~Text(void) __ptr64"
+  },
+  {
+    "Ordinal": 172,
+    "Mangled": "??1VertexColor@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::VertexColor::~VertexColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 173,
+    "Mangled": "??1Viewer@impl@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::impl::Viewer::~Viewer(void) __ptr64"
+  },
+  {
+    "Ordinal": 174,
+    "Mangled": "??1ZHeightColor@tako@cognex@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl cognex::tako::ZHeightColor::~ZHeightColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 175,
+    "Mangled": "??4?$enable_shared_from_this@VContext@egl@cognex@@@std@@IEAAAEAV01@AEBV01@@Z",
+    "Demangled": "protected: class std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E \u0026 __ptr64 __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E::operator=(class std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 176,
+    "Mangled": "??4?$enable_shared_from_this@VSurface@egl@cognex@@@std@@IEAAAEAV01@AEBV01@@Z",
+    "Demangled": "protected: class std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E \u0026 __ptr64 __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E::operator=(class std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 177,
+    "Mangled": "??4AnnularCylinder@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::AnnularCylinder \u0026 __ptr64 __cdecl cognex::tako::AnnularCylinder::operator=(class cognex::tako::AnnularCylinder \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 178,
+    "Mangled": "??4AnnularCylinder@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::AnnularCylinder \u0026 __ptr64 __cdecl cognex::tako::AnnularCylinder::operator=(class cognex::tako::AnnularCylinder const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 179,
+    "Mangled": "??4Arc@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Arc \u0026 __ptr64 __cdecl cognex::tako::Arc::operator=(class cognex::tako::Arc \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 180,
+    "Mangled": "??4Arc@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Arc \u0026 __ptr64 __cdecl cognex::tako::Arc::operator=(class cognex::tako::Arc const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 181,
+    "Mangled": "??4Blob@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Blob \u0026 __ptr64 __cdecl cognex::tako::Blob::operator=(class cognex::tako::Blob \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 182,
+    "Mangled": "??4Blob@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Blob \u0026 __ptr64 __cdecl cognex::tako::Blob::operator=(class cognex::tako::Blob const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 183,
+    "Mangled": "??4Box@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Box \u0026 __ptr64 __cdecl cognex::tako::Box::operator=(class cognex::tako::Box \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 184,
+    "Mangled": "??4Box@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Box \u0026 __ptr64 __cdecl cognex::tako::Box::operator=(class cognex::tako::Box const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 185,
+    "Mangled": "??4Chrono@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Chrono \u0026 __ptr64 __cdecl cognex::tako::Chrono::operator=(class cognex::tako::Chrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 186,
+    "Mangled": "??4Circle@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Circle \u0026 __ptr64 __cdecl cognex::tako::Circle::operator=(class cognex::tako::Circle \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 187,
+    "Mangled": "??4Circle@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Circle \u0026 __ptr64 __cdecl cognex::tako::Circle::operator=(class cognex::tako::Circle const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 188,
+    "Mangled": "??4ConvexPolygon2D@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::ConvexPolygon2D \u0026 __ptr64 __cdecl cognex::tako::ConvexPolygon2D::operator=(class cognex::tako::ConvexPolygon2D \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 189,
+    "Mangled": "??4ConvexPolygon2D@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::ConvexPolygon2D \u0026 __ptr64 __cdecl cognex::tako::ConvexPolygon2D::operator=(class cognex::tako::ConvexPolygon2D const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 190,
+    "Mangled": "??4Cylinder@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Cylinder \u0026 __ptr64 __cdecl cognex::tako::Cylinder::operator=(class cognex::tako::Cylinder \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 191,
+    "Mangled": "??4Cylinder@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Cylinder \u0026 __ptr64 __cdecl cognex::tako::Cylinder::operator=(class cognex::tako::Cylinder const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 192,
+    "Mangled": "??4DirectionalHeightColor@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::DirectionalHeightColor \u0026 __ptr64 __cdecl cognex::tako::DirectionalHeightColor::operator=(class cognex::tako::DirectionalHeightColor const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 193,
+    "Mangled": "??4Display@egl@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::egl::Display \u0026 __ptr64 __cdecl cognex::egl::Display::operator=(class cognex::egl::Display const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 194,
+    "Mangled": "??4Ellipse@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Ellipse \u0026 __ptr64 __cdecl cognex::tako::Ellipse::operator=(class cognex::tako::Ellipse \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 195,
+    "Mangled": "??4Ellipse@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Ellipse \u0026 __ptr64 __cdecl cognex::tako::Ellipse::operator=(class cognex::tako::Ellipse const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 196,
+    "Mangled": "??4Engine@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Engine \u0026 __ptr64 __cdecl cognex::tako::Engine::operator=(class cognex::tako::Engine \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 197,
+    "Mangled": "??4Engine@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Engine \u0026 __ptr64 __cdecl cognex::tako::Engine::operator=(class cognex::tako::Engine const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 198,
+    "Mangled": "??4Error@egl@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::egl::Error \u0026 __ptr64 __cdecl cognex::egl::Error::operator=(class cognex::egl::Error \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 199,
+    "Mangled": "??4Error@egl@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::egl::Error \u0026 __ptr64 __cdecl cognex::egl::Error::operator=(class cognex::egl::Error const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 200,
+    "Mangled": "??4ExtrudedInSightRegion@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::ExtrudedInSightRegion \u0026 __ptr64 __cdecl cognex::tako::ExtrudedInSightRegion::operator=(class cognex::tako::ExtrudedInSightRegion \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 201,
+    "Mangled": "??4ExtrudedInSightRegion@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::ExtrudedInSightRegion \u0026 __ptr64 __cdecl cognex::tako::ExtrudedInSightRegion::operator=(class cognex::tako::ExtrudedInSightRegion const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 202,
+    "Mangled": "??4HasChrono@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::HasChrono \u0026 __ptr64 __cdecl cognex::tako::HasChrono::operator=(class cognex::tako::HasChrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 203,
+    "Mangled": "??4HasRenderChrono@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::HasRenderChrono \u0026 __ptr64 __cdecl cognex::tako::HasRenderChrono::operator=(class cognex::tako::HasRenderChrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 204,
+    "Mangled": "??4Image@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Image \u0026 __ptr64 __cdecl cognex::tako::Image::operator=(class cognex::tako::Image const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 205,
+    "Mangled": "??4InteractiveModel@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::InteractiveModel \u0026 __ptr64 __cdecl cognex::tako::InteractiveModel::operator=(class cognex::tako::InteractiveModel const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 206,
+    "Mangled": "??4Label@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Label \u0026 __ptr64 __cdecl cognex::tako::Label::operator=(class cognex::tako::Label \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 207,
+    "Mangled": "??4Label@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Label \u0026 __ptr64 __cdecl cognex::tako::Label::operator=(class cognex::tako::Label const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 208,
+    "Mangled": "??4LineSeg@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::LineSeg \u0026 __ptr64 __cdecl cognex::tako::LineSeg::operator=(class cognex::tako::LineSeg \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 209,
+    "Mangled": "??4LineSeg@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::LineSeg \u0026 __ptr64 __cdecl cognex::tako::LineSeg::operator=(class cognex::tako::LineSeg const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 210,
+    "Mangled": "??4LineSegArray@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::LineSegArray \u0026 __ptr64 __cdecl cognex::tako::LineSegArray::operator=(class cognex::tako::LineSegArray \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 211,
+    "Mangled": "??4LineSegArray@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::LineSegArray \u0026 __ptr64 __cdecl cognex::tako::LineSegArray::operator=(class cognex::tako::LineSegArray const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 212,
+    "Mangled": "??4Mesh@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Mesh \u0026 __ptr64 __cdecl cognex::tako::Mesh::operator=(class cognex::tako::Mesh \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 213,
+    "Mangled": "??4Mesh@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Mesh \u0026 __ptr64 __cdecl cognex::tako::Mesh::operator=(class cognex::tako::Mesh const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 214,
+    "Mangled": "??4MeshStrip@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::MeshStrip \u0026 __ptr64 __cdecl cognex::tako::MeshStrip::operator=(class cognex::tako::MeshStrip \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 215,
+    "Mangled": "??4MeshStrip@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::MeshStrip \u0026 __ptr64 __cdecl cognex::tako::MeshStrip::operator=(class cognex::tako::MeshStrip const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 216,
+    "Mangled": "??4ModelBase@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::ModelBase \u0026 __ptr64 __cdecl cognex::tako::ModelBase::operator=(class cognex::tako::ModelBase \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 217,
+    "Mangled": "??4ModelBase@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::ModelBase \u0026 __ptr64 __cdecl cognex::tako::ModelBase::operator=(class cognex::tako::ModelBase const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 218,
+    "Mangled": "??4ModelBaseWithTextureDefaultCoords@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::ModelBaseWithTextureDefaultCoords \u0026 __ptr64 __cdecl cognex::tako::ModelBaseWithTextureDefaultCoords::operator=(class cognex::tako::ModelBaseWithTextureDefaultCoords \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 219,
+    "Mangled": "??4ModelBaseWithTextureDefaultCoords@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::ModelBaseWithTextureDefaultCoords \u0026 __ptr64 __cdecl cognex::tako::ModelBaseWithTextureDefaultCoords::operator=(class cognex::tako::ModelBaseWithTextureDefaultCoords const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 220,
+    "Mangled": "??4ModelBaseWithTextureOrVertexColors@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::ModelBaseWithTextureOrVertexColors \u0026 __ptr64 __cdecl cognex::tako::ModelBaseWithTextureOrVertexColors::operator=(class cognex::tako::ModelBaseWithTextureOrVertexColors \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 221,
+    "Mangled": "??4ModelBaseWithTextureOrVertexColors@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::ModelBaseWithTextureOrVertexColors \u0026 __ptr64 __cdecl cognex::tako::ModelBaseWithTextureOrVertexColors::operator=(class cognex::tako::ModelBaseWithTextureOrVertexColors const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 222,
+    "Mangled": "??4Node@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Node \u0026 __ptr64 __cdecl cognex::tako::Node::operator=(class cognex::tako::Node const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 223,
+    "Mangled": "??4PBuffer@tako@egl@cognex@@QEAAAEAV0123@AEBV0123@@Z",
+    "Demangled": "public: class cognex::egl::tako::PBuffer \u0026 __ptr64 __cdecl cognex::egl::tako::PBuffer::operator=(class cognex::egl::tako::PBuffer const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 224,
+    "Mangled": "??4Plane@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Plane \u0026 __ptr64 __cdecl cognex::tako::Plane::operator=(class cognex::tako::Plane \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 225,
+    "Mangled": "??4Plane@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Plane \u0026 __ptr64 __cdecl cognex::tako::Plane::operator=(class cognex::tako::Plane const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 226,
+    "Mangled": "??4PlaneLineSeg@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::PlaneLineSeg \u0026 __ptr64 __cdecl cognex::tako::PlaneLineSeg::operator=(class cognex::tako::PlaneLineSeg \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 227,
+    "Mangled": "??4PlaneLineSeg@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::PlaneLineSeg \u0026 __ptr64 __cdecl cognex::tako::PlaneLineSeg::operator=(class cognex::tako::PlaneLineSeg const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 228,
+    "Mangled": "??4Point@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Point \u0026 __ptr64 __cdecl cognex::tako::Point::operator=(class cognex::tako::Point \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 229,
+    "Mangled": "??4Point@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Point \u0026 __ptr64 __cdecl cognex::tako::Point::operator=(class cognex::tako::Point const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 230,
+    "Mangled": "??4PointCloud@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::PointCloud \u0026 __ptr64 __cdecl cognex::tako::PointCloud::operator=(class cognex::tako::PointCloud \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 231,
+    "Mangled": "??4PointCloud@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::PointCloud \u0026 __ptr64 __cdecl cognex::tako::PointCloud::operator=(class cognex::tako::PointCloud const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 232,
+    "Mangled": "??4Polygon2D@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Polygon2D \u0026 __ptr64 __cdecl cognex::tako::Polygon2D::operator=(class cognex::tako::Polygon2D \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 233,
+    "Mangled": "??4Polygon2D@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Polygon2D \u0026 __ptr64 __cdecl cognex::tako::Polygon2D::operator=(class cognex::tako::Polygon2D const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 234,
+    "Mangled": "??4Polyline@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Polyline \u0026 __ptr64 __cdecl cognex::tako::Polyline::operator=(class cognex::tako::Polyline \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 235,
+    "Mangled": "??4Polyline@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Polyline \u0026 __ptr64 __cdecl cognex::tako::Polyline::operator=(class cognex::tako::Polyline const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 236,
+    "Mangled": "??4QuadMesh@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::QuadMesh \u0026 __ptr64 __cdecl cognex::tako::QuadMesh::operator=(class cognex::tako::QuadMesh \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 237,
+    "Mangled": "??4QuadMesh@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::QuadMesh \u0026 __ptr64 __cdecl cognex::tako::QuadMesh::operator=(class cognex::tako::QuadMesh const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 238,
+    "Mangled": "??4QuadMeshData@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::QuadMeshData \u0026 __ptr64 __cdecl cognex::tako::QuadMeshData::operator=(class cognex::tako::QuadMeshData const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 239,
+    "Mangled": "??4Rectangle@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Rectangle \u0026 __ptr64 __cdecl cognex::tako::Rectangle::operator=(class cognex::tako::Rectangle \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 240,
+    "Mangled": "??4Rectangle@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Rectangle \u0026 __ptr64 __cdecl cognex::tako::Rectangle::operator=(class cognex::tako::Rectangle const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 241,
+    "Mangled": "??4RenderChrono@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::RenderChrono \u0026 __ptr64 __cdecl cognex::tako::RenderChrono::operator=(class cognex::tako::RenderChrono \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 242,
+    "Mangled": "??4RenderChrono@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::RenderChrono \u0026 __ptr64 __cdecl cognex::tako::RenderChrono::operator=(class cognex::tako::RenderChrono const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 243,
+    "Mangled": "??4ScreenLabel@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::ScreenLabel \u0026 __ptr64 __cdecl cognex::tako::ScreenLabel::operator=(class cognex::tako::ScreenLabel \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 244,
+    "Mangled": "??4ScreenLabel@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::ScreenLabel \u0026 __ptr64 __cdecl cognex::tako::ScreenLabel::operator=(class cognex::tako::ScreenLabel const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 245,
+    "Mangled": "??4Sphere@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Sphere \u0026 __ptr64 __cdecl cognex::tako::Sphere::operator=(class cognex::tako::Sphere \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 246,
+    "Mangled": "??4Sphere@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Sphere \u0026 __ptr64 __cdecl cognex::tako::Sphere::operator=(class cognex::tako::Sphere const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 247,
+    "Mangled": "??4Text@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::Text \u0026 __ptr64 __cdecl cognex::tako::Text::operator=(class cognex::tako::Text \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 248,
+    "Mangled": "??4Text@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::Text \u0026 __ptr64 __cdecl cognex::tako::Text::operator=(class cognex::tako::Text const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 249,
+    "Mangled": "??4TrackingTarget@tako@cognex@@QEAAAEAV012@$$QEAV012@@Z",
+    "Demangled": "public: class cognex::tako::TrackingTarget \u0026 __ptr64 __cdecl cognex::tako::TrackingTarget::operator=(class cognex::tako::TrackingTarget \u0026\u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 250,
+    "Mangled": "??4TrackingTarget@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::TrackingTarget \u0026 __ptr64 __cdecl cognex::tako::TrackingTarget::operator=(class cognex::tako::TrackingTarget const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 251,
+    "Mangled": "??4VertexColor@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::VertexColor \u0026 __ptr64 __cdecl cognex::tako::VertexColor::operator=(class cognex::tako::VertexColor const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 252,
+    "Mangled": "??4ZHeightColor@tako@cognex@@QEAAAEAV012@AEBV012@@Z",
+    "Demangled": "public: class cognex::tako::ZHeightColor \u0026 __ptr64 __cdecl cognex::tako::ZHeightColor::operator=(class cognex::tako::ZHeightColor const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 253,
+    "Mangled": "??_7AnnularCylinder@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::AnnularCylinder::\u0060vftable\u0027{for \u0060cognex::tako::AnnularCylinder\u0027}"
+  },
+  {
+    "Ordinal": 254,
+    "Mangled": "??_7AnnularCylinder@tako@cognex@@6BInteractiveModel@12@@",
+    "Demangled": "const cognex::tako::AnnularCylinder::\u0060vftable\u0027{for \u0060cognex::tako::InteractiveModel\u0027}"
+  },
+  {
+    "Ordinal": 255,
+    "Mangled": "??_7AnnularCylinder@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::AnnularCylinder::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 256,
+    "Mangled": "??_7AnnularCylinder@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::AnnularCylinder::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 257,
+    "Mangled": "??_7AnnularCylinder@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::AnnularCylinder::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 258,
+    "Mangled": "??_7AnnularCylinder@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::AnnularCylinder::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 259,
+    "Mangled": "??_7Arc@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::Arc::\u0060vftable\u0027{for \u0060cognex::tako::Arc\u0027}"
+  },
+  {
+    "Ordinal": 260,
+    "Mangled": "??_7Arc@tako@cognex@@6BDimension@12@@",
+    "Demangled": "const cognex::tako::Arc::\u0060vftable\u0027{for \u0060cognex::tako::Dimension\u0027}"
+  },
+  {
+    "Ordinal": 261,
+    "Mangled": "??_7Arc@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Arc::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 262,
+    "Mangled": "??_7Arc@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Arc::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 263,
+    "Mangled": "??_7Blob@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Blob::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 264,
+    "Mangled": "??_7Blob@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Blob::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 265,
+    "Mangled": "??_7Box@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::Box::\u0060vftable\u0027{for \u0060cognex::tako::Box\u0027}"
+  },
+  {
+    "Ordinal": 266,
+    "Mangled": "??_7Box@tako@cognex@@6BAxes@12@@",
+    "Demangled": "const cognex::tako::Box::\u0060vftable\u0027{for \u0060cognex::tako::Axes\u0027}"
+  },
+  {
+    "Ordinal": 267,
+    "Mangled": "??_7Box@tako@cognex@@6BInteractiveModel@12@@",
+    "Demangled": "const cognex::tako::Box::\u0060vftable\u0027{for \u0060cognex::tako::InteractiveModel\u0027}"
+  },
+  {
+    "Ordinal": 268,
+    "Mangled": "??_7Box@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Box::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 269,
+    "Mangled": "??_7Box@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Box::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 270,
+    "Mangled": "??_7Box@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Box::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 271,
+    "Mangled": "??_7Box@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Box::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 272,
+    "Mangled": "??_7Chrono@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Chrono::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 273,
+    "Mangled": "??_7Circle@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Circle::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 274,
+    "Mangled": "??_7Circle@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Circle::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 275,
+    "Mangled": "??_7Circle@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Circle::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 276,
+    "Mangled": "??_7Circle@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Circle::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 277,
+    "Mangled": "??_7Circle@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Circle::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 278,
+    "Mangled": "??_7ConvexPolygon2D@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::ConvexPolygon2D::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 279,
+    "Mangled": "??_7ConvexPolygon2D@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::ConvexPolygon2D::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 280,
+    "Mangled": "??_7ConvexPolygon2D@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::ConvexPolygon2D::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 281,
+    "Mangled": "??_7ConvexPolygon2D@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::ConvexPolygon2D::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 282,
+    "Mangled": "??_7ConvexPolygon2D@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::ConvexPolygon2D::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 283,
+    "Mangled": "??_7Cylinder@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Cylinder::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 284,
+    "Mangled": "??_7Cylinder@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Cylinder::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 285,
+    "Mangled": "??_7Cylinder@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Cylinder::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 286,
+    "Mangled": "??_7Cylinder@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Cylinder::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 287,
+    "Mangled": "??_7Cylinder@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Cylinder::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 288,
+    "Mangled": "??_7DirectionalHeightColor@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::DirectionalHeightColor::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 289,
+    "Mangled": "??_7Ellipse@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Ellipse::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 290,
+    "Mangled": "??_7Ellipse@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Ellipse::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 291,
+    "Mangled": "??_7Ellipse@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Ellipse::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 292,
+    "Mangled": "??_7Ellipse@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Ellipse::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 293,
+    "Mangled": "??_7Ellipse@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Ellipse::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 294,
+    "Mangled": "??_7Engine@tako@cognex@@6BEvents@12@@",
+    "Demangled": "const cognex::tako::Engine::\u0060vftable\u0027{for \u0060cognex::tako::Events\u0027}"
+  },
+  {
+    "Ordinal": 295,
+    "Mangled": "??_7Engine@tako@cognex@@6BHasRenderChrono@12@@",
+    "Demangled": "const cognex::tako::Engine::\u0060vftable\u0027{for \u0060cognex::tako::HasRenderChrono\u0027}"
+  },
+  {
+    "Ordinal": 296,
+    "Mangled": "??_7Engine@tako@cognex@@6BScene@12@@",
+    "Demangled": "const cognex::tako::Engine::\u0060vftable\u0027{for \u0060cognex::tako::Scene\u0027}"
+  },
+  {
+    "Ordinal": 297,
+    "Mangled": "??_7Error@egl@cognex@@6B@",
+    "Demangled": "const cognex::egl::Error::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 298,
+    "Mangled": "??_7ExtrudedInSightRegion@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::ExtrudedInSightRegion::\u0060vftable\u0027{for \u0060cognex::tako::ExtrudedInSightRegion\u0027}"
+  },
+  {
+    "Ordinal": 299,
+    "Mangled": "??_7ExtrudedInSightRegion@tako@cognex@@6BInteractiveModel@12@@",
+    "Demangled": "const cognex::tako::ExtrudedInSightRegion::\u0060vftable\u0027{for \u0060cognex::tako::InteractiveModel\u0027}"
+  },
+  {
+    "Ordinal": 300,
+    "Mangled": "??_7ExtrudedInSightRegion@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::ExtrudedInSightRegion::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 301,
+    "Mangled": "??_7ExtrudedInSightRegion@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::ExtrudedInSightRegion::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 302,
+    "Mangled": "??_7ExtrudedInSightRegion@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::ExtrudedInSightRegion::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 303,
+    "Mangled": "??_7ExtrudedInSightRegion@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::ExtrudedInSightRegion::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 304,
+    "Mangled": "??_7HasChrono@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::HasChrono::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 305,
+    "Mangled": "??_7HasRenderChrono@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::HasRenderChrono::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 306,
+    "Mangled": "??_7Image@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Image::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 307,
+    "Mangled": "??_7InteractiveModel@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::InteractiveModel::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 308,
+    "Mangled": "??_7Label@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Label::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 309,
+    "Mangled": "??_7Label@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Label::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 310,
+    "Mangled": "??_7Label@tako@cognex@@6BText@12@@",
+    "Demangled": "const cognex::tako::Label::\u0060vftable\u0027{for \u0060cognex::tako::Text\u0027}"
+  },
+  {
+    "Ordinal": 311,
+    "Mangled": "??_7LineSeg@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::LineSeg::\u0060vftable\u0027{for \u0060cognex::tako::LineSeg\u0027}"
+  },
+  {
+    "Ordinal": 312,
+    "Mangled": "??_7LineSeg@tako@cognex@@6BDimension@12@@",
+    "Demangled": "const cognex::tako::LineSeg::\u0060vftable\u0027{for \u0060cognex::tako::Dimension\u0027}"
+  },
+  {
+    "Ordinal": 313,
+    "Mangled": "??_7LineSeg@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::LineSeg::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 314,
+    "Mangled": "??_7LineSeg@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::LineSeg::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 315,
+    "Mangled": "??_7LineSegArray@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::LineSegArray::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 316,
+    "Mangled": "??_7LineSegArray@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::LineSegArray::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 317,
+    "Mangled": "??_7Mesh@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Mesh::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 318,
+    "Mangled": "??_7Mesh@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Mesh::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 319,
+    "Mangled": "??_7Mesh@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Mesh::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 320,
+    "Mangled": "??_7Mesh@tako@cognex@@6BModelBaseWithTextureOrVertexColors@12@@",
+    "Demangled": "const cognex::tako::Mesh::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureOrVertexColors\u0027}"
+  },
+  {
+    "Ordinal": 321,
+    "Mangled": "??_7Mesh@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Mesh::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 322,
+    "Mangled": "??_7MeshStrip@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::MeshStrip::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 323,
+    "Mangled": "??_7MeshStrip@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::MeshStrip::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 324,
+    "Mangled": "??_7MeshStrip@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::MeshStrip::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 325,
+    "Mangled": "??_7MeshStrip@tako@cognex@@6BModelBaseWithTextureOrVertexColors@12@@",
+    "Demangled": "const cognex::tako::MeshStrip::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureOrVertexColors\u0027}"
+  },
+  {
+    "Ordinal": 326,
+    "Mangled": "??_7MeshStrip@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::MeshStrip::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 327,
+    "Mangled": "??_7ModelBase@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::ModelBase::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 328,
+    "Mangled": "??_7ModelBase@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::ModelBase::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 329,
+    "Mangled": "??_7ModelBaseWithTextureDefaultCoords@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureDefaultCoords::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 330,
+    "Mangled": "??_7ModelBaseWithTextureDefaultCoords@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureDefaultCoords::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 331,
+    "Mangled": "??_7ModelBaseWithTextureDefaultCoords@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureDefaultCoords::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 332,
+    "Mangled": "??_7ModelBaseWithTextureDefaultCoords@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureDefaultCoords::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 333,
+    "Mangled": "??_7ModelBaseWithTextureOrVertexColors@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureOrVertexColors::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureOrVertexColors\u0027}"
+  },
+  {
+    "Ordinal": 334,
+    "Mangled": "??_7ModelBaseWithTextureOrVertexColors@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureOrVertexColors::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 335,
+    "Mangled": "??_7ModelBaseWithTextureOrVertexColors@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureOrVertexColors::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 336,
+    "Mangled": "??_7ModelBaseWithTextureOrVertexColors@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::ModelBaseWithTextureOrVertexColors::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 337,
+    "Mangled": "??_7Node@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Node::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 338,
+    "Mangled": "??_7PBuffer@tako@egl@cognex@@6B@",
+    "Demangled": "const cognex::egl::tako::PBuffer::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 339,
+    "Mangled": "??_7Plane@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::Plane::\u0060vftable\u0027{for \u0060cognex::tako::Plane\u0027}"
+  },
+  {
+    "Ordinal": 340,
+    "Mangled": "??_7Plane@tako@cognex@@6BInteractiveModel@12@@",
+    "Demangled": "const cognex::tako::Plane::\u0060vftable\u0027{for \u0060cognex::tako::InteractiveModel\u0027}"
+  },
+  {
+    "Ordinal": 341,
+    "Mangled": "??_7Plane@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Plane::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 342,
+    "Mangled": "??_7Plane@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Plane::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 343,
+    "Mangled": "??_7Plane@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Plane::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 344,
+    "Mangled": "??_7Plane@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Plane::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 345,
+    "Mangled": "??_7PlaneLineSeg@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::PlaneLineSeg::\u0060vftable\u0027{for \u0060cognex::tako::PlaneLineSeg\u0027}"
+  },
+  {
+    "Ordinal": 346,
+    "Mangled": "??_7PlaneLineSeg@tako@cognex@@6BDimension@12@@",
+    "Demangled": "const cognex::tako::PlaneLineSeg::\u0060vftable\u0027{for \u0060cognex::tako::Dimension\u0027}"
+  },
+  {
+    "Ordinal": 347,
+    "Mangled": "??_7PlaneLineSeg@tako@cognex@@6BInteractiveModel@12@@",
+    "Demangled": "const cognex::tako::PlaneLineSeg::\u0060vftable\u0027{for \u0060cognex::tako::InteractiveModel\u0027}"
+  },
+  {
+    "Ordinal": 348,
+    "Mangled": "??_7PlaneLineSeg@tako@cognex@@6BLineSeg@12@@",
+    "Demangled": "const cognex::tako::PlaneLineSeg::\u0060vftable\u0027{for \u0060cognex::tako::LineSeg\u0027}"
+  },
+  {
+    "Ordinal": 349,
+    "Mangled": "??_7PlaneLineSeg@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::PlaneLineSeg::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 350,
+    "Mangled": "??_7PlaneLineSeg@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::PlaneLineSeg::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 351,
+    "Mangled": "??_7Point@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Point::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 352,
+    "Mangled": "??_7Point@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Point::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 353,
+    "Mangled": "??_7Point@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Point::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 354,
+    "Mangled": "??_7PointCloud@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::PointCloud::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 355,
+    "Mangled": "??_7PointCloud@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::PointCloud::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 356,
+    "Mangled": "??_7PointCloud@tako@cognex@@6BModelBaseWithTextureOrVertexColors@12@@",
+    "Demangled": "const cognex::tako::PointCloud::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureOrVertexColors\u0027}"
+  },
+  {
+    "Ordinal": 357,
+    "Mangled": "??_7PointCloud@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::PointCloud::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 358,
+    "Mangled": "??_7Polygon2D@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Polygon2D::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 359,
+    "Mangled": "??_7Polygon2D@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Polygon2D::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 360,
+    "Mangled": "??_7Polygon2D@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Polygon2D::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 361,
+    "Mangled": "??_7Polygon2D@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Polygon2D::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 362,
+    "Mangled": "??_7Polyline@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Polyline::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 363,
+    "Mangled": "??_7Polyline@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Polyline::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 364,
+    "Mangled": "??_7QuadMesh@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::QuadMesh::\u0060vftable\u0027{for \u0060cognex::tako::QuadMesh\u0027}"
+  },
+  {
+    "Ordinal": 365,
+    "Mangled": "??_7QuadMesh@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::QuadMesh::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 366,
+    "Mangled": "??_7QuadMesh@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::QuadMesh::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 367,
+    "Mangled": "??_7QuadMesh@tako@cognex@@6BModelBaseWithTextureOrVertexColors@12@@",
+    "Demangled": "const cognex::tako::QuadMesh::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureOrVertexColors\u0027}"
+  },
+  {
+    "Ordinal": 368,
+    "Mangled": "??_7QuadMesh@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::QuadMesh::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 369,
+    "Mangled": "??_7QuadMesh@tako@cognex@@6BQuadMeshData@12@@",
+    "Demangled": "const cognex::tako::QuadMesh::\u0060vftable\u0027{for \u0060cognex::tako::QuadMeshData\u0027}"
+  },
+  {
+    "Ordinal": 370,
+    "Mangled": "??_7QuadMeshData@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::QuadMeshData::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 371,
+    "Mangled": "??_7Rectangle@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::Rectangle::\u0060vftable\u0027{for \u0060cognex::tako::Rectangle\u0027}"
+  },
+  {
+    "Ordinal": 372,
+    "Mangled": "??_7Rectangle@tako@cognex@@6BAxes@12@@",
+    "Demangled": "const cognex::tako::Rectangle::\u0060vftable\u0027{for \u0060cognex::tako::Axes\u0027}"
+  },
+  {
+    "Ordinal": 373,
+    "Mangled": "??_7Rectangle@tako@cognex@@6BInteractiveModel@12@@",
+    "Demangled": "const cognex::tako::Rectangle::\u0060vftable\u0027{for \u0060cognex::tako::InteractiveModel\u0027}"
+  },
+  {
+    "Ordinal": 374,
+    "Mangled": "??_7Rectangle@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Rectangle::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 375,
+    "Mangled": "??_7Rectangle@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Rectangle::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 376,
+    "Mangled": "??_7Rectangle@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Rectangle::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 377,
+    "Mangled": "??_7Rectangle@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Rectangle::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 378,
+    "Mangled": "??_7RenderChrono@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::RenderChrono::\u0060vftable\u0027{for \u0060cognex::tako::RenderChrono\u0027}"
+  },
+  {
+    "Ordinal": 379,
+    "Mangled": "??_7RenderChrono@tako@cognex@@6BChrono@12@@",
+    "Demangled": "const cognex::tako::RenderChrono::\u0060vftable\u0027{for \u0060cognex::tako::Chrono\u0027}"
+  },
+  {
+    "Ordinal": 380,
+    "Mangled": "??_7ScreenLabel@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::ScreenLabel::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 381,
+    "Mangled": "??_7ScreenLabel@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::ScreenLabel::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 382,
+    "Mangled": "??_7ScreenLabel@tako@cognex@@6BText@12@@",
+    "Demangled": "const cognex::tako::ScreenLabel::\u0060vftable\u0027{for \u0060cognex::tako::Text\u0027}"
+  },
+  {
+    "Ordinal": 383,
+    "Mangled": "??_7Sphere@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::Sphere::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 384,
+    "Mangled": "??_7Sphere@tako@cognex@@6BModelBase@12@@",
+    "Demangled": "const cognex::tako::Sphere::\u0060vftable\u0027{for \u0060cognex::tako::ModelBase\u0027}"
+  },
+  {
+    "Ordinal": 385,
+    "Mangled": "??_7Sphere@tako@cognex@@6BModelBaseWithTexture@12@@",
+    "Demangled": "const cognex::tako::Sphere::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTexture\u0027}"
+  },
+  {
+    "Ordinal": 386,
+    "Mangled": "??_7Sphere@tako@cognex@@6BModelBaseWithTextureDefaultCoords@12@@",
+    "Demangled": "const cognex::tako::Sphere::\u0060vftable\u0027{for \u0060cognex::tako::ModelBaseWithTextureDefaultCoords\u0027}"
+  },
+  {
+    "Ordinal": 387,
+    "Mangled": "??_7Sphere@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Sphere::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 388,
+    "Mangled": "??_7Text@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::Text::\u0060vftable\u0027{for \u0060cognex::tako::Text\u0027}"
+  },
+  {
+    "Ordinal": 389,
+    "Mangled": "??_7Text@tako@cognex@@6BNode@12@@",
+    "Demangled": "const cognex::tako::Text::\u0060vftable\u0027{for \u0060cognex::tako::Node\u0027}"
+  },
+  {
+    "Ordinal": 390,
+    "Mangled": "??_7VertexColor@tako@cognex@@6B@",
+    "Demangled": "const cognex::tako::VertexColor::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 391,
+    "Mangled": "??_7Viewer@impl@tako@cognex@@6BEvents@23@@",
+    "Demangled": "const cognex::tako::impl::Viewer::\u0060vftable\u0027{for \u0060cognex::tako::Events\u0027}"
+  },
+  {
+    "Ordinal": 392,
+    "Mangled": "??_7Viewer@impl@tako@cognex@@6BHasRenderChrono@23@@",
+    "Demangled": "const cognex::tako::impl::Viewer::\u0060vftable\u0027{for \u0060cognex::tako::HasRenderChrono\u0027}"
+  },
+  {
+    "Ordinal": 393,
+    "Mangled": "??_7Viewer@impl@tako@cognex@@6BScene@23@@",
+    "Demangled": "const cognex::tako::impl::Viewer::\u0060vftable\u0027{for \u0060cognex::tako::Scene\u0027}"
+  },
+  {
+    "Ordinal": 394,
+    "Mangled": "??_7ZHeightColor@tako@cognex@@6B012@@",
+    "Demangled": "const cognex::tako::ZHeightColor::\u0060vftable\u0027{for \u0060cognex::tako::ZHeightColor\u0027}"
+  },
+  {
+    "Ordinal": 395,
+    "Mangled": "??_7ZHeightColor@tako@cognex@@6BDirectionalHeightColor@12@@",
+    "Demangled": "const cognex::tako::ZHeightColor::\u0060vftable\u0027{for \u0060cognex::tako::DirectionalHeightColor\u0027}"
+  },
+  {
+    "Ordinal": 396,
+    "Mangled": "?AddNode@Viewer@impl@tako@cognex@@UEAAHAEBV?$shared_ptr@VNode@tako@cognex@@@std@@@Z",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::AddNode(class std::shared_ptr\u003Cclass cognex::tako::Node\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 397,
+    "Mangled": "?AllFast@TrackingTarget@tako@cognex@@SA?AV123@XZ",
+    "Demangled": "public: static class cognex::tako::TrackingTarget __cdecl cognex::tako::TrackingTarget::AllFast(void)"
+  },
+  {
+    "Ordinal": 398,
+    "Mangled": "?AllPrecise@TrackingTarget@tako@cognex@@SA?AV123@XZ",
+    "Demangled": "public: static class cognex::tako::TrackingTarget __cdecl cognex::tako::TrackingTarget::AllPrecise(void)"
+  },
+  {
+    "Ordinal": 399,
+    "Mangled": "?AnySelected@Viewer@impl@tako@cognex@@AEAA_NAEAH@Z",
+    "Demangled": "private: bool __cdecl cognex::tako::impl::Viewer::AnySelected(int \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 400,
+    "Mangled": "?CameraIsInFrontOfSceneBBox@Viewer@impl@tako@cognex@@AEAA_NXZ",
+    "Demangled": "private: bool __cdecl cognex::tako::impl::Viewer::CameraIsInFrontOfSceneBBox(void) __ptr64"
+  },
+  {
+    "Ordinal": 401,
+    "Mangled": "?CameraUpdated@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::CameraUpdated(void) __ptr64"
+  },
+  {
+    "Ordinal": 402,
+    "Mangled": "?CheckContext@Viewer@impl@tako@cognex@@QEBAXXZ",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::CheckContext(void)const __ptr64"
+  },
+  {
+    "Ordinal": 403,
+    "Mangled": "?ChronoAddRenderCondition@Viewer@impl@tako@cognex@@QEAAXAEBW4Conditions@RenderTimeConditions@234@@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::ChronoAddRenderCondition(enum cognex::tako::impl::RenderTimeConditions::Conditions const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 404,
+    "Mangled": "?Clear@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::Clear(void) __ptr64"
+  },
+  {
+    "Ordinal": 405,
+    "Mangled": "?ClearHeightColor@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::ClearHeightColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 406,
+    "Mangled": "?ClearSelection@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::ClearSelection(void) __ptr64"
+  },
+  {
+    "Ordinal": 407,
+    "Mangled": "?Create@AnnularCylinder@tako@cognex@@SA?AV?$shared_ptr@VAnnularCylinder@tako@cognex@@@std@@AEBM00@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::AnnularCylinder\u003E __cdecl cognex::tako::AnnularCylinder::Create(float const \u0026 __ptr64,float const \u0026 __ptr64,float const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 408,
+    "Mangled": "?Create@Arc@tako@cognex@@SA?AV?$shared_ptr@VArc@tako@cognex@@@std@@AEBV?$array@M$02@5@00AEBW4Style@Dimension@23@_N@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Arc\u003E __cdecl cognex::tako::Arc::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,enum cognex::tako::Dimension::Style const \u0026 __ptr64,bool)"
+  },
+  {
+    "Ordinal": 409,
+    "Mangled": "?Create@Blob@tako@cognex@@SA?AV?$shared_ptr@VBlob@tako@cognex@@@std@@AEBV?$vector@MV?$allocator@M@std@@@5@AEBV?$array@M$02@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Blob\u003E __cdecl cognex::tako::Blob::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 410,
+    "Mangled": "?Create@Box@tako@cognex@@SA?AV?$shared_ptr@VBox@tako@cognex@@@std@@AEBV?$array@M$02@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Box\u003E __cdecl cognex::tako::Box::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 411,
+    "Mangled": "?Create@Circle@tako@cognex@@SA?AV?$shared_ptr@VCircle@tako@cognex@@@std@@AEBM@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Circle\u003E __cdecl cognex::tako::Circle::Create(float const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 412,
+    "Mangled": "?Create@ConvexPolygon2D@tako@cognex@@SA?AV?$shared_ptr@VConvexPolygon2D@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::ConvexPolygon2D\u003E __cdecl cognex::tako::ConvexPolygon2D::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E)"
+  },
+  {
+    "Ordinal": 413,
+    "Mangled": "?Create@Cylinder@tako@cognex@@SA?AV?$shared_ptr@VCylinder@tako@cognex@@@std@@AEBM0AEB_N@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Cylinder\u003E __cdecl cognex::tako::Cylinder::Create(float const \u0026 __ptr64,float const \u0026 __ptr64,bool const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 414,
+    "Mangled": "?Create@DirectionalHeightColor@tako@cognex@@SA?AV?$shared_ptr@VDirectionalHeightColor@tako@cognex@@@std@@AEBV?$array@M$02@5@0@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::DirectionalHeightColor\u003E __cdecl cognex::tako::DirectionalHeightColor::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 415,
+    "Mangled": "?Create@DirectionalHeightColor@tako@cognex@@SA?AV?$shared_ptr@VDirectionalHeightColor@tako@cognex@@@std@@AEBV?$array@M$02@5@0AEBV?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::DirectionalHeightColor\u003E __cdecl cognex::tako::DirectionalHeightColor::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 416,
+    "Mangled": "?Create@Ellipse@tako@cognex@@SA?AV?$shared_ptr@VEllipse@tako@cognex@@@std@@AEBM0@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Ellipse\u003E __cdecl cognex::tako::Ellipse::Create(float const \u0026 __ptr64,float const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 417,
+    "Mangled": "?Create@ExtrudedInSightRegion@tako@cognex@@SA?AV?$shared_ptr@VExtrudedInSightRegion@tako@cognex@@@std@@MMMM@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::ExtrudedInSightRegion\u003E __cdecl cognex::tako::ExtrudedInSightRegion::Create(float,float,float,float)"
+  },
+  {
+    "Ordinal": 418,
+    "Mangled": "?Create@Image@tako@cognex@@SA?AV?$shared_ptr@VImage@tako@cognex@@@std@@PEAXHHHW4ColorFormat@23@V?$function@$$A6AXXZ@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Image\u003E __cdecl cognex::tako::Image::Create(void * __ptr64,int,int,int,enum cognex::tako::ColorFormat,class std::function\u003Cvoid __cdecl(void)\u003E)"
+  },
+  {
+    "Ordinal": 419,
+    "Mangled": "?Create@Image@tako@cognex@@SA?AV?$shared_ptr@VImage@tako@cognex@@@std@@PEBD@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Image\u003E __cdecl cognex::tako::Image::Create(char const * __ptr64)"
+  },
+  {
+    "Ordinal": 420,
+    "Mangled": "?Create@Image@tako@cognex@@SA?AV?$shared_ptr@VImage@tako@cognex@@@std@@PEB_W@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Image\u003E __cdecl cognex::tako::Image::Create(wchar_t const * __ptr64)"
+  },
+  {
+    "Ordinal": 421,
+    "Mangled": "?Create@Label@tako@cognex@@SA?AV?$shared_ptr@VLabel@tako@cognex@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Label\u003E __cdecl cognex::tako::Label::Create(class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 422,
+    "Mangled": "?Create@LineSeg@tako@cognex@@SA?AV?$shared_ptr@VLineSeg@tako@cognex@@@std@@AEBV?$array@M$02@5@0AEBW4Style@Dimension@23@_N@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::LineSeg\u003E __cdecl cognex::tako::LineSeg::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,enum cognex::tako::Dimension::Style const \u0026 __ptr64,bool)"
+  },
+  {
+    "Ordinal": 423,
+    "Mangled": "?Create@LineSegArray@tako@cognex@@SA?AV?$shared_ptr@VLineSegArray@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::LineSegArray\u003E __cdecl cognex::tako::LineSegArray::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E)"
+  },
+  {
+    "Ordinal": 424,
+    "Mangled": "?Create@Mesh@tako@cognex@@SA?AV?$shared_ptr@VMesh@tako@cognex@@@std@@PEBD@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Mesh\u003E __cdecl cognex::tako::Mesh::Create(char const * __ptr64)"
+  },
+  {
+    "Ordinal": 425,
+    "Mangled": "?Create@Mesh@tako@cognex@@SA?AV?$shared_ptr@VMesh@tako@cognex@@@std@@PEBM_KPEAI101@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Mesh\u003E __cdecl cognex::tako::Mesh::Create(float const * __ptr64,unsigned __int64,unsigned int * __ptr64,unsigned __int64,float const * __ptr64,unsigned __int64)"
+  },
+  {
+    "Ordinal": 426,
+    "Mangled": "?Create@Mesh@tako@cognex@@SA?AV?$shared_ptr@VMesh@tako@cognex@@@std@@PEBM_KPEAI1@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Mesh\u003E __cdecl cognex::tako::Mesh::Create(float const * __ptr64,unsigned __int64,unsigned int * __ptr64,unsigned __int64)"
+  },
+  {
+    "Ordinal": 427,
+    "Mangled": "?Create@Mesh@tako@cognex@@SA?AV?$shared_ptr@VMesh@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@V?$vector@IV?$allocator@I@std@@@5@0@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Mesh\u003E __cdecl cognex::tako::Mesh::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E,class std::vector\u003Cunsigned int,class std::allocator\u003Cunsigned int\u003E \u003E,class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E)"
+  },
+  {
+    "Ordinal": 428,
+    "Mangled": "?Create@Mesh@tako@cognex@@SA?AV?$shared_ptr@VMesh@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@V?$vector@IV?$allocator@I@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Mesh\u003E __cdecl cognex::tako::Mesh::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E,class std::vector\u003Cunsigned int,class std::allocator\u003Cunsigned int\u003E \u003E)"
+  },
+  {
+    "Ordinal": 429,
+    "Mangled": "?Create@MeshStrip@tako@cognex@@SA?AV?$shared_ptr@VMeshStrip@tako@cognex@@@std@@PEBM_KPEAI101@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::MeshStrip\u003E __cdecl cognex::tako::MeshStrip::Create(float const * __ptr64,unsigned __int64,unsigned int * __ptr64,unsigned __int64,float const * __ptr64,unsigned __int64)"
+  },
+  {
+    "Ordinal": 430,
+    "Mangled": "?Create@MeshStrip@tako@cognex@@SA?AV?$shared_ptr@VMeshStrip@tako@cognex@@@std@@PEBM_KPEAI1@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::MeshStrip\u003E __cdecl cognex::tako::MeshStrip::Create(float const * __ptr64,unsigned __int64,unsigned int * __ptr64,unsigned __int64)"
+  },
+  {
+    "Ordinal": 431,
+    "Mangled": "?Create@MeshStrip@tako@cognex@@SA?AV?$shared_ptr@VMeshStrip@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@V?$vector@IV?$allocator@I@std@@@5@0@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::MeshStrip\u003E __cdecl cognex::tako::MeshStrip::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E,class std::vector\u003Cunsigned int,class std::allocator\u003Cunsigned int\u003E \u003E,class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E)"
+  },
+  {
+    "Ordinal": 432,
+    "Mangled": "?Create@MeshStrip@tako@cognex@@SA?AV?$shared_ptr@VMeshStrip@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@V?$vector@IV?$allocator@I@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::MeshStrip\u003E __cdecl cognex::tako::MeshStrip::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E,class std::vector\u003Cunsigned int,class std::allocator\u003Cunsigned int\u003E \u003E)"
+  },
+  {
+    "Ordinal": 433,
+    "Mangled": "?Create@Plane@tako@cognex@@SA?AV?$shared_ptr@VPlane@tako@cognex@@@std@@AEBV?$array@M$02@5@0@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Plane\u003E __cdecl cognex::tako::Plane::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 434,
+    "Mangled": "?Create@PlaneLineSeg@tako@cognex@@SA?AV?$shared_ptr@VPlaneLineSeg@tako@cognex@@@std@@AEBV?$array@M$02@5@0AEBW4Style@Dimension@23@_N@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::PlaneLineSeg\u003E __cdecl cognex::tako::PlaneLineSeg::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,enum cognex::tako::Dimension::Style const \u0026 __ptr64,bool)"
+  },
+  {
+    "Ordinal": 435,
+    "Mangled": "?Create@Point@tako@cognex@@SA?AV?$shared_ptr@VPoint@tako@cognex@@@std@@AEBV?$array@M$02@5@H@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Point\u003E __cdecl cognex::tako::Point::Create(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,int)"
+  },
+  {
+    "Ordinal": 436,
+    "Mangled": "?Create@PointCloud@tako@cognex@@SA?AV?$shared_ptr@VPointCloud@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::PointCloud\u003E __cdecl cognex::tako::PointCloud::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E)"
+  },
+  {
+    "Ordinal": 437,
+    "Mangled": "?Create@Polygon2D@tako@cognex@@SA?AV?$shared_ptr@VPolygon2D@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Polygon2D\u003E __cdecl cognex::tako::Polygon2D::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E)"
+  },
+  {
+    "Ordinal": 438,
+    "Mangled": "?Create@Polyline@tako@cognex@@SA?AV?$shared_ptr@VPolyline@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Polyline\u003E __cdecl cognex::tako::Polyline::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E)"
+  },
+  {
+    "Ordinal": 439,
+    "Mangled": "?Create@QuadMesh@tako@cognex@@SA?AV?$shared_ptr@VQuadMesh@tako@cognex@@@std@@PEBD@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMesh\u003E __cdecl cognex::tako::QuadMesh::Create(char const * __ptr64)"
+  },
+  {
+    "Ordinal": 440,
+    "Mangled": "?Create@QuadMesh@tako@cognex@@SA?AV?$shared_ptr@VQuadMesh@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@HH@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMesh\u003E __cdecl cognex::tako::QuadMesh::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E,int,int)"
+  },
+  {
+    "Ordinal": 441,
+    "Mangled": "?Create@QuadMesh@tako@cognex@@SA?AV?$shared_ptr@VQuadMesh@tako@cognex@@@std@@XZ",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMesh\u003E __cdecl cognex::tako::QuadMesh::Create(void)"
+  },
+  {
+    "Ordinal": 442,
+    "Mangled": "?Create@QuadMeshData@tako@cognex@@SA?AV?$shared_ptr@VQuadMeshData@tako@cognex@@@std@@PEAMHH@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMeshData\u003E __cdecl cognex::tako::QuadMeshData::Create(float * __ptr64,int,int)"
+  },
+  {
+    "Ordinal": 443,
+    "Mangled": "?Create@QuadMeshData@tako@cognex@@SA?AV?$shared_ptr@VQuadMeshData@tako@cognex@@@std@@PEBD@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMeshData\u003E __cdecl cognex::tako::QuadMeshData::Create(char const * __ptr64)"
+  },
+  {
+    "Ordinal": 444,
+    "Mangled": "?Create@QuadMeshData@tako@cognex@@SA?AV?$shared_ptr@VQuadMeshData@tako@cognex@@@std@@V?$vector@MV?$allocator@M@std@@@5@HH@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMeshData\u003E __cdecl cognex::tako::QuadMeshData::Create(class std::vector\u003Cfloat,class std::allocator\u003Cfloat\u003E \u003E,int,int)"
+  },
+  {
+    "Ordinal": 445,
+    "Mangled": "?Create@QuadMeshData@tako@cognex@@SA?AV?$shared_ptr@VQuadMeshData@tako@cognex@@@std@@XZ",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMeshData\u003E __cdecl cognex::tako::QuadMeshData::Create(void)"
+  },
+  {
+    "Ordinal": 446,
+    "Mangled": "?Create@Rectangle@tako@cognex@@SA?AV?$shared_ptr@VRectangle@tako@cognex@@@std@@AEBV?$array@M$01@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Rectangle\u003E __cdecl cognex::tako::Rectangle::Create(class std::array\u003Cfloat,2\u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 447,
+    "Mangled": "?Create@ScreenLabel@tako@cognex@@SA?AV?$shared_ptr@VScreenLabel@tako@cognex@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::ScreenLabel\u003E __cdecl cognex::tako::ScreenLabel::Create(class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 448,
+    "Mangled": "?Create@Sphere@tako@cognex@@SA?AV?$shared_ptr@VSphere@tako@cognex@@@std@@AEBM@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::Sphere\u003E __cdecl cognex::tako::Sphere::Create(float const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 449,
+    "Mangled": "?Create@VertexColor@tako@cognex@@SA?AV?$shared_ptr@VVertexColor@tako@cognex@@@std@@PEAX_KW4ColorFormat@23@V?$function@$$A6AXXZ@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::VertexColor\u003E __cdecl cognex::tako::VertexColor::Create(void * __ptr64,unsigned __int64,enum cognex::tako::ColorFormat,class std::function\u003Cvoid __cdecl(void)\u003E)"
+  },
+  {
+    "Ordinal": 450,
+    "Mangled": "?Create@ZHeightColor@tako@cognex@@SA?AV?$shared_ptr@VZHeightColor@tako@cognex@@@std@@AEBM0@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::ZHeightColor\u003E __cdecl cognex::tako::ZHeightColor::Create(float const \u0026 __ptr64,float const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 451,
+    "Mangled": "?Create@ZHeightColor@tako@cognex@@SA?AV?$shared_ptr@VZHeightColor@tako@cognex@@@std@@AEBM0AEBV?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::ZHeightColor\u003E __cdecl cognex::tako::ZHeightColor::Create(float const \u0026 __ptr64,float const \u0026 __ptr64,class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 452,
+    "Mangled": "?CreateAndRenderToFbo@Viewer@impl@tako@cognex@@AEAA?AV?$shared_ptr@VFbo@gl@cinder@@@std@@HH_N@Z",
+    "Demangled": "private: class std::shared_ptr\u003Cclass cinder::gl::Fbo\u003E __cdecl cognex::tako::impl::Viewer::CreateAndRenderToFbo(int,int,bool) __ptr64"
+  },
+  {
+    "Ordinal": 453,
+    "Mangled": "?DeleteNode@Viewer@impl@tako@cognex@@UEAAXH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::DeleteNode(int) __ptr64"
+  },
+  {
+    "Ordinal": 454,
+    "Mangled": "?DepthToWorld@Viewer@impl@tako@cognex@@AEAA?AU?$tvec3@M$0A@@glm@@HHM@Z",
+    "Demangled": "private: struct glm::tvec3\u003Cfloat,0\u003E __cdecl cognex::tako::impl::Viewer::DepthToWorld(int,int,float) __ptr64"
+  },
+  {
+    "Ordinal": 455,
+    "Mangled": "?DisableExperimentalWatermark@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::DisableExperimentalWatermark(void) __ptr64"
+  },
+  {
+    "Ordinal": 456,
+    "Mangled": "?DrawSphereSmall@Viewer@impl@tako@cognex@@AEAAXAEBU?$tvec3@M$0A@@glm@@M@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::DrawSphereSmall(struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64,float) __ptr64"
+  },
+  {
+    "Ordinal": 457,
+    "Mangled": "?EmptyFBOScreenDepth@Viewer@impl@tako@cognex@@2MB",
+    "Demangled": "public: static float const cognex::tako::impl::Viewer::EmptyFBOScreenDepth"
+  },
+  {
+    "Ordinal": 458,
+    "Mangled": "?EnableGraphicInfo@Viewer@impl@tako@cognex@@UEAAX_N@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::EnableGraphicInfo(bool) __ptr64"
+  },
+  {
+    "Ordinal": 459,
+    "Mangled": "?EnqueueMouseHitTest@Viewer@impl@tako@cognex@@QEAAXAEBUMouseHitEvent@234@@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::EnqueueMouseHitTest(struct cognex::tako::impl::MouseHitEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 460,
+    "Mangled": "?EyeDepthToFov@Viewer@impl@tako@cognex@@AEBAMMM@Z",
+    "Demangled": "private: float __cdecl cognex::tako::impl::Viewer::EyeDepthToFov(float,float)const __ptr64"
+  },
+  {
+    "Ordinal": 461,
+    "Mangled": "?FboGraphicUnderMouse@Viewer@impl@tako@cognex@@QEAA?AV?$shared_ptr@VGraphic@impl@tako@cognex@@@std@@HH@Z",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::tako::impl::Graphic\u003E __cdecl cognex::tako::impl::Viewer::FboGraphicUnderMouse(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 462,
+    "Mangled": "?FindNextFreeId@Viewer@impl@tako@cognex@@AEBAHXZ",
+    "Demangled": "private: int __cdecl cognex::tako::impl::Viewer::FindNextFreeId(void)const __ptr64"
+  },
+  {
+    "Ordinal": 463,
+    "Mangled": "?FitOrthographic@Viewer@impl@tako@cognex@@AEAAX_N@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::FitOrthographic(bool) __ptr64"
+  },
+  {
+    "Ordinal": 464,
+    "Mangled": "?FitPerspective@Viewer@impl@tako@cognex@@AEAAX_N@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::FitPerspective(bool) __ptr64"
+  },
+  {
+    "Ordinal": 465,
+    "Mangled": "?FitView@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::FitView(void) __ptr64"
+  },
+  {
+    "Ordinal": 466,
+    "Mangled": "?FitViewOnce@Viewer@impl@tako@cognex@@UEAAX_N@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::FitViewOnce(bool) __ptr64"
+  },
+  {
+    "Ordinal": 467,
+    "Mangled": "?FovIncToEyeDepth@Viewer@impl@tako@cognex@@AEBAMMMAEBU?$tvec3@M$0A@@glm@@@Z",
+    "Demangled": "private: float __cdecl cognex::tako::impl::Viewer::FovIncToEyeDepth(float,float,struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64)const __ptr64"
+  },
+  {
+    "Ordinal": 468,
+    "Mangled": "?GLRenderer@Viewer@impl@tako@cognex@@UEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+    "Demangled": "public: virtual class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E __cdecl cognex::tako::impl::Viewer::GLRenderer(void)const __ptr64"
+  },
+  {
+    "Ordinal": 469,
+    "Mangled": "?GLSLVersion@Viewer@impl@tako@cognex@@UEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+    "Demangled": "public: virtual class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E __cdecl cognex::tako::impl::Viewer::GLSLVersion(void)const __ptr64"
+  },
+  {
+    "Ordinal": 470,
+    "Mangled": "?GLVersion@Viewer@impl@tako@cognex@@UEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+    "Demangled": "public: virtual class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E __cdecl cognex::tako::impl::Viewer::GLVersion(void)const __ptr64"
+  },
+  {
+    "Ordinal": 471,
+    "Mangled": "?GetAxesVisible@Viewer@impl@tako@cognex@@UEBA_NXZ",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::GetAxesVisible(void)const __ptr64"
+  },
+  {
+    "Ordinal": 472,
+    "Mangled": "?GetBackgroundColor@Viewer@impl@tako@cognex@@UEBA?AUColor@34@XZ",
+    "Demangled": "public: virtual struct cognex::tako::Color __cdecl cognex::tako::impl::Viewer::GetBackgroundColor(void)const __ptr64"
+  },
+  {
+    "Ordinal": 473,
+    "Mangled": "?GetCameraControlMode@Viewer@impl@tako@cognex@@UEBA?AW4CameraControlMode@34@XZ",
+    "Demangled": "public: virtual enum cognex::tako::CameraControlMode __cdecl cognex::tako::impl::Viewer::GetCameraControlMode(void)const __ptr64"
+  },
+  {
+    "Ordinal": 474,
+    "Mangled": "?GetCameraMode@Viewer@impl@tako@cognex@@UEBA?AW4CameraMode@34@XZ",
+    "Demangled": "public: virtual enum cognex::tako::CameraMode __cdecl cognex::tako::impl::Viewer::GetCameraMode(void)const __ptr64"
+  },
+  {
+    "Ordinal": 475,
+    "Mangled": "?GetCameraPosition@Viewer@impl@tako@cognex@@UEBA?AV?$array@M$02@std@@XZ",
+    "Demangled": "public: virtual class std::array\u003Cfloat,3\u003E __cdecl cognex::tako::impl::Viewer::GetCameraPosition(void)const __ptr64"
+  },
+  {
+    "Ordinal": 476,
+    "Mangled": "?GetCameraSettings@Viewer@impl@tako@cognex@@UEBA?AUCameraSettings@34@XZ",
+    "Demangled": "public: virtual struct cognex::tako::CameraSettings __cdecl cognex::tako::impl::Viewer::GetCameraSettings(void)const __ptr64"
+  },
+  {
+    "Ordinal": 477,
+    "Mangled": "?GetCameraTarget@Viewer@impl@tako@cognex@@UEBA?AV?$array@M$02@std@@XZ",
+    "Demangled": "public: virtual class std::array\u003Cfloat,3\u003E __cdecl cognex::tako::impl::Viewer::GetCameraTarget(void)const __ptr64"
+  },
+  {
+    "Ordinal": 478,
+    "Mangled": "?GetCameraUpDirection@Viewer@impl@tako@cognex@@UEBA?AV?$array@M$02@std@@XZ",
+    "Demangled": "public: virtual class std::array\u003Cfloat,3\u003E __cdecl cognex::tako::impl::Viewer::GetCameraUpDirection(void)const __ptr64"
+  },
+  {
+    "Ordinal": 479,
+    "Mangled": "?GetChrono@Viewer@impl@tako@cognex@@UEAAPEAVRenderChrono@34@XZ",
+    "Demangled": "public: virtual class cognex::tako::RenderChrono * __ptr64 __cdecl cognex::tako::impl::Viewer::GetChrono(void) __ptr64"
+  },
+  {
+    "Ordinal": 480,
+    "Mangled": "?GetColorbarDecimalPlaces@Viewer@impl@tako@cognex@@UEBAHXZ",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::GetColorbarDecimalPlaces(void)const __ptr64"
+  },
+  {
+    "Ordinal": 481,
+    "Mangled": "?GetColorbarLabel@Viewer@impl@tako@cognex@@UEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+    "Demangled": "public: virtual class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E __cdecl cognex::tako::impl::Viewer::GetColorbarLabel(void)const __ptr64"
+  },
+  {
+    "Ordinal": 482,
+    "Mangled": "?GetColorbarSubdivisions@Viewer@impl@tako@cognex@@UEBAHXZ",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::GetColorbarSubdivisions(void)const __ptr64"
+  },
+  {
+    "Ordinal": 483,
+    "Mangled": "?GetColorbarTicksColor@Viewer@impl@tako@cognex@@UEBA?AUColor@34@XZ",
+    "Demangled": "public: virtual struct cognex::tako::Color __cdecl cognex::tako::impl::Viewer::GetColorbarTicksColor(void)const __ptr64"
+  },
+  {
+    "Ordinal": 484,
+    "Mangled": "?GetColorbarVisible@Viewer@impl@tako@cognex@@UEBA_NXZ",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::GetColorbarVisible(void)const __ptr64"
+  },
+  {
+    "Ordinal": 485,
+    "Mangled": "?GetContextMutex@Viewer@impl@tako@cognex@@UEBAAEAVContextMutex@Engine@34@XZ",
+    "Demangled": "public: virtual class cognex::tako::Engine::ContextMutex \u0026 __ptr64 __cdecl cognex::tako::impl::Viewer::GetContextMutex(void)const __ptr64"
+  },
+  {
+    "Ordinal": 486,
+    "Mangled": "?GetCreatorColor@Viewer@impl@tako@cognex@@UEBA?AUColor@34@XZ",
+    "Demangled": "public: virtual struct cognex::tako::Color __cdecl cognex::tako::impl::Viewer::GetCreatorColor(void)const __ptr64"
+  },
+  {
+    "Ordinal": 487,
+    "Mangled": "?GetCreatorIsEnabled@Viewer@impl@tako@cognex@@UEBA_NXZ",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::GetCreatorIsEnabled(void)const __ptr64"
+  },
+  {
+    "Ordinal": 488,
+    "Mangled": "?GetCreatorOpacity@Viewer@impl@tako@cognex@@UEBAMXZ",
+    "Demangled": "public: virtual float __cdecl cognex::tako::impl::Viewer::GetCreatorOpacity(void)const __ptr64"
+  },
+  {
+    "Ordinal": 489,
+    "Mangled": "?GetCuttingPlane@Viewer@impl@tako@cognex@@QEAA?AV?$shared_ptr@VPlane@impl@tako@cognex@@@std@@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::tako::impl::Plane\u003E __cdecl cognex::tako::impl::Viewer::GetCuttingPlane(void) __ptr64"
+  },
+  {
+    "Ordinal": 490,
+    "Mangled": "?GetDPI@Viewer@impl@tako@cognex@@UEBAHXZ",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::GetDPI(void)const __ptr64"
+  },
+  {
+    "Ordinal": 491,
+    "Mangled": "?GetDepthOutlineTexture@Viewer@impl@tako@cognex@@QEAA?AV?$shared_ptr@VTexture2d@gl@cinder@@@std@@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cinder::gl::Texture2d\u003E __cdecl cognex::tako::impl::Viewer::GetDepthOutlineTexture(void) __ptr64"
+  },
+  {
+    "Ordinal": 492,
+    "Mangled": "?GetDisableLambertOnAllowedModels@Viewer@impl@tako@cognex@@UEBA_NXZ",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::GetDisableLambertOnAllowedModels(void)const __ptr64"
+  },
+  {
+    "Ordinal": 493,
+    "Mangled": "?GetDisplayMode@Viewer@impl@tako@cognex@@UEBA?AW4DisplayMode@34@XZ",
+    "Demangled": "public: virtual enum cognex::tako::DisplayMode __cdecl cognex::tako::impl::Viewer::GetDisplayMode(void)const __ptr64"
+  },
+  {
+    "Ordinal": 494,
+    "Mangled": "?GetDisplayModeInternal@Viewer@impl@tako@cognex@@UEBA?AW4DisplayMode@34@XZ",
+    "Demangled": "public: virtual enum cognex::tako::DisplayMode __cdecl cognex::tako::impl::Viewer::GetDisplayModeInternal(void)const __ptr64"
+  },
+  {
+    "Ordinal": 495,
+    "Mangled": "?GetEnabledHandlesForModel@Viewer@impl@tako@cognex@@UEBAHH@Z",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::GetEnabledHandlesForModel(int)const __ptr64"
+  },
+  {
+    "Ordinal": 496,
+    "Mangled": "?GetFastMouseCoordinates@Viewer@impl@tako@cognex@@AEAA?AU?$tvec3@M$0A@@glm@@HH@Z",
+    "Demangled": "private: struct glm::tvec3\u003Cfloat,0\u003E __cdecl cognex::tako::impl::Viewer::GetFastMouseCoordinates(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 497,
+    "Mangled": "?GetGesturePan@Viewer@impl@tako@cognex@@AEAA?AU?$tvec2@H$0A@@glm@@AEBUMultiGestureEvent@34@@Z",
+    "Demangled": "private: struct glm::tvec2\u003Cint,0\u003E __cdecl cognex::tako::impl::Viewer::GetGesturePan(struct cognex::tako::MultiGestureEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 498,
+    "Mangled": "?GetGestureZoom@Viewer@impl@tako@cognex@@AEAAHAEBUMultiGestureEvent@34@@Z",
+    "Demangled": "private: int __cdecl cognex::tako::impl::Viewer::GetGestureZoom(struct cognex::tako::MultiGestureEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 499,
+    "Mangled": "?GetGridColor@Viewer@impl@tako@cognex@@UEBA?AUColor@34@XZ",
+    "Demangled": "public: virtual struct cognex::tako::Color __cdecl cognex::tako::impl::Viewer::GetGridColor(void)const __ptr64"
+  },
+  {
+    "Ordinal": 500,
+    "Mangled": "?GetGridUnits@Viewer@impl@tako@cognex@@UEBA?AW4GridUnits@34@XZ",
+    "Demangled": "public: virtual enum cognex::tako::GridUnits __cdecl cognex::tako::impl::Viewer::GetGridUnits(void)const __ptr64"
+  },
+  {
+    "Ordinal": 501,
+    "Mangled": "?GetHeightColor@Viewer@impl@tako@cognex@@UEBA?AV?$shared_ptr@$$CBVDirectionalHeightColor@tako@cognex@@@std@@XZ",
+    "Demangled": "public: virtual class std::shared_ptr\u003Cclass cognex::tako::DirectionalHeightColor const \u003E __cdecl cognex::tako::impl::Viewer::GetHeightColor(void)const __ptr64"
+  },
+  {
+    "Ordinal": 502,
+    "Mangled": "?GetHeightColorWeight@Viewer@impl@tako@cognex@@UEBAMXZ",
+    "Demangled": "public: virtual float __cdecl cognex::tako::impl::Viewer::GetHeightColorWeight(void)const __ptr64"
+  },
+  {
+    "Ordinal": 503,
+    "Mangled": "?GetInteractiveModel@Viewer@impl@tako@cognex@@UEBA_NH@Z",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::GetInteractiveModel(int)const __ptr64"
+  },
+  {
+    "Ordinal": 504,
+    "Mangled": "?GetLightType@Viewer@impl@tako@cognex@@UEBA?AW4LightType@34@XZ",
+    "Demangled": "public: virtual enum cognex::tako::LightType __cdecl cognex::tako::impl::Viewer::GetLightType(void)const __ptr64"
+  },
+  {
+    "Ordinal": 505,
+    "Mangled": "?GetModelId@Viewer@impl@tako@cognex@@QEBAHPEAVGraphicModel@234@@Z",
+    "Demangled": "public: int __cdecl cognex::tako::impl::Viewer::GetModelId(class cognex::tako::impl::GraphicModel * __ptr64)const __ptr64"
+  },
+  {
+    "Ordinal": 506,
+    "Mangled": "?GetMouseTracking@Viewer@impl@tako@cognex@@UEBA?AVTrackingTarget@34@XZ",
+    "Demangled": "public: virtual class cognex::tako::TrackingTarget __cdecl cognex::tako::impl::Viewer::GetMouseTracking(void)const __ptr64"
+  },
+  {
+    "Ordinal": 507,
+    "Mangled": "?GetNode@Viewer@impl@tako@cognex@@UEBA?AV?$shared_ptr@VNode@tako@cognex@@@std@@H@Z",
+    "Demangled": "public: virtual class std::shared_ptr\u003Cclass cognex::tako::Node\u003E __cdecl cognex::tako::impl::Viewer::GetNode(int)const __ptr64"
+  },
+  {
+    "Ordinal": 508,
+    "Mangled": "?GetNodeIds@Viewer@impl@tako@cognex@@UEBA?AV?$vector@HV?$allocator@H@std@@@std@@XZ",
+    "Demangled": "public: virtual class std::vector\u003Cint,class std::allocator\u003Cint\u003E \u003E __cdecl cognex::tako::impl::Viewer::GetNodeIds(void)const __ptr64"
+  },
+  {
+    "Ordinal": 509,
+    "Mangled": "?GetOutlineColor@Viewer@impl@tako@cognex@@SA?AV?$ColorT@M@cinder@@AEBV56@@Z",
+    "Demangled": "public: static class cinder::ColorT\u003Cfloat\u003E __cdecl cognex::tako::impl::Viewer::GetOutlineColor(class cinder::ColorT\u003Cfloat\u003E const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 510,
+    "Mangled": "?GetProjectionMatrix@Viewer@impl@tako@cognex@@UEBA?AV?$array@M$0BA@@std@@XZ",
+    "Demangled": "public: virtual class std::array\u003Cfloat,16\u003E __cdecl cognex::tako::impl::Viewer::GetProjectionMatrix(void)const __ptr64"
+  },
+  {
+    "Ordinal": 511,
+    "Mangled": "?GetRoi@Viewer@impl@tako@cognex@@QEAA?AV?$shared_ptr@VNode@impl@tako@cognex@@@std@@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::tako::impl::Node\u003E __cdecl cognex::tako::impl::Viewer::GetRoi(void) __ptr64"
+  },
+  {
+    "Ordinal": 512,
+    "Mangled": "?GetRoughScreenDepthAroundSegment@Viewer@impl@tako@cognex@@QEAAMHHHHM@Z",
+    "Demangled": "public: float __cdecl cognex::tako::impl::Viewer::GetRoughScreenDepthAroundSegment(int,int,int,int,float) __ptr64"
+  },
+  {
+    "Ordinal": 513,
+    "Mangled": "?GetRoughScreenDepthInRegion@Viewer@impl@tako@cognex@@QEAAMHHHH@Z",
+    "Demangled": "public: float __cdecl cognex::tako::impl::Viewer::GetRoughScreenDepthInRegion(int,int,int,int) __ptr64"
+  },
+  {
+    "Ordinal": 514,
+    "Mangled": "?GetRoughZoomPoint@Viewer@impl@tako@cognex@@AEAA?AU?$tvec3@M$0A@@glm@@HH@Z",
+    "Demangled": "private: struct glm::tvec3\u003Cfloat,0\u003E __cdecl cognex::tako::impl::Viewer::GetRoughZoomPoint(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 515,
+    "Mangled": "?GetSceneBBoxEyeDepthLimits@Viewer@impl@tako@cognex@@AEAAXPEAM0@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::GetSceneBBoxEyeDepthLimits(float * __ptr64,float * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 516,
+    "Mangled": "?GetSceneBoxNoHints@Viewer@impl@tako@cognex@@QEAA?AVAxisAlignedBox@cinder@@XZ",
+    "Demangled": "public: class cinder::AxisAlignedBox __cdecl cognex::tako::impl::Viewer::GetSceneBoxNoHints(void) __ptr64"
+  },
+  {
+    "Ordinal": 517,
+    "Mangled": "?GetSceneBoxNoHintsPlanes@Viewer@impl@tako@cognex@@QEAA?AVAxisAlignedBox@cinder@@XZ",
+    "Demangled": "public: class cinder::AxisAlignedBox __cdecl cognex::tako::impl::Viewer::GetSceneBoxNoHintsPlanes(void) __ptr64"
+  },
+  {
+    "Ordinal": 518,
+    "Mangled": "?GetSceneCuttingPlane@Viewer@impl@tako@cognex@@UEBAHXZ",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::GetSceneCuttingPlane(void)const __ptr64"
+  },
+  {
+    "Ordinal": 519,
+    "Mangled": "?GetSelected@Viewer@impl@tako@cognex@@UEBAHXZ",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::GetSelected(void)const __ptr64"
+  },
+  {
+    "Ordinal": 520,
+    "Mangled": "?GetSelectionBoxColor@Viewer@impl@tako@cognex@@UEBA?AUColor@34@XZ",
+    "Demangled": "public: virtual struct cognex::tako::Color __cdecl cognex::tako::impl::Viewer::GetSelectionBoxColor(void)const __ptr64"
+  },
+  {
+    "Ordinal": 521,
+    "Mangled": "?GetSelectionPixelTolerance@Viewer@impl@tako@cognex@@UEBAHXZ",
+    "Demangled": "public: virtual int __cdecl cognex::tako::impl::Viewer::GetSelectionPixelTolerance(void)const __ptr64"
+  },
+  {
+    "Ordinal": 522,
+    "Mangled": "?GetShowGrid@Viewer@impl@tako@cognex@@UEBA_NXZ",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::GetShowGrid(void)const __ptr64"
+  },
+  {
+    "Ordinal": 523,
+    "Mangled": "?GetShowInteractiveHints@Viewer@impl@tako@cognex@@QEBA_NXZ",
+    "Demangled": "public: bool __cdecl cognex::tako::impl::Viewer::GetShowInteractiveHints(void)const __ptr64"
+  },
+  {
+    "Ordinal": 524,
+    "Mangled": "?GetWireframeAsEdges@Viewer@impl@tako@cognex@@UEBA_NXZ",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::GetWireframeAsEdges(void)const __ptr64"
+  },
+  {
+    "Ordinal": 525,
+    "Mangled": "?GetWorldPosUnderCursorFast@Viewer@impl@tako@cognex@@UEAA?AUViewMousePos@34@HH@Z",
+    "Demangled": "public: virtual struct cognex::tako::ViewMousePos __cdecl cognex::tako::impl::Viewer::GetWorldPosUnderCursorFast(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 526,
+    "Mangled": "?GetWorldPosUnderCursorPrecise@Viewer@impl@tako@cognex@@UEAA?AUViewMousePos@34@HH@Z",
+    "Demangled": "public: virtual struct cognex::tako::ViewMousePos __cdecl cognex::tako::impl::Viewer::GetWorldPosUnderCursorPrecise(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 527,
+    "Mangled": "?HandleHitTest@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::HandleHitTest(void) __ptr64"
+  },
+  {
+    "Ordinal": 528,
+    "Mangled": "?HandleUserDrag@Viewer@impl@tako@cognex@@AEAA_NHHW4DragEvent@34@AEBV?$shared_ptr@VGraphic@impl@tako@cognex@@@std@@@Z",
+    "Demangled": "private: bool __cdecl cognex::tako::impl::Viewer::HandleUserDrag(int,int,enum cognex::tako::DragEvent,class std::shared_ptr\u003Cclass cognex::tako::impl::Graphic\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 529,
+    "Mangled": "?HitTestReady@Viewer@impl@tako@cognex@@AEBA_NXZ",
+    "Demangled": "private: bool __cdecl cognex::tako::impl::Viewer::HitTestReady(void)const __ptr64"
+  },
+  {
+    "Ordinal": 530,
+    "Mangled": "?Inferno@colormaps@tako@cognex@@3V?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@std@@B",
+    "Demangled": "class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const cognex::tako::colormaps::Inferno"
+  },
+  {
+    "Ordinal": 531,
+    "Mangled": "?InvalidateSceneBox@Viewer@impl@tako@cognex@@QEAAXXZ",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::InvalidateSceneBox(void) __ptr64"
+  },
+  {
+    "Ordinal": 532,
+    "Mangled": "?IsTrackingAll@TrackingTarget@tako@cognex@@QEBA_NXZ",
+    "Demangled": "public: bool __cdecl cognex::tako::TrackingTarget::IsTrackingAll(void)const __ptr64"
+  },
+  {
+    "Ordinal": 533,
+    "Mangled": "?IsTrackingFast@TrackingTarget@tako@cognex@@QEBA_NXZ",
+    "Demangled": "public: bool __cdecl cognex::tako::TrackingTarget::IsTrackingFast(void)const __ptr64"
+  },
+  {
+    "Ordinal": 534,
+    "Mangled": "?IsTrackingNode@TrackingTarget@tako@cognex@@QEBA_NXZ",
+    "Demangled": "public: bool __cdecl cognex::tako::TrackingTarget::IsTrackingNode(void)const __ptr64"
+  },
+  {
+    "Ordinal": 535,
+    "Mangled": "?Jet@colormaps@tako@cognex@@3V?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@std@@B",
+    "Demangled": "class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const cognex::tako::colormaps::Jet"
+  },
+  {
+    "Ordinal": 536,
+    "Mangled": "?Magma@colormaps@tako@cognex@@3V?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@std@@B",
+    "Demangled": "class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const cognex::tako::colormaps::Magma"
+  },
+  {
+    "Ordinal": 537,
+    "Mangled": "?ModelPosUnderCursor@Viewer@impl@tako@cognex@@QEAA?AUViewMousePos@34@HHPEAVGraphicModel@234@@Z",
+    "Demangled": "public: struct cognex::tako::ViewMousePos __cdecl cognex::tako::impl::Viewer::ModelPosUnderCursor(int,int,class cognex::tako::impl::GraphicModel * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 538,
+    "Mangled": "?MouseHitDone@Viewer@impl@tako@cognex@@AEAAXAEBUViewMousePos@34@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::MouseHitDone(struct cognex::tako::ViewMousePos const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 539,
+    "Mangled": "?MouseHitTest@Viewer@impl@tako@cognex@@AEAA?AUViewMousePosWithGraphic@234@AEBUMouseHitEvent@234@@Z",
+    "Demangled": "private: struct cognex::tako::impl::ViewMousePosWithGraphic __cdecl cognex::tako::impl::Viewer::MouseHitTest(struct cognex::tako::impl::MouseHitEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 540,
+    "Mangled": "?MouseHover@Viewer@impl@tako@cognex@@AEAAXAEBUMouseMotionEvent@34@AEBV?$shared_ptr@VGraphic@impl@tako@cognex@@@std@@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::MouseHover(struct cognex::tako::MouseMotionEvent const \u0026 __ptr64,class std::shared_ptr\u003Cclass cognex::tako::impl::Graphic\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 541,
+    "Mangled": "?MousePan@Viewer@impl@tako@cognex@@AEAAXHH@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::MousePan(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 542,
+    "Mangled": "?MouseRotate@Viewer@impl@tako@cognex@@AEAAXAEBUMouseMotionEvent@34@HH@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::MouseRotate(struct cognex::tako::MouseMotionEvent const \u0026 __ptr64,int,int) __ptr64"
+  },
+  {
+    "Ordinal": 543,
+    "Mangled": "?Next@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::Next(void) __ptr64"
+  },
+  {
+    "Ordinal": 544,
+    "Mangled": "?NodeId@TrackingTarget@tako@cognex@@QEBAHXZ",
+    "Demangled": "public: int __cdecl cognex::tako::TrackingTarget::NodeId(void)const __ptr64"
+  },
+  {
+    "Ordinal": 545,
+    "Mangled": "?NodePrecise@TrackingTarget@tako@cognex@@SA?AV123@H@Z",
+    "Demangled": "public: static class cognex::tako::TrackingTarget __cdecl cognex::tako::TrackingTarget::NodePrecise(int)"
+  },
+  {
+    "Ordinal": 546,
+    "Mangled": "?NormalizedMouseCoordinates@Viewer@impl@tako@cognex@@AEBA?AU?$tvec2@M$0A@@glm@@HH@Z",
+    "Demangled": "private: struct glm::tvec2\u003Cfloat,0\u003E __cdecl cognex::tako::impl::Viewer::NormalizedMouseCoordinates(int,int)const __ptr64"
+  },
+  {
+    "Ordinal": 547,
+    "Mangled": "?NotifyGraphics@Viewer@impl@tako@cognex@@QEAAXW4GraphicNotificationChanges@234@@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::NotifyGraphics(enum cognex::tako::impl::GraphicNotificationChanges) __ptr64"
+  },
+  {
+    "Ordinal": 548,
+    "Mangled": "?OnEvent@Viewer@impl@tako@cognex@@UEAAXAEBUMouseButtonEvent@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::OnEvent(struct cognex::tako::MouseButtonEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 549,
+    "Mangled": "?OnEvent@Viewer@impl@tako@cognex@@UEAAXAEBUMouseMotionEvent@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::OnEvent(struct cognex::tako::MouseMotionEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 550,
+    "Mangled": "?OnEvent@Viewer@impl@tako@cognex@@UEAAXAEBUMouseWheelEvent@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::OnEvent(struct cognex::tako::MouseWheelEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 551,
+    "Mangled": "?OnEvent@Viewer@impl@tako@cognex@@UEAAXAEBUMultiGestureEvent@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::OnEvent(struct cognex::tako::MultiGestureEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 552,
+    "Mangled": "?OnEvent@Viewer@impl@tako@cognex@@UEAAXAEBUSizeChangedEvent@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::OnEvent(struct cognex::tako::SizeChangedEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 553,
+    "Mangled": "?OnEvent@Viewer@impl@tako@cognex@@UEAAXAEBUTouchButtonEvent@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::OnEvent(struct cognex::tako::TouchButtonEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 554,
+    "Mangled": "?OnEvent@Viewer@impl@tako@cognex@@UEAAXAEBUTouchMotionEvent@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::OnEvent(struct cognex::tako::TouchMotionEvent const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 555,
+    "Mangled": "?OnEventWithDeadzone@Viewer@impl@tako@cognex@@AEAAXAEBUMouseMotionEvent@34@H@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::OnEventWithDeadzone(struct cognex::tako::MouseMotionEvent const \u0026 __ptr64,int) __ptr64"
+  },
+  {
+    "Ordinal": 556,
+    "Mangled": "?Packetize@QuadMeshData@tako@cognex@@SA?AV?$shared_ptr@VPacketIterator@QuadMeshData@tako@cognex@@@std@@AEBV?$shared_ptr@VTraverser@QuadMeshData@tako@cognex@@@5@W4Decimation@123@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::tako::QuadMeshData::PacketIterator\u003E __cdecl cognex::tako::QuadMeshData::Packetize(class std::shared_ptr\u003Cclass cognex::tako::QuadMeshData::Traverser\u003E const \u0026 __ptr64,enum cognex::tako::QuadMeshData::Decimation)"
+  },
+  {
+    "Ordinal": 557,
+    "Mangled": "?PenetrateWall@Viewer@impl@tako@cognex@@AEAAXAEBU?$tvec3@M$0A@@glm@@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::PenetrateWall(struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 558,
+    "Mangled": "?Plasma@colormaps@tako@cognex@@3V?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@std@@B",
+    "Demangled": "class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const cognex::tako::colormaps::Plasma"
+  },
+  {
+    "Ordinal": 559,
+    "Mangled": "?ReTarget@Viewer@impl@tako@cognex@@AEAAXAEBU?$tvec3@M$0A@@glm@@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::ReTarget(struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 560,
+    "Mangled": "?ReadPixels@Viewer@impl@tako@cognex@@UEAA?AV?$shared_ptr@VImage@tako@cognex@@@std@@HH@Z",
+    "Demangled": "public: virtual class std::shared_ptr\u003Cclass cognex::tako::Image\u003E __cdecl cognex::tako::impl::Viewer::ReadPixels(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 561,
+    "Mangled": "?ReadPixels@Viewer@impl@tako@cognex@@UEAA?AV?$shared_ptr@VImage@tako@cognex@@@std@@XZ",
+    "Demangled": "public: virtual class std::shared_ptr\u003Cclass cognex::tako::Image\u003E __cdecl cognex::tako::impl::Viewer::ReadPixels(void) __ptr64"
+  },
+  {
+    "Ordinal": 562,
+    "Mangled": "?Recenter@Viewer@impl@tako@cognex@@AEAAXAEBU?$tvec3@M$0A@@glm@@AEBU?$tvec2@M$0A@@6@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::Recenter(struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64,struct glm::tvec2\u003Cfloat,0\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 563,
+    "Mangled": "?Render@Viewer@impl@tako@cognex@@AEAAXPEAVDrawer@234@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::Render(class cognex::tako::impl::Drawer * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 564,
+    "Mangled": "?Render@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::Render(void) __ptr64"
+  },
+  {
+    "Ordinal": 565,
+    "Mangled": "?RenderBody@Viewer@impl@tako@cognex@@AEAA_N_N@Z",
+    "Demangled": "private: bool __cdecl cognex::tako::impl::Viewer::RenderBody(bool) __ptr64"
+  },
+  {
+    "Ordinal": 566,
+    "Mangled": "?RenderIfUpdated@Viewer@impl@tako@cognex@@UEAA_NXZ",
+    "Demangled": "public: virtual bool __cdecl cognex::tako::impl::Viewer::RenderIfUpdated(void) __ptr64"
+  },
+  {
+    "Ordinal": 567,
+    "Mangled": "?RenderScreenSpecific@Viewer@impl@tako@cognex@@AEAAXPEAVScreenDrawer@234@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::RenderScreenSpecific(class cognex::tako::impl::ScreenDrawer * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 568,
+    "Mangled": "?ResetView@Viewer@impl@tako@cognex@@QEAAXAEBU?$tvec3@M$0A@@glm@@0@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::ResetView(struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64,struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 569,
+    "Mangled": "?ResetView@Viewer@impl@tako@cognex@@QEAAXAEBU?$tvec3@M$0A@@glm@@@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::ResetView(struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 570,
+    "Mangled": "?ResetView@Viewer@impl@tako@cognex@@UEAAXAEBV?$array@M$02@std@@0@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::ResetView(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 571,
+    "Mangled": "?ResetView@Viewer@impl@tako@cognex@@UEAAXAEBV?$array@M$02@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::ResetView(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 572,
+    "Mangled": "?SaveImage@Viewer@impl@tako@cognex@@UEAAXPEBD@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SaveImage(char const * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 573,
+    "Mangled": "?SaveImage@Viewer@impl@tako@cognex@@UEAAXPEBDHH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SaveImage(char const * __ptr64,int,int) __ptr64"
+  },
+  {
+    "Ordinal": 574,
+    "Mangled": "?SaveImage@Viewer@impl@tako@cognex@@UEAAXPEB_W@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SaveImage(wchar_t const * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 575,
+    "Mangled": "?SaveImage@Viewer@impl@tako@cognex@@UEAAXPEB_WHH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SaveImage(wchar_t const * __ptr64,int,int) __ptr64"
+  },
+  {
+    "Ordinal": 576,
+    "Mangled": "?SaveImageMemory@Viewer@impl@tako@cognex@@AEAA?AV?$shared_ptr@VOStreamMem@cinder@@@std@@PEBDHH@Z",
+    "Demangled": "private: class std::shared_ptr\u003Cclass cinder::OStreamMem\u003E __cdecl cognex::tako::impl::Viewer::SaveImageMemory(char const * __ptr64,int,int) __ptr64"
+  },
+  {
+    "Ordinal": 577,
+    "Mangled": "?SceneUpdated@Viewer@impl@tako@cognex@@QEAAXXZ",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::SceneUpdated(void) __ptr64"
+  },
+  {
+    "Ordinal": 578,
+    "Mangled": "?ScreenOutdated@Viewer@impl@tako@cognex@@QEAAXXZ",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::ScreenOutdated(void) __ptr64"
+  },
+  {
+    "Ordinal": 579,
+    "Mangled": "?ScreenToWorldFBO@Viewer@impl@tako@cognex@@QEAA?AU?$tvec3@M$0A@@glm@@U?$tvec2@M$0A@@6@M@Z",
+    "Demangled": "public: struct glm::tvec3\u003Cfloat,0\u003E __cdecl cognex::tako::impl::Viewer::ScreenToWorldFBO(struct glm::tvec2\u003Cfloat,0\u003E,float) __ptr64"
+  },
+  {
+    "Ordinal": 580,
+    "Mangled": "?SetAxesVisible@Viewer@impl@tako@cognex@@UEAAX_N@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetAxesVisible(bool) __ptr64"
+  },
+  {
+    "Ordinal": 581,
+    "Mangled": "?SetBackgroundColor@Viewer@impl@tako@cognex@@UEAAXAEBUColor@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetBackgroundColor(struct cognex::tako::Color const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 582,
+    "Mangled": "?SetCameraControlMode@Viewer@impl@tako@cognex@@UEAAXAEBW4CameraControlMode@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCameraControlMode(enum cognex::tako::CameraControlMode const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 583,
+    "Mangled": "?SetCameraMode@Viewer@impl@tako@cognex@@UEAAXAEBW4CameraMode@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCameraMode(enum cognex::tako::CameraMode const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 584,
+    "Mangled": "?SetCameraSettings@Viewer@impl@tako@cognex@@UEAAXAEBUCameraSettings@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCameraSettings(struct cognex::tako::CameraSettings const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 585,
+    "Mangled": "?SetChangeCursorCallback@Viewer@impl@tako@cognex@@UEAAXAEBV?$function@$$A6AXH@Z@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetChangeCursorCallback(class std::function\u003Cvoid __cdecl(int)\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 586,
+    "Mangled": "?SetColorbarDecimalPlaces@Viewer@impl@tako@cognex@@UEAAXH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetColorbarDecimalPlaces(int) __ptr64"
+  },
+  {
+    "Ordinal": 587,
+    "Mangled": "?SetColorbarLabel@Viewer@impl@tako@cognex@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetColorbarLabel(class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 588,
+    "Mangled": "?SetColorbarSubdivisions@Viewer@impl@tako@cognex@@UEAAXH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetColorbarSubdivisions(int) __ptr64"
+  },
+  {
+    "Ordinal": 589,
+    "Mangled": "?SetColorbarTicksColor@Viewer@impl@tako@cognex@@UEAAXAEBUColor@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetColorbarTicksColor(struct cognex::tako::Color const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 590,
+    "Mangled": "?SetColorbarVisible@Viewer@impl@tako@cognex@@UEAAX_N@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetColorbarVisible(bool) __ptr64"
+  },
+  {
+    "Ordinal": 591,
+    "Mangled": "?SetCreateCallback@Viewer@impl@tako@cognex@@UEAAXV?$function@$$A6AXHW4CreatorMode@tako@cognex@@@Z@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCreateCallback(class std::function\u003Cvoid __cdecl(int,enum cognex::tako::CreatorMode)\u003E) __ptr64"
+  },
+  {
+    "Ordinal": 592,
+    "Mangled": "?SetCreatorColor@Viewer@impl@tako@cognex@@UEAAXAEBUColor@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCreatorColor(struct cognex::tako::Color const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 593,
+    "Mangled": "?SetCreatorDisabled@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCreatorDisabled(void) __ptr64"
+  },
+  {
+    "Ordinal": 594,
+    "Mangled": "?SetCreatorEnabled@Viewer@impl@tako@cognex@@UEAAXW4CreatorMode@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCreatorEnabled(enum cognex::tako::CreatorMode) __ptr64"
+  },
+  {
+    "Ordinal": 595,
+    "Mangled": "?SetCreatorOpacity@Viewer@impl@tako@cognex@@UEAAXAEBM@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetCreatorOpacity(float const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 596,
+    "Mangled": "?SetDPI@Viewer@impl@tako@cognex@@UEAAXH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetDPI(int) __ptr64"
+  },
+  {
+    "Ordinal": 597,
+    "Mangled": "?SetDisableLambertOnAllowedModels@Viewer@impl@tako@cognex@@UEAAX_N@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetDisableLambertOnAllowedModels(bool) __ptr64"
+  },
+  {
+    "Ordinal": 598,
+    "Mangled": "?SetDisplayMode@Viewer@impl@tako@cognex@@UEAAXW4DisplayMode@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetDisplayMode(enum cognex::tako::DisplayMode) __ptr64"
+  },
+  {
+    "Ordinal": 599,
+    "Mangled": "?SetDragCallback@Viewer@impl@tako@cognex@@UEAAXV?$function@$$A6A_NHW4DragEvent@tako@cognex@@AEBV?$array@M$02@std@@@Z@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetDragCallback(class std::function\u003Cbool __cdecl(int,enum cognex::tako::DragEvent,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64)\u003E) __ptr64"
+  },
+  {
+    "Ordinal": 600,
+    "Mangled": "?SetGridColor@Viewer@impl@tako@cognex@@UEAAXAEBUColor@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetGridColor(struct cognex::tako::Color const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 601,
+    "Mangled": "?SetGridUnits@Viewer@impl@tako@cognex@@UEAAXAEBW4GridUnits@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetGridUnits(enum cognex::tako::GridUnits const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 602,
+    "Mangled": "?SetHeightColor@Viewer@impl@tako@cognex@@UEAAXAEBV?$shared_ptr@$$CBVDirectionalHeightColor@tako@cognex@@@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetHeightColor(class std::shared_ptr\u003Cclass cognex::tako::DirectionalHeightColor const \u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 603,
+    "Mangled": "?SetHeightColor@Viewer@impl@tako@cognex@@UEAAXAEBV?$shared_ptr@$$CBVDirectionalHeightColor@tako@cognex@@@std@@AEBM@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetHeightColor(class std::shared_ptr\u003Cclass cognex::tako::DirectionalHeightColor const \u003E const \u0026 __ptr64,float const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 604,
+    "Mangled": "?SetHeightColorWeight@Viewer@impl@tako@cognex@@UEAAXAEBM@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetHeightColorWeight(float const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 605,
+    "Mangled": "?SetInteractiveModel@Viewer@impl@tako@cognex@@UEAAXH_NH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetInteractiveModel(int,bool,int) __ptr64"
+  },
+  {
+    "Ordinal": 606,
+    "Mangled": "?SetLightType@Viewer@impl@tako@cognex@@UEAAXW4LightType@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetLightType(enum cognex::tako::LightType) __ptr64"
+  },
+  {
+    "Ordinal": 607,
+    "Mangled": "?SetMousePosCallback@Viewer@impl@tako@cognex@@UEAAXV?$function@$$A6AXAEBUViewMousePos@tako@cognex@@@Z@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetMousePosCallback(class std::function\u003Cvoid __cdecl(struct cognex::tako::ViewMousePos const \u0026 __ptr64)\u003E) __ptr64"
+  },
+  {
+    "Ordinal": 608,
+    "Mangled": "?SetMouseTracking@Viewer@impl@tako@cognex@@UEAAXAEBVTrackingTarget@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetMouseTracking(class cognex::tako::TrackingTarget const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 609,
+    "Mangled": "?SetSceneCuttingPlane@Viewer@impl@tako@cognex@@UEAAXH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetSceneCuttingPlane(int) __ptr64"
+  },
+  {
+    "Ordinal": 610,
+    "Mangled": "?SetSceneRoi@Viewer@impl@tako@cognex@@QEAAXAEBV?$shared_ptr@VGraphicGeom@impl@tako@cognex@@@std@@@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::SetSceneRoi(class std::shared_ptr\u003Cclass cognex::tako::impl::GraphicGeom\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 611,
+    "Mangled": "?SetSelected@Viewer@impl@tako@cognex@@QEAAXPEAVGraphicModel@234@@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::SetSelected(class cognex::tako::impl::GraphicModel * __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 612,
+    "Mangled": "?SetSelected@Viewer@impl@tako@cognex@@UEAAXH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetSelected(int) __ptr64"
+  },
+  {
+    "Ordinal": 613,
+    "Mangled": "?SetSelectionBoxColor@Viewer@impl@tako@cognex@@UEAAXAEBUColor@34@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetSelectionBoxColor(struct cognex::tako::Color const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 614,
+    "Mangled": "?SetSelectionChangedCallback@Viewer@impl@tako@cognex@@UEAAXV?$function@$$A6AXHH@Z@std@@@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetSelectionChangedCallback(class std::function\u003Cvoid __cdecl(int,int)\u003E) __ptr64"
+  },
+  {
+    "Ordinal": 615,
+    "Mangled": "?SetSelectionPixelTolerance@Viewer@impl@tako@cognex@@UEAAXH@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetSelectionPixelTolerance(int) __ptr64"
+  },
+  {
+    "Ordinal": 616,
+    "Mangled": "?SetShowGrid@Viewer@impl@tako@cognex@@UEAAX_N@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetShowGrid(bool) __ptr64"
+  },
+  {
+    "Ordinal": 617,
+    "Mangled": "?SetShowInteractiveHints@Viewer@impl@tako@cognex@@QEAAX_N@Z",
+    "Demangled": "public: void __cdecl cognex::tako::impl::Viewer::SetShowInteractiveHints(bool) __ptr64"
+  },
+  {
+    "Ordinal": 618,
+    "Mangled": "?SetView@Viewer@impl@tako@cognex@@UEAAXAEBV?$array@M$02@std@@00@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetView(class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64,class std::array\u003Cfloat,3\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 619,
+    "Mangled": "?SetWireframeAsEdges@Viewer@impl@tako@cognex@@UEAAX_N@Z",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::SetWireframeAsEdges(bool) __ptr64"
+  },
+  {
+    "Ordinal": 620,
+    "Mangled": "?Shutdown@tako@cognex@@YAXXZ",
+    "Demangled": "void __cdecl cognex::tako::Shutdown(void)"
+  },
+  {
+    "Ordinal": 621,
+    "Mangled": "?TextOutlineThickness@Viewer@impl@tako@cognex@@2HB",
+    "Demangled": "public: static int const cognex::tako::impl::Viewer::TextOutlineThickness"
+  },
+  {
+    "Ordinal": 622,
+    "Mangled": "?ThereAreInteractiveGraphics@Viewer@impl@tako@cognex@@AEBA_NXZ",
+    "Demangled": "private: bool __cdecl cognex::tako::impl::Viewer::ThereAreInteractiveGraphics(void)const __ptr64"
+  },
+  {
+    "Ordinal": 623,
+    "Mangled": "?Turbo@colormaps@tako@cognex@@3V?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@std@@B",
+    "Demangled": "class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const cognex::tako::colormaps::Turbo"
+  },
+  {
+    "Ordinal": 624,
+    "Mangled": "?UpdateGraphics@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::UpdateGraphics(void) __ptr64"
+  },
+  {
+    "Ordinal": 625,
+    "Mangled": "?UpdatePlanes@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::UpdatePlanes(void) __ptr64"
+  },
+  {
+    "Ordinal": 626,
+    "Mangled": "?Viridis@colormaps@tako@cognex@@3V?$vector@UColor@tako@cognex@@V?$allocator@UColor@tako@cognex@@@std@@@std@@B",
+    "Demangled": "class std::vector\u003Cstruct cognex::tako::Color,class std::allocator\u003Cstruct cognex::tako::Color\u003E \u003E const cognex::tako::colormaps::Viridis"
+  },
+  {
+    "Ordinal": 627,
+    "Mangled": "?WaitHit@Viewer@impl@tako@cognex@@UEAAXXZ",
+    "Demangled": "public: virtual void __cdecl cognex::tako::impl::Viewer::WaitHit(void) __ptr64"
+  },
+  {
+    "Ordinal": 628,
+    "Mangled": "?WorldToViewMousePos@Viewer@impl@tako@cognex@@AEBA?AUViewMousePos@34@AEBU?$tvec3@M$0A@@glm@@PEAVGraphic@234@@Z",
+    "Demangled": "private: struct cognex::tako::ViewMousePos __cdecl cognex::tako::impl::Viewer::WorldToViewMousePos(struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64,class cognex::tako::impl::Graphic * __ptr64)const __ptr64"
+  },
+  {
+    "Ordinal": 629,
+    "Mangled": "?WorldUnitsPerPixel@Viewer@impl@tako@cognex@@QEBA?AU?$tvec2@M$0A@@glm@@U?$tvec3@M$0A@@6@@Z",
+    "Demangled": "public: struct glm::tvec2\u003Cfloat,0\u003E __cdecl cognex::tako::impl::Viewer::WorldUnitsPerPixel(struct glm::tvec3\u003Cfloat,0\u003E)const __ptr64"
+  },
+  {
+    "Ordinal": 630,
+    "Mangled": "?ZoomOrtho@Viewer@impl@tako@cognex@@AEAAX_NAEBU?$tvec3@M$0A@@glm@@AEBU?$tvec2@M$0A@@6@@Z",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::ZoomOrtho(bool,struct glm::tvec3\u003Cfloat,0\u003E const \u0026 __ptr64,struct glm::tvec2\u003Cfloat,0\u003E const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 631,
+    "Mangled": "?any_graphic_has_pixel_size_geometry@Viewer@impl@tako@cognex@@AEBA_NXZ",
+    "Demangled": "private: bool __cdecl cognex::tako::impl::Viewer::any_graphic_has_pixel_size_geometry(void)const __ptr64"
+  },
+  {
+    "Ordinal": 632,
+    "Mangled": "?cam@Viewer@impl@tako@cognex@@QEBAPEBVCamera@cinder@@XZ",
+    "Demangled": "public: class cinder::Camera const * __ptr64 __cdecl cognex::tako::impl::Viewer::cam(void)const __ptr64"
+  },
+  {
+    "Ordinal": 633,
+    "Mangled": "?clear_current@Context@egl@cognex@@QEAAHXZ",
+    "Demangled": "public: int __cdecl cognex::egl::Context::clear_current(void) __ptr64"
+  },
+  {
+    "Ordinal": 634,
+    "Mangled": "?config@Surface@egl@cognex@@QEAAPEAXXZ",
+    "Demangled": "public: void * __ptr64 __cdecl cognex::egl::Surface::config(void) __ptr64"
+  },
+  {
+    "Ordinal": 635,
+    "Mangled": "?create@Context@egl@cognex@@SA?AV?$shared_ptr@VContext@egl@cognex@@@std@@AEBVDisplay@23@V?$shared_ptr@VSurface@egl@cognex@@@5@@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::egl::Context\u003E __cdecl cognex::egl::Context::create(class cognex::egl::Display const \u0026 __ptr64,class std::shared_ptr\u003Cclass cognex::egl::Surface\u003E)"
+  },
+  {
+    "Ordinal": 636,
+    "Mangled": "?create@Engine@tako@cognex@@SAPEAV123@V?$function@$$A6AHXZ@std@@0@Z",
+    "Demangled": "public: static class cognex::tako::Engine * __ptr64 __cdecl cognex::tako::Engine::create(class std::function\u003Cint __cdecl(void)\u003E,class std::function\u003Cint __cdecl(void)\u003E)"
+  },
+  {
+    "Ordinal": 637,
+    "Mangled": "?create@PBuffer@tako@egl@cognex@@SA?AV?$unique_ptr@VPBuffer@tako@egl@cognex@@U?$default_delete@VPBuffer@tako@egl@cognex@@@std@@@std@@HH@Z",
+    "Demangled": "public: static class std::unique_ptr\u003Cclass cognex::egl::tako::PBuffer,struct std::default_delete\u003Cclass cognex::egl::tako::PBuffer\u003E \u003E __cdecl cognex::egl::tako::PBuffer::create(int,int)"
+  },
+  {
+    "Ordinal": 638,
+    "Mangled": "?create@PBuffer@tako@egl@cognex@@SA?AV?$unique_ptr@VPBuffer@tako@egl@cognex@@U?$default_delete@VPBuffer@tako@egl@cognex@@@std@@@std@@HHW4RendererType@34@@Z",
+    "Demangled": "public: static class std::unique_ptr\u003Cclass cognex::egl::tako::PBuffer,struct std::default_delete\u003Cclass cognex::egl::tako::PBuffer\u003E \u003E __cdecl cognex::egl::tako::PBuffer::create(int,int,enum cognex::egl::RendererType)"
+  },
+  {
+    "Ordinal": 639,
+    "Mangled": "?create@PBuffer@tako@egl@cognex@@SA?AV?$unique_ptr@VPBuffer@tako@egl@cognex@@U?$default_delete@VPBuffer@tako@egl@cognex@@@std@@@std@@PEAUHDC__@@HH@Z",
+    "Demangled": "public: static class std::unique_ptr\u003Cclass cognex::egl::tako::PBuffer,struct std::default_delete\u003Cclass cognex::egl::tako::PBuffer\u003E \u003E __cdecl cognex::egl::tako::PBuffer::create(struct HDC__ * __ptr64,int,int)"
+  },
+  {
+    "Ordinal": 640,
+    "Mangled": "?create@Surface@egl@cognex@@SA?AV?$shared_ptr@VSurface@egl@cognex@@@std@@AEBVDisplay@23@HH@Z",
+    "Demangled": "public: static class std::shared_ptr\u003Cclass cognex::egl::Surface\u003E __cdecl cognex::egl::Surface::create(class cognex::egl::Display const \u0026 __ptr64,int,int)"
+  },
+  {
+    "Ordinal": 641,
+    "Mangled": "?create_height_color_texture@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::create_height_color_texture(void) __ptr64"
+  },
+  {
+    "Ordinal": 642,
+    "Mangled": "?cursor_change_callback@Viewer@impl@tako@cognex@@QEBA?AV?$function@$$A6AXH@Z@std@@XZ",
+    "Demangled": "public: class std::function\u003Cvoid __cdecl(int)\u003E __cdecl cognex::tako::impl::Viewer::cursor_change_callback(void)const __ptr64"
+  },
+  {
+    "Ordinal": 643,
+    "Mangled": "?depthTextureFormat@Viewer@impl@tako@cognex@@SA?AUFormat@Texture2d@gl@cinder@@XZ",
+    "Demangled": "public: static struct cinder::gl::Texture2d::Format __cdecl cognex::tako::impl::Viewer::depthTextureFormat(void)"
+  },
+  {
+    "Ordinal": 644,
+    "Mangled": "?display@Context@egl@cognex@@QEAAAEBVDisplay@23@XZ",
+    "Demangled": "public: class cognex::egl::Display const \u0026 __ptr64 __cdecl cognex::egl::Context::display(void) __ptr64"
+  },
+  {
+    "Ordinal": 645,
+    "Mangled": "?display@Surface@egl@cognex@@QEAAAEBVDisplay@23@XZ",
+    "Demangled": "public: class cognex::egl::Display const \u0026 __ptr64 __cdecl cognex::egl::Surface::display(void) __ptr64"
+  },
+  {
+    "Ordinal": 646,
+    "Mangled": "?fonts_available@Viewer@impl@tako@cognex@@QEBA_NXZ",
+    "Demangled": "public: bool __cdecl cognex::tako::impl::Viewer::fonts_available(void)const __ptr64"
+  },
+  {
+    "Ordinal": 647,
+    "Mangled": "?generateFragmentShader@Viewer@impl@tako@cognex@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVShaderDef@234@@Z",
+    "Demangled": "private: static class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E __cdecl cognex::tako::impl::Viewer::generateFragmentShader(class cognex::tako::impl::ShaderDef const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 648,
+    "Mangled": "?generateVertexShader@Viewer@impl@tako@cognex@@CA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVShaderDef@234@@Z",
+    "Demangled": "private: static class std::basic_string\u003Cchar,struct std::char_traits\u003Cchar\u003E,class std::allocator\u003Cchar\u003E \u003E __cdecl cognex::tako::impl::Viewer::generateVertexShader(class cognex::tako::impl::ShaderDef const \u0026 __ptr64)"
+  },
+  {
+    "Ordinal": 649,
+    "Mangled": "?getSelectionBoxCiColor@Viewer@impl@tako@cognex@@QEAA?AV?$ColorAT@M@cinder@@XZ",
+    "Demangled": "public: class cinder::ColorAT\u003Cfloat\u003E __cdecl cognex::tako::impl::Viewer::getSelectionBoxCiColor(void) __ptr64"
+  },
+  {
+    "Ordinal": 650,
+    "Mangled": "?getStockShader@Viewer@impl@tako@cognex@@QEAA?AV?$shared_ptr@VGlslProg@gl@cinder@@@std@@AEBVShaderDef@234@@Z",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cinder::gl::GlslProg\u003E __cdecl cognex::tako::impl::Viewer::getStockShader(class cognex::tako::impl::ShaderDef const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 651,
+    "Mangled": "?height@Viewer@impl@tako@cognex@@QEBAHXZ",
+    "Demangled": "public: int __cdecl cognex::tako::impl::Viewer::height(void)const __ptr64"
+  },
+  {
+    "Ordinal": 652,
+    "Mangled": "?height_color@Viewer@impl@tako@cognex@@QEBA?AV?$shared_ptr@$$CBVDirectionalHeightColor@impl@tako@cognex@@@std@@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::tako::impl::DirectionalHeightColor const \u003E __cdecl cognex::tako::impl::Viewer::height_color(void)const __ptr64"
+  },
+  {
+    "Ordinal": 653,
+    "Mangled": "?height_color_texture@Viewer@impl@tako@cognex@@QEAAAEBV?$shared_ptr@VTexture2d@gl@cinder@@@std@@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cinder::gl::Texture2d\u003E const \u0026 __ptr64 __cdecl cognex::tako::impl::Viewer::height_color_texture(void) __ptr64"
+  },
+  {
+    "Ordinal": 654,
+    "Mangled": "?height_color_weight@Viewer@impl@tako@cognex@@QEBAMXZ",
+    "Demangled": "public: float __cdecl cognex::tako::impl::Viewer::height_color_weight(void)const __ptr64"
+  },
+  {
+    "Ordinal": 655,
+    "Mangled": "?lock@Display@egl@cognex@@QEAAXXZ",
+    "Demangled": "public: void __cdecl cognex::egl::Display::lock(void) __ptr64"
+  },
+  {
+    "Ordinal": 656,
+    "Mangled": "?make_current@Context@egl@cognex@@QEAAHXZ",
+    "Demangled": "public: int __cdecl cognex::egl::Context::make_current(void) __ptr64"
+  },
+  {
+    "Ordinal": 657,
+    "Mangled": "?mmToPixels@Viewer@impl@tako@cognex@@AEBAHM@Z",
+    "Demangled": "private: int __cdecl cognex::tako::impl::Viewer::mmToPixels(float)const __ptr64"
+  },
+  {
+    "Ordinal": 658,
+    "Mangled": "?notify_zoom_level_changed@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::notify_zoom_level_changed(void) __ptr64"
+  },
+  {
+    "Ordinal": 659,
+    "Mangled": "?raw@Display@egl@cognex@@QEBAPEAXXZ",
+    "Demangled": "public: void * __ptr64 __cdecl cognex::egl::Display::raw(void)const __ptr64"
+  },
+  {
+    "Ordinal": 660,
+    "Mangled": "?raw@Surface@egl@cognex@@QEAAPEAXXZ",
+    "Demangled": "public: void * __ptr64 __cdecl cognex::egl::Surface::raw(void) __ptr64"
+  },
+  {
+    "Ordinal": 661,
+    "Mangled": "?rebuild_plane_rectangles@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::rebuild_plane_rectangles(void) __ptr64"
+  },
+  {
+    "Ordinal": 662,
+    "Mangled": "?recreate_surface@Context@egl@cognex@@QEAAXHH@Z",
+    "Demangled": "public: void __cdecl cognex::egl::Context::recreate_surface(int,int) __ptr64"
+  },
+  {
+    "Ordinal": 663,
+    "Mangled": "?render_outline_depth_texture@Viewer@impl@tako@cognex@@AEAA?AV?$shared_ptr@VTexture2d@gl@cinder@@@std@@XZ",
+    "Demangled": "private: class std::shared_ptr\u003Cclass cinder::gl::Texture2d\u003E __cdecl cognex::tako::impl::Viewer::render_outline_depth_texture(void) __ptr64"
+  },
+  {
+    "Ordinal": 664,
+    "Mangled": "?renderer_used@Display@egl@cognex@@QEBA?AW4RendererType@23@XZ",
+    "Demangled": "public: enum cognex::egl::RendererType __cdecl cognex::egl::Display::renderer_used(void)const __ptr64"
+  },
+  {
+    "Ordinal": 665,
+    "Mangled": "?rendering_with_height_color@Viewer@impl@tako@cognex@@QEAA_NXZ",
+    "Demangled": "public: bool __cdecl cognex::tako::impl::Viewer::rendering_with_height_color(void) __ptr64"
+  },
+  {
+    "Ordinal": 666,
+    "Mangled": "?scene_box_all_in@Viewer@impl@tako@cognex@@AEAA?AVAxisAlignedBox@cinder@@_N@Z",
+    "Demangled": "private: class cinder::AxisAlignedBox __cdecl cognex::tako::impl::Viewer::scene_box_all_in(bool) __ptr64"
+  },
+  {
+    "Ordinal": 667,
+    "Mangled": "?setCurrentContext@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::setCurrentContext(void) __ptr64"
+  },
+  {
+    "Ordinal": 668,
+    "Mangled": "?shared_from_this@?$enable_shared_from_this@VContext@egl@cognex@@@std@@QEAA?AV?$shared_ptr@VContext@egl@cognex@@@2@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::egl::Context\u003E __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E::shared_from_this(void) __ptr64"
+  },
+  {
+    "Ordinal": 669,
+    "Mangled": "?shared_from_this@?$enable_shared_from_this@VContext@egl@cognex@@@std@@QEBA?AV?$shared_ptr@$$CBVContext@egl@cognex@@@2@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::egl::Context const \u003E __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Context\u003E::shared_from_this(void)const __ptr64"
+  },
+  {
+    "Ordinal": 670,
+    "Mangled": "?shared_from_this@?$enable_shared_from_this@VSurface@egl@cognex@@@std@@QEAA?AV?$shared_ptr@VSurface@egl@cognex@@@2@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::egl::Surface\u003E __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E::shared_from_this(void) __ptr64"
+  },
+  {
+    "Ordinal": 671,
+    "Mangled": "?shared_from_this@?$enable_shared_from_this@VSurface@egl@cognex@@@std@@QEBA?AV?$shared_ptr@$$CBVSurface@egl@cognex@@@2@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::egl::Surface const \u003E __cdecl std::enable_shared_from_this\u003Cclass cognex::egl::Surface\u003E::shared_from_this(void)const __ptr64"
+  },
+  {
+    "Ordinal": 672,
+    "Mangled": "?surface@Context@egl@cognex@@QEAA?AV?$shared_ptr@VSurface@egl@cognex@@@std@@XZ",
+    "Demangled": "public: class std::shared_ptr\u003Cclass cognex::egl::Surface\u003E __cdecl cognex::egl::Context::surface(void) __ptr64"
+  },
+  {
+    "Ordinal": 673,
+    "Mangled": "?texture_pointer@Surface@egl@cognex@@QEAAPEAXXZ",
+    "Demangled": "public: void * __ptr64 __cdecl cognex::egl::Surface::texture_pointer(void) __ptr64"
+  },
+  {
+    "Ordinal": 674,
+    "Mangled": "?unlock@Display@egl@cognex@@QEAAXXZ",
+    "Demangled": "public: void __cdecl cognex::egl::Display::unlock(void) __ptr64"
+  },
+  {
+    "Ordinal": 675,
+    "Mangled": "?updateSelected@Viewer@impl@tako@cognex@@AEAAXXZ",
+    "Demangled": "private: void __cdecl cognex::tako::impl::Viewer::updateSelected(void) __ptr64"
+  },
+  {
+    "Ordinal": 676,
+    "Mangled": "?what@Error@egl@cognex@@UEBAPEBDXZ",
+    "Demangled": "public: virtual char const * __ptr64 __cdecl cognex::egl::Error::what(void)const __ptr64"
+  },
+  {
+    "Ordinal": 677,
+    "Mangled": "?width@Viewer@impl@tako@cognex@@QEBAHXZ",
+    "Demangled": "public: int __cdecl cognex::tako::impl::Viewer::width(void)const __ptr64"
+  }
+]

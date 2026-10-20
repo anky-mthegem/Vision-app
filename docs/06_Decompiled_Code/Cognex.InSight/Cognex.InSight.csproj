@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cognex.InSight</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <UseWPF>True</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Cognex.InSight.Resources.rootCA.pfx" />
+    <None Remove="Cognex.InSight.Resources.system.system_InSight_32.png" />
+    <None Remove="Cognex.InSight.Resources.system.system_xInsightIcon_32.png" />
+    <None Remove="Cognex.InSight.Resources.HelpRedirects.xml" />
+    <None Remove="eUpb4mqIWCLha44x4I.1xfCA65KIoLylcGwDM" />
+    <EmbeddedResource Include="Cognex.InSight.Resources.rootCA.pfx" LogicalName="Cognex.InSight.Resources.rootCA.pfx" />
+    <EmbeddedResource Include="Cognex.InSight.Resources.system.system_InSight_32.png" LogicalName="Cognex.InSight.Resources.system.system_InSight_32.png" />
+    <EmbeddedResource Include="Cognex.InSight.Resources.system.system_xInsightIcon_32.png" LogicalName="Cognex.InSight.Resources.system.system_xInsightIcon_32.png" />
+    <EmbeddedResource Include="Cognex.InSight.Resources.HelpRedirects.xml" LogicalName="Cognex.InSight.Resources.HelpRedirects.xml" />
+    <EmbeddedResource Include="eUpb4mqIWCLha44x4I.1xfCA65KIoLylcGwDM" LogicalName="eUpb4mqIWCLha44x4I.1xfCA65KIoLylcGwDM" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Cognex.Tracing">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Cognex.Diagnostics">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Remoting.CogSocket">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Remoting.CogSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.Remoting">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.InSight.Common">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IdentityModel.OidcClient">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\IdentityModel.OidcClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="Auth0.OidcClient">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Auth0.OidcClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Auth0.OidcClient.Core">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Auth0.OidcClient.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.ImageManager.Client">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.ImageManager.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Remoting.Broadcasting">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Remoting.Broadcasting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+</Project>

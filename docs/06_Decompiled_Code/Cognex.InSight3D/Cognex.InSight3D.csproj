@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cognex.InSight3D</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Ln6rZsUWubcV7JnOH3.SyJOrOA66MeDRaqMNT" />
+    <EmbeddedResource Include="Ln6rZsUWubcV7JnOH3.SyJOrOA66MeDRaqMNT" LogicalName="Ln6rZsUWubcV7JnOH3.SyJOrOA66MeDRaqMNT" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="Cognex.ThreeD">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.ThreeD.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="Cognex.InSight">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.InSight.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Diagnostics">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Cognex.Designer.Remote">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Designer.Remote.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Cognex.Designer.Core">
+      <HintPath>..\..\..\..\..\..\Program Files\Cognex\In-Sight\In-Sight Vision Suite Editors\In-Sight\In-Sight 25.1.0\Cognex.Designer.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

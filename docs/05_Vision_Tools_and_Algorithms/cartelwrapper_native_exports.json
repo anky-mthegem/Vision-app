@@ -1,0 +1,157 @@
+[
+  {
+    "Ordinal": 0,
+    "Mangled": "??0AnomalyDetector@CartelWrapper@@IEAA@XZ",
+    "Demangled": "protected: __cdecl CartelWrapper::AnomalyDetector::AnomalyDetector(void) __ptr64"
+  },
+  {
+    "Ordinal": 1,
+    "Mangled": "??0CartelTool@CartelWrapper@@QEAA@AEBV01@@Z",
+    "Demangled": "public: __cdecl CartelWrapper::CartelTool::CartelTool(class CartelWrapper::CartelTool const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 2,
+    "Mangled": "??0CartelTool@CartelWrapper@@QEAA@XZ",
+    "Demangled": "public: __cdecl CartelWrapper::CartelTool::CartelTool(void) __ptr64"
+  },
+  {
+    "Ordinal": 3,
+    "Mangled": "??0Classifier@CartelWrapper@@IEAA@XZ",
+    "Demangled": "protected: __cdecl CartelWrapper::Classifier::Classifier(void) __ptr64"
+  },
+  {
+    "Ordinal": 4,
+    "Mangled": "??0ImageView@CartelWrapper@@QEAA@XZ",
+    "Demangled": "public: __cdecl CartelWrapper::ImageView::ImageView(void) __ptr64"
+  },
+  {
+    "Ordinal": 5,
+    "Mangled": "??0RFD@CartelWrapper@@IEAA@XZ",
+    "Demangled": "protected: __cdecl CartelWrapper::RFD::RFD(void) __ptr64"
+  },
+  {
+    "Ordinal": 6,
+    "Mangled": "??0Segmenter@CartelWrapper@@IEAA@XZ",
+    "Demangled": "protected: __cdecl CartelWrapper::Segmenter::Segmenter(void) __ptr64"
+  },
+  {
+    "Ordinal": 7,
+    "Mangled": "??1AnomalyDetector@CartelWrapper@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl CartelWrapper::AnomalyDetector::~AnomalyDetector(void) __ptr64"
+  },
+  {
+    "Ordinal": 8,
+    "Mangled": "??1CartelTool@CartelWrapper@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl CartelWrapper::CartelTool::~CartelTool(void) __ptr64"
+  },
+  {
+    "Ordinal": 9,
+    "Mangled": "??1Classifier@CartelWrapper@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl CartelWrapper::Classifier::~Classifier(void) __ptr64"
+  },
+  {
+    "Ordinal": 10,
+    "Mangled": "??1RFD@CartelWrapper@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl CartelWrapper::RFD::~RFD(void) __ptr64"
+  },
+  {
+    "Ordinal": 11,
+    "Mangled": "??1Segmenter@CartelWrapper@@UEAA@XZ",
+    "Demangled": "public: virtual __cdecl CartelWrapper::Segmenter::~Segmenter(void) __ptr64"
+  },
+  {
+    "Ordinal": 12,
+    "Mangled": "??4CartelTool@CartelWrapper@@QEAAAEAV01@AEBV01@@Z",
+    "Demangled": "public: class CartelWrapper::CartelTool \u0026 __ptr64 __cdecl CartelWrapper::CartelTool::operator=(class CartelWrapper::CartelTool const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 13,
+    "Mangled": "??4ImageView@CartelWrapper@@QEAAAEAV01@AEBV01@@Z",
+    "Demangled": "public: class CartelWrapper::ImageView \u0026 __ptr64 __cdecl CartelWrapper::ImageView::operator=(class CartelWrapper::ImageView const \u0026 __ptr64) __ptr64"
+  },
+  {
+    "Ordinal": 14,
+    "Mangled": "??_7AnomalyDetector@CartelWrapper@@6B@",
+    "Demangled": "const CartelWrapper::AnomalyDetector::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 15,
+    "Mangled": "??_7CartelTool@CartelWrapper@@6B@",
+    "Demangled": "const CartelWrapper::CartelTool::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 16,
+    "Mangled": "??_7Classifier@CartelWrapper@@6B@",
+    "Demangled": "const CartelWrapper::Classifier::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 17,
+    "Mangled": "??_7RFD@CartelWrapper@@6B@",
+    "Demangled": "const CartelWrapper::RFD::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 18,
+    "Mangled": "??_7Segmenter@CartelWrapper@@6B@",
+    "Demangled": "const CartelWrapper::Segmenter::\u0060vftable\u0027"
+  },
+  {
+    "Ordinal": 19,
+    "Mangled": "?makeNew@AnomalyDetector@CartelWrapper@@SAPEAV12@XZ",
+    "Demangled": "public: static class CartelWrapper::AnomalyDetector * __ptr64 __cdecl CartelWrapper::AnomalyDetector::makeNew(void)"
+  },
+  {
+    "Ordinal": 20,
+    "Mangled": "?makeNew@Classifier@CartelWrapper@@SAPEAV12@XZ",
+    "Demangled": "public: static class CartelWrapper::Classifier * __ptr64 __cdecl CartelWrapper::Classifier::makeNew(void)"
+  },
+  {
+    "Ordinal": 21,
+    "Mangled": "?makeNew@RFD@CartelWrapper@@SAPEAV12@XZ",
+    "Demangled": "public: static class CartelWrapper::RFD * __ptr64 __cdecl CartelWrapper::RFD::makeNew(void)"
+  },
+  {
+    "Ordinal": 22,
+    "Mangled": "?makeNew@Segmenter@CartelWrapper@@SAPEAV12@XZ",
+    "Demangled": "public: static class CartelWrapper::Segmenter * __ptr64 __cdecl CartelWrapper::Segmenter::makeNew(void)"
+  },
+  {
+    "Ordinal": 23,
+    "Mangled": "deleteAnomalyDetector",
+    "Demangled": "deleteAnomalyDetector"
+  },
+  {
+    "Ordinal": 24,
+    "Mangled": "deleteClassifier",
+    "Demangled": "deleteClassifier"
+  },
+  {
+    "Ordinal": 25,
+    "Mangled": "deleteRFD",
+    "Demangled": "deleteRFD"
+  },
+  {
+    "Ordinal": 26,
+    "Mangled": "deleteSegmenter",
+    "Demangled": "deleteSegmenter"
+  },
+  {
+    "Ordinal": 27,
+    "Mangled": "newAnomalyDetector",
+    "Demangled": "newAnomalyDetector"
+  },
+  {
+    "Ordinal": 28,
+    "Mangled": "newClassifier",
+    "Demangled": "newClassifier"
+  },
+  {
+    "Ordinal": 29,
+    "Mangled": "newRFD",
+    "Demangled": "newRFD"
+  },
+  {
+    "Ordinal": 30,
+    "Mangled": "newSegmenter",
+    "Demangled": "newSegmenter"
+  }
+]
