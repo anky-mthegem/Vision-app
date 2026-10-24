@@ -73,16 +73,29 @@
                     <li><strong>Network:</strong> 1 Gbps Ethernet connection for industrial PLC and RTSP IP camera bandwidth.</li>
                 </ul>
 
-                <h3 class="subheading">Software Installation</h3>
+                <h3 class="subheading">Software Installation & Quick Launch</h3>
+                <p>
+                    VisionStudio provides a 1-click automated launch script that validates your Python environment, automatically detects and installs all missing dependencies from <code>requirements.txt</code>, and opens the application:
+                </p>
+
                 <div class="code-wrapper">
                     <div class="code-header">
-                        <span class="lang-badge">Terminal</span>
+                        <span class="lang-badge">Windows 1-Click Launch (Recommended)</span>
                         <button class="copy-btn">📋 Copy</button>
                     </div>
-                    <pre><code># 1. Clone or download the VisionStudio repository
-cd Vision-app
+                    <pre><code># Double-click or run from command prompt:
+Launch_VisionStudio.bat</code></pre>
+                </div>
 
-# 2. Install required dependencies
+                <div class="code-wrapper" style="margin-top: 14px;">
+                    <div class="code-header">
+                        <span class="lang-badge">Manual Terminal Workflow / Linux</span>
+                        <button class="copy-btn">📋 Copy</button>
+                    </div>
+                    <pre><code># 1. Verify and diagnose dependencies
+python check_requirements.py
+
+# 2. Install all required dependencies
 pip install -r requirements.txt
 
 # 3. Launch VisionStudio
