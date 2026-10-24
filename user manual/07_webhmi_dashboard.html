@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07. WebHMI Remote Dashboard | VisionStudio User Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="manual-header">
+        <a href="index.html" class="brand-wrapper">
+            <div class="brand-icon">👁️</div>
+            <div class="brand-text">
+                <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
+                <p>Industrial Machine Vision & Automation Platform</p>
+            </div>
+        </a>
+        <div class="header-actions">
+            <a href="index.html" class="header-btn">🏠 Master Manual</a>
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Switch Theme">☀️</button>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <aside class="manual-sidebar">
+            <div class="sidebar-heading">Modular Guides</div>
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item"><a href="index.html"><span class="icon">🏠</span> Master Portal</a></li>
+                <li class="sidebar-nav-item"><a href="01_getting_started.html"><span class="icon">⚡</span> 01. Getting Started</a></li>
+                <li class="sidebar-nav-item"><a href="02_camera_subsystem.html"><span class="icon">📷</span> 02. Camera Subsystem</a></li>
+                <li class="sidebar-nav-item"><a href="03_spreadsheet_engine.html"><span class="icon">📊</span> 03. Spreadsheet DAG</a></li>
+                <li class="sidebar-nav-item"><a href="04_vision_tools_catalog.html"><span class="icon">🛠️</span> 04. Vision Tools Catalog</a></li>
+                <li class="sidebar-nav-item"><a href="05_plc_industrial_io.html"><span class="icon">📡</span> 05. PLC & Fieldbus I/O</a></li>
+                <li class="sidebar-nav-item"><a href="06_remote_control_native_mode.html"><span class="icon">🔌</span> 06. Native Mode TCP</a></li>
+                <li class="sidebar-nav-item active"><a href="07_webhmi_dashboard.html"><span class="icon">🌐</span> 07. WebHMI Dashboard</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="author-tag">Made By <span class="author-heart">&lt;3</span> by Anky Singh</div>
+            </div>
+        </aside>
+
+        <main class="manual-content">
+            <div class="hero-card">
+                <div class="hero-pill">CHAPTER 07 • WEBHMI MONITORING</div>
+                <h1>WebHMI Remote Shop-Floor Dashboard</h1>
+                <p class="hero-desc">
+                    Access real-time machine vision inspection telemetry, live annotated video, 
+                    and production quality metrics from any web browser or shop-floor tablet.
+                </p>
+            </div>
+
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">01</div>
+                        <h2>Accessing the WebHMI Dashboard</h2>
+                    </div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio runs an integrated FastAPI and Uvicorn server on port <code>8080</code>.
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">🖥️</span>
+                        <h4>Local Access</h4>
+                        <p>Open <a href="http://localhost:8080" target="_blank" style="color:var(--primary);">http://localhost:8080</a> on the host machine or click <strong>"Open WebHMI"</strong> in the VisionStudio toolbar.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">📱</span>
+                        <h4>Shop-Floor Tablets & Phones</h4>
+                        <p>Navigate to <code>http://&lt;HOST_IP&gt;:8080</code> (e.g. <code>http://192.168.1.50:8080</code>) from any browser on the local plant network.</p>
+                    </div>
+                </div>
+
+                <h3 class="subheading">REST API Endpoints</h3>
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Endpoint</th>
+                                <th>Return Type</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-plc">GET</span></td>
+                                <td><code>/video_feed</code></td>
+                                <td><code>multipart/x-mixed-replace</code></td>
+                                <td>Live MJPEG stream with dynamic graphics overlays and bounding boxes.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-pass">POST</span></td>
+                                <td><code>/api/trigger</code></td>
+                                <td><code>JSON</code></td>
+                                <td>Remotely fires camera acquisition and job evaluation.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-plc">GET</span></td>
+                                <td><code>/api/stats</code></td>
+                                <td><code>JSON</code></td>
+                                <td>Returns overall pass/fail status, cycle times, yield %, and part counts.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-ai">WS</span></td>
+                                <td><code>/ws/telemetry</code></td>
+                                <td><code>WebSocket</code></td>
+                                <td>High-frequency streaming telemetry for custom dashboards and SCADA systems.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="manual-footer">
+        <div class="footer-credits">VisionStudio Industrial Suite • <span style="color: var(--primary);">Made By &lt;3 by Anky Singh</span></div>
+        <div class="footer-nav">
+            <a href="06_remote_control_native_mode.html">← Previous: Native Mode TCP</a>
+            <a href="index.html">Back to Master Portal ↑</a>
+        </div>
+    </footer>
+    <script src="js/manual.js"></script>
+</body>
+</html>

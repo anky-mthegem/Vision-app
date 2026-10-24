@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<common:InSightDocumentBase x:Class="Cognex.InSight.Liger.SpreadsheetEditor.Shell.SpreadsheetEditor" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:common="clr-namespace:Cognex.InSight.IDE.Common;assembly=Cognex.InSight.IDE.Common" xmlns:local="clr-namespace:Cognex.InSight.Liger.SpreadsheetEditor.Shell">
-  <AdornerDecorator>
-    <Border Background="{DynamicResource ApplicationBackground}" TextElement.Foreground="{DynamicResource DefaultContentForeground}">
-      <ContentControl Name="ContentHost" />
-    </Border>
-  </AdornerDecorator>
-</common:InSightDocumentBase>

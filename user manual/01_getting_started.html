@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. Getting Started & Architecture | VisionStudio User Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="manual-header">
+        <a href="index.html" class="brand-wrapper">
+            <div class="brand-icon">👁️</div>
+            <div class="brand-text">
+                <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
+                <p>Industrial Machine Vision & Automation Platform</p>
+            </div>
+        </a>
+        <div class="header-actions">
+            <a href="index.html" class="header-btn">🏠 Master Manual</a>
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Switch Theme">☀️</button>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <aside class="manual-sidebar">
+            <div class="sidebar-heading">Modular Guides</div>
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item"><a href="index.html"><span class="icon">🏠</span> Master Portal</a></li>
+                <li class="sidebar-nav-item active"><a href="01_getting_started.html"><span class="icon">⚡</span> 01. Getting Started</a></li>
+                <li class="sidebar-nav-item"><a href="02_camera_subsystem.html"><span class="icon">📷</span> 02. Camera Subsystem</a></li>
+                <li class="sidebar-nav-item"><a href="03_spreadsheet_engine.html"><span class="icon">📊</span> 03. Spreadsheet DAG</a></li>
+                <li class="sidebar-nav-item"><a href="04_vision_tools_catalog.html"><span class="icon">🛠️</span> 04. Vision Tools Catalog</a></li>
+                <li class="sidebar-nav-item"><a href="05_plc_industrial_io.html"><span class="icon">📡</span> 05. PLC & Fieldbus I/O</a></li>
+                <li class="sidebar-nav-item"><a href="06_remote_control_native_mode.html"><span class="icon">🔌</span> 06. Native Mode TCP</a></li>
+                <li class="sidebar-nav-item"><a href="07_webhmi_dashboard.html"><span class="icon">🌐</span> 07. WebHMI Dashboard</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="author-tag">Made By <span class="author-heart">&lt;3</span> by Anky Singh</div>
+            </div>
+        </aside>
+
+        <main class="manual-content">
+            <div class="hero-card">
+                <div class="hero-pill">CHAPTER 01 • GETTING STARTED</div>
+                <h1>Getting Started & System Architecture</h1>
+                <p class="hero-desc">
+                    A comprehensive guide to installation, runtime environments, user interface anatomy, 
+                    and the Clean Standby operational model of VisionStudio.
+                </p>
+            </div>
+
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">01</div>
+                        <h2>System Requirements & Installation</h2>
+                    </div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio runs seamlessly across Windows 10/11 and industrial Linux edge platforms (Ubuntu 20.04+, Debian, Raspberry Pi OS).
+                </p>
+
+                <h3 class="subheading">Hardware Recommendations</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
+                    <li><strong>Processor:</strong> Intel Core i5/i7 (8th Gen+), AMD Ryzen 5+, or ARM64 (Raspberry Pi 4/5 for edge inference).</li>
+                    <li><strong>Memory:</strong> 8 GB RAM minimum (16 GB recommended for high-resolution cameras).</li>
+                    <li><strong>Graphics / Video:</strong> DirectShow compatible USB3 / GigE Vision interface or network adapter.</li>
+                    <li><strong>Network:</strong> 1 Gbps Ethernet connection for industrial PLC and RTSP IP camera bandwidth.</li>
+                </ul>
+
+                <h3 class="subheading">Software Installation</h3>
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="lang-badge">Terminal</span>
+                        <button class="copy-btn">📋 Copy</button>
+                    </div>
+                    <pre><code># 1. Clone or download the VisionStudio repository
+cd Vision-app
+
+# 2. Install required dependencies
+pip install -r requirements.txt
+
+# 3. Launch VisionStudio
+python main.py</code></pre>
+                </div>
+            </section>
+
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">02</div>
+                        <h2>User Interface Anatomy</h2>
+                    </div>
+                </div>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">VisionStudio UI Layout</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_main_standby.png" alt="VisionStudio UI Layout in Clean Standby">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 1.1:</strong> Main UI components: (1) Protocol selector, (2) Hardware trigger button, (3) Live graphics viewport, 
+                        (4) KPI banner, (5) Spreadsheet DAG table, and (6) Categorized tool palette.
+                    </figcaption>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">1️⃣</span>
+                        <h4>Top Toolbar</h4>
+                        <p>Camera protocol selection, connection string, live camera reconnection, manual trigger, WebHMI shortcut, and PLC dialog.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">2️⃣</span>
+                        <h4>Live Viewport</h4>
+                        <p>High-FPS camera stream overlaying subpixel crosshairs, green/red bounding boxes, caliper rakes, and neural detection reticles.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">3️⃣</span>
+                        <h4>Spreadsheet Table</h4>
+                        <p>Formula bar with cell coordinate selector, live results, execution latency in milliseconds, and individual cell enable checkboxes.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">4️⃣</span>
+                        <h4>Tool Catalog</h4>
+                        <p>Categorized tabs with one-click additions for AI, pattern matching, edge calipers, defect blobs, barcodes, OCR, and PLC writes.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="manual-footer">
+        <div class="footer-credits">VisionStudio Industrial Suite • <span style="color: var(--primary);">Made By &lt;3 by Anky Singh</span></div>
+        <div class="footer-nav">
+            <a href="index.html">Master Portal</a>
+            <a href="02_camera_subsystem.html">Next: Camera Subsystem →</a>
+        </div>
+    </footer>
+    <script src="js/manual.js"></script>
+</body>
+</html>

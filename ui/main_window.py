@@ -194,8 +194,8 @@ class MainWindow(QMainWindow):
         self.job = InspectionJob("CustomJob")
         self._setup_clean_job()
 
-        # 2. Camera Device
-        self.camera_config = CameraConfig(protocol=CameraProtocol.TEST_STREAM)
+        # 2. Camera Device (Default: USB Camera index 0)
+        self.camera_config = CameraConfig(protocol=CameraProtocol.USB, source="0")
         self.camera = CameraDevice(self.camera_config)
 
         # 3. Native Mode Server (Port 1023)
@@ -228,16 +228,69 @@ class MainWindow(QMainWindow):
         self._tick_counter = 0
         self._selected_coord: Optional[str] = None
 
-        # 8. Start Camera & Timer
-        self.camera.start()
+        # 8. Start Timer (Camera starts in DISCONNECTED state)
         self.timer = QTimer(self)
         self.timer.timeout.connect(self._on_timer_tick)
         self.timer.start(33)
+        self._update_connect_button_state(False)
+
+    def _create_no_camera_frame(self) -> np.ndarray:
+        w, h = 1280, 720
+        frame = np.full((h, w, 3), 15, dtype=np.uint8)
+
+        # Subtle industrial grid
+        for x in range(0, w, 64):
+            cv2.line(frame, (x, 0), (x, h), (24, 27, 36), 1)
+        for y in range(0, h, 64):
+            cv2.line(frame, (0, y), (w, y), (24, 27, 36), 1)
+
+        # Outer framing border
+        cv2.rectangle(frame, (24, 24), (w - 24, h - 24), (45, 50, 68), 1)
+
+        # Center reticle
+        cx, cy = w // 2, h // 2
+        cv2.circle(frame, (cx, cy), 80, (40, 45, 60), 1)
+        cv2.circle(frame, (cx, cy), 4, (60, 65, 85), -1)
+        cv2.line(frame, (cx - 100, cy), (cx + 100, cy), (40, 45, 60), 1)
+        cv2.line(frame, (cx, cy - 100), (cx, cy + 100), (40, 45, 60), 1)
+
+        # Text banner
+        title_text = "NO CAMERA CONNECTED"
+        src_str = self.source_edit.text().strip() if hasattr(self, "source_edit") else "0"
+        sub_text = f"Protocol: {self.camera_config.protocol.value} | Source: {src_str or '0'}"
+        hint_text = "Please connect camera hardware or select a valid video stream"
+
+        (tw1, _), _ = cv2.getTextSize(title_text, cv2.FONT_HERSHEY_SIMPLEX, 1.05, 2)
+        cv2.putText(frame, title_text, (cx - tw1 // 2, cy - 20), cv2.FONT_HERSHEY_SIMPLEX, 1.05, (100, 110, 135), 2, cv2.LINE_AA)
+
+        (tw2, _), _ = cv2.getTextSize(sub_text, cv2.FONT_HERSHEY_SIMPLEX, 0.52, 1)
+        cv2.putText(frame, sub_text, (cx - tw2 // 2, cy + 22), cv2.FONT_HERSHEY_SIMPLEX, 0.52, (70, 80, 100), 1, cv2.LINE_AA)
+
+        (tw3, _), _ = cv2.getTextSize(hint_text, cv2.FONT_HERSHEY_SIMPLEX, 0.44, 1)
+        cv2.putText(frame, hint_text, (cx - tw3 // 2, cy + 54), cv2.FONT_HERSHEY_SIMPLEX, 0.44, (50, 58, 75), 1, cv2.LINE_AA)
+
+        return frame
+
+    def _display_frame_on_viewport(self, img: np.ndarray):
+        h, w, ch = img.shape
+        bytes_per_line = ch * w
+        q_img = QImage(img.data, w, h, bytes_per_line, QImage.Format.Format_BGR888)
+        pixmap = QPixmap.fromImage(q_img).scaled(
+            self.lbl_viewport.size(),
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation,
+        )
+        self.lbl_viewport.setPixmap(pixmap)
 
     def get_display_frame(self) -> Optional[np.ndarray]:
+        if not self.camera._running:
+            return self._create_no_camera_frame()
         if self._last_annotated_frame is not None:
             return self._last_annotated_frame.copy()
-        return self.camera.get_latest_frame()
+        frame = self.camera.get_latest_frame()
+        if frame is not None:
+            return frame.copy()
+        return self._create_no_camera_frame()
 
     def _setup_clean_job(self):
         """Starts in pure acquisition mode: NO vision tools execute until user selects them."""
@@ -263,7 +316,8 @@ class MainWindow(QMainWindow):
         toolbar.addWidget(self.source_edit)
 
         self.btn_connect = QPushButton("Connect Camera")
-        self.btn_connect.clicked.connect(self._on_reconnect)
+        self.btn_connect.setObjectName("btnConnect")
+        self.btn_connect.clicked.connect(self._toggle_camera_connection)
         toolbar.addWidget(self.btn_connect)
 
         toolbar.addSeparator()
@@ -464,6 +518,23 @@ class MainWindow(QMainWindow):
         f_layout = QVBoxLayout(form)
         f_layout.setSpacing(10)
 
+        # Vision Task Mode Selection
+        row_task = QHBoxLayout()
+        lbl_task = QLabel("<b>Vision Task:</b>")
+        lbl_task.setFixedWidth(100)
+        row_task.addWidget(lbl_task)
+
+        self.yolo_task_combo = QComboBox()
+        self.yolo_task_combo.addItem("Object Detection (Bounding Boxes)", "detect")
+        self.yolo_task_combo.addItem("Instance Segmentation (Object Masks)", "segment")
+        self.yolo_task_combo.addItem("Semantic Segmentation (Pixel Classes)", "semantic")
+        self.yolo_task_combo.addItem("Depth Estimation (Distance Colormap)", "depth")
+        self.yolo_task_combo.addItem("Image Classification (Top-K Classes)", "classify")
+        self.yolo_task_combo.addItem("Pose Estimation (Skeleton Keypoints)", "pose")
+        self.yolo_task_combo.addItem("Oriented Bounding Boxes (Rotated OBB)", "obb")
+        row_task.addWidget(self.yolo_task_combo, 1)
+        f_layout.addLayout(row_task)
+
         # Target Class Selection
         row_cls = QHBoxLayout()
         lbl_cls = QLabel("<b>Target Class:</b>")
@@ -539,9 +610,9 @@ class MainWindow(QMainWindow):
         spec_frame.setStyleSheet("background-color: #141720; border: 1px solid #2d3244; border-radius: 6px; padding: 6px;")
         s_layout = QVBoxLayout(spec_frame)
         s_layout.setContentsMargins(6, 6, 6, 6)
-        s_layout.addWidget(QLabel("<span style='color:#8b94a8; font-size:11px;'>• Model: <b>YOLOv8 Nano</b> (12.7 MB, official ONNX)</span>"))
-        s_layout.addWidget(QLabel("<span style='color:#8b94a8; font-size:11px;'>• Execution: <b>Vectorized CPU ONNXRuntime + OpenCV NMS</b></span>"))
-        s_layout.addWidget(QLabel("<span style='color:#8b94a8; font-size:11px;'>• Formula: <code style='color:#00d2ff;'>=YoloDetect(A0, class=\"all\", conf=0.40)</code></span>"))
+        s_layout.addWidget(QLabel("<span style='color:#8b94a8; font-size:11px;'>• Model: <b>YOLO26 / YOLOv8 Multi-Task Engine</b> (7 Computer Vision Modes)</span>"))
+        s_layout.addWidget(QLabel("<span style='color:#8b94a8; font-size:11px;'>• Modes: <b>Detect, Instance/Semantic Seg, Depth, Cls, Pose, OBB</b></span>"))
+        s_layout.addWidget(QLabel("<span style='color:#8b94a8; font-size:11px;'>• Formula: <code style='color:#00d2ff;'>=YoloDetect(A0, task=\"detect\", class=\"all\", conf=0.40)</code></span>"))
         layout.addWidget(spec_frame)
 
         layout.addStretch()
@@ -552,37 +623,43 @@ class MainWindow(QMainWindow):
         if self._selected_coord and self._selected_coord in self.job.cells:
             cell = self.job.cells[self._selected_coord]
             if "YOLO" in cell.formula.upper():
+                task_val = getattr(self, "yolo_task_combo", None)
+                task_str = task_val.currentData() if task_val else "detect"
                 cls_val = self.yolo_class_combo.currentData() or self.yolo_class_combo.currentText().strip()
                 if " (" in cls_val:
                     cls_val = cls_val.split(" (")[0]
-                new_formula = f'=YoloDetect(A0, class="{cls_val}", conf={val/100.0:.2f})'
+                new_formula = f'=YoloDetect(A0, task="{task_str}", class="{cls_val}", conf={val/100.0:.2f})'
                 cell.set_formula(new_formula)
                 self.formula_input.setText(f"{cell.coord} = {new_formula}")
                 self.job.compile()
                 self._refresh_table_display()
 
     def _on_add_yolo_clicked(self):
+        task_val = getattr(self, "yolo_task_combo", None)
+        task_str = task_val.currentData() if task_val else "detect"
         cls_val = self.yolo_class_combo.currentData() or self.yolo_class_combo.currentText().strip()
         if " (" in cls_val:
             cls_val = cls_val.split(" (")[0]
         conf_val = self.yolo_conf_slider.value() / 100.0
-        formula = f'=YoloDetect(A0, class="{cls_val}", conf={conf_val:.2f})'
-        self._add_catalog_function(formula, f"YOLO ({cls_val})")
+        formula = f'=YoloDetect(A0, task="{task_str}", class="{cls_val}", conf={conf_val:.2f})'
+        self._add_catalog_function(formula, f"YOLO {task_str.capitalize()} ({cls_val})")
 
     def _on_update_selected_yolo_clicked(self):
         if not self._selected_coord or self._selected_coord not in self.job.cells:
             self._on_add_yolo_clicked()
             return
 
+        task_val = getattr(self, "yolo_task_combo", None)
+        task_str = task_val.currentData() if task_val else "detect"
         cls_val = self.yolo_class_combo.currentData() or self.yolo_class_combo.currentText().strip()
         if " (" in cls_val:
             cls_val = cls_val.split(" (")[0]
         conf_val = self.yolo_conf_slider.value() / 100.0
-        formula = f'=YoloDetect(A0, class="{cls_val}", conf={conf_val:.2f})'
+        formula = f'=YoloDetect(A0, task="{task_str}", class="{cls_val}", conf={conf_val:.2f})'
 
         cell = self.job.cells[self._selected_coord]
         cell.set_formula(formula)
-        cell.label = f"YOLO ({cls_val})"
+        cell.label = f"YOLO {task_str.capitalize()} ({cls_val})"
         self.formula_input.setText(f"{cell.coord} = {formula}")
         self.job.compile()
         self._refresh_table_display()
@@ -720,6 +797,46 @@ class MainWindow(QMainWindow):
             self.job.compile()
             self._refresh_table_display()
 
+    def _update_connect_button_state(self, is_connected: bool):
+        if not hasattr(self, "btn_connect"):
+            return
+        if is_connected:
+            self.btn_connect.setText("Disconnect Camera")
+            self.btn_connect.setToolTip("Camera is currently connected and streaming. Click to disconnect.")
+            self.btn_connect.setStyleSheet("""
+                QPushButton#btnConnect {
+                    background-color: #00e676;
+                    border: 1px solid #00c853;
+                    color: #0b0d13;
+                    font-weight: 700;
+                    padding: 6px 14px;
+                    border-radius: 6px;
+                }
+                QPushButton#btnConnect:hover {
+                    background-color: #69f0ae;
+                    border-color: #00e676;
+                    color: #000000;
+                }
+            """)
+        else:
+            self.btn_connect.setText("Connect Camera")
+            self.btn_connect.setToolTip("Camera is currently disconnected. Click to connect.")
+            self.btn_connect.setStyleSheet("""
+                QPushButton#btnConnect {
+                    background-color: #ff1744;
+                    border: 1px solid #d50000;
+                    color: #ffffff;
+                    font-weight: 700;
+                    padding: 6px 14px;
+                    border-radius: 6px;
+                }
+                QPushButton#btnConnect:hover {
+                    background-color: #ff5252;
+                    border-color: #ff1744;
+                    color: #ffffff;
+                }
+            """)
+
     def _on_protocol_changed(self):
         selected_protocol = self.protocol_combo.currentData()
         if selected_protocol == CameraProtocol.USB:
@@ -729,15 +846,44 @@ class MainWindow(QMainWindow):
         elif selected_protocol == CameraProtocol.HTTP:
             self.source_edit.setText("http://192.168.1.100/snapshot.jpg")
         elif selected_protocol == CameraProtocol.TEST_STREAM:
-            self.source_edit.setText("Synthetic Part Simulator")
-        self._on_reconnect()
+            self.source_edit.setText("Static Calibration Target")
+        elif selected_protocol == CameraProtocol.FILE_LOOP:
+            self.source_edit.setText("test_bus.jpg")
+
+        # If camera was actively streaming, reconnect with new source
+        if self.camera._running:
+            self.camera.stop()
+            self.camera_config.protocol = selected_protocol
+            self.camera_config.source = self.source_edit.text().strip()
+            self.camera = CameraDevice(self.camera_config)
+            self.camera.start()
+
+    def _toggle_camera_connection(self):
+        if self.camera._running:
+            # Currently running -> Disconnect
+            self.camera.stop()
+            self._update_connect_button_state(False)
+            self.lbl_overall.setText("NOT CONNECTED")
+            self.lbl_overall.setStyleSheet(
+                "font-size: 15px; font-weight: 800; color: #ff5252; padding: 4px 10px; background: rgba(255,23,68,0.12); border-radius: 6px;"
+            )
+            src_str = self.source_edit.text().strip() if hasattr(self, "source_edit") else "0"
+            self.lbl_stats.setText(f"Camera Disconnected | {self.camera_config.protocol.value} (Source: {src_str or '0'}) | Click 'Connect Camera' to start")
+            no_cam_frame = self._create_no_camera_frame()
+            self._last_annotated_frame = no_cam_frame
+            self._display_frame_on_viewport(no_cam_frame)
+            self.status.showMessage("Camera disconnected by user.")
+        else:
+            # Currently disconnected -> Connect
+            self.camera.stop()
+            self.camera_config.protocol = self.protocol_combo.currentData()
+            self.camera_config.source = self.source_edit.text().strip()
+            self.camera = CameraDevice(self.camera_config)
+            started = self.camera.start()
+            self.status.showMessage(f"Connecting to {self.camera_config.protocol.value} ({self.camera_config.source})...")
 
     def _on_reconnect(self):
-        self.camera.stop()
-        self.camera_config.protocol = self.protocol_combo.currentData()
-        self.camera_config.source = self.source_edit.text().strip()
-        self.camera = CameraDevice(self.camera_config)
-        self.camera.start()
+        self._toggle_camera_connection()
 
     def trigger_acquisition(self):
         self.camera.trigger()
@@ -751,12 +897,52 @@ class MainWindow(QMainWindow):
         dialog.exec()
 
     def _on_timer_tick(self):
-        frame = self.camera.get_latest_frame()
-        if frame is None:
+        self._tick_counter += 1
+
+        if not self.camera._running:
+            # Camera is offline / not running / disconnected -> Connect button is RED
+            self._update_connect_button_state(False)
+            self.lbl_overall.setText("NOT CONNECTED")
+            self.lbl_overall.setStyleSheet(
+                "font-size: 15px; font-weight: 800; color: #ff5252; padding: 4px 10px; background: rgba(255,23,68,0.12); border-radius: 6px;"
+            )
+            src_str = self.source_edit.text().strip() if hasattr(self, "source_edit") else "0"
+            self.lbl_stats.setText(
+                f"Camera Disconnected | {self.camera_config.protocol.value} (Source: {src_str or '0'}) | Click 'Connect Camera' to start"
+            )
+            no_cam_frame = self._create_no_camera_frame()
+            self._last_annotated_frame = no_cam_frame
+            self._display_frame_on_viewport(no_cam_frame)
+
+            if self._tick_counter % 10 == 0:
+                self._refresh_table_display()
             return
 
+        frame = self.camera.get_latest_frame()
+
+        if frame is None:
+            # Camera is started but no frame received yet (or read failed)
+            self._update_connect_button_state(False)
+            self.lbl_overall.setText("NOT CONNECTED")
+            self.lbl_overall.setStyleSheet(
+                "font-size: 15px; font-weight: 800; color: #ff5252; padding: 4px 10px; background: rgba(255,23,68,0.12); border-radius: 6px;"
+            )
+            src_str = self.source_edit.text().strip() if hasattr(self, "source_edit") else "0"
+            self.lbl_stats.setText(
+                f"Waiting for camera stream... | {self.camera_config.protocol.value} (Source: {src_str or '0'})"
+            )
+            no_cam_frame = self._create_no_camera_frame()
+            self._last_annotated_frame = no_cam_frame
+            self._display_frame_on_viewport(no_cam_frame)
+
+            if self._tick_counter % 10 == 0:
+                self._refresh_table_display()
+            return
+
+        # Frame is active -> Camera is connected -> Connect button is GREEN
+        self._update_connect_button_state(True)
+
         has_tools = len([c for c in self.job.cells.values() if c.coord != "A0" and c.enabled]) > 0
-        self._tick_counter += 1
 
         # Asynchronous non-blocking inspection execution:
         # Prevents UI stutters and ensures live camera display stays at full FPS (30+ FPS)
@@ -809,17 +995,7 @@ class MainWindow(QMainWindow):
             self._render_overlays(display_frame)
 
         self._last_annotated_frame = display_frame
-
-        # Convert OpenCV to Qt QPixmap
-        h, w, ch = display_frame.shape
-        bytes_per_line = ch * w
-        q_img = QImage(display_frame.data, w, h, bytes_per_line, QImage.Format.Format_BGR888)
-        pixmap = QPixmap.fromImage(q_img).scaled(
-            self.lbl_viewport.size(),
-            Qt.AspectRatioMode.KeepAspectRatio,
-            Qt.TransformationMode.SmoothTransformation,
-        )
-        self.lbl_viewport.setPixmap(pixmap)
+        self._display_frame_on_viewport(display_frame)
 
     def _render_overlays(self, img: np.ndarray):
         """Draws visual annotations onto the frame for enabled cells."""

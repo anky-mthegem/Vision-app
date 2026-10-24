@@ -9,6 +9,7 @@ Provides interactive configuration and live test functionality for:
 """
 
 import time
+import json
 import logging
 from typing import Optional
 
@@ -27,6 +28,8 @@ from PyQt6.QtWidgets import (
     QFrame,
     QComboBox,
     QMessageBox,
+    QScrollArea,
+    QTextEdit,
 )
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QColor, QFont
@@ -39,9 +42,11 @@ logger = logging.getLogger("IndustrialCommsDialog")
 class IndustrialCommsDialog(QDialog):
     """Configuration & Hardware Testing Dialog for Factory PLCs & I/O."""
 
-    def __init__(self, io_manager: IndustrialIoManager, parent=None):
+    def __init__(self, io_manager: IndustrialIoManager, pipeline_engine=None, parent=None):
         super().__init__(parent)
         self.io_manager = io_manager
+        self.engine = pipeline_engine
+        self.step_checkboxes = {}
         self.setWindowTitle("Industrial PLC & Hardware Communications")
         self.resize(760, 580)
         self.setStyleSheet("""
@@ -143,10 +148,11 @@ class IndustrialCommsDialog(QDialog):
 
         # Tabs
         self.tabs = QTabWidget()
+        self.tabs.addTab(self._create_routing_tab(), "🔗 Step Output Link")
+        self.tabs.addTab(self._create_ethernet_tab(), "Ethernet Device")
         self.tabs.addTab(self._create_siemens_tab(), "Siemens S7 PLC")
         self.tabs.addTab(self._create_delta_tab(), "Delta PLC (Modbus)")
         self.tabs.addTab(self._create_beckhoff_tab(), "Beckhoff TwinCAT")
-        self.tabs.addTab(self._create_ethernet_tab(), "Ethernet Device")
         self.tabs.addTab(self._create_gpio_tab(), "Raspberry Pi GPIO")
         main_layout.addWidget(self.tabs, 1)
 
@@ -165,6 +171,113 @@ class IndustrialCommsDialog(QDialog):
         btn_box.addWidget(self.btn_save)
 
         main_layout.addLayout(btn_box)
+
+    # ------------------ 0. STEP OUTPUT ROUTING TAB ------------------
+
+    def _create_routing_tab(self) -> QWidget:
+        tab = QWidget()
+        layout = QVBoxLayout(tab)
+        layout.setSpacing(12)
+
+        # Header Card
+        header = QFrame()
+        header.setProperty("class", "card")
+        h_layout = QVBoxLayout(header)
+        h_layout.addWidget(QLabel("<b style='font-size:13px; color:#00d2ff;'>🔗 Link Pipeline Inspection Steps to Remote Devices</b>"))
+        h_layout.addWidget(QLabel(
+            "<span style='color:#8b94a8; font-size:11px;'>"
+            "Select which step outputs should be linked and dispatched to configured PLCs, Ethernet Devices, and Raspberry Pi GPIO.<br>"
+            "Linked steps automatically transmit Pass/Fail, object count, centroid coordinates (X, Y), and cycle latency on every frame."
+            "</span>"
+        ))
+        layout.addWidget(header)
+
+        # Steps List with Checkboxes
+        steps_card = QFrame()
+        steps_card.setProperty("class", "card")
+        s_layout = QVBoxLayout(steps_card)
+        s_layout.addWidget(QLabel("<b>Inspection Pipeline Steps to Transmit:</b>"))
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll_content = QWidget()
+        scroll_layout = QVBoxLayout(scroll_content)
+        scroll_layout.setSpacing(6)
+
+        self.step_checkboxes = {}
+        if self.engine and self.engine.steps:
+            for idx, step in enumerate(self.engine.steps):
+                chk = QCheckBox(f"Step #{idx + 1}: {step.name} [{step.operation_name}]")
+                chk.setChecked(getattr(step, "link_to_remote", False))
+                chk.setStyleSheet("font-size: 12px; color: #00d2ff; font-weight: 600;")
+                self.step_checkboxes[step.step_id] = chk
+                scroll_layout.addWidget(chk)
+        else:
+            lbl_empty = QLabel("<span style='color:#8b94a8; font-style:italic;'>No steps in pipeline. Add steps in the spreadsheet table to link them.</span>")
+            scroll_layout.addWidget(lbl_empty)
+
+        scroll_layout.addStretch()
+        scroll.setWidget(scroll_content)
+        s_layout.addWidget(scroll, 1)
+        layout.addWidget(steps_card, 1)
+
+        # Payload Preview & Live Test
+        preview_card = QFrame()
+        preview_card.setProperty("class", "card")
+        p_layout = QVBoxLayout(preview_card)
+        p_layout.addWidget(QLabel("<b>Live Output Payload Format (JSON / S7 / Modbus / GPIO):</b>"))
+
+        self.txt_preview = QTextEdit()
+        self.txt_preview.setReadOnly(True)
+        self.txt_preview.setMaximumHeight(90)
+        self.txt_preview.setStyleSheet("background-color: #202430; border: 1px solid #2d3244; color: #00e676; font-family: 'Consolas', monospace; font-size: 11px;")
+        
+        sample_payload = {
+            "step_id": 1,
+            "step_name": "Sample Inspection Step",
+            "operation": "YOLOv8 Object Detector",
+            "overall_pass": True,
+            "count": 2,
+            "x": 320.5,
+            "y": 240.0,
+            "cycle_time_ms": 12.4,
+            "timestamp": time.time(),
+        }
+        self.txt_preview.setPlainText(json.dumps(sample_payload, indent=2))
+        p_layout.addWidget(self.txt_preview)
+
+        # Dispatch Test Button
+        btn_layout = QHBoxLayout()
+        self.btn_test_dispatch = QPushButton("⚡ Test Dispatch to Remote Devices")
+        self.btn_test_dispatch.setProperty("class", "test_btn")
+        self.btn_test_dispatch.clicked.connect(self._test_step_dispatch)
+        btn_layout.addWidget(self.btn_test_dispatch)
+
+        self.lbl_dispatch_status = QLabel("Status: Ready to dispatch")
+        self.lbl_dispatch_status.setStyleSheet("color: #8b94a8; font-family: monospace;")
+        btn_layout.addWidget(self.lbl_dispatch_status, 1)
+        p_layout.addLayout(btn_layout)
+
+        layout.addWidget(preview_card)
+        return tab
+
+    def _test_step_dispatch(self):
+        sample = {
+            "step_id": 99,
+            "step_name": "Test Step Dispatch",
+            "operation": "Manual Test",
+            "passed": True,
+            "count": 1,
+            "latency_ms": 5.0,
+            "x": 100.0,
+            "y": 150.0,
+            "angle": 0.0,
+            "output_info": "Test 1280x720",
+        }
+        self.io_manager.dispatch_step_output(sample)
+        self.lbl_dispatch_status.setText(f"✅ Dispatched test output packet to active remote devices at {time.strftime('%H:%M:%S')}")
+        self.lbl_dispatch_status.setStyleSheet("color: #00e676; font-weight: bold;")
 
     # ------------------ 1. SIEMENS S7 TAB ------------------
 
@@ -719,6 +832,13 @@ class IndustrialCommsDialog(QDialog):
         self.io_manager.gpio_client.ready_pin = self.spin_gpio_ready.value()
         self.io_manager.gpio_client.strobe_pin = self.spin_gpio_strobe.value()
         self.io_manager.gpio_client.trigger_pin = self.spin_gpio_trig.value()
+
+        # Update step link_to_remote
+        if self.engine:
+            for step_id, chk in self.step_checkboxes.items():
+                step = self.engine.get_step_by_id(step_id)
+                if step:
+                    step.link_to_remote = chk.isChecked()
 
         self.io_manager.save_config()
         self.accept()

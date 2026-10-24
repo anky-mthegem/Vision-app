@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionStudio User Manual | Industrial Machine Vision & Automation System</title>
+    <meta name="description" content="Comprehensive User Manual for VisionStudio: Next-Generation Machine Vision, Spreadsheet DAG Engine, AI Deep Learning (YOLO), Multi-Protocol Industrial PLC/Fieldbus Communications, and WebHMI. Made By <3 by Anky Singh.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="manual-header">
+        <a href="#hero" class="brand-wrapper">
+            <div class="brand-icon">👁️</div>
+            <div class="brand-text">
+                <h1>VisionStudio <span class="version-badge">v2.4 INDUSTRIAL</span></h1>
+                <p>Industrial Machine Vision & Automation Platform</p>
+            </div>
+        </a>
+
+        <div class="header-actions">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="manualSearchInput" placeholder="Search manuals, tools, formulas (Ctrl+K)...">
+                <span class="search-kbd">Ctrl K</span>
+            </div>
+
+            <button class="header-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                <span>☰</span>
+            </button>
+
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Switch Theme">
+                ☀️
+            </button>
+        </div>
+    </header>
+
+    <!-- App Layout Container -->
+    <div class="layout-container">
+
+        <!-- Sidebar Table of Contents -->
+        <aside class="manual-sidebar">
+            <div class="sidebar-heading">Core Manuals</div>
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item active"><a href="#hero"><span class="icon">🚀</span> Overview</a></li>
+                <li class="sidebar-nav-item"><a href="#getting-started"><span class="icon">⚡</span> 1. Getting Started</a></li>
+                <li class="sidebar-nav-item"><a href="#camera-subsystem"><span class="icon">📷</span> 2. Camera Subsystem</a></li>
+                <li class="sidebar-nav-item"><a href="#spreadsheet-engine"><span class="icon">📊</span> 3. Spreadsheet DAG</a></li>
+                <li class="sidebar-nav-item"><a href="#ai-deep-learning"><span class="icon">🤖</span> 4. AI & YOLO Detection</a></li>
+                <li class="sidebar-nav-item"><a href="#vision-tools-catalog"><span class="icon">🛠️</span> 5. Vision Tools Catalog</a></li>
+                <li class="sidebar-nav-item"><a href="#industrial-plc-io"><span class="icon">📡</span> 6. PLC & Hardware I/O</a></li>
+                <li class="sidebar-nav-item"><a href="#remote-native-mode"><span class="icon">🔌</span> 7. Native Mode TCP</a></li>
+                <li class="sidebar-nav-item"><a href="#webhmi-dashboard"><span class="icon">🌐</span> 8. WebHMI Dashboard</a></li>
+                <li class="sidebar-nav-item"><a href="#troubleshooting"><span class="icon">🔧</span> 9. Troubleshooting</a></li>
+                <li class="sidebar-nav-item"><a href="#cheat-sheet"><span class="icon">📋</span> 10. Formula Cheat Sheet</a></li>
+            </ul>
+
+            <div class="sidebar-heading">Modular Guides</div>
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item"><a href="01_getting_started.html"><span class="icon">📄</span> Quick Launch Guide</a></li>
+                <li class="sidebar-nav-item"><a href="02_camera_subsystem.html"><span class="icon">📄</span> Camera & Protocols</a></li>
+                <li class="sidebar-nav-item"><a href="03_spreadsheet_engine.html"><span class="icon">📄</span> Spreadsheet DAG Engine</a></li>
+                <li class="sidebar-nav-item"><a href="04_vision_tools_catalog.html"><span class="icon">📄</span> Vision Tools Catalog</a></li>
+                <li class="sidebar-nav-item"><a href="05_plc_industrial_io.html"><span class="icon">📄</span> PLC & Fieldbus Guide</a></li>
+                <li class="sidebar-nav-item"><a href="06_remote_control_native_mode.html"><span class="icon">📄</span> Native Mode Automation</a></li>
+                <li class="sidebar-nav-item"><a href="07_webhmi_dashboard.html"><span class="icon">📄</span> WebHMI Remote Manual</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="author-tag">
+                    Made By <span class="author-heart">&lt;3</span> by Anky Singh
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Documentation Content -->
+        <main class="manual-content">
+
+            <!-- Hero Section -->
+            <div class="hero-card" id="hero">
+                <div class="hero-pill">INDUSTRIAL VISION SUITE • VERSION 2.4</div>
+                <h1>VisionStudio User Manual</h1>
+                <p class="hero-desc">
+                    VisionStudio is a modern, high-performance industrial computer vision and automated inspection platform. 
+                    It seamlessly unites multi-protocol camera acquisition, subpixel geometric measurement, real-time AI deep learning (YOLOv8), 
+                    a spreadsheet Directed Acyclic Graph (DAG) formula execution model, and enterprise fieldbus communications with Siemens, Delta, Beckhoff, and Raspberry Pi hardware.
+                </p>
+
+                <div class="hero-meta-grid">
+                    <div class="hero-meta-item">
+                        <div class="meta-icon">⚡</div>
+                        <div>
+                            <div class="meta-label">Execution Pipeline</div>
+                            <div class="meta-val">Decoupled 30+ FPS</div>
+                        </div>
+                    </div>
+                    <div class="hero-meta-item">
+                        <div class="meta-icon">🤖</div>
+                        <div>
+                            <div class="meta-label">AI Neural Engine</div>
+                            <div class="meta-val">YOLOv8 Nano ONNX</div>
+                        </div>
+                    </div>
+                    <div class="hero-meta-item">
+                        <div class="meta-icon">📡</div>
+                        <div>
+                            <div class="meta-label">Fieldbus / PLCs</div>
+                            <div class="meta-val">S7 • Modbus • ADS • GPIO</div>
+                        </div>
+                    </div>
+                    <div class="hero-meta-item">
+                        <div class="meta-icon">🌐</div>
+                        <div>
+                            <div class="meta-label">Remote Monitoring</div>
+                            <div class="meta-val">WebHMI (Port 8080)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 1: GETTING STARTED -->
+            <section class="doc-section" id="getting-started">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">01</div>
+                        <h2>Getting Started & Architecture</h2>
+                    </div>
+                    <div class="section-tag">QUICK START</div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio delivers a unified desktop environment for visual quality control, automated assembly inspection, 
+                    part localization, and factory floor PLC handshakes.
+                </p>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>🖥️ VisionStudio Main Desktop UI — Standby Mode</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_main_standby.png" alt="VisionStudio Main Industrial Desktop Window in Clean Standby Mode">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 1.1:</strong> The VisionStudio Main Desktop Window operating in Clean Standby Mode. 
+                        Notice the live high-FPS viewport on the left, formula input bar, interactive spreadsheet table with cell checkboxes, and categorized Industrial Function Catalog on the right.
+                    </figcaption>
+                </div>
+
+                <h3 class="subheading">System Architecture Highlights</h3>
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">⚡</span>
+                        <h4>Asynchronous Inspection Core</h4>
+                        <p>Camera streaming and vision algorithms run on separate background worker threads. The live display never freezes, drops frames, or stutters during intensive AI inference.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🌱</span>
+                        <h4>Clean Standby Startup</h4>
+                        <p>On initial launch, VisionStudio operates strictly in camera standby mode (<code>A0 = AcquireImage()</code>). No heavy tools execute until explicitly selected or configured by the operator.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">📊</span>
+                        <h4>DAG Spreadsheet Model</h4>
+                        <p>Inspection sequences are evaluated via Directed Acyclic Graph dependency trees. Downstream cells automatically compute in topological order when upstream inputs update.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🛡️</span>
+                        <h4>Deterministic Cycle Times</h4>
+                        <p>High-resolution timing benchmarks per-cell latency (<code>last_exec_ms</code>), aggregate cycle time, production counters, and automated yield tracking.</p>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Launching VisionStudio</h3>
+                <div class="step-list">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h4>Desktop GUI Launch (Recommended)</h4>
+                            <p>Double-click <code class="inline-code">Launch_VisionStudio.bat</code> or run the command below. The desktop GUI, Native Mode TCP server (port 1023), and WebHMI dashboard (port 8080) will initialize automatically.</p>
+                            <div class="code-wrapper">
+                                <div class="code-header">
+                                    <span class="lang-badge">Powershell / CMD</span>
+                                    <button class="copy-btn">📋 Copy</button>
+                                </div>
+                                <pre><code>python main.py</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h4>Headless Industrial Server Mode</h4>
+                            <p>For headless industrial rack-mount PCs, fanless edge controllers, or Docker containers without graphical displays, use the <code class="inline-code">--headless</code> flag:</p>
+                            <div class="code-wrapper">
+                                <div class="code-header">
+                                    <span class="lang-badge">Powershell / CMD</span>
+                                    <button class="copy-btn">📋 Copy</button>
+                                </div>
+                                <pre><code>python main.py --headless --port 8080 --native-port 1023</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout tip">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-body">
+                        <strong>Performance Tip:</strong>
+                        When running high-speed production lines exceeding 30 parts per second, headless mode conserves GPU and rendering cycles, directing maximum compute throughput to ONNX inference and PLC communication.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: CAMERA SUBSYSTEM -->
+            <section class="doc-section" id="camera-subsystem">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">02</div>
+                        <h2>Camera Subsystem & Protocols</h2>
+                    </div>
+                    <div class="section-tag">HARDWARE INTEGRATION</div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio incorporates a multi-protocol camera driver capable of interfacing with standard industrial USB3 cameras, 
+                    Ethernet RTSP video streams, network HTTP snapshot cameras, and a built-in Synthetic Part Simulator.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Protocol</th>
+                                <th>Source Identifier Format</th>
+                                <th>Typical Hardware</th>
+                                <th>Recommended Settings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-plc">USB / DirectShow</span></td>
+                                <td><code>0</code>, <code>1</code>, <code>2</code></td>
+                                <td>Industrial USB3 Vision cameras, DirectShow webcams, microscope cameras</td>
+                                <td>Resolution: 1280x720 / 1920x1080 @ 30-60 FPS</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-plc">RTSP Stream</span></td>
+                                <td><code>rtsp://user:pass@192.168.1.100:554/stream</code></td>
+                                <td>GigE IP security cameras, factory surveillance, PoE inspection sensors</td>
+                                <td>H.264 / H.265 baseline profile with TCP transport</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-plc">HTTP Snapshot</span></td>
+                                <td><code>http://192.168.1.100/snapshot.jpg</code></td>
+                                <td>Web-enabled smart cameras, remote inspection stills, optical sensors</td>
+                                <td>Keep-Alive enabled, JPEG quality &ge; 85</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-ai">Synthetic Simulator</span></td>
+                                <td><code>Synthetic Part Simulator</code></td>
+                                <td>Built-in hardware-free test generator with moving PCBs, fiducials, IC chips & flaws</td>
+                                <td>Default test environment for offline recipe authoring</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="subheading">Triggering Modes</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
+                    <li><strong>Continuous Free-Run:</strong> The camera streams frames continuously at the sensor's native frame rate. The spreadsheet runs automatically on newly arrived frames.</li>
+                    <li><strong>Software Trigger [SW]:</strong> Clicking the <span class="badge badge-plc">TRIGGER [SW]</span> button in the top toolbar or issuing the <code class="inline-code">SW</code> command over Native Mode TCP captures an image on-demand.</li>
+                    <li><strong>Hardware Trigger (Opto-Isolated GPIO):</strong> Connecting an inductive proximity sensor or photoelectric beam sensor to Raspberry Pi GPIO Pin 4 immediately triggers inspection upon part arrival.</li>
+                </ul>
+
+                <h3 class="subheading">Automatic UDP Network Discovery (Port 1069)</h3>
+                <p>
+                    VisionStudio runs a background network beacon daemon on UDP port <code>1069</code>. 
+                    Industrial network discovery tools broadcast probe packets on the local subnet to instantly locate 
+                    VisionStudio sensors, query IP configuration, MAC address, and device online states without manual IP configuration.
+                </p>
+            </section>
+
+            <!-- SECTION 3: SPREADSHEET DAG ENGINE -->
+            <section class="doc-section" id="spreadsheet-engine">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">03</div>
+                        <h2>Spreadsheet DAG Execution Engine</h2>
+                    </div>
+                    <div class="section-tag">CORE LOGIC</div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio organizes inspection logic using a visual Directed Acyclic Graph (DAG) spreadsheet grid. 
+                    Every cell represents an image acquisition, vision algorithm, coordinate transform, or decision rule.
+                </p>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📊 Active Multi-Tool Inspection DAG Pipeline</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_main_inspection_dag.png" alt="Multi-Tool Inspection Pipeline showing PatMax, Blob, Circle and Decision in Spreadsheet DAG">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 3.1:</strong> A complete multi-cell inspection job executing on the Synthetic PCB test stream. 
+                        Cell <code>A0</code> captures the image, <code>B2</code> performs PatMax geometric alignment, <code>C3</code> inspects drilled holes using blob analysis, 
+                        <code>D4</code> measures circle radius, and <code>E5</code> computes the overall PASS/FAIL decision.
+                    </figcaption>
+                </div>
+
+                <h3 class="subheading">How Dependency Resolution Works</h3>
+                <p>
+                    When you enter a formula such as <code class="inline-code">=If(B2.Score &gt;= 60.0, "PASS", "FAIL")</code>, 
+                    the engine inspects references to other cells (e.g. <code>B2</code>), establishes a directed edge in the dependency graph, 
+                    and topologically sorts all cells. Execution always flows forward:
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="lang-badge">Topological Execution Order</span>
+                    </div>
+                    <pre><code>[A0: AcquireImage] ──► [B2: PatMax] ──► [D4: Distance] ──► [E5: Quality Gate (If)]
+                           │
+                           └──────────────► [C3: FindBlobs] ───────┘</code></pre>
+                </div>
+
+                <h3 class="subheading">Cell Enable / Disable Checkboxes</h3>
+                <p>
+                    Every row in the spreadsheet table features an interactive <strong>Run</strong> checkbox in column 0. 
+                    Unchecking a cell instantly disables its execution, skipping downstream dependencies and conserving processing time during line commissioning or partial recipe testing.
+                </p>
+
+                <div class="callout note">
+                    <div class="callout-icon">📌</div>
+                    <div class="callout-body">
+                        <strong>Root Cell A0:</strong>
+                        Cell <code>A0</code> is reserved exclusively for the primary camera image acquisition (<code class="inline-code">=AcquireImage()</code>). 
+                        It cannot be deleted or disabled, guaranteeing that downstream tools always possess a valid image buffer.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: AI & YOLO OBJECT DETECTION -->
+            <section class="doc-section" id="ai-deep-learning">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">04</div>
+                        <h2>AI & Deep Learning Object Detection (YOLOv8)</h2>
+                    </div>
+                    <div class="section-tag">NEURAL VISION</div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio integrates an advanced multi-task YOLO neural network engine (supporting YOLO26, YOLO11, and YOLOv8) running directly on the CPU via ONNXRuntime, 
+                    delivering instantaneous multi-class object localization, instance & semantic segmentation, monocular depth estimation, top-k classification, kinematic pose estimation, and oriented bounding boxes (OBB).
+                </p>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>🤖 Multi-Task YOLO Neural Vision Pipeline (7 Tasks)</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_main_yolo.png" alt="YOLO Multi-Task Neural Detection in VisionStudio with bounding boxes, HUD badges and AI tab controls">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 4.1:</strong> Real-time neural vision running via YOLO26/YOLOv8. 
+                        Supports 7 vision tasks: Bounding Box Detection, Instance Segmentation Masks, Dense Semantic Segmentation, Monocular Depth Colormaps, Image Classification, 17-Keypoint Pose Estimation, and Rotated Oriented Bounding Boxes (&theta; &isin; [-90&deg;, +90&deg;]).
+                    </figcaption>
+                </div>
+
+                <h3 class="subheading">Supported YOLO Vision Tasks & Formulas</h3>
+                <div class="table-responsive" style="margin-bottom: 20px;">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Task Mode</th>
+                                <th>Spreadsheet Formula</th>
+                                <th>Outputs & Visual Overlays</th>
+                                <th>Typical Industrial Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #00D2FF;">Detection</strong></td>
+                                <td><code>=YoloDetect(A0, task="detect", class="all", conf=0.35)</code></td>
+                                <td>Horizontal Bounding Boxes, Class Label, Score</td>
+                                <td>Part presence, counting, foreign object detection</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #00E676;">Instance Segmentation</strong></td>
+                                <td><code>=YoloDetect(A0, task="segment", class="bottle", conf=0.40)</code></td>
+                                <td>Per-object polygon masks, contour lines, area</td>
+                                <td>Precise part profiling, liquid fill volume inspection</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #FFB300;">Semantic Segmentation</strong></td>
+                                <td><code>=YoloDetect(A0, task="semantic")</code></td>
+                                <td>Pixel class mask: Foreground, Structure, Background</td>
+                                <td>Floor/conveyor zoning, surface coverage percentage</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #FF4081;">Depth Estimation</strong></td>
+                                <td><code>=YoloDetect(A0, task="depth")</code></td>
+                                <td>Monocular distance gradient, center depth probe</td>
+                                <td>Stack height verification, clearance monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #7C4DFF;">Classification</strong></td>
+                                <td><code>=YoloDetect(A0, task="classify")</code></td>
+                                <td>Top-1 & Top-5 category ranking & confidence bars</td>
+                                <td>Product SKU sorting, coarse defect tagging</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #00E5FF;">Pose Estimation</strong></td>
+                                <td><code>=YoloDetect(A0, task="pose")</code></td>
+                                <td>17 anatomical COCO keypoints & colored skeleton</td>
+                                <td>Safety zone intrusion, ergonomic workstation audit</td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #FF6E40;">Oriented Bounding Boxes (OBB)</strong></td>
+                                <td><code>=YoloDetect(A0, task="obb", class="all", conf=0.30)</code></td>
+                                <td>Rotated rect, orientation angle &theta;, heading arrow</td>
+                                <td>Robotic pick-and-place, feeder misalignment check</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="subheading">Accessing YOLO Result Attributes</h3>
+                <p>When cell <code>B2</code> contains a YOLO detection, downstream cells can extract discrete metrics:</p>
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Example Syntax</th>
+                                <th>Return Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>Count</code></td>
+                                <td><code>=If(B2.Count == 4, "PASS", "FAIL")</code></td>
+                                <td>Integer</td>
+                                <td>Total count of detected objects matching target class filter.</td>
+                            </tr>
+                            <tr>
+                                <td><code>Found</code></td>
+                                <td><code>=If(B2.Found, 1, 0)</code></td>
+                                <td>Boolean</td>
+                                <td>True if at least one object met the confidence criteria.</td>
+                            </tr>
+                            <tr>
+                                <td><code>Angle</code></td>
+                                <td><code>B2.Angle</code></td>
+                                <td>Float</td>
+                                <td>Primary orientation angle &theta; in degrees (OBB mode).</td>
+                            </tr>
+                            <tr>
+                                <td><code>Depth</code></td>
+                                <td><code>B2.Depth</code></td>
+                                <td>Float</td>
+                                <td>Normalized center-point distance probe (Depth mode).</td>
+                            </tr>
+                            <tr>
+                                <td><code>ClassCounts</code></td>
+                                <td><code>B2.ClassCounts["bottle"]</code></td>
+                                <td>Integer</td>
+                                <td>Count of objects matching specific sub-category.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 5: COMPREHENSIVE VISION TOOLS CATALOG -->
+            <section class="doc-section" id="vision-tools-catalog">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">05</div>
+                        <h2>Industrial Vision Tools Catalog</h2>
+                    </div>
+                    <div class="section-tag">REFERENCE MANUAL</div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio provides a rich catalog of 25+ industrial vision functions categorized into 
+                    pattern alignment, blob inspection, edge calipers, identification, filtering, and geometry.
+                </p>
+
+                <!-- Tool Category 1: Alignment -->
+                <h3 class="subheading">1. Pattern Matching & Alignment</h3>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=PatMax(A0)</div>
+                        <div class="formula-desc">Geometric contour and gradient-vector pattern matching with full 360&deg; rotation and scale tolerance. Returns <code>Score</code>, <code>X</code>, <code>Y</code>, <code>Angle</code>.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=TrainPatMax(A0, roi=[100, 100, 200, 200])</div>
+                        <div class="formula-desc">Trains a new geometric golden pattern template from the designated Region of Interest (ROI).</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+
+                <!-- Tool Category 2: Defects & Blobs -->
+                <h3 class="subheading">2. Presence, Absence & Defect Inspection</h3>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=FindBlobs(A0, threshold=128, min_area=50)</div>
+                        <div class="formula-desc">Morphological connected-component extraction. Computes blob areas, circularity, bounding boxes, and centroids.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=DetectFlaw(A0, sensitivity=35)</div>
+                        <div class="formula-desc">Surface anomaly and scratch detection comparing current frame against a golden baseline template.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=Histogram(A0)</div>
+                        <div class="formula-desc">Measures grayscale light intensity, mean luminance, standard deviation, peak bin, and contrast range.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+
+                <!-- Tool Category 3: Calipers & Edges -->
+                <h3 class="subheading">3. Edges & Caliper Measurement</h3>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=FindLine(A0)</div>
+                        <div class="formula-desc">Projects perpendicular caliper search rakes, locates subpixel gradient edge transitions, and fits boundary lines.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=FindCircle(A0)</div>
+                        <div class="formula-desc">Radial caliper rays projecting outward to locate circular edges, fitting center coordinate (X, Y) and radius.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=Caliper(A0)</div>
+                        <div class="formula-desc">High-precision distance measurement between edge pairs (e.g. pin gap, component width, groove clearance).</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=EdgeCount(A0)</div>
+                        <div class="formula-desc">Scans along an inspection segment and counts light-to-dark and dark-to-light boundary crossings (e.g. connector pins, gear teeth).</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+
+                <!-- Tool Category 4: Identification & OCR -->
+                <h3 class="subheading">4. Identification & OCR</h3>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=ReadIDMax(A0)</div>
+                        <div class="formula-desc">Industrial 1D barcode (Code 128, Code 39, EAN-13) and 2D matrix (QR Code, DataMatrix) decoding. Returns <code>Text</code>, <code>Type</code>, <code>Polygon</code>.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=ReadOcrMax(A0, regex="[A-Z0-9]+")</div>
+                        <div class="formula-desc">Optical character recognition for embossed or laser-marked alphanumeric lot numbers, expiration dates, and serial codes.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+
+                <!-- Tool Category 5: Filters & Color -->
+                <h3 class="subheading">5. Image Filters & Color Segmentation</h3>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=ExtractColor(A0, color="GREEN")</div>
+                        <div class="formula-desc">HSV color space isolation (RED, GREEN, BLUE, YELLOW, WHITE). Returns pixel count and percentage coverage.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=ImageFilter(A0, filter="Gaussian", ksize=5)</div>
+                        <div class="formula-desc">Morphological and convolutional image filters: Gaussian, Median, Sobel, Laplacian, MorphOpen, MorphClose.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=Binarize(A0, method="Otsu")</div>
+                        <div class="formula-desc">Automatic image segmentation converting grayscale to high-contrast binary masks (Otsu, Adaptive, Fixed).</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+
+                <!-- Tool Category 6: Geometry & Logic -->
+                <h3 class="subheading">6. Geometry, Logic & Decision Rules</h3>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=Distance(B2.X, B2.Y, C3.X, C3.Y)</div>
+                        <div class="formula-desc">Euclidean distance between two coordinates in pixels or calibrated millimeters.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=Angle(B2.X, B2.Y, 500, 300)</div>
+                        <div class="formula-desc">Calculates slope orientation angle (-180&deg; to +180&deg;) between two coordinates.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=If(B2.Score >= 75.0 and D4 < 50.0, "PASS", "FAIL")</div>
+                        <div class="formula-desc">Conditional quality gate. When evaluated, flags cell as PASS or FAIL, driving the overall inspection verdict and PLC outputs.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+            </section>
+
+            <!-- SECTION 6: INDUSTRIAL PLC & COMMUNICATIONS -->
+            <section class="doc-section" id="industrial-plc-io">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">06</div>
+                        <h2>Industrial PLC & Hardware Communications</h2>
+                    </div>
+                    <div class="section-tag">FACTORY AUTOMATION</div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio bridges machine vision directly to factory programmable logic controllers (PLCs), 
+                    industrial robots, and digital input/output lines without requiring intermediate OPC servers or middleware.
+                </p>
+
+                <div class="callout tip">
+                    <div class="callout-icon">📡</div>
+                    <div class="callout-body">
+                        <strong>Interactive Toolbar Dialog:</strong>
+                        Click the <span class="badge badge-plc">📡 PLC & Devices</span> button in the main window toolbar to open the centralized configuration dialog. 
+                        Every tab includes one-click <em>"Test Connection (Ping)"</em> and <em>"Send Test Inspection Result"</em> verification buttons!
+                    </div>
+                </div>
+
+                <!-- Sub-interface 1: Siemens S7 -->
+                <h3 class="subheading">1. Siemens S7 PLC Integration</h3>
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📡 Siemens S7 PLC Communications Configuration Dialog</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_plc_siemens.png" alt="Siemens S7 PLC configuration dialog with ISO-on-TCP settings and DB mapping">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 6.1:</strong> Siemens S7 configuration tab supporting S7-300, S7-400, S7-1200, and S7-1500 controllers via ISO-on-TCP (port 102).
+                    </figcaption>
+                </div>
+
+                <p>
+                    VisionStudio transmits a high-speed 16-byte batch payload directly into a Siemens DataBlock (DB) on every cycle:
+                </p>
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Byte Offset</th>
+                                <th>Data Type</th>
+                                <th>PLC Variable</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Byte 0.0</td>
+                                <td>BOOL</td>
+                                <td><code>bPass</code></td>
+                                <td>True (1) when overall inspection decision is PASS.</td>
+                            </tr>
+                            <tr>
+                                <td>Byte 0.1</td>
+                                <td>BOOL</td>
+                                <td><code>bFail</code></td>
+                                <td>True (1) when overall inspection decision is FAIL.</td>
+                            </tr>
+                            <tr>
+                                <td>Byte 0.2</td>
+                                <td>BOOL</td>
+                                <td><code>bVisionReady</code></td>
+                                <td>Heartbeat / ready handshake indicating camera is armed.</td>
+                            </tr>
+                            <tr>
+                                <td>Bytes 2 - 3</td>
+                                <td>INT16</td>
+                                <td><code>nPartCount</code></td>
+                                <td>Cumulative inspection cycle counter.</td>
+                            </tr>
+                            <tr>
+                                <td>Bytes 4 - 7</td>
+                                <td>REAL32 (Float)</td>
+                                <td><code>fPartX</code></td>
+                                <td>Part alignment centroid X coordinate.</td>
+                            </tr>
+                            <tr>
+                                <td>Bytes 8 - 11</td>
+                                <td>REAL32 (Float)</td>
+                                <td><code>fPartY</code></td>
+                                <td>Part alignment centroid Y coordinate.</td>
+                            </tr>
+                            <tr>
+                                <td>Bytes 12 - 15</td>
+                                <td>REAL32 (Float)</td>
+                                <td><code>fPartAngle</code></td>
+                                <td>Part rotational orientation in degrees.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=WriteSiemens(E5, ip="192.168.1.10", db=1, byte=0)</div>
+                        <div class="formula-desc">Dispatches cell E5 result and part coordinate offsets to Siemens PLC at 192.168.1.10, DB 1.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+
+                <!-- Sub-interface 2: Delta PLC -->
+                <h3 class="subheading">2. Delta PLC via Modbus TCP (Port 502)</h3>
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📡 Delta PLC Modbus TCP Configuration Dialog</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_plc_delta.png" alt="Delta PLC Modbus TCP settings with D-register and M-coil offset mapping">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 6.2:</strong> Delta PLC Modbus TCP configuration with automatic D-register and M-coil offset mapping.
+                    </figcaption>
+                </div>
+
+                <p>
+                    Supports Delta DVP-SE, AS200, AS300, and AH500 series controllers with native Delta register mapping:
+                </p>
+                <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
+                    <li><strong>D-Registers:</strong> <code>D0</code> maps automatically to Modbus holding register <code>0x1000</code> (4096).</li>
+                    <li><strong>M-Coils:</strong> <code>M0</code> maps automatically to Modbus discrete coil <code>0x0800</code> (2048).</li>
+                    <li><strong>Formula Syntax:</strong> <code class="inline-code">=WriteModbus(E5, ip="192.168.1.50", reg=100)</code></li>
+                </ul>
+
+                <!-- Sub-interface 3: Beckhoff & Ethernet -->
+                <h3 class="subheading">3. Beckhoff TwinCAT ADS & Ethernet Robot Communication</h3>
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">⚡</span>
+                        <h4>Beckhoff TwinCAT ADS</h4>
+                        <p>Communicates natively over TCP port 48898 (ADS router) directly into TwinCAT %M memory area (<code>IndexGroup 0x4020</code>).</p>
+                        <div class="formula-card" style="margin-top: 10px;">
+                            <div class="formula-syntax" style="font-size: 0.8rem;">=WriteBeckhoff(E5, ip="192.168.1.20", offset=100)</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🤖</span>
+                        <h4>Industrial Ethernet Devices</h4>
+                        <p>TCP/UDP client and server interfacing with ABB, KUKA, Fanuc, and Universal Robots using JSON, CSV, or ASCII telegrams.</p>
+                        <div class="formula-card" style="margin-top: 10px;">
+                            <div class="formula-syntax" style="font-size: 0.8rem;">=WriteEthernet(E5, ip="192.168.1.100", port=9000, fmt="JSON")</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-interface 4: Raspberry Pi GPIO -->
+                <h3 class="subheading">4. Raspberry Pi Industrial Digital I/O</h3>
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📡 Raspberry Pi GPIO Hardware Pinout Dialog</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_plc_gpio.png" alt="Raspberry Pi GPIO Pin Configuration and Remote Pigpio Protocol Dialog">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 6.3:</strong> Raspberry Pi GPIO configuration featuring the Remote Pigpio network protocol (TCP port 8888), allowing Windows hosts to trigger and read physical pins across the network.
+                    </figcaption>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Signal Function</th>
+                                <th>Default Physical Pin</th>
+                                <th>Direction</th>
+                                <th>Electrical Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>PASS Output</code></td>
+                                <td>GPIO 17</td>
+                                <td>Output</td>
+                                <td>Pulses HIGH (3.3V) for 50ms upon good inspection result to drive green beacon / pass diverter.</td>
+                            </tr>
+                            <tr>
+                                <td><code>FAIL Output</code></td>
+                                <td>GPIO 27</td>
+                                <td>Output</td>
+                                <td>Pulses HIGH (3.3V) for 50ms upon failed inspection to trigger reject pneumatic cylinder.</td>
+                            </tr>
+                            <tr>
+                                <td><code>READY Output</code></td>
+                                <td>GPIO 22</td>
+                                <td>Output</td>
+                                <td>HIGH when camera is armed and awaiting trigger; LOW during image processing.</td>
+                            </tr>
+                            <tr>
+                                <td><code>STROBE Output</code></td>
+                                <td>GPIO 23</td>
+                                <td>Output</td>
+                                <td>Microsecond flash strobe pulse synchronized with camera exposure start.</td>
+                            </tr>
+                            <tr>
+                                <td><code>TRIGGER Input</code></td>
+                                <td>GPIO 4</td>
+                                <td>Input (Pull-Down)</td>
+                                <td>Opto-isolated hardware trigger input (rising edge fires immediate acquisition).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 7: REMOTE CONTROL & NATIVE MODE -->
+            <section class="doc-section" id="remote-native-mode">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">07</div>
+                        <h2>Native Mode Remote Automation (TCP Port 1023)</h2>
+                    </div>
+                    <div class="section-tag">REMOTE PROTOCOL</div>
+                </div>
+
+                <p class="lead-text">
+                    VisionStudio runs a high-speed Native Mode Telnet server on TCP port <code>1023</code> (standard port 23 compatible). 
+                    External PLCs, HMIs, and software systems can control the vision engine using standard ASCII text commands.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Command</th>
+                                <th>Example Usage</th>
+                                <th>Response Format</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>GV &lt;cell&gt;</code></td>
+                                <td><code>GV E5</code></td>
+                                <td><code>1\r\nPASS\r\n</code></td>
+                                <td>Get Value: Queries the current evaluated value of specified cell coordinate.</td>
+                            </tr>
+                            <tr>
+                                <td><code>GV &lt;cell.prop&gt;</code></td>
+                                <td><code>GV B2.Score</code></td>
+                                <td><code>1\r\n94.8\r\n</code></td>
+                                <td>Get Attribute: Queries discrete property (e.g. <code>Score</code>, <code>X</code>, <code>Y</code>, <code>Angle</code>).</td>
+                            </tr>
+                            <tr>
+                                <td><code>SW</code></td>
+                                <td><code>SW</code></td>
+                                <td><code>1\r\n</code></td>
+                                <td>Software Trigger: Fires instantaneous image acquisition and DAG re-evaluation.</td>
+                            </tr>
+                            <tr>
+                                <td><code>SE 8</code></td>
+                                <td><code>SE 8</code></td>
+                                <td><code>1\r\n</code></td>
+                                <td>Event Trigger: Triggers synchronous inspection event #8.</td>
+                            </tr>
+                            <tr>
+                                <td><code>SO &lt;0|1&gt;</code></td>
+                                <td><code>SO 1</code></td>
+                                <td><code>1\r\n</code></td>
+                                <td>Set Online: Puts system Online (1) or Offline (0).</td>
+                            </tr>
+                            <tr>
+                                <td><code>RB</code></td>
+                                <td><code>RB</code></td>
+                                <td><code>1\r\nPASS,B2=94.8,D4=12.4\r\n</code></td>
+                                <td>Read Result Buffer: Returns formatted string of all active inspection decision values.</td>
+                            </tr>
+                            <tr>
+                                <td><code>RT</code></td>
+                                <td><code>RT</code></td>
+                                <td><code>1\r\n28.4\r\n</code></td>
+                                <td>Read Time: Returns last inspection execution cycle time in milliseconds.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="subheading">Python Native Mode Client Example</h3>
+                <div class="code-wrapper">
+                    <div class="code-header">
+                        <span class="lang-badge">Python 3</span>
+                        <button class="copy-btn">📋 Copy</button>
+                    </div>
+                    <pre><code>import socket
+
+# Connect to VisionStudio Native Mode TCP Server
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect(("127.0.0.1", 1023))
+
+# Read welcome banner
+print(sock.recv(1024).decode())
+
+# Send software trigger
+sock.sendall(b"SW\r\n")
+print(sock.recv(1024).decode())
+
+# Query decision cell E5
+sock.sendall(b"GV E5\r\n")
+result = sock.recv(1024).decode()
+print("Inspection Verdict:", result)
+
+sock.close()</code></pre>
+                </div>
+            </section>
+
+            <!-- SECTION 8: WEBHMI REMOTE DASHBOARD -->
+            <section class="doc-section" id="webhmi-dashboard">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">08</div>
+                        <h2>WebHMI Remote Shop-Floor Dashboard</h2>
+                    </div>
+                    <div class="section-tag">REMOTE MONITORING</div>
+                </div>
+
+                <p class="lead-text">
+                    Every instance of VisionStudio hosts an integrated FastAPI WebHMI server at 
+                    <a href="http://localhost:8080" target="_blank" style="color: var(--primary);">http://localhost:8080</a>. 
+                    Operators and plant supervisors can monitor live video, review inspection yield statistics, and trigger inspections from any web browser, iPad, Android tablet, or plant SCADA terminal.
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">📺</span>
+                        <h4>Live MJPEG Video Feed</h4>
+                        <p>Stream real-time inspection video with graphical overlays, pass/fail reticles, caliper rays, and YOLO bounding boxes directly via <code>/video_feed</code>.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">⚡</span>
+                        <h4>WebSockets Telemetry Feed</h4>
+                        <p>Ultra-low-latency two-way telemetry streaming cycle times, pass/fail counters, yield percentages, and cell metrics via <code>/ws/telemetry</code>.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🎯</span>
+                        <h4>REST API Endpoints</h4>
+                        <p>Automate shop-floor integration using standard HTTP requests: <code>POST /api/trigger</code> to trigger acquisition and <code>GET /api/stats</code> for KPI JSON telemetry.</p>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Accessing WebHMI Across Local Network</h3>
+                <p>
+                    To view the WebHMI dashboard from a tablet or line terminal on the factory Wi-Fi or LAN, 
+                    navigate to <code>http://&lt;IP_ADDRESS_OF_HOST&gt;:8080</code> (e.g. <code>http://192.168.1.100:8080</code>).
+                </p>
+            </section>
+
+            <!-- SECTION 9: TROUBLESHOOTING & OPTIMIZATION -->
+            <section class="doc-section" id="troubleshooting">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">09</div>
+                        <h2>Troubleshooting & Optimization Guide</h2>
+                    </div>
+                    <div class="section-tag">DIAGNOSTICS</div>
+                </div>
+
+                <h3 class="subheading">Common Diagnostic Scenarios</h3>
+                <div class="step-list">
+                    <div class="step-item">
+                        <div class="step-num">!</div>
+                        <div class="step-content">
+                            <h4>Camera Fails to Connect or Black Viewport</h4>
+                            <p>Verify the camera index in the top toolbar. If using USB, check indices <code>0</code>, <code>1</code>, or <code>2</code>. 
+                            For RTSP streams, verify that the IP camera allows sub-stream access without digest authentication restrictions.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-num">!</div>
+                        <div class="step-content">
+                            <h4>Siemens S7 Connection Timeout on Port 102</h4>
+                            <p>Ensure that the Siemens CPU has <em>"Permit access with PUT/GET communication from remote partner"</em> enabled in TIA Portal device protection settings. 
+                            Confirm that DataBlock DB1 is not set to "Optimized Block Access" (uncheck Optimized Access to enable standard byte offsets).</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-num">!</div>
+                        <div class="step-content">
+                            <h4>Spreadsheet Cell Displays #ERR or Red Highlight</h4>
+                            <p>Verify that cell formulas reference valid upstream coordinates. If cell <code>E5</code> references <code>B2.Score</code>, ensure that cell <code>B2</code> is enabled and currently contains a PatMax tool.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 10: FORMULA CHEAT SHEET -->
+            <section class="doc-section" id="cheat-sheet">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">10</div>
+                        <h2>Formula Quick Reference & Cheat Sheet</h2>
+                    </div>
+                    <div class="section-tag">QUICK LOOKUP</div>
+                </div>
+
+                <p class="lead-text">
+                    A comprehensive cheat sheet of all built-in industrial functions, syntax patterns, and return values:
+                </p>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Formula Signature</th>
+                                <th>Return Type</th>
+                                <th>Common Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-ai">AI Deep Learning</span></td>
+                                <td><code>=YoloDetect(A0, class="all", conf=0.40)</code></td>
+                                <td>YoloResult</td>
+                                <td>Object classification, multi-class presence, assembly verification</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Pattern Alignment</span></td>
+                                <td><code>=PatMax(A0)</code></td>
+                                <td>PatMaxResult</td>
+                                <td>High-precision component alignment, robot guidance, fiducial locating</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Defect Inspection</span></td>
+                                <td><code>=FindBlobs(A0, threshold=128, min_area=50)</code></td>
+                                <td>BlobResult</td>
+                                <td>Pore, void, particle, hole counting, surface stain inspection</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Defect Inspection</span></td>
+                                <td><code>=DetectFlaw(A0, sensitivity=35)</code></td>
+                                <td>FlawResult</td>
+                                <td>Golden template scratch, dent, chip, and crack inspection</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Measurement</span></td>
+                                <td><code>=FindLine(A0)</code></td>
+                                <td>LineResult</td>
+                                <td>Edge alignment, bevel check, component edge boundary</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Measurement</span></td>
+                                <td><code>=FindCircle(A0)</code></td>
+                                <td>CircleResult</td>
+                                <td>Hole diameter, drill centering, O-ring roundness</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Measurement</span></td>
+                                <td><code>=Caliper(A0)</code></td>
+                                <td>CaliperWidthResult</td>
+                                <td>Gap, thickness, channel width, lead pitch verification</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Identification</span></td>
+                                <td><code>=ReadIDMax(A0)</code></td>
+                                <td>CodeResult</td>
+                                <td>Traceability, 1D barcodes, 2D DataMatrix, QR codes</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Identification</span></td>
+                                <td><code>=ReadOcrMax(A0, regex="[A-Z0-9]+")</code></td>
+                                <td>OcrResult</td>
+                                <td>Batch codes, lot numbers, printed text validation</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Color & Filters</span></td>
+                                <td><code>=ExtractColor(A0, color="GREEN")</code></td>
+                                <td>ColorResult</td>
+                                <td>LED color check, label color verification, wire identification</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Geometry</span></td>
+                                <td><code>=Distance(B2.X, B2.Y, C3.X, C3.Y)</code></td>
+                                <td>Float</td>
+                                <td>Center-to-center pitch, position offset from target</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Decision Logic</span></td>
+                                <td><code>=If(B2.Score >= 75.0, "PASS", "FAIL")</code></td>
+                                <td>String</td>
+                                <td>Quality gate, overall pass/fail determination</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Fieldbus PLC</span></td>
+                                <td><code>=WriteSiemens(E5, ip="192.168.1.10", db=1)</code></td>
+                                <td>String</td>
+                                <td>Direct Siemens S7-300 / 1200 / 1500 DB batch write</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Fieldbus PLC</span></td>
+                                <td><code>=WriteModbus(E5, ip="192.168.1.50", reg=100)</code></td>
+                                <td>String</td>
+                                <td>Direct Delta DVP / AS series D-register & M-coil write</td>
+                            </tr>
+                            <tr class="tool-row">
+                                <td><span class="badge badge-plc">Fieldbus PLC</span></td>
+                                <td><code>=WriteGPIO(E5, pass_pin=17, fail_pin=27)</code></td>
+                                <td>String</td>
+                                <td>Physical Raspberry Pi pass/fail pin output pulses</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" title="Close Lightbox">&times;</button>
+            <img src="" alt="" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="manual-footer">
+        <div class="footer-credits">
+            <span>VisionStudio Industrial Suite</span>
+            <span>•</span>
+            <span style="color: var(--primary);">Made By &lt;3 by Anky Singh</span>
+        </div>
+        <div class="footer-nav">
+            <a href="#hero">Back to Top ↑</a>
+            <a href="01_getting_started.html">Modular Guides</a>
+            <a href="#cheat-sheet">Cheat Sheet</a>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script src="js/manual.js"></script>
+</body>
+</html>

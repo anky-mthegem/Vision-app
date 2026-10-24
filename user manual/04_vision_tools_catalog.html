@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. Vision Tools Catalog | VisionStudio User Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="manual-header">
+        <a href="index.html" class="brand-wrapper">
+            <div class="brand-icon">👁️</div>
+            <div class="brand-text">
+                <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
+                <p>Industrial Machine Vision & Automation Platform</p>
+            </div>
+        </a>
+        <div class="header-actions">
+            <a href="index.html" class="header-btn">🏠 Master Manual</a>
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Switch Theme">☀️</button>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <aside class="manual-sidebar">
+            <div class="sidebar-heading">Modular Guides</div>
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item"><a href="index.html"><span class="icon">🏠</span> Master Portal</a></li>
+                <li class="sidebar-nav-item"><a href="01_getting_started.html"><span class="icon">⚡</span> 01. Getting Started</a></li>
+                <li class="sidebar-nav-item"><a href="02_camera_subsystem.html"><span class="icon">📷</span> 02. Camera Subsystem</a></li>
+                <li class="sidebar-nav-item"><a href="03_spreadsheet_engine.html"><span class="icon">📊</span> 03. Spreadsheet DAG</a></li>
+                <li class="sidebar-nav-item active"><a href="04_vision_tools_catalog.html"><span class="icon">🛠️</span> 04. Vision Tools Catalog</a></li>
+                <li class="sidebar-nav-item"><a href="05_plc_industrial_io.html"><span class="icon">📡</span> 05. PLC & Fieldbus I/O</a></li>
+                <li class="sidebar-nav-item"><a href="06_remote_control_native_mode.html"><span class="icon">🔌</span> 06. Native Mode TCP</a></li>
+                <li class="sidebar-nav-item"><a href="07_webhmi_dashboard.html"><span class="icon">🌐</span> 07. WebHMI Dashboard</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="author-tag">Made By <span class="author-heart">&lt;3</span> by Anky Singh</div>
+            </div>
+        </aside>
+
+        <main class="manual-content">
+            <div class="hero-card">
+                <div class="hero-pill">CHAPTER 04 • ALGORITHM SUITE</div>
+                <h1>Industrial Vision Tools Catalog</h1>
+                <p class="hero-desc">
+                    Comprehensive specifications, formulas, parameter options, and return signatures 
+                    for all classical and deep learning inspection tools.
+                </p>
+            </div>
+
+            <!-- AI Section -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">01</div>
+                        <h2>Next-Gen Neural Detection (YOLO26 / Modern YOLO)</h2>
+                    </div>
+                </div>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">YOLO26 End-to-End Neural Detection HUD</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_main_yolo.png" alt="YOLO26 Deep Learning Object Detection in VisionStudio">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 4.1:</strong> YOLO26 real-time object classification and bounding reticles with sub-50ms CPU execution and NMS-free native inference.
+                    </figcaption>
+                </div>
+
+                <p class="section-desc">
+                    VisionStudio features a unified multi-task deep learning engine supporting modern state-of-the-art vision models including <strong>YOLO26</strong>, <strong>YOLO11</strong>, and <strong>YOLOv8</strong>. 
+                    The inference engine supports 7 core computer vision tasks with sub-50ms CPU execution, end-to-end NMS-free tensors, and automatic hardware session caching.
+                </p>
+
+                <!-- 7 Task Modes Grid -->
+                <div style="margin: 24px 0;">
+                    <h3 style="color: #00D2FF; font-size: 16px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">7 Supported YOLO Computer Vision Tasks</h3>
+                    <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+                        
+                        <!-- 1. Detection -->
+                        <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 20px;">📦</span>
+                                <h4 style="color: #00D2FF; margin: 0; font-size: 14px;">1. Object Detection (Bounding Boxes)</h4>
+                            </div>
+                            <p style="color: #8C9BAE; font-size: 12px; line-height: 1.4; margin: 0 0 8px 0;">
+                                Standard horizontal bounding boxes with class confidence labels, corner reticles, and centroid tracking across 80 COCO classes.
+                            </p>
+                            <code style="font-size: 11px; color: #00E676; background: #16191D; padding: 3px 6px; border-radius: 4px; display: block;">task="detect"</code>
+                        </div>
+
+                        <!-- 2. Instance Segmentation -->
+                        <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 20px;">🎭</span>
+                                <h4 style="color: #00E676; margin: 0; font-size: 14px;">2. Instance Segmentation (Masks)</h4>
+                            </div>
+                            <p style="color: #8C9BAE; font-size: 12px; line-height: 1.4; margin: 0 0 8px 0;">
+                                Generates precise pixel-accurate boundary contours, translucent colored masks, and surface area measurements for each detected workpiece.
+                            </p>
+                            <code style="font-size: 11px; color: #00E676; background: #16191D; padding: 3px 6px; border-radius: 4px; display: block;">task="segment"</code>
+                        </div>
+
+                        <!-- 3. Semantic Segmentation -->
+                        <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 20px;">🎨</span>
+                                <h4 style="color: #FFB300; margin: 0; font-size: 14px;">3. Semantic Segmentation (Scene)</h4>
+                            </div>
+                            <p style="color: #8C9BAE; font-size: 12px; line-height: 1.4; margin: 0 0 8px 0;">
+                                Dense pixel-level scene classification partitioning imagery into Foreground Objects, Structural Features, and Background with percentage coverage HUD.
+                            </p>
+                            <code style="font-size: 11px; color: #00E676; background: #16191D; padding: 3px 6px; border-radius: 4px; display: block;">task="semantic"</code>
+                        </div>
+
+                        <!-- 4. Depth Estimation -->
+                        <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 20px;">🌊</span>
+                                <h4 style="color: #FF4081; margin: 0; font-size: 14px;">4. Depth Estimation (Distance Field)</h4>
+                            </div>
+                            <p style="color: #8C9BAE; font-size: 12px; line-height: 1.4; margin: 0 0 8px 0;">
+                                Monocular depth gradient mapping rendered via pseudo-color thermal/inferno colormaps with real-time center, minimum, and maximum depth probes.
+                            </p>
+                            <code style="font-size: 11px; color: #00E676; background: #16191D; padding: 3px 6px; border-radius: 4px; display: block;">task="depth"</code>
+                        </div>
+
+                        <!-- 5. Image Classification -->
+                        <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 20px;">🏷️</span>
+                                <h4 style="color: #7C4DFF; margin: 0; font-size: 14px;">5. Image Classification (Top-K)</h4>
+                            </div>
+                            <p style="color: #8C9BAE; font-size: 12px; line-height: 1.4; margin: 0 0 8px 0;">
+                                Global scene classification scoring and ranking top candidate categories with Top-1 / Top-5 probabilities and visual confidence progress bars.
+                            </p>
+                            <code style="font-size: 11px; color: #00E676; background: #16191D; padding: 3px 6px; border-radius: 4px; display: block;">task="classify"</code>
+                        </div>
+
+                        <!-- 6. Pose Estimation -->
+                        <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 20px;">🏃</span>
+                                <h4 style="color: #00E5FF; margin: 0; font-size: 14px;">6. Pose Estimation (17 Keypoints)</h4>
+                            </div>
+                            <p style="color: #8C9BAE; font-size: 12px; line-height: 1.4; margin: 0 0 8px 0;">
+                                Full skeletal kinematic tracking identifying 17 anatomical keypoints (shoulders, elbows, wrists, hips, knees) with color-coded limb connections.
+                            </p>
+                            <code style="font-size: 11px; color: #00E676; background: #16191D; padding: 3px 6px; border-radius: 4px; display: block;">task="pose"</code>
+                        </div>
+
+                        <!-- 7. Oriented Bounding Boxes (OBB) -->
+                        <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 20px;">🔄</span>
+                                <h4 style="color: #FF6E40; margin: 0; font-size: 14px;">7. Oriented Bounding Boxes (OBB)</h4>
+                            </div>
+                            <p style="color: #8C9BAE; font-size: 12px; line-height: 1.4; margin: 0 0 8px 0;">
+                                Rotated minimum bounding boxes computing exact workpiece tilt angle &theta; (-90&deg; to +90&deg;) and heading vectors for robotic pick-and-place.
+                            </p>
+                            <code style="font-size: 11px; color: #00E676; background: #16191D; padding: 3px 6px; border-radius: 4px; display: block;">task="obb"</code>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Formula Syntax Cards for all 7 modes -->
+                <div style="margin-top: 20px;">
+                    <h3 style="color: #E2E8F0; font-size: 15px; margin-bottom: 10px;">Spreadsheet & Pipeline Formula Syntax Examples</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div class="formula-card">
+                            <div>
+                                <div class="formula-syntax">=YoloDetect(A0, task="detect", class="all", conf=0.35)</div>
+                                <div class="formula-desc">Standard bounding box detection across all 80 object classes.</div>
+                            </div>
+                            <button class="copy-btn">📋 Copy</button>
+                        </div>
+                        <div class="formula-card">
+                            <div>
+                                <div class="formula-syntax">=YoloDetect(A0, task="segment", class="bottle", conf=0.40)</div>
+                                <div class="formula-desc">Instance segmentation generating precise polygon masks and instance surface area.</div>
+                            </div>
+                            <button class="copy-btn">📋 Copy</button>
+                        </div>
+                        <div class="formula-card">
+                            <div>
+                                <div class="formula-syntax">=YoloDetect(A0, task="semantic")</div>
+                                <div class="formula-desc">Dense semantic scene parsing with percentage breakdown of foreground, structures, and background.</div>
+                            </div>
+                            <button class="copy-btn">📋 Copy</button>
+                        </div>
+                        <div class="formula-card">
+                            <div>
+                                <div class="formula-syntax">=YoloDetect(A0, task="depth")</div>
+                                <div class="formula-desc">Monocular depth estimation producing distance fields and center depth probe metrics.</div>
+                            </div>
+                            <button class="copy-btn">📋 Copy</button>
+                        </div>
+                        <div class="formula-card">
+                            <div>
+                                <div class="formula-syntax">=YoloDetect(A0, task="classify")</div>
+                                <div class="formula-desc">Deep image classification returning Top-1/Top-5 classes and confidence bars.</div>
+                            </div>
+                            <button class="copy-btn">📋 Copy</button>
+                        </div>
+                        <div class="formula-card">
+                            <div>
+                                <div class="formula-syntax">=YoloDetect(A0, task="pose")</div>
+                                <div class="formula-desc">Kinematic pose estimation tracking 17 COCO human joints and skeletal limbs.</div>
+                            </div>
+                            <button class="copy-btn">📋 Copy</button>
+                        </div>
+                        <div class="formula-card">
+                            <div>
+                                <div class="formula-syntax">=YoloDetect(A0, task="obb", class="all", conf=0.30)</div>
+                                <div class="formula-desc">Oriented bounding box detection extracting rotated angles and heading vectors for robotic grippers.</div>
+                            </div>
+                            <button class="copy-btn">📋 Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Geometric & Intelligent Tools Section -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">02</div>
+                        <h2>Geometric Shape Detection, Hand Tracking & OCR</h2>
+                    </div>
+                </div>
+
+                <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin: 20px 0;">
+                    <!-- Shape Detection -->
+                    <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">📐</div>
+                        <h3 style="color: #00D2FF; margin: 0 0 8px 0;">Geometric Shape Detector</h3>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Classifies industrial workpieces and objects into canonical geometric primitives:
+                            <strong>Circle</strong>, <strong>Square</strong>, <strong>Rectangle</strong>, <strong>Triangle</strong>, <strong>Polygon</strong>, and <strong>Ellipse</strong>.
+                        </p>
+                        <ul style="color: #B0BAC9; font-size: 12px; padding-left: 18px; margin: 10px 0;">
+                            <li>Circularity and polygon approximation (Douglas-Peucker)</li>
+                            <li>Orientation angle, bounding W/H, and area callouts</li>
+                            <li>Selectable filter for target shape or detection of all shapes</li>
+                        </ul>
+                    </div>
+
+                    <!-- Hand Tracking -->
+                    <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">✋</div>
+                        <h3 style="color: #00E676; margin: 0 0 8px 0;">Hand & Gesture Tracker (MediaPipe & OpenCV)</h3>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Vision-based contactless human-machine interface (HMI). Leverages Google MediaPipe Hands (21 3D landmarks) with automatic high-speed OpenCV skin-chroma fallback.
+                        </p>
+                        <ul style="color: #B0BAC9; font-size: 12px; padding-left: 18px; margin: 10px 0;">
+                            <li>21 anatomical skeletal connections with <code>mp_drawing</code> styles</li>
+                            <li>Index fingertip (ID: 8) callout reticle and pixel coordinates <code>(index_x, index_y)</code></li>
+                            <li>Real-time gesture classification: <em>Fist</em>, <em>Pointing</em>, <em>Peace / V-Sign</em>, <em>OK Sign</em>, <em>Open Palm</em></li>
+                            <li>Selectable mirror viewing (horizontal flip) and multi-hand tracking</li>
+                        </ul>
+                    </div>
+
+                    <!-- Optical Character Recognition -->
+                    <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🔤</div>
+                        <h3 style="color: #FFB300; margin: 0 0 8px 0;">Optical Character Recognition (OCR)</h3>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Reads serial numbers, date codes, and labels on industrial packaging and printed circuit boards (PCBs).
+                        </p>
+                        <ul style="color: #B0BAC9; font-size: 12px; padding-left: 18px; margin: 10px 0;">
+                            <li>Morphological gradient & horizontal glyph bridging segmentation</li>
+                            <li>Otsu threshold binarization for high-contrast character isolation</li>
+                            <li>Tesseract OCR engine integration with character height filtering</li>
+                        </ul>
+                    </div>
+
+                    <!-- Industrial Caliper & Metrology -->
+                    <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">📏</div>
+                        <h3 style="color: #00D2FF; margin: 0 0 8px 0;">Industrial Caliper & Metrology</h3>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Precision dimensional inspection applying real-world camera optical calibration factors.
+                        </p>
+                        <ul style="color: #B0BAC9; font-size: 12px; padding-left: 18px; margin: 10px 0;">
+                            <li>Measures Line Length, Bounding Width/Height, Diameter, and Area</li>
+                            <li>Configurable calibration scale (<code>mm/px</code>, <code>cm/px</code>, <code>in/px</code>, <code>um/px</code>)</li>
+                            <li>Go / No-Go tolerance checking against engineering limits</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Camera Calibration Section -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">03</div>
+                        <h2>In-App Camera Calibration & Scale Calculation</h2>
+                    </div>
+                </div>
+
+                <p class="section-desc">
+                    Machine vision measurements require translating raw sensor pixels into physical engineering units. 
+                    VisionStudio provides a dedicated <strong>"📐 Calibration"</strong> tool in the top application toolbar.
+                </p>
+
+                <div class="info-alert" style="background: rgba(0, 210, 255, 0.08); border-left: 4px solid #00D2FF; padding: 16px; border-radius: 4px; margin: 16px 0;">
+                    <strong style="color: #00D2FF;">How to Calibrate in 3 Steps:</strong>
+                    <ol style="color: #B0BAC9; font-size: 13px; margin: 8px 0 0 0; padding-left: 20px; line-height: 1.6;">
+                        <li>Place a known physical gauge block, ruler, or calibration target under the camera.</li>
+                        <li>Click <strong>"📐 Calibration"</strong> on the toolbar. Enter the known reference dimension (e.g. <code>50.0 mm</code>) and measured pixel span (e.g. <code>500 px</code>).</li>
+                        <li>Click <strong>"Calculate Ratio"</strong> followed by <strong>"Save & Apply to Pipeline"</strong>. The calibration factor (<code>0.1000 mm/px</code>) will automatically propagate across all measurement steps.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Remote Device Output Linking Section -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">04</div>
+                        <h2>Linking Step Outputs to Remote Devices & PLCs</h2>
+                    </div>
+                </div>
+
+                <p class="section-desc">
+                    Any step in the inspection pipeline can be individually linked to transmit real-time pass/fail decisions, 
+                    part counts, or metrology coordinates (X, Y, Angle, Length) to external hardware.
+                </p>
+
+                <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 18px 0;">
+                    <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                        <h4 style="color: #00E676; margin-top: 0;">🔗 Step-Level Remote Link</h4>
+                        <p style="color: #B0BAC9; font-size: 13px;">When adding a step, check <em>"Link output of this step to Remote PLC / Ethernet"</em>, or toggle the switch in the Property Inspector. Linked steps display a <code>🔗PLC</code> status badge.</p>
+                    </div>
+                    <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 16px;">
+                        <h4 style="color: #00D2FF; margin-top: 0;">📡 Configurable Remote Targets</h4>
+                        <p style="color: #B0BAC9; font-size: 13px;">Click <strong>"📡 PLC & Devices"</strong> on the main toolbar to edit IP addresses, ports, and protocols for Siemens S7-1200/1500, Delta Modbus TCP, Beckhoff ADS, Ethernet TCP/UDP, and Raspberry Pi GPIO.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Classical Tools Section -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">05</div>
+                        <h2>Classical Measurement & Defect Tools</h2>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Formula Signature</th>
+                                <th>Output Object</th>
+                                <th>Parameters & Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>PatMax</strong></td>
+                                <td><code>=PatMax(A0)</code></td>
+                                <td><code>PatMaxResult</code></td>
+                                <td>Contour gradient matching. Attributes: <code>Score</code>, <code>X</code>, <code>Y</code>, <code>Angle</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FindBlobs</strong></td>
+                                <td><code>=FindBlobs(A0, threshold=128, min_area=50)</code></td>
+                                <td><code>BlobResult</code></td>
+                                <td>Extracts foreground blobs. Attributes: <code>Count</code>, <code>Blobs[i].Area</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DetectFlaw</strong></td>
+                                <td><code>=DetectFlaw(A0, sensitivity=35)</code></td>
+                                <td><code>FlawResult</code></td>
+                                <td>Golden template scratch detection. Attributes: <code>Passed</code>, <code>FlawCount</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FindLine</strong></td>
+                                <td><code>=FindLine(A0)</code></td>
+                                <td><code>LineResult</code></td>
+                                <td>Perpendicular caliper rakes. Attributes: <code>P1</code>, <code>P2</code>, <code>Angle</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FindCircle</strong></td>
+                                <td><code>=FindCircle(A0)</code></td>
+                                <td><code>CircleResult</code></td>
+                                <td>Radial caliper rays. Attributes: <code>Center</code>, <code>Radius</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Caliper</strong></td>
+                                <td><code>=Caliper(A0)</code></td>
+                                <td><code>CaliperWidthResult</code></td>
+                                <td>Edge pair gap distance. Attributes: <code>Width</code>, <code>Center</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>EdgeCount</strong></td>
+                                <td><code>=EdgeCount(A0)</code></td>
+                                <td><code>EdgeCountResult</code></td>
+                                <td>Counts boundary transitions. Attribute: <code>Count</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ReadIDMax</strong></td>
+                                <td><code>=ReadIDMax(A0)</code></td>
+                                <td><code>CodeResult</code></td>
+                                <td>Decodes 1D barcodes and 2D QR / DataMatrix. Attributes: <code>Text</code>, <code>Type</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ReadOcrMax</strong></td>
+                                <td><code>=ReadOcrMax(A0, regex="[A-Z0-9]+")</code></td>
+                                <td><code>OcrResult</code></td>
+                                <td>Industrial optical character recognition with regex validation.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ExtractColor</strong></td>
+                                <td><code>=ExtractColor(A0, color="GREEN")</code></td>
+                                <td><code>ColorResult</code></td>
+                                <td>HSV segmentation (RED, GREEN, BLUE, YELLOW, WHITE).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Distance</strong></td>
+                                <td><code>=Distance(B2.X, B2.Y, C3.X, C3.Y)</code></td>
+                                <td><code>Float</code></td>
+                                <td>Calculates Euclidean distance in pixels / millimeters.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>If</strong></td>
+                                <td><code>=If(B2.Score >= 70.0, "PASS", "FAIL")</code></td>
+                                <td><code>String</code></td>
+                                <td>Quality gate decision triggering overall pass/fail status.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="manual-footer">
+        <div class="footer-credits">VisionStudio Industrial Suite • <span style="color: var(--primary);">Made By &lt;3 by Anky Singh</span></div>
+        <div class="footer-nav">
+            <a href="03_spreadsheet_engine.html">← Previous: Spreadsheet DAG Engine</a>
+            <a href="05_plc_industrial_io.html">Next: PLC & Fieldbus I/O →</a>
+        </div>
+    </footer>
+    <script src="js/manual.js"></script>
+</body>
+</html>

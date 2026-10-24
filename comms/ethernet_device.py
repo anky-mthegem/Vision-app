@@ -12,7 +12,7 @@ import json
 import threading
 import time
 import logging
-from typing import Optional, Callable, Dict, Any, Union
+from typing import Optional, Callable, Dict, Any, Union, Tuple
 
 logger = logging.getLogger("EthernetDevice")
 

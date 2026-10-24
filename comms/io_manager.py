@@ -12,6 +12,7 @@ import os
 import json
 import logging
 import threading
+import time
 from typing import Dict, Any, Optional, Callable
 
 from comms.modbus_driver import ModbusTcpClient
@@ -156,30 +157,50 @@ class IndustrialIoManager:
 
     # ------------------ High-Speed Result Dispatch ------------------
 
-    def dispatch_results_async(self, job_stats: Dict[str, Any], cells_data: Dict[str, Any]):
+    def dispatch_step_output(self, step_info: Dict[str, Any]):
+        """Dispatches inspection results from a pipeline step to all enabled remote devices."""
+        job_stats = {
+            "overall_pass": bool(step_info.get("passed", True)),
+            "pass_count": 1 if step_info.get("passed", True) else 0,
+            "fail_count": 0 if step_info.get("passed", True) else 1,
+            "step_id": step_info.get("step_id", 0),
+            "step_name": step_info.get("step_name", ""),
+            "operation": step_info.get("operation", ""),
+            "count": int(step_info.get("count", 1 if step_info.get("passed", True) else 0)),
+            "cycle_time_ms": float(step_info.get("latency_ms", 0.0)),
+            "x": float(step_info.get("x", 0.0)),
+            "y": float(step_info.get("y", 0.0)),
+            "angle": float(step_info.get("angle", 0.0)),
+            "output_info": str(step_info.get("output_info", "")),
+            "timestamp": time.time(),
+        }
+        self.dispatch_results_async(job_stats, {})
+
+    def dispatch_results_async(self, job_stats: Dict[str, Any], cells_data: Optional[Dict[str, Any]] = None):
         """Dispatches inspection results to all enabled PLCs and GPIO in background thread."""
-        threading.Thread(target=self._dispatch_worker, args=(job_stats, cells_data), daemon=True).start()
+        threading.Thread(target=self._dispatch_worker, args=(job_stats, cells_data or {}), daemon=True).start()
 
     def _dispatch_worker(self, stats: Dict[str, Any], cells: Dict[str, Any]):
         passed = bool(stats.get("overall_pass", True))
-        count = int(stats.get("pass_count", 0) if passed else stats.get("fail_count", 0))
+        count = int(stats.get("count", stats.get("pass_count", 0) if passed else stats.get("fail_count", 0)))
 
-        # Find first measurement / YOLO coordinate if available
-        first_x = 0.0
-        first_y = 0.0
-        first_angle = 0.0
+        # Find first measurement / coordinate
+        first_x = float(stats.get("x", 0.0))
+        first_y = float(stats.get("y", 0.0))
+        first_angle = float(stats.get("angle", 0.0))
 
-        for val in cells.values():
-            if hasattr(val, "x") and hasattr(val, "y"):
-                first_x = float(getattr(val, "x", 0.0))
-                first_y = float(getattr(val, "y", 0.0))
-                first_angle = float(getattr(val, "angle", 0.0))
-                break
-            elif hasattr(val, "detections") and getattr(val, "detections"):
-                d = getattr(val, "detections")[0]
-                first_x = float(d.bbox[0] + d.bbox[2] / 2.0)
-                first_y = float(d.bbox[1] + d.bbox[3] / 2.0)
-                break
+        if cells and (first_x == 0.0 and first_y == 0.0):
+            for val in cells.values():
+                if hasattr(val, "x") and hasattr(val, "y"):
+                    first_x = float(getattr(val, "x", 0.0))
+                    first_y = float(getattr(val, "y", 0.0))
+                    first_angle = float(getattr(val, "angle", 0.0))
+                    break
+                elif hasattr(val, "detections") and getattr(val, "detections"):
+                    d = getattr(val, "detections")[0]
+                    first_x = float(d.bbox[0] + d.bbox[2] / 2.0)
+                    first_y = float(d.bbox[1] + d.bbox[3] / 2.0)
+                    break
 
         # 1. Delta PLC (Modbus TCP)
         if self.enable_delta:
@@ -230,12 +251,17 @@ class IndustrialIoManager:
         if self.enable_ethernet:
             try:
                 payload = {
+                    "step_id": stats.get("step_id", 0),
+                    "step_name": stats.get("step_name", ""),
+                    "operation": stats.get("operation", ""),
                     "overall_pass": passed,
+                    "count": count,
                     "cycle_time_ms": stats.get("cycle_time_ms", 0.0),
-                    "inspections": stats.get("inspections", 0),
                     "x": round(first_x, 2),
                     "y": round(first_y, 2),
                     "angle": round(first_angle, 2),
+                    "output_info": stats.get("output_info", ""),
+                    "timestamp": stats.get("timestamp", time.time()),
                 }
                 self.ethernet_client.send_result(payload)
             except Exception as e:

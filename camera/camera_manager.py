@@ -22,7 +22,7 @@ class CameraProtocol(str, Enum):
 class CameraConfig:
     def __init__(
         self,
-        protocol: CameraProtocol = CameraProtocol.TEST_STREAM,
+        protocol: CameraProtocol = CameraProtocol.USB,
         source: str = "0",
         width: int = 1280,
         height: int = 720,
@@ -56,8 +56,6 @@ class CameraDevice:
         self._last_fps_time = time.time()
         self._fps_counter = 0
         self._on_frame_callbacks = []
-        self._synthetic_angle = 0.0
-        self._synthetic_x = 0
         self._trigger_mode = False  # False = Continuous, True = Software Trigger
         self._triggered = False
 
@@ -99,6 +97,9 @@ class CameraDevice:
         if self._cap:
             self._cap.release()
             self._cap = None
+        with self._lock:
+            self._latest_frame = None
+        self._fps_actual = 0.0
         logger.info(f"Camera stopped: {self.config.name}")
 
     def trigger(self):
@@ -109,6 +110,8 @@ class CameraDevice:
         self._trigger_mode = enabled
 
     def get_latest_frame(self) -> Optional[np.ndarray]:
+        if not self._running:
+            return None
         with self._lock:
             if self._latest_frame is not None:
                 return self._latest_frame.copy()
@@ -181,96 +184,68 @@ class CameraDevice:
                         logger.error(f"Error in frame callback: {e}")
 
     def _generate_synthetic_frame(self) -> np.ndarray:
-        """Generates dynamic industrial test part: PCB with fiducials, drilled holes, QR code, measurement pins, and inspection object."""
-        import os
+        """Generates static industrial test pattern: non-rotating, clean calibration card without photos."""
         w, h = self.config.width, self.config.height
         img = np.full((h, w, 3), 35, dtype=np.uint8)
 
+        # Outer frame
         cv2.rectangle(img, (20, 20), (w - 20, h - 20), (50, 50, 50), -1)
-        cv2.rectangle(img, (20, 20), (w - 20, h - 20), (120, 120, 120), 2)
+        cv2.rectangle(img, (20, 20), (w - 20, h - 20), (100, 100, 100), 2)
 
-        # Embed sample object on inspection conveyor for immediate YOLO testing
-        if not hasattr(self, "_sample_obj_img"):
-            sample_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample_person.jpg")
-            if os.path.exists(sample_path):
-                raw_s = cv2.imread(sample_path)
-                self._sample_obj_img = cv2.resize(raw_s, (180, 420))
-            else:
-                self._sample_obj_img = None
+        # Static, non-rotating test card
+        cx, cy = w // 2, h // 2
+        rect_w, rect_h = 440, 280
 
-        if self._sample_obj_img is not None:
-            sx = w - 230
-            sy = 130
-            img[sy : sy + 420, sx : sx + 180] = self._sample_obj_img
-            cv2.rectangle(img, (sx - 4, sy - 4), (sx + 184, sy + 424), (0, 210, 255), 1)
-            cv2.putText(img, "YOLO TEST BAY", (sx + 20, sy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (0, 210, 255), 1)
+        # PCB Body
+        x1, y1 = cx - rect_w // 2, cy - rect_h // 2
+        x2, y2 = cx + rect_w // 2, cy + rect_h // 2
+        cv2.rectangle(img, (x1, y1), (x2, y2), (18, 95, 38), -1)
+        cv2.rectangle(img, (x1, y1), (x2, y2), (40, 180, 80), 2)
 
-        self._synthetic_angle += 0.5
-        if self._synthetic_angle >= 360:
-            self._synthetic_angle = 0
-        self._synthetic_x = int(np.sin(np.radians(self._synthetic_angle * 2)) * 30)
+        # Corner Mounting Holes
+        for ox, oy in [(-180, -100), (180, -100), (-180, 100), (180, 100)]:
+            px, py = cx + ox, cy + oy
+            cv2.circle(img, (px, py), 14, (220, 220, 220), -1)
+            cv2.circle(img, (px, py), 8, (0, 0, 0), -1)
+            cv2.circle(img, (px, py), 3, (220, 220, 220), -1)
 
-        cx, cy = w // 2 + self._synthetic_x, h // 2
-        rad = np.radians(self._synthetic_angle)
-
-        rect_w, rect_h = 420, 260
-        box = cv2.boxPoints(((cx, cy), (rect_w, rect_h), self._synthetic_angle))
-        box = np.int32(box)
-        cv2.fillPoly(img, [box], (18, 95, 38))
-        cv2.polylines(img, [box], True, (40, 180, 80), 2)
-
-        for offset_x, offset_y in [(-170, -100), (170, -100), (-170, 100), (170, 100)]:
-            rx = int(offset_x * np.cos(rad) - offset_y * np.sin(rad)) + cx
-            ry = int(offset_x * np.sin(rad) + offset_y * np.cos(rad)) + cy
-            cv2.circle(img, (rx, ry), 14, (220, 220, 220), -1)
-            cv2.circle(img, (rx, ry), 8, (0, 0, 0), -1)
-            cv2.circle(img, (rx, ry), 3, (220, 220, 220), -1)
-
-        ic_box = cv2.boxPoints(((cx, cy), (130, 130), self._synthetic_angle))
-        ic_box = np.int32(ic_box)
-        cv2.fillPoly(img, [ic_box], (25, 25, 25))
-        cv2.polylines(img, [ic_box], True, (200, 200, 200), 1)
-
-        dot_x = int(-45 * np.cos(rad) - (-45) * np.sin(rad)) + cx
-        dot_y = int(-45 * np.sin(rad) + (-45) * np.cos(rad)) + cy
-        cv2.circle(img, (dot_x, dot_y), 5, (230, 230, 230), -1)
+        # Central IC Chip (Static, Non-Rotating)
+        ic_s = 130
+        ic_x1, ic_y1 = cx - ic_s // 2, cy - ic_s // 2
+        ic_x2, ic_y2 = cx + ic_s // 2, cy + ic_s // 2
+        cv2.rectangle(img, (ic_x1, ic_y1), (ic_x2, ic_y2), (25, 25, 25), -1)
+        cv2.rectangle(img, (ic_x1, ic_y1), (ic_x2, ic_y2), (200, 200, 200), 1)
+        cv2.circle(img, (ic_x1 + 18, ic_y1 + 18), 5, (230, 230, 230), -1)
 
         cv2.putText(
             img,
-            "IN-SIGHT 8402",
-            (cx - 55, cy + 5),
+            "VISION TEST TARGET",
+            (cx - 72, cy + 5),
             cv2.FONT_HERSHEY_SIMPLEX,
-            0.35,
+            0.38,
             (210, 210, 210),
             1,
             cv2.LINE_AA,
         )
 
-        qr_ox, qr_oy = 100, 0
-        qrx = int(qr_ox * np.cos(rad) - qr_oy * np.sin(rad)) + cx
-        qry = int(qr_ox * np.sin(rad) + qr_oy * np.cos(rad)) + cy
-        cv2.rectangle(img, (qrx - 30, qry - 30), (qrx + 30, qry + 30), (255, 255, 255), -1)
-        cv2.rectangle(img, (qrx - 25, qry - 25), (qrx - 10, qry - 10), (0, 0, 0), -1)
-        cv2.rectangle(img, (qrx + 10, qry - 25), (qrx + 25, qry - 10), (0, 0, 0), -1)
-        cv2.rectangle(img, (qrx - 25, qry + 10), (qrx - 10, qry + 25), (0, 0, 0), -1)
-        cv2.rectangle(img, (qrx - 5, qry - 5), (qrx + 5, qry + 5), (0, 0, 0), -1)
+        # QR Code Matrix
+        qrx, qry = cx + 110, cy
+        cv2.rectangle(img, (qrx - 28, qry - 28), (qrx + 28, qry + 28), (255, 255, 255), -1)
+        cv2.rectangle(img, (qrx - 22, qry - 22), (qrx - 8, qry - 8), (0, 0, 0), -1)
+        cv2.rectangle(img, (qrx + 8, qry - 22), (qrx + 22, qry - 8), (0, 0, 0), -1)
+        cv2.rectangle(img, (qrx - 22, qry + 8), (qrx - 8, qry + 22), (0, 0, 0), -1)
+        cv2.rectangle(img, (qrx - 4, qry - 4), (qrx + 4, qry + 4), (0, 0, 0), -1)
 
-        h1_ox, h1_oy = -90, 40
-        h2_ox, h2_oy = -90, -40
-        h1x = int(h1_ox * np.cos(rad) - h1_oy * np.sin(rad)) + cx
-        h1y = int(h1_ox * np.sin(rad) + h1_oy * np.cos(rad)) + cy
-        h2x = int(h2_ox * np.cos(rad) - h2_oy * np.sin(rad)) + cx
-        h2y = int(h2_ox * np.sin(rad) + h2_oy * np.cos(rad)) + cy
-
-        cv2.circle(img, (h1x, h1y), 16, (15, 15, 15), -1)
-        cv2.circle(img, (h1x, h1y), 16, (180, 180, 180), 2)
-        cv2.circle(img, (h2x, h2y), 16, (15, 15, 15), -1)
-        cv2.circle(img, (h2x, h2y), 16, (180, 180, 180), 2)
+        # Measurement Holes
+        cv2.circle(img, (cx - 100, cy + 40), 16, (15, 15, 15), -1)
+        cv2.circle(img, (cx - 100, cy + 40), 16, (180, 180, 180), 2)
+        cv2.circle(img, (cx - 100, cy - 40), 16, (15, 15, 15), -1)
+        cv2.circle(img, (cx - 100, cy - 40), 16, (180, 180, 180), 2)
 
         t_str = time.strftime("%Y-%m-%d %H:%M:%S")
         cv2.putText(
             img,
-            f"STREAM: {self.config.protocol.value} | {t_str} | FPS: {self._fps_actual:.1f}",
+            f"STREAM: Static Calibration Target | {t_str} | FPS: {self._fps_actual:.1f}",
             (25, 45),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.5,

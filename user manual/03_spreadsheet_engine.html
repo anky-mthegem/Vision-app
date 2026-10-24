@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03. Spreadsheet DAG Engine | VisionStudio User Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="manual-header">
+        <a href="index.html" class="brand-wrapper">
+            <div class="brand-icon">👁️</div>
+            <div class="brand-text">
+                <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
+                <p>Industrial Machine Vision & Automation Platform</p>
+            </div>
+        </a>
+        <div class="header-actions">
+            <a href="index.html" class="header-btn">🏠 Master Manual</a>
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Switch Theme">☀️</button>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <aside class="manual-sidebar">
+            <div class="sidebar-heading">Modular Guides</div>
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item"><a href="index.html"><span class="icon">🏠</span> Master Portal</a></li>
+                <li class="sidebar-nav-item"><a href="01_getting_started.html"><span class="icon">⚡</span> 01. Getting Started</a></li>
+                <li class="sidebar-nav-item"><a href="02_camera_subsystem.html"><span class="icon">📷</span> 02. Camera Subsystem</a></li>
+                <li class="sidebar-nav-item active"><a href="03_spreadsheet_engine.html"><span class="icon">📊</span> 03. Spreadsheet DAG</a></li>
+                <li class="sidebar-nav-item"><a href="04_vision_tools_catalog.html"><span class="icon">🛠️</span> 04. Vision Tools Catalog</a></li>
+                <li class="sidebar-nav-item"><a href="05_plc_industrial_io.html"><span class="icon">📡</span> 05. PLC & Fieldbus I/O</a></li>
+                <li class="sidebar-nav-item"><a href="06_remote_control_native_mode.html"><span class="icon">🔌</span> 06. Native Mode TCP</a></li>
+                <li class="sidebar-nav-item"><a href="07_webhmi_dashboard.html"><span class="icon">🌐</span> 07. WebHMI Dashboard</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="author-tag">Made By <span class="author-heart">&lt;3</span> by Anky Singh</div>
+            </div>
+        </aside>
+
+        <main class="manual-content">
+            <div class="hero-card">
+                <div class="hero-pill">CHAPTER 03 • FORMULA ENGINE</div>
+                <h1>Spreadsheet DAG Execution Engine</h1>
+                <p class="hero-desc">
+                    Deep dive into cell coordinates, Directed Acyclic Graph dependency sequencing, 
+                    formula parsing, conditional branching, and real-time execution benchmarking.
+                </p>
+            </div>
+
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">01</div>
+                        <h2>Directed Acyclic Graph (DAG) Execution</h2>
+                    </div>
+                </div>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">Multi-Cell DAG Execution Pipeline</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_main_inspection_dag.png" alt="Multi-Cell DAG Pipeline in VisionStudio">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 3.1:</strong> Inspection DAG with cells A0, B2, C3, D4, and E5 executing with deterministic cycle timing.
+                    </figcaption>
+                </div>
+
+                <h3 class="subheading">Topological Sorting Algorithm</h3>
+                <p>
+                    When an inspection job compiles, VisionStudio constructs an adjacency list representing all cell interdependencies. 
+                    A depth-first topological search orders the cells so that every parent cell computes before its children:
+                </p>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Cell</th>
+                                <th>Label</th>
+                                <th>Formula</th>
+                                <th>Depends On</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>A0</code></td>
+                                <td>Camera Image</td>
+                                <td><code>=AcquireImage()</code></td>
+                                <td>None</td>
+                                <td>Root camera buffer capture</td>
+                            </tr>
+                            <tr>
+                                <td><code>B2</code></td>
+                                <td>IC Alignment</td>
+                                <td><code>=PatMax(A0)</code></td>
+                                <td><code>A0</code></td>
+                                <td>Locates part centroid and rotation angle</td>
+                            </tr>
+                            <tr>
+                                <td><code>C3</code></td>
+                                <td>Hole Inspection</td>
+                                <td><code>=FindBlobs(A0, threshold=120)</code></td>
+                                <td><code>A0</code></td>
+                                <td>Detects presence/absence of drilled holes</td>
+                            </tr>
+                            <tr>
+                                <td><code>D4</code></td>
+                                <td>Pin Diameter</td>
+                                <td><code>=FindCircle(A0)</code></td>
+                                <td><code>A0</code></td>
+                                <td>Measures radial caliper circle</td>
+                            </tr>
+                            <tr>
+                                <td><code>E5</code></td>
+                                <td>Quality Gate</td>
+                                <td><code>=If(B2.Score >= 60.0, "PASS", "FAIL")</code></td>
+                                <td><code>B2</code></td>
+                                <td>Evaluates pass/fail status and trips PLC bit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="subheading">Cell Attribute Referencing Syntax</h3>
+                <p>
+                    Tools output structured result objects. Downstream cells reference specific attributes using dot notation:
+                </p>
+                <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
+                    <li><code>B2.Score</code> &mdash; Matching confidence percentage (0.0 to 100.0%).</li>
+                    <li><code>B2.X</code> &amp; <code>B2.Y</code> &mdash; Subpixel centroid coordinates.</li>
+                    <li><code>B2.Angle</code> &mdash; Rotational orientation in degrees (-180&deg; to +180&deg;).</li>
+                    <li><code>C3.Count</code> &mdash; Total count of detected foreground blobs.</li>
+                    <li><code>D4.Radius</code> &mdash; Fitted circle radius in pixels.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <footer class="manual-footer">
+        <div class="footer-credits">VisionStudio Industrial Suite • <span style="color: var(--primary);">Made By &lt;3 by Anky Singh</span></div>
+        <div class="footer-nav">
+            <a href="02_camera_subsystem.html">← Previous: Camera Subsystem</a>
+            <a href="04_vision_tools_catalog.html">Next: Vision Tools Catalog →</a>
+        </div>
+    </footer>
+    <script src="js/manual.js"></script>
+</body>
+</html>

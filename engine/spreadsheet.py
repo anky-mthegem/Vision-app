@@ -20,6 +20,7 @@ from tools.flaw import FlawDetectorTool, FlawResult
 from tools.filters import ImageFilterTool, BinarizeTool, HistogramTool, ExtractColorTool, HistogramResult, ColorResult
 from tools.ocr import ReadOcrMaxTool, OcrResult
 from tools.yolo_detector import YoloDetectorTool, YoloResult, YoloDetection, COCO_CLASSES
+from tools.hand_tracker import HandTrackerTool, HandTrackingResult
 from comms.modbus_driver import ModbusTcpClient
 from comms.siemens_s7 import SiemensS7Client
 from comms.beckhoff_ads import BeckhoffAdsClient
@@ -484,26 +485,44 @@ class InspectionJob:
             cell.value = BinarizeTool.threshold(current_image, "Otsu")
             return
 
-        # 15. YOLO Deep Learning Object Detection
+        # 15. YOLO Multi-Task Deep Learning Vision
         if body.upper().startswith("YOLO") or body.upper().startswith("YOLODETECT"):
             target_cls = "all"
             conf_val = 0.40
+            task_mode = "detect"
             m_cls = re.search(r'class\s*=\s*["\']([^"\']+)["\']', body, re.IGNORECASE)
             if m_cls:
                 target_cls = m_cls.group(1)
             m_conf = re.search(r'conf\s*=\s*([0-9.]+)', body, re.IGNORECASE)
             if m_conf:
                 conf_val = float(m_conf.group(1))
+            m_task = re.search(r'task\s*=\s*["\']([^"\']+)["\']', body, re.IGNORECASE)
+            if m_task:
+                task_mode = m_task.group(1).lower()
 
             if cell.tool_instance is None:
                 cell.tool_instance = YoloDetectorTool(target_class=target_cls, confidence=conf_val)
             else:
                 cell.tool_instance.target_class = target_cls.strip().lower()
                 cell.tool_instance.confidence = conf_val
-            cell.value = cell.tool_instance.detect(current_image)
+            cell.value = cell.tool_instance.run_task(current_image, task=task_mode)
             return
 
-        # 16. WriteModbus (Delta PLC & Generic Modbus TCP)
+        # 16. TrackHands / HandTracker (MediaPipe 21-Landmark & Index Fingertip Tracking)
+        if body.upper().startswith("TRACKHANDS") or body.upper().startswith("HANDTRACKER"):
+            m_hands = re.search(r'max_hands\s*=\s*([0-9]+)', body, re.IGNORECASE)
+            max_h = int(m_hands.group(1)) if m_hands else 2
+            m_conf = re.search(r'conf\s*=\s*([0-9.]+)', body, re.IGNORECASE)
+            conf_val = float(m_conf.group(1)) if m_conf else 0.50
+
+            if cell.tool_instance is None or not isinstance(cell.tool_instance, HandTrackerTool):
+                cell.tool_instance = HandTrackerTool(max_num_hands=max_h, min_detection_confidence=conf_val)
+
+            _, res = cell.tool_instance.process(current_image, highlight_index_tip=True, draw_skeleton=True)
+            cell.value = res
+            return
+
+        # 17. WriteModbus (Delta PLC & Generic Modbus TCP)
         if body.upper().startswith("WRITEMODBUS"):
             m_ip = re.search(r'ip\s*=\s*["\']([^"\']+)["\']', body, re.IGNORECASE)
             ip_val = m_ip.group(1) if m_ip else "192.168.1.50"

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02. Camera Subsystem & Protocols | VisionStudio User Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="manual-header">
+        <a href="index.html" class="brand-wrapper">
+            <div class="brand-icon">👁️</div>
+            <div class="brand-text">
+                <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
+                <p>Industrial Machine Vision & Automation Platform</p>
+            </div>
+        </a>
+        <div class="header-actions">
+            <a href="index.html" class="header-btn">🏠 Master Manual</a>
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Switch Theme">☀️</button>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <aside class="manual-sidebar">
+            <div class="sidebar-heading">Modular Guides</div>
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item"><a href="index.html"><span class="icon">🏠</span> Master Portal</a></li>
+                <li class="sidebar-nav-item"><a href="01_getting_started.html"><span class="icon">⚡</span> 01. Getting Started</a></li>
+                <li class="sidebar-nav-item active"><a href="02_camera_subsystem.html"><span class="icon">📷</span> 02. Camera Subsystem</a></li>
+                <li class="sidebar-nav-item"><a href="03_spreadsheet_engine.html"><span class="icon">📊</span> 03. Spreadsheet DAG</a></li>
+                <li class="sidebar-nav-item"><a href="04_vision_tools_catalog.html"><span class="icon">🛠️</span> 04. Vision Tools Catalog</a></li>
+                <li class="sidebar-nav-item"><a href="05_plc_industrial_io.html"><span class="icon">📡</span> 05. PLC & Fieldbus I/O</a></li>
+                <li class="sidebar-nav-item"><a href="06_remote_control_native_mode.html"><span class="icon">🔌</span> 06. Native Mode TCP</a></li>
+                <li class="sidebar-nav-item"><a href="07_webhmi_dashboard.html"><span class="icon">🌐</span> 07. WebHMI Dashboard</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="author-tag">Made By <span class="author-heart">&lt;3</span> by Anky Singh</div>
+            </div>
+        </aside>
+
+        <main class="manual-content">
+            <div class="hero-card">
+                <div class="hero-pill">CHAPTER 02 • CAMERA PROTOCOLS</div>
+                <h1>Camera Acquisition Subsystem</h1>
+                <p class="hero-desc">
+                    Comprehensive documentation on configuring industrial optical sensors, USB3 devices, 
+                    network IP streams, synthetic part simulation, and network auto-discovery.
+                </p>
+            </div>
+
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">01</div>
+                        <h2>Supported Acquisition Protocols</h2>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Protocol</th>
+                                <th>Syntax / Address</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>CameraProtocol.USB</code></td>
+                                <td><code>0</code>, <code>1</code>, <code>2</code></td>
+                                <td>DirectShow / V4L2 USB camera index for webcams and USB3 industrial sensors.</td>
+                            </tr>
+                            <tr>
+                                <td><code>CameraProtocol.RTSP</code></td>
+                                <td><code>rtsp://user:pass@192.168.1.100:554/live</code></td>
+                                <td>H.264 / H.265 RTSP network video stream from IP cameras and industrial surveillance.</td>
+                            </tr>
+                            <tr>
+                                <td><code>CameraProtocol.HTTP</code></td>
+                                <td><code>http://192.168.1.100/snapshot.jpg</code></td>
+                                <td>High-resolution single-frame snapshot capture over HTTP/HTTPS.</td>
+                            </tr>
+                            <tr>
+                                <td><code>CameraProtocol.TEST_STREAM</code></td>
+                                <td><code>Synthetic Part Simulator</code></td>
+                                <td>Generates moving electronic PCBs with IC components, pads, drilled holes, and surface scratches.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="subheading">Synthetic Industrial Part Generator</h3>
+                <p>
+                    For offline application development, recipe training, or software validation without physical camera hardware, 
+                    select <strong>CameraProtocol.TEST_STREAM</strong>. 
+                    The generator synthesizes an industrial inspection line featuring:
+                </p>
+                <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
+                    <li>A printed circuit board (PCB) traveling along an automated conveyor at consistent velocity.</li>
+                    <li>An integrated circuit (IC) package undergoing realistic angular rotations and position offsets.</li>
+                    <li>Fiducial alignment crosses and drilled mounting holes with randomized subpixel diameters.</li>
+                    <li>Simulated surface scratch anomalies for flaw detection verification.</li>
+                </ul>
+
+                <h3 class="subheading">Network Auto-Discovery Daemon (Port 1069)</h3>
+                <p>
+                    VisionStudio runs a background UDP responder on port <code>1069</code>. 
+                    Industrial setup tools can locate VisionStudio instances on the local network subnet, 
+                    retrieving device hostnames, IP addresses, MAC addresses, and active inspection status.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="manual-footer">
+        <div class="footer-credits">VisionStudio Industrial Suite • <span style="color: var(--primary);">Made By &lt;3 by Anky Singh</span></div>
+        <div class="footer-nav">
+            <a href="01_getting_started.html">← Previous: Getting Started</a>
+            <a href="03_spreadsheet_engine.html">Next: Spreadsheet DAG Engine →</a>
+        </div>
+    </footer>
+    <script src="js/manual.js"></script>
+</body>
+</html>

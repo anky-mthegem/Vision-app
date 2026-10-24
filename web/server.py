@@ -314,7 +314,7 @@ class WebHmiServer:
                                 + buffer.tobytes()
                                 + b"\r\n"
                             )
-                    asyncio.sleep(0.04)
+                    time.sleep(0.04)
 
             return StreamingResponse(
                 generate(),
