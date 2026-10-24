@@ -7,12 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/app_logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="manual-header">
         <a href="index.html" class="brand-wrapper">
-            <div class="brand-icon">👁️</div>
+            <img src="assets/app_logo.png" alt="VisionStudio Logo" class="brand-logo-img">
             <div class="brand-text">
                 <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
                 <p>Industrial Machine Vision & Automation Platform</p>
@@ -113,6 +114,84 @@
                     Industrial setup tools can locate VisionStudio instances on the local network subnet, 
                     retrieving device hostnames, IP addresses, MAC addresses, and active inspection status.
                 </p>
+            </section>
+
+            <!-- Section 02: Clean Standby & Dynamic Connect/Disconnect -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">02</div>
+                        <h2>Clean Standby & Dynamic Connect/Disconnect</h2>
+                    </div>
+                </div>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">Clean Standby Operational State</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_main_standby.png" alt="Clean Standby Operational State in VisionStudio">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 2.1:</strong> Clean Standby operational state with disconnected optical sensor, standby reticle, and red Connect button.
+                    </figcaption>
+                </div>
+
+                <p>
+                    To guarantee deterministic workstation startup and prevent background process locks on USB video devices, 
+                    VisionStudio initiates in a protected <strong>Clean Standby</strong> state:
+                </p>
+                <ul style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
+                    <li><strong>No Background Hardware Locking:</strong> Physical USB and RTSP handles remain closed upon software launch, allowing other applications or configuration tools to access sensor registers.</li>
+                    <li><strong>Dynamic Connect Button:</strong> Located in the main toolbar, styled in industrial red (<code>#E74C3C</code>) when disconnected, indicating "Connect Camera". Clicking this button smoothly spins up background acquisition threads and transitions to bright green (<code>#2ECC71</code>) indicating "Disconnect Camera".</li>
+                    <li><strong>Standby Reticle & Grid:</strong> While offline, the high-performance OpenGL/Qt viewport renders an animated dark grid, crosshair calibration target, and status telemetry callouts.</li>
+                </ul>
+            </section>
+
+            <!-- Section 03: Metrology & Calibration Dialog -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">03</div>
+                        <h2>Camera Optical Metrology & Calibration Dialog</h2>
+                    </div>
+                </div>
+
+                <p>
+                    In precision manufacturing, measuring raw pixel values is insufficient. VisionStudio includes a built-in 
+                    <strong>Camera Calibration & Metrology Dialog</strong> accessible from the main toolbar button <strong>📐 Calibrate Camera</strong>.
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">📏</span>
+                        <h4>Calibration Formula</h4>
+                        <p>Calculates the linear pixel-to-millimeter ratio according to:</p>
+                        <div style="padding: 10px; background: #0b0d13; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; color: #00d2ff; margin-top: 8px;">
+                            Calibration Ratio = Reference Distance (mm) / Measured Pixels (px)
+                        </div>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🎯</span>
+                        <h4>Subpixel Optical Calipers</h4>
+                        <p>Once calibrated, metrology calipers automatically output measurements in millimeters (mm) and square millimeters (mm&sup2;) with subpixel interpolation.</p>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Calibration Workflow</h3>
+                <ol style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
+                    <li>Place a certified gauge block, grid target, or calibrated ruler within the camera field of view.</li>
+                    <li>Click <strong>📐 Calibrate Camera</strong> in the top toolbar to open the Calibration Manager.</li>
+                    <li>Enter the certified reference length in millimeters (e.g., <code>50.0 mm</code>).</li>
+                    <li>Draw or enter the corresponding span in camera pixels (e.g., <code>500 px</code>).</li>
+                    <li>Click <strong>Apply Calibration</strong>. The global calibration scale is immediately persisted and propagated across all inspection steps, measurement tools, and formula evaluations.</li>
+                </ol>
             </section>
         </main>
     </div>

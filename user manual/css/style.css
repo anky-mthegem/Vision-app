@@ -151,6 +151,16 @@ header.manual-header {
   box-shadow: 0 0 16px var(--primary-glow);
 }
 
+.brand-logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 16px var(--primary-glow);
+  border: 1.5px solid rgba(0, 210, 255, 0.4);
+  background: #131722;
+}
+
 .brand-text h1 {
   font-family: var(--font-heading);
   font-size: 1.25rem;

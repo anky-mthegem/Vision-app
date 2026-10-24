@@ -7,12 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/app_logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="manual-header">
         <a href="index.html" class="brand-wrapper">
-            <div class="brand-icon">👁️</div>
+            <img src="assets/app_logo.png" alt="VisionStudio Logo" class="brand-logo-img">
             <div class="brand-text">
                 <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
                 <p>Industrial Machine Vision & Automation Platform</p>
@@ -127,7 +128,37 @@
                     </div>
                 </div>
 
-                <div class="feature-grid">
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">Beckhoff TwinCAT ADS Configuration</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_plc_beckhoff.png" alt="Beckhoff TwinCAT ADS configuration dialog">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 5.3:</strong> Beckhoff ADS dialog tab with AMS Net ID, Target Port (851/801), and Index Group/Offset mapping.
+                    </figcaption>
+                </div>
+
+                <div class="screenshot-figure" style="margin-top: 24px;">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">Industrial Ethernet (Robots & Smart Devices)</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_plc_ethernet.png" alt="Industrial Ethernet Device configuration dialog">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 5.4:</strong> Generic Ethernet socket dialog configured for TCP/UDP JSON telemetry to industrial robotic controllers.
+                    </figcaption>
+                </div>
+
+                <div class="feature-grid" style="margin-top: 20px;">
                     <div class="feature-box">
                         <span class="feat-icon">⚡</span>
                         <h4>Beckhoff TwinCAT ADS</h4>
@@ -178,6 +209,46 @@
                         <div class="formula-desc">Pulses physical GPIO pins on the designated Raspberry Pi over the factory network.</div>
                     </div>
                     <button class="copy-btn">📋 Copy</button>
+                </div>
+            </section>
+
+            <!-- Section 05: Step-Level Remote Linking -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">05</div>
+                        <h2>Step-Level Remote Device Linking (link_to_remote)</h2>
+                    </div>
+                </div>
+
+                <p>
+                    VisionStudio features a unified telemetry dispatch engine that bridges computer vision operations with industrial machinery:
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">🔗</span>
+                        <h4>Per-Step Remote Toggle</h4>
+                        <p>In the Pipeline Manager table, each step displays a dedicated <strong>📡 PLC</strong> checkbox. Clicking it toggles the <code>link_to_remote</code> parameter in realtime.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🎛️</span>
+                        <h4>Property Inspector Switch</h4>
+                        <p>When selecting any step, the Property Inspector drawer renders a dedicated <strong>Link Step to Remote Device (PLC/Ethernet)</strong> toggle switch alongside a <strong>Configure Remote Devices...</strong> shortcut button.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">📦</span>
+                        <h4>Automated Payload Encoding</h4>
+                        <p>When an inspection cycle executes, results from linked steps are extracted (pass/fail status, object count, subpixel centroid coordinates, bounding box metrics, and OCR strings) and packaged for all enabled fieldbus clients.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">⏱️</span>
+                        <h4>Non-Blocking Socket Dispatch</h4>
+                        <p>Network dispatch occurs on dedicated asynchronous daemon worker threads, preventing PLC network latency or retry timeouts from slowing down 60 FPS vision inspection.</p>
+                    </div>
                 </div>
             </section>
         </main>

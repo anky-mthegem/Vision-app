@@ -7,12 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/app_logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="manual-header">
         <a href="index.html" class="brand-wrapper">
-            <div class="brand-icon">👁️</div>
+            <img src="assets/app_logo.png" alt="VisionStudio Logo" class="brand-logo-img">
             <div class="brand-text">
                 <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
                 <p>Industrial Machine Vision & Automation Platform</p>
@@ -104,37 +105,64 @@ python main.py</code></pre>
                             <span class="dot-yellow"></span>
                             <span class="dot-green"></span>
                         </div>
-                        <div class="screenshot-title">VisionStudio UI Layout</div>
+                        <div class="screenshot-title">VisionStudio Enterprise UI Layout</div>
                     </div>
                     <div class="screenshot-container">
                         <img src="assets/screenshot_main_standby.png" alt="VisionStudio UI Layout in Clean Standby">
                     </div>
                     <figcaption class="figure-caption">
-                        <strong>Figure 1.1:</strong> Main UI components: (1) Protocol selector, (2) Hardware trigger button, (3) Live graphics viewport, 
-                        (4) KPI banner, (5) Spreadsheet DAG table, and (6) Categorized tool palette.
+                        <strong>Figure 1.1:</strong> Main UI components: (1) Industrial Top Toolbar & Hardware Status, (2) Single / Split Dual Viewport, 
+                        (3) Dynamic Property Inspector Drawer, (4) Sequential Pipeline Step Table, (5) Spreadsheet DAG Engine, and (6) Remote PLC / Device Dispatcher.
                     </figcaption>
                 </div>
 
-                <div class="feature-grid">
-                    <div class="feature-box">
-                        <span class="feat-icon">1️⃣</span>
-                        <h4>Top Toolbar</h4>
-                        <p>Camera protocol selection, connection string, live camera reconnection, manual trigger, WebHMI shortcut, and PLC dialog.</p>
+                <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0;">
+                    <div class="feature-box" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 18px;">
+                        <span class="feat-icon" style="font-size: 22px;">1️⃣</span>
+                        <h4 style="color: #00D2FF; margin: 8px 0;">Top Control Toolbar</h4>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Hardware connection status with dynamic color-coded <strong>Connect / Disconnect</strong> button (<span style="color:#00E676;">GREEN</span> when live, <span style="color:#FF5252;">RED</span> when disconnected), protocol selector, Single/Split Viewport toggle, Camera Calibration dialog, PLC & Remote Devices manager, and Recipe JSON Save/Load.
+                        </p>
                     </div>
-                    <div class="feature-box">
-                        <span class="feat-icon">2️⃣</span>
-                        <h4>Live Viewport</h4>
-                        <p>High-FPS camera stream overlaying subpixel crosshairs, green/red bounding boxes, caliper rakes, and neural detection reticles.</p>
+
+                    <div class="feature-box" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 18px;">
+                        <span class="feat-icon" style="font-size: 22px;">2️⃣</span>
+                        <h4 style="color: #00E676; margin: 8px 0;">Dual-Window Split Viewport</h4>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Inspect and compare any two pipeline steps side-by-side (Window A vs Window B) with synchronized 1000% subpixel pan/zoom, difference heatmap overlays, blend transparency slider, and real-time pixel inspector crosshair HUD (X, Y, RGB, Gray).
+                        </p>
                     </div>
-                    <div class="feature-box">
-                        <span class="feat-icon">3️⃣</span>
-                        <h4>Spreadsheet Table</h4>
-                        <p>Formula bar with cell coordinate selector, live results, execution latency in milliseconds, and individual cell enable checkboxes.</p>
+
+                    <div class="feature-box" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 18px;">
+                        <span class="feat-icon" style="font-size: 22px;">3️⃣</span>
+                        <h4 style="color: #FFB300; margin: 8px 0;">Dynamic Property Inspector</h4>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Right-docked parameter tuning drawer. Automatically generates native PyQt6 spinboxes, synchronized sliders, dropdown selectors, and color pickers from the selected operation's parameter schema. Supports debounced live tuning with zero code edits.
+                        </p>
                     </div>
-                    <div class="feature-box">
-                        <span class="feat-icon">4️⃣</span>
-                        <h4>Tool Catalog</h4>
-                        <p>Categorized tabs with one-click additions for AI, pattern matching, edge calipers, defect blobs, barcodes, OCR, and PLC writes.</p>
+
+                    <div class="feature-box" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 18px;">
+                        <span class="feat-icon" style="font-size: 22px;">4️⃣</span>
+                        <h4 style="color: #FF4081; margin: 8px 0;">Sequential Pipeline Table</h4>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Chained inspection sequence with step-level execution benchmarks, intermediate buffer caching, non-destructive step bypass toggling, input source branching, step reordering (Move Up/Down), duplication, and direct PLC hardware link routing.
+                        </p>
+                    </div>
+
+                    <div class="feature-box" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 18px;">
+                        <span class="feat-icon" style="font-size: 22px;">5️⃣</span>
+                        <h4 style="color: #7C4DFF; margin: 8px 0;">Spreadsheet DAG Engine</h4>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            In-Sight spreadsheet grid featuring mathematical formula evaluation, topological dependency sorting, and multi-tool coordination across cells A0 through H32 with dot-notation property extraction.
+                        </p>
+                    </div>
+
+                    <div class="feature-box" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 18px;">
+                        <span class="feat-icon" style="font-size: 22px;">6️⃣</span>
+                        <h4 style="color: #00E5FF; margin: 8px 0;">Searchable Add Step Dialog</h4>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            Instant search dialog categorizing 25+ industrial computer vision algorithms: Filters, Thresholds, Morphological operations, Edge detectors, Geometric Shapes, Hand Trackers, OCR, Metrology Calipers, and YOLO Deep Learning.
+                        </p>
                     </div>
                 </div>
             </section>

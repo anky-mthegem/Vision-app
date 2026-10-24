@@ -7,12 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/app_logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="manual-header">
         <a href="index.html" class="brand-wrapper">
-            <div class="brand-icon">👁️</div>
+            <img src="assets/app_logo.png" alt="VisionStudio Logo" class="brand-logo-img">
             <div class="brand-text">
                 <h1>VisionStudio <span class="version-badge">v2.4</span></h1>
                 <p>Industrial Machine Vision & Automation Platform</p>
@@ -145,6 +146,47 @@
                     <li><code>C3.Count</code> &mdash; Total count of detected foreground blobs.</li>
                     <li><code>D4.Radius</code> &mdash; Fitted circle radius in pixels.</li>
                 </ul>
+            </section>
+
+            <!-- Section 02: Industrial Pipeline Manager Execution Graph -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">02</div>
+                        <h2>Industrial Pipeline Manager Execution Graph</h2>
+                    </div>
+                </div>
+
+                <p>
+                    In addition to cell formulas, VisionStudio provides a high-throughput <strong>Pipeline Engine</strong> 
+                    designed for deterministic factory inspection lines:
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">🔀</span>
+                        <h4>Branching Input Sources</h4>
+                        <p>Each pipeline step can independently select its input frame: either the raw camera feed (<code>Step 0</code>) or the processed output of any upstream step. This enables branching pipelines (e.g. branch A for edge detection, branch B for OCR).</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">⚡</span>
+                        <h4>Real-Time Buffer Caching</h4>
+                        <p>Intermediate step outputs are cached in high-speed memory buffers. If a step is temporarily bypassed or downstream parameters change, intermediate buffers are reused without re-executing unchanged upstream filters.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🎛️</span>
+                        <h4>Interactive Step Reordering & Bypass</h4>
+                        <p>Use the <strong>▲ Move Up</strong>, <strong>▼ Move Down</strong>, and <strong>Active</strong> toggle controls in the pipeline table to reorder or bypass steps on the fly without interrupting the live 60 FPS video stream.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">💾</span>
+                        <h4>JSON Recipe Persistence</h4>
+                        <p>Full pipeline recipes (operations, parameters, branching inputs, and remote device links) export to human-readable JSON files, facilitating rapid batch recipe changeover across manufacturing cells.</p>
+                    </div>
+                </div>
             </section>
         </main>
     </div>

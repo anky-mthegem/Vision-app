@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Stylesheet -->
+    <!-- Favicon & Stylesheet -->
+    <link rel="icon" type="image/png" href="assets/app_logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
     <!-- Header Navigation -->
     <header class="manual-header">
         <a href="#hero" class="brand-wrapper">
-            <div class="brand-icon">👁️</div>
+            <img src="assets/app_logo.png" alt="VisionStudio Logo" class="brand-logo-img">
             <div class="brand-text">
                 <h1>VisionStudio <span class="version-badge">v2.4 INDUSTRIAL</span></h1>
                 <p>Industrial Machine Vision & Automation Platform</p>
@@ -86,12 +87,17 @@
 
             <!-- Hero Section -->
             <div class="hero-card" id="hero">
-                <div class="hero-pill">INDUSTRIAL VISION SUITE • VERSION 2.4</div>
-                <h1>VisionStudio User Manual</h1>
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 16px; flex-wrap: wrap;">
+                    <img src="assets/app_logo.png" alt="VisionStudio Logo" style="width: 76px; height: 76px; border-radius: 18px; border: 2.5px solid rgba(0, 210, 255, 0.5); box-shadow: 0 0 24px rgba(0, 210, 255, 0.35);">
+                    <div>
+                        <div class="hero-pill">INDUSTRIAL VISION SUITE • VERSION 2.4</div>
+                        <h1 style="margin: 0;">VisionStudio User Manual</h1>
+                    </div>
+                </div>
                 <p class="hero-desc">
                     VisionStudio is a modern, high-performance industrial computer vision and automated inspection platform. 
-                    It seamlessly unites multi-protocol camera acquisition, subpixel geometric measurement, real-time AI deep learning (YOLOv8), 
-                    a spreadsheet Directed Acyclic Graph (DAG) formula execution model, and enterprise fieldbus communications with Siemens, Delta, Beckhoff, and Raspberry Pi hardware.
+                    It seamlessly unites multi-protocol camera acquisition, subpixel geometric measurement, real-time AI deep learning (YOLO26 / YOLOv8), 
+                    a spreadsheet Directed Acyclic Graph (DAG) formula execution model, and enterprise fieldbus communications with Siemens, Delta, Beckhoff, Ethernet devices, and Raspberry Pi hardware.
                 </p>
 
                 <div class="hero-meta-grid">

@@ -8,6 +8,7 @@ Features:
 """
 
 import sys
+import os
 import cv2
 import numpy as np
 import time
@@ -190,6 +191,10 @@ class MainWindow(QMainWindow):
         self.resize(1440, 920)
         self.setStyleSheet(DARK_STYLESHEET)
 
+        icon_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "app_icon.png")
+        if os.path.exists(icon_path):
+            self.setWindowIcon(QIcon(icon_path))
+
         # 1. Initialize Clean Job (NO tools running on startup, only A0 camera grab)
         self.job = InspectionJob("CustomJob")
         self._setup_clean_job()
@@ -302,6 +307,20 @@ class MainWindow(QMainWindow):
         # Top Toolbar
         toolbar = QToolBar("MainToolbar", self)
         self.addToolBar(toolbar)
+
+        # Title Branding & Logo
+        logo_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "app_logo.png")
+        if os.path.exists(logo_path):
+            lbl_logo = QLabel()
+            pix = QPixmap(logo_path).scaled(28, 28, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+            lbl_logo.setPixmap(pix)
+            lbl_logo.setStyleSheet("margin-left: 4px; margin-right: 4px;")
+            toolbar.addWidget(lbl_logo)
+
+        lbl_brand = QLabel(" VISIONSTUDIO ")
+        lbl_brand.setStyleSheet("font-weight: 900; font-size: 13px; color: #00D2FF; letter-spacing: 1px;")
+        toolbar.addWidget(lbl_brand)
+        toolbar.addSeparator()
 
         toolbar.addWidget(QLabel(" Camera Protocol: "))
         self.protocol_combo = QComboBox()
@@ -1132,6 +1151,9 @@ class MainWindow(QMainWindow):
 def run_app():
     from PyQt6.QtWidgets import QApplication
     q_app = QApplication.instance() or QApplication(sys.argv)
+    icon_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "app_icon.png")
+    if os.path.exists(icon_path):
+        q_app.setWindowIcon(QIcon(icon_path))
     window = MainWindow()
     window.show()
     sys.exit(q_app.exec())

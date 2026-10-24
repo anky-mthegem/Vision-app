@@ -18,7 +18,7 @@ import cv2
 import numpy as np
 
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QTimer
-from PyQt6.QtGui import QIcon, QFont, QAction
+from PyQt6.QtGui import QIcon, QFont, QAction, QPixmap
 from PyQt6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -203,6 +203,10 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("VisionStudio - Industrial Computer Vision Pipeline Manager")
         self.resize(1600, 960)
         self.setMinimumSize(960, 540)
+        
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "app_icon.png")
+        if os.path.exists(icon_path):
+            self.setWindowIcon(QIcon(icon_path))
         self.setStyleSheet(DARK_INDUSTRIAL_STYLE)
 
         # 1. Pipeline Engine
@@ -275,8 +279,16 @@ class MainWindow(QMainWindow):
         toolbar.setMovable(False)
         self.addToolBar(toolbar)
 
-        # Title Branding
-        lbl_brand = QLabel(" ⚡ VISIONSTUDIO ")
+        # Title Branding & Logo
+        logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "app_logo.png")
+        if os.path.exists(logo_path):
+            lbl_logo = QLabel()
+            pix = QPixmap(logo_path).scaled(28, 28, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+            lbl_logo.setPixmap(pix)
+            lbl_logo.setStyleSheet("margin-left: 4px; margin-right: 4px;")
+            toolbar.addWidget(lbl_logo)
+
+        lbl_brand = QLabel(" VISIONSTUDIO ")
         lbl_brand.setStyleSheet("font-weight: 900; font-size: 13px; color: #00D2FF; letter-spacing: 1px;")
         toolbar.addWidget(lbl_brand)
         toolbar.addSeparator()
@@ -789,6 +801,9 @@ class MainWindow(QMainWindow):
 
 def main():
     app = QApplication.instance() or QApplication(sys.argv)
+    icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "app_icon.png")
+    if os.path.exists(icon_path):
+        app.setWindowIcon(QIcon(icon_path))
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
