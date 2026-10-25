@@ -163,8 +163,8 @@
                 </div>
 
                 <p>
-                    In precision manufacturing, measuring raw pixel values is insufficient. VisionStudio includes a built-in 
-                    <strong>Camera Calibration & Metrology Dialog</strong> accessible from the main toolbar button <strong>📐 Calibration</strong>.
+                    In precision manufacturing and robot guidance, measuring raw pixel values is insufficient. VisionStudio includes a built-in 
+                    <strong>Interactive Visual Camera Calibration & Metrology Dialog</strong> accessible from the main toolbar button <strong>📐 Calibration</strong>.
                 </p>
 
                 <div class="screenshot-figure">
@@ -174,40 +174,51 @@
                             <span class="dot-yellow"></span>
                             <span class="dot-green"></span>
                         </div>
-                        <div class="screenshot-title">Camera Optical Calibration Dialog</div>
+                        <div class="screenshot-title">Interactive Visual Camera Calibration & Scale Factor</div>
                     </div>
                     <div class="screenshot-container">
-                        <img src="assets/screenshot_calibration_dialog.png" alt="Camera Optical Calibration Dialog in VisionStudio">
+                        <img src="assets/screenshot_calibration_dialog.png" alt="Interactive Visual Camera Calibration Dialog in VisionStudio">
                     </div>
                     <figcaption class="figure-caption">
-                        <strong>Figure 2.2:</strong> Camera Optical Calibration Dialog. Operators measure across a known physical target (e.g. gauge block), enter physical span in mm, and compute the optical scale factor (<code>1 px = 0.1000 mm</code>).
+                        <strong>Figure 2.2:</strong> Interactive Visual Camera Calibration. The operator places a physical scale (e.g., 100 mm ruler) under the camera, clicks & drags directly on the live viewfinder to draw a calibration ruler, aligns the dual reticle handles (Cyan P1 and Emerald Green P2) across 0 and 100 mm markings, and VisionStudio instantly computes the exact scale factor (<code>1 px = 0.2000 mm</code>; <code>5.00 px / mm</code>).
                     </figcaption>
                 </div>
 
                 <div class="feature-grid">
                     <div class="feature-box">
                         <span class="feat-icon">📏</span>
-                        <h4>Calibration Formula</h4>
-                        <p>Calculates the linear pixel-to-millimeter ratio according to:</p>
-                        <div style="padding: 10px; background: #0b0d13; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; color: #00d2ff; margin-top: 8px;">
-                            Calibration Ratio = Reference Distance (mm) / Measured Pixels (px)
-                        </div>
+                        <h4>Live On-Screen Ruler Drawing</h4>
+                        <p>Click & drag anywhere on the viewfinder canvas to draw a brand-new measurement line. Interactive dual endpoint handles (Cyan P1 and Emerald Green P2) and perpendicular caliper end jaws allow precision reticle placement directly over physical scale ticks.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">❄️</span>
+                        <h4>Freeze Frame & Subpixel Zoom</h4>
+                        <p>Click <strong>❄ Freeze Frame</strong> to freeze camera motion during conveyor vibration, allowing operators to zoom in (<code>🔍+</code> or mouse wheel) and pan to place reticles with subpixel accuracy before resuming live stream.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">⚡</span>
+                        <h4>Quick Presets & Live Calculation</h4>
+                        <p>Select instant physical dimension presets (10 mm, 50 mm, 100 mm, 150 mm, 300 mm) or enter custom gauge values. The dialog dynamically updates the linear scale ratio (<code>mm/px</code>) and optical resolution (<code>px/mm</code>).</p>
                     </div>
 
                     <div class="feature-box">
                         <span class="feat-icon">🎯</span>
-                        <h4>Subpixel Optical Calipers</h4>
-                        <p>Once calibrated, metrology calipers automatically output measurements in millimeters (mm) and square millimeters (mm&sup2;) with subpixel interpolation.</p>
+                        <h4>Automatic Recipe Propagation</h4>
+                        <p>When saving calibration, the scale factor and engineering unit are automatically pushed to all active <em>Industrial Caliper & Measurement</em> steps in your recipe, instantly converting edge and contour measurements from pixels to millimeters.</p>
                     </div>
                 </div>
 
-                <h3 class="subheading">Calibration Workflow</h3>
+                <h3 class="subheading">Step-by-Step Floor Scale Calibration Procedure</h3>
                 <ol style="margin-left: 20px; line-height: 1.8; color: var(--text-muted);">
-                    <li>Place a certified gauge block, grid target, or calibrated ruler within the camera field of view.</li>
-                    <li>Click <strong>📐 Calibrate Camera</strong> in the top toolbar to open the Calibration Manager.</li>
-                    <li>Enter the certified reference length in millimeters (e.g., <code>50.0 mm</code>).</li>
-                    <li>Draw or enter the corresponding span in camera pixels (e.g., <code>500 px</code>).</li>
-                    <li>Click <strong>Apply Calibration</strong>. The global calibration scale is immediately persisted and propagated across all inspection steps, measurement tools, and formula evaluations.</li>
+                    <li><strong>Position Calibration Reference:</strong> Place a certified 100 mm ruler, scale gauge, or step block on the floor or conveyor surface directly within the camera field of view.</li>
+                    <li><strong>Open Calibration Dialog:</strong> Click <strong>📐 Calibration</strong> in the main toolbar. The live camera stream will open in the viewfinder.</li>
+                    <li><strong>Freeze Video (Optional):</strong> If lighting flickers or parts move, click <strong>❄ Freeze Frame</strong> to capture a still frame for calm adjustment.</li>
+                    <li><strong>Draw On-Screen Ruler:</strong> Left-click at the <code>0 mm</code> mark on the ruler image and drag across to the <code>100 mm</code> mark. Two precision circular reticles will appear (Cyan <strong>P1</strong> at 0 mm, Emerald Green <strong>P2</strong> at 100 mm).</li>
+                    <li><strong>Fine-Tune Endpoints:</strong> Use the mouse wheel to zoom in on the ruler tick marks. Drag P1 or P2 individually to snap reticles exactly onto the index edges. Drag the center of the line to translate without changing length.</li>
+                    <li><strong>Enter Physical Dimension:</strong> In the control drawer, click the <strong>100 mm</strong> preset button (or type <code>100.0</code> in the Known Physical Size spinbox).</li>
+                    <li><strong>Apply Calibration:</strong> Verify the computed ratio (e.g., <code>1 px = 0.2000 mm</code>; <code>5.00 px / mm</code>). Keep <em>"Update all Caliper / Measurement steps in recipe"</em> checked and click <strong>✓ Apply & Save Calibration</strong>. All calipers immediately display true calibrated metric dimensions.</li>
                 </ol>
             </section>
         </main>

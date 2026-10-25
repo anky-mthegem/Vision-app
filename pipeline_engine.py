@@ -187,6 +187,9 @@ class PipelineStep:
             self.operation.update_params({key: value})
             self.params = copy.deepcopy(self.operation.params)
             self._dirty = True
+        else:
+            self.params[key] = value
+            self._dirty = True
 
     def reset_params(self):
         if self.operation:

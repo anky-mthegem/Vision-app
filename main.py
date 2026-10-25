@@ -788,7 +788,13 @@ class MainWindow(QMainWindow):
 
     def _open_calibration_dialog(self):
         from ui.calibration_dialog import CameraCalibrationDialog
-        dialog = CameraCalibrationDialog(parent=self, pipeline_engine=self.engine)
+        frame_cb = self.camera.get_latest_frame if (self.camera and self.camera._running) else None
+        dialog = CameraCalibrationDialog(
+            parent=self,
+            pipeline_engine=self.engine,
+            camera_device=self.camera,
+            get_frame_cb=frame_cb,
+        )
         dialog.calibration_applied.connect(self._on_calibration_applied)
         dialog.exec()
 

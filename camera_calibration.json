@@ -1,0 +1,7 @@
+{
+    "calibration_factor": 0.2,
+    "unit": "mm",
+    "reference_name": "Standard 100mm Scale Gauge",
+    "last_known_dim": 100.0,
+    "last_measured_px": 500.0
+}

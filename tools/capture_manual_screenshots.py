@@ -14,7 +14,7 @@ if WORKSPACE_DIR not in sys.path:
 import cv2
 import numpy as np
 from PyQt6.QtWidgets import QApplication
-from PyQt6.QtCore import Qt, QRectF
+from PyQt6.QtCore import Qt, QRectF, QPointF
 from PyQt6.QtGui import QFont
 
 from main import MainWindow
@@ -170,9 +170,23 @@ def generate_all_screenshots():
     # =========================================================================
     # 7. Camera Optical Calibration Dialog
     # =========================================================================
-    calib_dialog = CameraCalibrationDialog(parent=win, pipeline_engine=win.engine)
-    calib_dialog.resize(880, 680)
+    calib_dialog = CameraCalibrationDialog(
+        parent=win,
+        pipeline_engine=win.engine,
+        get_frame_cb=lambda: calib_dialog._generate_synthetic_scale_pattern(),
+    )
+    calib_dialog.resize(1100, 720)
+    # Align ruler directly on the 100mm floor gauge tick marks
+    calib_dialog.view.ruler.p1 = QPointF(390, 410)
+    calib_dialog.view.ruler.p2 = QPointF(890, 410)
+    calib_dialog.spin_measured_px.setValue(500.0)
+    calib_dialog.spin_known_dim.setValue(100.0)
+    calib_dialog._compute_ratio()
     calib_dialog.show()
+    for _ in range(20):
+        app.processEvents()
+        time.sleep(0.02)
+    calib_dialog.view.fit_to_view()
     for _ in range(20):
         app.processEvents()
         time.sleep(0.02)

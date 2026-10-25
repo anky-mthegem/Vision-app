@@ -71,7 +71,20 @@ Inspection logic is evaluated via a deterministic pipeline and cell dependency g
 - **Geometric Shape Detector & Hand Tracker**: Real-time polygon, circle, rectangle, and triangle classification, plus 21-keypoint hand gesture tracking.
 - **Pre-processing & Filtering**: Gaussian blur, bilateral smoothing, median denoising, morphology (erode, dilate, open, close, gradient), Canny edge, Sobel, Laplacian, thresholding (Otsu, adaptive), and CLAHE contrast enhancement.
 
-### 1.4 Interactive Canvas ROI & Viewport (`viewport_widget.py`, `ui/roi_item.py`)
+### 1.4 Interactive Visual Camera Calibration (`ui/calibration_dialog.py`)
+- **Direct On-Screen Ruler Line Drawing**:
+  - Click & drag directly on the live camera viewfinder to draw a calibration ruler across a physical scale or gauge (e.g. 100 mm ruler placed on the floor).
+  - Dual circular reticle handles: Cyan **P1** (0 mm) and Emerald Green **P2** (e.g. 100 mm), featuring perpendicular caliper end jaws and angle readouts.
+  - Floating dynamic HUD badge displaying `📏 {pixels} px = {known} mm ({factor} mm/px)`.
+- **Motion Freeze & Subpixel Precision**:
+  - `❄ Freeze Frame` halts camera motion to calmly position endpoints with subpixel accuracy over ruler tick marks.
+  - Smooth mouse wheel zoom, `🔍+` / `🔍-` zoom buttons, `⛶ Fit View`, and middle-click pan.
+- **Quick Reference Presets & Recipe Propagation**:
+  - Instant standard gauge preset buttons (10 mm, 50 mm, 100 mm, 150 mm, 300 mm).
+  - Auto-computes optical scale factor (`mm/px`) and spatial resolution (`px/mm`).
+  - One-click recipe propagation immediately updates all *Industrial Caliper & Measurement* steps in your inspection pipeline.
+
+### 1.5 Interactive Canvas ROI & Viewport (`viewport_widget.py`, `ui/roi_item.py`)
 - **Interactive On-Canvas ROI Handles**:
   - 8-point interactive resize handles (top, bottom, left, right, and 4 corners).
   - Smooth drag-and-move with viewport boundary clamping.
@@ -83,7 +96,7 @@ Inspection logic is evaluated via a deterministic pipeline and cell dependency g
   - Real-time **Difference Heatmap Overlay** (JET colormap) illuminating subtle part deviations and surface shifts.
   - Floating Pixel Inspector HUD sampling real-time RGB/Gray intensity and subpixel cursor coordinates.
 
-### 1.5 Multi-Fieldbus Industrial PLC & Robot Communications (`comms/`)
+### 1.6 Multi-Fieldbus Industrial PLC & Robot Communications (`comms/`)
 Production-grade bi-directional communication with factory automation controllers:
 1. **Delta PLC via Modbus TCP (`comms/modbus_driver.py`)**:
    - Native Modbus TCP driver for Delta DVP, AS, and AH series controllers (port 502).
@@ -121,7 +134,7 @@ Production-grade bi-directional communication with factory automation controller
    - Settings persisted in `config_industrial_io.json`.
    - Dedicated **`📡 PLC & Devices`** toolbar configuration dialog with live hardware ping test buttons.
 
-### 1.6 Modern Cyber-Industrial User Interface
+### 1.7 Modern Cyber-Industrial User Interface
 - **Cyber-Industrial Startup Banner (`ui/startup_banner.py`)**:
   - Frameless translucent cyber-glass card with illuminated emblem halo, smooth 350ms fade-in, and author tag *"Made with <3 By Anky Singh"*.
   - Automatically dismisses after 2.5s or instantly upon mouse click or keypress. Can be previewed standalone via `python preview_banner.py` or disabled with `--no-splash`.
