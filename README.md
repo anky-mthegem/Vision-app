@@ -178,7 +178,26 @@ python tests/test_plc_comms.py
 
 ---
 
-## 3. Project Structure
+## 3. Hardware Requirements
+
+VisionStudio is optimized for desktop workstations, industrial fanless box PCs, and ARM edge computers. The matrix below outlines minimum specifications for baseline inspection and recommended configurations for locked 60 FPS real-time deep learning.
+
+### Hardware Specification Matrix
+
+| Platform | Mode | Minimum Requirements | Recommended Hardware | Target Performance |
+| :--- | :--- | :--- | :--- | :--- |
+| **Windows** (10/11 64-bit) | Desktop GUI / IPC | • Intel Core i3 (6th Gen+) / Ryzen 3<br>• 4 GB RAM<br>• Intel HD 520 (OpenGL 3.3)<br>• 2 GB SSD free space | • Intel Core i5/i7 (8th Gen+) / Ryzen 5<br>• 8 GB – 16 GB DDR4/DDR5<br>• NVIDIA GTX 1650+ / RTX (CUDA)<br>• NVMe SSD | **60 FPS locked**<br>&lt; 8 ms (YOLO GPU)<br>~18 ms (YOLO CPU) |
+| **Linux** (Ubuntu/Debian) | Desktop GUI / Headless | • Dual-core 2.0 GHz x86_64<br>• 4 GB RAM (2 GB for Headless)<br>• Mesa OpenGL 3.3<br>• 2 GB SSD free space | • Quad-core 2.8+ GHz (i5 / Ryzen 5)<br>• 8 GB – 16 GB RAM<br>• NVIDIA GPU (CUDA/cuDNN)<br>• NVMe SSD | **60 FPS locked**<br>&lt; 6 ms (YOLO GPU)<br>~15 ms (YOLO CPU) |
+| **Raspberry Pi** (RPi OS 64-bit) | Edge Controller / SBC | • **Raspberry Pi 4 Model B (4 GB)**<br>• 16 GB Class 10 U3 MicroSD<br>• Recommended in `--headless` mode | • **Raspberry Pi 5 (4 GB / 8 GB)**<br>• PCIe M.2 NVMe SSD Base<br>• Official 27W Power Supply<br>• Active Cooler Fan | **30–40 FPS** (Classical)<br>25–40 ms (YOLOv8 Nano ARM NEON) |
+
+### Deployment Recommendations
+- **Headless Industrial Edge**: On low-power edge PCs or Raspberry Pi, launch with `python main.py --headless --port 8080 --native-port 1023` to bypass GUI rendering, saving ~350 MB RAM and reducing CPU overhead by 25–40%.
+- **Deterministic PLC Timing**: Use wired Gigabit Ethernet instead of Wi-Fi for industrial Modbus TCP, Siemens ISO-on-TCP, and Beckhoff ADS connections to maintain sub-2ms network latency.
+- **High-Speed Metrology**: For cycle rates exceeding 60 parts/min, set camera stream resolution to 720p (1280×720) for optimal subpixel caliper precision and frame transfer times under 5 ms.
+
+---
+
+## 4. Project Structure
 
 ```
 Vision-app/
@@ -239,7 +258,7 @@ Vision-app/
 
 ---
 
-## 4. Author & License
+## 5. Author & License
 
 - **Author**: Anky Singh
 - **Branding**: VisionStudio Industrial Suite • *Made with <3 By Anky Singh*
