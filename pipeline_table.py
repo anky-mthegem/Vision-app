@@ -51,6 +51,7 @@ class PipelineTableModel(QAbstractTableModel):
         "Category",
         "Operation",
         "Input Source",
+        "Output / Signal",
         "Latency",
         "Status",
     ]
@@ -60,8 +61,9 @@ class PipelineTableModel(QAbstractTableModel):
     COL_CATEGORY = 2
     COL_OPERATION = 3
     COL_INPUT = 4
-    COL_LATENCY = 5
-    COL_STATUS = 6
+    COL_OUTPUT = 5
+    COL_LATENCY = 6
+    COL_STATUS = 7
 
     step_modified = pyqtSignal(int)  # index of modified step
 
@@ -104,6 +106,11 @@ class PipelineTableModel(QAbstractTableModel):
                     src_idx = self.engine.get_step_index(src_step.step_id)
                     return f"Step #{src_idx + 1} ({src_step.operation_name})"
                 return f"Source ID: {step.input_source_id}"
+            elif col == self.COL_OUTPUT:
+                summary = step.get_output_summary()
+                if getattr(step, "link_to_remote", False):
+                    return f"📡 {summary}"
+                return summary
             elif col == self.COL_LATENCY:
                 return f"{step.last_exec_ms:.1f} ms"
             elif col == self.COL_STATUS:
@@ -119,6 +126,8 @@ class PipelineTableModel(QAbstractTableModel):
         elif role == Qt.ItemDataRole.ForegroundRole:
             if col == self.COL_STEP:
                 return QColor("#00D2FF")
+            elif col == self.COL_OUTPUT:
+                return QColor("#00E676") if getattr(step, "link_to_remote", False) else QColor("#00D2FF")
             elif col == self.COL_LATENCY:
                 return QColor("#8C9BAE")
             elif col == self.COL_STATUS:
@@ -127,7 +136,7 @@ class PipelineTableModel(QAbstractTableModel):
                 return QColor("#5A6678")
 
         elif role == Qt.ItemDataRole.FontRole:
-            font = QFont("Consolas" if col in (self.COL_STEP, self.COL_LATENCY) else "Segoe UI", 9)
+            font = QFont("Consolas" if col in (self.COL_STEP, self.COL_OUTPUT, self.COL_LATENCY) else "Segoe UI", 9)
             if col in (self.COL_STEP, self.COL_STATUS):
                 font.setBold(True)
             return font
@@ -138,7 +147,9 @@ class PipelineTableModel(QAbstractTableModel):
             return Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignLeft
 
         elif role == Qt.ItemDataRole.ToolTipRole:
-            if col == self.COL_STATUS:
+            if col == self.COL_OUTPUT:
+                return "Output & Remote Signal sent to PLCs/Ethernet/GPIO. Click or double-click to configure."
+            elif col == self.COL_STATUS:
                 remote_str = " | 🔗 Output Linked to Remote PLC/Ethernet/RPi" if getattr(step, "link_to_remote", False) else ""
                 return f"{step.status_msg}{remote_str}"
             elif col == self.COL_OPERATION:
@@ -204,9 +215,9 @@ class PipelineTableModel(QAbstractTableModel):
         return False
 
     def refresh_display(self):
-        """Emits data changed to update latencies and status badges smoothly."""
+        """Emits data changed to update output signals, latencies, and status badges smoothly."""
         if len(self.engine.steps) > 0:
-            top_left = self.index(0, self.COL_LATENCY)
+            top_left = self.index(0, self.COL_OUTPUT)
             bot_right = self.index(len(self.engine.steps) - 1, self.COL_STATUS)
             self.dataChanged.emit(top_left, bot_right)
 
@@ -302,6 +313,7 @@ class PipelineTableView(QWidget):
     show_in_viewport_a = pyqtSignal(int)  # step_id
     show_in_viewport_b = pyqtSignal(int)  # step_id
     step_remote_link_changed = pyqtSignal(int, bool)  # step_id, enabled
+    step_output_config_changed = pyqtSignal(int, dict)  # step_id, output_config
 
     def __init__(self, engine: PipelineEngine, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -316,12 +328,12 @@ class PipelineTableView(QWidget):
         # Header Title
         title_box = QHBoxLayout()
         lbl_title = QLabel("Inspection Pipeline Spreadsheet")
-        lbl_title.setStyleSheet("font-size: 13px; font-weight: 800; color: #E0E6ED;")
+        lbl_title.setStyleSheet("font-size: 10pt; font-weight: 800; color: #E0E6ED;")
         title_box.addWidget(lbl_title)
         title_box.addStretch()
 
         self.lbl_step_count = QLabel("0 Steps")
-        self.lbl_step_count.setStyleSheet("color: #00D2FF; font-weight: 700; font-size: 11px;")
+        self.lbl_step_count.setStyleSheet("color: #00D2FF; font-weight: 700; font-size: 8.5pt;")
         title_box.addWidget(self.lbl_step_count)
         layout.addLayout(title_box)
 
@@ -351,9 +363,13 @@ class PipelineTableView(QWidget):
                 background-color: #1F242D;
                 color: #8C9BAE;
                 font-weight: 700;
-                font-size: 11px;
+                font-size: 8.5pt;
                 padding: 6px;
                 border: 1px solid #2B323D;
+            }
+            QHeaderView::section:hover {
+                background-color: #242A35;
+                color: #00D2FF;
             }
         """)
 
@@ -362,17 +378,27 @@ class PipelineTableView(QWidget):
         self.table.setItemDelegateForColumn(PipelineTableModel.COL_OPERATION, OperationDelegate(self.engine, self))
         self.table.setItemDelegateForColumn(PipelineTableModel.COL_INPUT, InputSourceDelegate(self.engine, self))
 
-        # Column widths
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-        self.table.setColumnWidth(PipelineTableModel.COL_STEP, 90)
-        self.table.setColumnWidth(PipelineTableModel.COL_ACTIVE, 50)
-        self.table.setColumnWidth(PipelineTableModel.COL_CATEGORY, 170)
-        self.table.setColumnWidth(PipelineTableModel.COL_OPERATION, 180)
-        self.table.setColumnWidth(PipelineTableModel.COL_INPUT, 150)
-        self.table.setColumnWidth(PipelineTableModel.COL_LATENCY, 75)
+        # Column widths & anti-glitch interactive resizing
+        header = self.table.horizontalHeader()
+        header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
+        header.setMinimumSectionSize(35)
+        header.setCascadingSectionResizes(False)
+        header.setHighlightSections(False)
+        header.setStretchLastSection(False)
+        self.table.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.table.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+
+        self.table.setColumnWidth(PipelineTableModel.COL_STEP, 80)
+        self.table.setColumnWidth(PipelineTableModel.COL_ACTIVE, 45)
+        self.table.setColumnWidth(PipelineTableModel.COL_CATEGORY, 140)
+        self.table.setColumnWidth(PipelineTableModel.COL_OPERATION, 150)
+        self.table.setColumnWidth(PipelineTableModel.COL_INPUT, 130)
+        self.table.setColumnWidth(PipelineTableModel.COL_OUTPUT, 190)
+        self.table.setColumnWidth(PipelineTableModel.COL_LATENCY, 65)
         self.table.setColumnWidth(PipelineTableModel.COL_STATUS, 75)
 
         self.table.clicked.connect(self._on_row_clicked)
+        self.table.doubleClicked.connect(self._on_table_double_clicked)
         self.table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.table.customContextMenuRequested.connect(self._show_context_menu)
 
@@ -423,7 +449,7 @@ class PipelineTableView(QWidget):
                 background-color: {bg};
                 color: {fg};
                 font-weight: 700;
-                font-size: 11px;
+                font-size: 8.5pt;
                 padding: 5px 12px;
                 border: 1px solid #363E4E;
                 border-radius: 4px;
@@ -448,6 +474,27 @@ class PipelineTableView(QWidget):
             self.step_selected.emit(step)
             # Default single-view displays highlighted row output
             self.show_in_viewport_a.emit(step.step_id)
+            if index.column() == PipelineTableModel.COL_OUTPUT:
+                self._open_output_config_dialog(step)
+
+    def _on_table_double_clicked(self, index: QModelIndex):
+        if index.isValid() and 0 <= index.row() < len(self.engine.steps):
+            step = self.engine.steps[index.row()]
+            if index.column() == PipelineTableModel.COL_OUTPUT:
+                self._open_output_config_dialog(step)
+
+    def _open_output_config_dialog(self, step: PipelineStep):
+        from ui.output_signal_dialog import OutputSignalConfigDialog
+        dlg = OutputSignalConfigDialog(step, parent=self)
+        if dlg.exec():
+            row = self.engine.get_step_index(step.step_id)
+            if row >= 0:
+                top_left = self.model.index(row, PipelineTableModel.COL_OUTPUT)
+                bot_right = self.model.index(row, PipelineTableModel.COL_STATUS)
+                self.model.dataChanged.emit(top_left, bot_right)
+                self.model.step_modified.emit(row)
+            self.step_output_config_changed.emit(step.step_id, step.output_config)
+            self.step_remote_link_changed.emit(step.step_id, step.link_to_remote)
 
     def _show_context_menu(self, pos):
         index = self.table.indexAt(pos)
@@ -477,6 +524,16 @@ class PipelineTableView(QWidget):
 
             menu.addSeparator()
 
+            act_out_cfg = menu.addAction("⚙ Configure Remote Output Signal...")
+            act_out_cfg.triggered.connect(lambda _, s=step: self._open_output_config_dialog(s))
+
+            act_link = menu.addAction("🔗 Link Output to Remote Device (PLC / Ethernet / RPi)")
+            act_link.setCheckable(True)
+            act_link.setChecked(getattr(step, "link_to_remote", False))
+            act_link.triggered.connect(lambda _, s=step: self._toggle_step_remote_link(s))
+
+            menu.addSeparator()
+
             act_dup = menu.addAction("Duplicate Step")
             act_dup.triggered.connect(lambda: self._duplicate_step(index.row()))
 
@@ -485,13 +542,6 @@ class PipelineTableView(QWidget):
 
             act_down = menu.addAction("Move Down (▼)")
             act_down.triggered.connect(self._on_move_down)
-
-            menu.addSeparator()
-
-            act_link = menu.addAction("🔗 Link Output to Remote Device (PLC / Ethernet / RPi)")
-            act_link.setCheckable(True)
-            act_link.setChecked(getattr(step, "link_to_remote", False))
-            act_link.triggered.connect(lambda _, s=step: self._toggle_step_remote_link(s))
 
             menu.addSeparator()
 

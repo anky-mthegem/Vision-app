@@ -65,7 +65,7 @@ QMainWindow, QWidget {
     background-color: #0f1117;
     color: #e8ecf4;
     font-family: 'Segoe UI', 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 10pt;
 }
 QToolBar {
     background-color: #181b24;
@@ -147,7 +147,7 @@ QTableWidget {
     border-radius: 8px;
     gridline-color: #2d3244;
     font-family: 'Consolas', 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 9pt;
 }
 QHeaderView::section {
     background-color: #202430;
@@ -189,6 +189,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("VisionStudio | In-Sight Industrial Computer Vision System")
         self.resize(1440, 920)
+        self.showMaximized()
         self.setStyleSheet(DARK_STYLESHEET)
 
         icon_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "app_icon.png")
@@ -318,7 +319,7 @@ class MainWindow(QMainWindow):
             toolbar.addWidget(lbl_logo)
 
         lbl_brand = QLabel(" VISIONSTUDIO ")
-        lbl_brand.setStyleSheet("font-weight: 900; font-size: 13px; color: #00D2FF; letter-spacing: 1px;")
+        lbl_brand.setStyleSheet("font-weight: 900; font-size: 10pt; color: #00D2FF; letter-spacing: 1px;")
         toolbar.addWidget(lbl_brand)
         toolbar.addSeparator()
 
@@ -367,10 +368,13 @@ class MainWindow(QMainWindow):
 
         # Main Splitter (Left: Live Viewport | Right: Spreadsheet & Function Catalog)
         splitter = QSplitter(Qt.Orientation.Horizontal)
+        splitter.setChildrenCollapsible(False)
+        splitter.setHandleWidth(6)
         self.setCentralWidget(splitter)
 
         # ----------------- LEFT PANEL: VIEWPORT & KPI -----------------
         left_widget = QWidget()
+        left_widget.setMinimumWidth(380)
         left_layout = QVBoxLayout(left_widget)
         left_layout.setContentsMargins(10, 10, 10, 10)
 
@@ -380,11 +384,11 @@ class MainWindow(QMainWindow):
         kpi_layout = QHBoxLayout(kpi_frame)
 
         self.lbl_overall = QLabel("READY (STANDBY)")
-        self.lbl_overall.setStyleSheet("font-size: 15px; font-weight: 800; color: #00d2ff; padding: 4px 10px; background: rgba(0,210,255,0.1); border-radius: 6px;")
+        self.lbl_overall.setStyleSheet("font-size: 11pt; font-weight: 800; color: #00d2ff; padding: 4px 10px; background: rgba(0,210,255,0.1); border-radius: 6px;")
         kpi_layout.addWidget(self.lbl_overall)
 
         self.lbl_stats = QLabel("Live Stream Active | Select a vision function below to begin inspection")
-        self.lbl_stats.setStyleSheet("font-family: 'Consolas', monospace; font-size: 12px; color: #8b94a8;")
+        self.lbl_stats.setStyleSheet("font-family: 'Consolas', monospace; font-size: 9pt; color: #8b94a8;")
         kpi_layout.addWidget(self.lbl_stats)
         kpi_layout.addStretch()
         left_layout.addWidget(kpi_frame)
@@ -393,13 +397,14 @@ class MainWindow(QMainWindow):
         self.lbl_viewport = QLabel()
         self.lbl_viewport.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.lbl_viewport.setStyleSheet("background-color: #050608; border: 1px solid #2d3244; border-radius: 8px;")
-        self.lbl_viewport.setMinimumSize(640, 480)
+        self.lbl_viewport.setMinimumSize(480, 360)
         left_layout.addWidget(self.lbl_viewport, 1)
 
         splitter.addWidget(left_widget)
 
         # ----------------- RIGHT PANEL: SPREADSHEET & CATALOG -----------------
         right_widget = QWidget()
+        right_widget.setMinimumWidth(380)
         right_layout = QVBoxLayout(right_widget)
         right_layout.setContentsMargins(10, 10, 10, 10)
 
@@ -418,13 +423,20 @@ class MainWindow(QMainWindow):
         # Active Spreadsheet Table
         self.table = QTableWidget(1, 6)
         self.table.setHorizontalHeaderLabels(["Run", "Cell", "Label", "Formula", "Result", "Time (ms)"])
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
-        self.table.horizontalHeader().resizeSection(0, 45)
-        self.table.horizontalHeader().resizeSection(1, 55)
-        self.table.horizontalHeader().resizeSection(2, 110)
-        self.table.horizontalHeader().resizeSection(3, 170)
-        self.table.horizontalHeader().resizeSection(4, 220)
-        self.table.horizontalHeader().resizeSection(5, 70)
+        table_hdr = self.table.horizontalHeader()
+        table_hdr.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
+        table_hdr.setMinimumSectionSize(35)
+        table_hdr.setCascadingSectionResizes(False)
+        table_hdr.setHighlightSections(False)
+        table_hdr.setStretchLastSection(False)
+        self.table.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.table.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        table_hdr.resizeSection(0, 45)
+        table_hdr.resizeSection(1, 55)
+        table_hdr.resizeSection(2, 110)
+        table_hdr.resizeSection(3, 170)
+        table_hdr.resizeSection(4, 220)
+        table_hdr.resizeSection(5, 70)
         self.table.itemClicked.connect(self._on_cell_clicked)
         right_layout.addWidget(self.table, 1)
 
@@ -439,6 +451,8 @@ class MainWindow(QMainWindow):
         right_layout.addWidget(catalog_group, 1)
 
         splitter.addWidget(right_widget)
+        splitter.setStretchFactor(0, 1)
+        splitter.setStretchFactor(1, 0)
         splitter.setSizes([850, 590])
 
         # Status Bar
@@ -495,7 +509,7 @@ class MainWindow(QMainWindow):
                 # Info
                 info_layout = QVBoxLayout()
                 title_lbl = QLabel(f"<b>{item['name']}</b> <span style='color:#8b94a8;'>{item['syntax']}</span>")
-                desc_lbl = QLabel(f"<span style='color:#8b94a8; font-size:11px;'>{item['desc']}</span>")
+                desc_lbl = QLabel(f"<span style='color:#8b94a8; font-size:8.5pt;'>{item['desc']}</span>")
                 info_layout.addWidget(title_lbl)
                 info_layout.addWidget(desc_lbl)
                 c_layout.addLayout(info_layout, 1)
@@ -581,10 +595,10 @@ class MainWindow(QMainWindow):
 
         # Quick Presets
         presets_row = QHBoxLayout()
-        presets_row.addWidget(QLabel("<span style='color:#8b94a8; font-size:11px;'>Presets:</span>"))
+        presets_row.addWidget(QLabel("<span style='color:#8b94a8; font-size:8.5pt;'>Presets:</span>"))
         for p_name, p_val in [("All Classes", "all"), ("Person", "person"), ("Bottle", "bottle"), ("Cup", "cup"), ("Electronics", "cell phone, laptop, mouse, keyboard")]:
             btn_p = QPushButton(p_name)
-            btn_p.setStyleSheet("padding: 2px 8px; font-size: 11px;")
+            btn_p.setStyleSheet("padding: 2px 8px; font-size: 8.5pt;")
             btn_p.clicked.connect(lambda checked, v=p_val: self.yolo_class_combo.setCurrentText(v))
             presets_row.addWidget(btn_p)
         presets_row.addStretch()
@@ -1150,12 +1164,34 @@ class MainWindow(QMainWindow):
 
 def run_app():
     from PyQt6.QtWidgets import QApplication
+    from ui.startup_banner import StartupBannerSplash
     q_app = QApplication.instance() or QApplication(sys.argv)
+    q_app.setFont(QFont("Segoe UI", 9))
     icon_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "app_icon.png")
     if os.path.exists(icon_path):
         q_app.setWindowIcon(QIcon(icon_path))
-    window = MainWindow()
-    window.show()
+
+    show_splash = "--no-splash" not in sys.argv
+    if show_splash:
+        splash = StartupBannerSplash(auto_dismiss_ms=2500)
+        splash.show()
+        q_app.processEvents()
+
+        window = MainWindow()
+
+        def on_splash_finish():
+            window.showMaximized()
+            window.raise_()
+            window.activateWindow()
+
+        if not splash.isVisible():
+            on_splash_finish()
+        else:
+            splash.finished.connect(on_splash_finish)
+    else:
+        window = MainWindow()
+        window.showMaximized()
+
     sys.exit(q_app.exec())
 
 

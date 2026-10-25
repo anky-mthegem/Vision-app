@@ -163,8 +163,29 @@
                         <div class="zoom-hint">🔍 Click to zoom full-size</div>
                     </div>
                     <figcaption class="figure-caption">
-                        <strong>Figure 1.1:</strong> The VisionStudio Main Desktop Window operating in Clean Standby Mode. 
-                        Notice the live high-FPS viewport on the left, formula input bar, interactive spreadsheet table with cell checkboxes, and categorized Industrial Function Catalog on the right.
+                        <strong>Figure 1.1:</strong> The VisionStudio Main Industrial Desktop Workspace operating in Clean Standby Mode. 
+                        Features the Three-Pane Master-Detail Layout: (Left) Sequential Spreadsheet Pipeline Table with execution latency benchmarks, (Center) Flexible Inspection Viewport with reticle grid and floating pixel inspector HUD, and (Right) Dynamic Property Inspector Drawer.
+                    </figcaption>
+                </div>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>🚀 Cyber-Industrial Startup Banner & Splash Screen</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_startup_banner.png" alt="VisionStudio Cyber-Industrial Startup Splash Banner with illuminated lion logo and author footer">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 1.2:</strong> VisionStudio Cyber-Industrial Startup Banner shown during application initialization. 
+                        Features a translucent cyber-glass card, neon cyan halo disc behind the lion emblem, 350ms smooth fade-in, and author tag <em>"Made with &lt;3 By Anky Singh"</em>. Automatically dismisses after 2.5s or instantly upon click/keypress. Can be bypassed with the <code>--no-splash</code> CLI flag. Standalone preview available via <code>python preview_banner.py</code>.
                     </figcaption>
                 </div>
 
@@ -301,6 +322,32 @@
                     Industrial network discovery tools broadcast probe packets on the local subnet to instantly locate 
                     VisionStudio sensors, query IP configuration, MAC address, and device online states without manual IP configuration.
                 </p>
+
+                <h3 class="subheading">Camera Optical Scale Calibration (mm / pixel)</h3>
+                <p>
+                    Precision machine vision metrology requires translating raw pixel coordinates into real-world physical units (millimeters, inches, or microns). 
+                    Clicking the <span class="badge badge-plc" style="background:#00E676; color:#0B0D13; font-weight:800;">📐 Calibration</span> button in the main window toolbar opens the dedicated Optical Calibration Dialog.
+                </p>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📐 Camera Optical Scale Factor Calibration Dialog</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_calibration_dialog.png" alt="VisionStudio Camera Optical Calibration Dialog with 2-point measurement and millimeter scale factor calculation">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 2.1:</strong> Camera Optical Calibration Dialog. Operators can measure across a known gauge block or optical calibration target, input the physical length (e.g. 50.0 mm), and automatically compute the optical scale factor (<code>1 px = 0.1000 mm</code>). Clicking <em>"Apply Calibration to Pipeline"</em> propagates the calibrated scale factor to all downstream metrology caliper steps.
+                    </figcaption>
+                </div>
             </section>
 
             <!-- SECTION 3: SPREADSHEET DAG ENGINE -->
@@ -334,9 +381,8 @@
                         <div class="zoom-hint">🔍 Click to zoom full-size</div>
                     </div>
                     <figcaption class="figure-caption">
-                        <strong>Figure 3.1:</strong> A complete multi-cell inspection job executing on the Synthetic PCB test stream. 
-                        Cell <code>A0</code> captures the image, <code>B2</code> performs PatMax geometric alignment, <code>C3</code> inspects drilled holes using blob analysis, 
-                        <code>D4</code> measures circle radius, and <code>E5</code> computes the overall PASS/FAIL decision.
+                        <strong>Figure 3.1:</strong> Multi-Step Inspection Pipeline executing on the Synthetic PCB test stream. 
+                        Step 0 captures the image, Step 1 smooths noise via Gaussian Blur, Step 2 extracts part edges via Canny Edge, and Step 3 classifies defects and blobs with green centroid markers and live latency metrics.
                     </figcaption>
                 </div>
 
@@ -368,6 +414,52 @@
                         <strong>Root Cell A0:</strong>
                         Cell <code>A0</code> is reserved exclusively for the primary camera image acquisition (<code class="inline-code">=AcquireImage()</code>). 
                         It cannot be deleted or disabled, guaranteeing that downstream tools always possess a valid image buffer.
+                    </div>
+                </div>
+
+                <h3 class="subheading">Dual Split Viewport & Real-Time Difference Heatmap</h3>
+                <p>
+                    VisionStudio provides a high-performance multi-view inspection viewport with synchronized 1000% subpixel pan and zoom. 
+                    Toggling <strong>2-Window Split View</strong> divides the screen into <em>Viewport A (Primary)</em> and <em>Viewport B (Comparison)</em>, allowing operators to simultaneously view the raw camera input alongside any intermediate filter or classified defect output.
+                </p>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>🔀 Dual Split Viewport & Real-Time Difference Heatmap (JET)</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_split_diff_viewport.png" alt="VisionStudio Dual Split Viewport showing Viewport A raw frame and Viewport B Difference Heatmap overlay">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 3.2:</strong> Dual Split Viewport operating in Difference Heatmap Mode. 
+                        Viewport A displays the raw incoming part, while Viewport B computes an absolute pixel-level difference (<code>cv2.absdiff</code>) blended with a JET colormap overlay. 
+                        Surface anomalies, missing pins, burrs, and dimensional defects immediately illuminate in high-contrast cyan, yellow, and red.
+                    </figcaption>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">🔍</span>
+                        <h4>Synchronized Subpixel Pan & Zoom</h4>
+                        <p>Panning or zooming in Viewport A instantaneously transforms Viewport B by the exact same scale and scene offset, maintaining pixel-perfect coordinate alignment.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🔄</span>
+                        <h4>Split Orientation Toggle</h4>
+                        <p>Click "Toggle Orientation (H/V)" to swap seamlessly between horizontal side-by-side comparison and vertical top-to-bottom inspection layouts.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🎯</span>
+                        <h4>Floating Pixel Inspector HUD</h4>
+                        <p>Hovering over any pixel dynamically updates the floating HUD overlay badge showing exact coordinates (X, Y) and pixel intensity values (RGB / Grayscale).</p>
                     </div>
                 </div>
             </section>
@@ -528,6 +620,138 @@
                     VisionStudio provides a rich catalog of 25+ industrial vision functions categorized into 
                     pattern alignment, blob inspection, edge calipers, identification, filtering, and geometry.
                 </p>
+
+                <!-- FEATURED TOOL: INTERACTIVE ROI GIZMO -->
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📐 Interactive On-Canvas ROI Handles & Live Property Inspector Sync</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_interactive_roi.png" alt="VisionStudio Interactive On-Canvas ROI Handles Gizmo with 8 resize handles and coordinate pill">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 5.1:</strong> Interactive On-Canvas Region of Interest (ROI) Gizmo. 
+                        Operators can click and drag the 8 bounding box resize handles directly on the live image canvas. 
+                        Moving or resizing the box instantaneously updates the Property Inspector controls (X, Y, Width, Height) and re-evaluates downstream inspection algorithms in real-time.
+                    </figcaption>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">🖱️</span>
+                        <h4>8 Dynamic Resize Handles</h4>
+                        <p>Grab corner or midpoint handles to resize with context-aware cursors (diagonal, vertical, horizontal). Dragging inside the box repositions the entire ROI window.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🏷️</span>
+                        <h4>Floating Coordinate Pill HUD</h4>
+                        <p>An illuminated floating coordinate badge follows the ROI box, continuously displaying live coordinates: <code>[X: 120, Y: 90 | 560x400]</code>.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🔄</span>
+                        <h4>2-Way Bidirectional Sync</h4>
+                        <p>Drag the handles on the canvas to update the inspector sliders, or type exact numerical values into the inspector spinboxes to adjust the canvas box.</p>
+                    </div>
+                    <div class="feature-box">
+                        <span class="feat-icon">🛡️</span>
+                        <h4>Automatic Boundary Clamping</h4>
+                        <p>Intelligent geometric clamping prevents operators from accidentally dragging or resizing the ROI beyond the physical dimensions of the camera frame.</p>
+                    </div>
+                </div>
+
+                <h3 class="subheading">Preset Inspection Recipes (1-Click Deployment)</h3>
+                <p>
+                    VisionStudio includes 11 factory-tuned inspection recipes selectable directly from the <strong>Presets</strong> dropdown in the main toolbar:
+                </p>
+
+                <div class="table-responsive" style="margin-bottom: 24px;">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Preset Recipe Name</th>
+                                <th>Pipeline Step Sequence</th>
+                                <th>Industrial Application</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td><strong style="color:#00D2FF;">Edge Detection & Defect Inspection</strong></td>
+                                <td>Gaussian Blur &rarr; Canny Edge &rarr; Dilate &rarr; Find Contours & Filter</td>
+                                <td>Surface scratch inspection, burr detection, assembly completeness</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td><strong style="color:#00E676;">Adaptive Threshold & Contours</strong></td>
+                                <td>Median Blur &rarr; Adaptive Threshold &rarr; Morphology Close &rarr; Classify Blobs</td>
+                                <td>Parts with non-uniform illumination or fluctuating ambient light</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td><strong style="color:#FFB300;">HSV Color Isolation & Filtering</strong></td>
+                                <td>HSV Color InRange &rarr; Bilateral Filter &rarr; Otsu Binarize</td>
+                                <td>Color-coded wiring harnesses, pharmaceutical pills, packaging caps</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td><strong style="color:#FF4081;">Morphological Cleanup Pipeline</strong></td>
+                                <td>Standard Otsu Threshold &rarr; Morph Open &rarr; Morph Close</td>
+                                <td>Eliminating background pepper noise and closing pinhole defects</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td><strong style="color:#8C9BAE;">Blank / Clean Pipeline</strong></td>
+                                <td>Clear all steps &rarr; Standby Camera acquisition</td>
+                                <td>Creating customized recipes from scratch</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6</strong></td>
+                                <td><strong style="color:#7C4DFF;">YOLO26 / Neural Object Detection</strong></td>
+                                <td>YOLO26 / YOLOv8 Neural Detector (All COCO classes)</td>
+                                <td>AI multi-class part classification, sorting, and foreign object presence</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7</strong></td>
+                                <td><strong style="color:#00E5FF;">Geometric Shape Detection</strong></td>
+                                <td>Gaussian Blur &rarr; Geometric Shape Detector</td>
+                                <td>Classifying Circles, Squares, Rectangles, and Triangles by circularity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>8</strong></td>
+                                <td><strong style="color:#FF9100;">Hand Tracking & Gesture Recognition</strong></td>
+                                <td>Hand & Gesture Tracker (Skeleton + Finger Count)</td>
+                                <td>Operator safety zones, touchless machine control, ergonomics</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9</strong></td>
+                                <td><strong style="color:#69F0AE;">Optical Character Recognition (OCR)</strong></td>
+                                <td>Gaussian Blur &rarr; OCR Character Segmentation</td>
+                                <td>Reading stamped lot numbers, expiration dates, and laser-etched serials</td>
+                            </tr>
+                            <tr>
+                                <td><strong>10</strong></td>
+                                <td><strong style="color:#E040FB;">Calibrated Metrology & Dimension Caliper</strong></td>
+                                <td>Gaussian Blur &rarr; Industrial Caliper & Measurement</td>
+                                <td>High-precision calibrated distance measurement (mm/in) with tolerance check</td>
+                            </tr>
+                            <tr>
+                                <td><strong>11</strong></td>
+                                <td><strong style="color:#00D2FF;">Interactive Crop / Region of Interest (ROI)</strong></td>
+                                <td>Crop / ROI &rarr; Gaussian Blur &rarr; Canny Edge &rarr; Contours</td>
+                                <td>Interactive on-canvas drag-and-resize window for focused inspection</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <!-- Tool Category 1: Alignment -->
                 <h3 class="subheading">1. Pattern Matching & Alignment</h3>
@@ -812,30 +1036,66 @@
                     <li><strong>Formula Syntax:</strong> <code class="inline-code">=WriteModbus(E5, ip="192.168.1.50", reg=100)</code></li>
                 </ul>
 
-                <!-- Sub-interface 3: Beckhoff & Ethernet -->
-                <h3 class="subheading">3. Beckhoff TwinCAT ADS & Ethernet Robot Communication</h3>
-                <div class="feature-grid">
-                    <div class="feature-box">
-                        <span class="feat-icon">⚡</span>
-                        <h4>Beckhoff TwinCAT ADS</h4>
-                        <p>Communicates natively over TCP port 48898 (ADS router) directly into TwinCAT %M memory area (<code>IndexGroup 0x4020</code>).</p>
-                        <div class="formula-card" style="margin-top: 10px;">
-                            <div class="formula-syntax" style="font-size: 0.8rem;">=WriteBeckhoff(E5, ip="192.168.1.20", offset=100)</div>
+                <!-- Sub-interface 3: Beckhoff TwinCAT ADS -->
+                <h3 class="subheading">3. Beckhoff TwinCAT ADS Integration (Port 48898)</h3>
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📡 Beckhoff TwinCAT ADS Configuration Dialog</span>
                         </div>
                     </div>
-
-                    <div class="feature-box">
-                        <span class="feat-icon">🤖</span>
-                        <h4>Industrial Ethernet Devices</h4>
-                        <p>TCP/UDP client and server interfacing with ABB, KUKA, Fanuc, and Universal Robots using JSON, CSV, or ASCII telegrams.</p>
-                        <div class="formula-card" style="margin-top: 10px;">
-                            <div class="formula-syntax" style="font-size: 0.8rem;">=WriteEthernet(E5, ip="192.168.1.100", port=9000, fmt="JSON")</div>
-                        </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_plc_beckhoff.png" alt="Beckhoff TwinCAT ADS configuration dialog with AMS Net ID and memory mapping">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
                     </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 6.3:</strong> Beckhoff TwinCAT ADS configuration dialog. Operates via native binary ADS routing on TCP port 48898, directly writing pass/fail decisions and part coordinates into TwinCAT %M memory area (<code>IndexGroup 0x4020</code>) or Modbus port 502.
+                    </figcaption>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=WriteBeckhoff(E5, ip="192.168.1.20", offset=100)</div>
+                        <div class="formula-desc">Writes inspection results directly to Beckhoff TwinCAT PLC memory offset 100.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
                 </div>
 
-                <!-- Sub-interface 4: Raspberry Pi GPIO -->
-                <h3 class="subheading">4. Raspberry Pi Industrial Digital I/O</h3>
+                <!-- Sub-interface 4: Industrial Ethernet -->
+                <h3 class="subheading">4. Industrial Ethernet Robot & MES Communication</h3>
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">
+                            <span>📡 Industrial Ethernet TCP/UDP Robot Interface Dialog</span>
+                        </div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_plc_ethernet.png" alt="Industrial Ethernet TCP/UDP Robot and MES interface dialog">
+                        <div class="zoom-hint">🔍 Click to zoom full-size</div>
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 6.4:</strong> Industrial Ethernet Device configuration supporting TCP Client/Server and UDP Unicast/Broadcast. Interfaces directly with ABB, KUKA, Fanuc, and Universal Robots using JSON, CSV, or Cognex In-Sight Native ASCII telegrams.
+                    </figcaption>
+                </div>
+                <div class="formula-card">
+                    <div>
+                        <div class="formula-syntax">=WriteEthernet(E5, ip="192.168.1.100", port=9000, fmt="JSON")</div>
+                        <div class="formula-desc">Broadcasts formatted JSON inspection payload to factory robot controller at 192.168.1.100:9000.</div>
+                    </div>
+                    <button class="copy-btn">📋 Copy</button>
+                </div>
+
+                <!-- Sub-interface 5: Raspberry Pi GPIO -->
+                <h3 class="subheading">5. Raspberry Pi Industrial Digital I/O</h3>
                 <div class="screenshot-figure">
                     <div class="screenshot-header">
                         <div class="window-dots">
@@ -852,7 +1112,7 @@
                         <div class="zoom-hint">🔍 Click to zoom full-size</div>
                     </div>
                     <figcaption class="figure-caption">
-                        <strong>Figure 6.3:</strong> Raspberry Pi GPIO configuration featuring the Remote Pigpio network protocol (TCP port 8888), allowing Windows hosts to trigger and read physical pins across the network.
+                        <strong>Figure 6.5:</strong> Raspberry Pi GPIO configuration featuring the Remote Pigpio network protocol (TCP port 8888), allowing Windows hosts to trigger and read physical pins across the network.
                     </figcaption>
                 </div>
 

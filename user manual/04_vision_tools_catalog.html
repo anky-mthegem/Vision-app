@@ -300,6 +300,37 @@
                             <li>Go / No-Go tolerance checking against engineering limits</li>
                         </ul>
                     </div>
+
+                    <!-- Interactive Crop / Region of Interest (ROI) -->
+                    <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 20px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">📐</div>
+                        <h3 style="color: #00D2FF; margin: 0 0 8px 0;">Interactive Crop / Region of Interest (ROI)</h3>
+                        <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
+                            On-canvas draggable and resizable bounding box gizmo with 8 resize handles, context-aware cursors, and live floating coordinate HUD.
+                        </p>
+                        <ul style="color: #B0BAC9; font-size: 12px; padding-left: 18px; margin: 10px 0;">
+                            <li>Live 2-way sync with Property Inspector drawer controls (X, Y, W, H)</li>
+                            <li>Selectable modes: <code>Crop</code>, <code>Mask Outside</code>, or <code>Highlight Box</code></li>
+                            <li>Automatic clamping to prevent dragging beyond camera frame limits</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">Interactive On-Canvas ROI Handles Gizmo</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_interactive_roi.png" alt="Interactive On-Canvas ROI Handles Gizmo in VisionStudio">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 4.2:</strong> Interactive On-Canvas ROI bounding box gizmo with 8 resize handles, center reticle crosshair, and live floating coordinate pill HUD [X, Y, W, H].
+                    </figcaption>
                 </div>
             </section>
 
@@ -316,6 +347,23 @@
                     Machine vision measurements require translating raw sensor pixels into physical engineering units. 
                     VisionStudio provides a dedicated <strong>"📐 Calibration"</strong> tool in the top application toolbar.
                 </p>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">Camera Optical Calibration Dialog</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_calibration_dialog.png" alt="Camera Optical Calibration Dialog in VisionStudio">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 4.3:</strong> Camera Optical Calibration Dialog for measuring reference spans on gauge blocks and computing the physical scale ratio (<code>1 px = 0.1000 mm</code>).
+                    </figcaption>
+                </div>
 
                 <div class="info-alert" style="background: rgba(0, 210, 255, 0.08); border-left: 4px solid #00D2FF; padding: 16px; border-radius: 4px; margin: 16px 0;">
                     <strong style="color: #00D2FF;">How to Calibrate in 3 Steps:</strong>

@@ -36,6 +36,7 @@ from PyQt6.QtWidgets import (
     QToolButton,
     QButtonGroup,
 )
+from ui.roi_item import InteractiveROIItem
 
 
 class PanZoomGraphicsView(QGraphicsView):
@@ -54,6 +55,11 @@ class PanZoomGraphicsView(QGraphicsView):
         self.setScene(self.scene)
         self.pixmap_item = QGraphicsPixmapItem()
         self.scene.addItem(self.pixmap_item)
+
+        # Interactive ROI overlay item
+        self.roi_item = InteractiveROIItem()
+        self.scene.addItem(self.roi_item)
+        self.roi_item.hide()
 
         self._image_cache: Optional[np.ndarray] = None
         self._is_panning = False
@@ -94,6 +100,7 @@ class PanZoomGraphicsView(QGraphicsView):
         pix = QPixmap.fromImage(q_img)
         self.pixmap_item.setPixmap(pix)
         self.scene.setSceneRect(0, 0, w, h)
+        self.roi_item.set_bounds_limit(w, h)
 
     def fit_image(self):
         """Fits image neatly inside the viewport bounds."""
@@ -141,13 +148,27 @@ class PanZoomGraphicsView(QGraphicsView):
         event.accept()
 
     def mousePressEvent(self, event: QMouseEvent):
-        if event.button() in (Qt.MouseButton.MiddleButton, Qt.MouseButton.LeftButton):
+        if event.button() == Qt.MouseButton.MiddleButton:
             self._is_panning = True
             self._pan_start = event.pos()
             self.setCursor(Qt.CursorShape.ClosedHandCursor)
             event.accept()
-        else:
+            return
+
+        # Check if clicking on an interactive item (like ROI handle/body)
+        item = self.itemAt(event.pos())
+        if item is not None and item != self.pixmap_item:
             super().mousePressEvent(event)
+            return
+
+        if event.button() == Qt.MouseButton.LeftButton:
+            self._is_panning = True
+            self._pan_start = event.pos()
+            self.setCursor(Qt.CursorShape.ClosedHandCursor)
+            event.accept()
+            return
+
+        super().mousePressEvent(event)
 
     def mouseMoveEvent(self, event: QMouseEvent):
         # 1. Handle Panning
@@ -194,6 +215,9 @@ class PanZoomGraphicsView(QGraphicsView):
 class SingleViewportPanel(QWidget):
     """Sub-viewport containing header badge, pan/zoom view, and floating HUD overlay."""
 
+    roi_changed = pyqtSignal(int, int, int, int)
+    roi_finished = pyqtSignal(int, int, int, int)
+
     def __init__(self, label: str = "Viewport A", parent: Optional[QWidget] = None):
         super().__init__(parent)
         self.label_prefix = label
@@ -223,7 +247,7 @@ class SingleViewportPanel(QWidget):
             background-color: #00D2FF;
             color: #0B0D13;
             font-weight: 800;
-            font-size: 11px;
+            font-size: 8.5pt;
             border-radius: 3px;
             padding: 2px 6px;
         """)
@@ -237,7 +261,7 @@ class SingleViewportPanel(QWidget):
                 border: 1px solid #363E4E;
                 border-radius: 4px;
                 padding: 2px 8px;
-                font-size: 11px;
+                font-size: 8.5pt;
                 min-width: 140px;
             }
             QComboBox:hover {
@@ -247,7 +271,7 @@ class SingleViewportPanel(QWidget):
         h_layout.addWidget(self.source_combo)
 
         self.lbl_info = QLabel("Viewing: Step 0 - Raw Image")
-        self.lbl_info.setStyleSheet("color: #8C9BAE; font-size: 11px; font-weight: 600;")
+        self.lbl_info.setStyleSheet("color: #8C9BAE; font-size: 8.5pt; font-weight: 600;")
         h_layout.addWidget(self.lbl_info)
         h_layout.addStretch()
 
@@ -255,13 +279,13 @@ class SingleViewportPanel(QWidget):
         self.btn_fit = QToolButton()
         self.btn_fit.setText("Zoom Fit")
         self.btn_fit.setToolTip("Fit image inside viewport")
-        self.btn_fit.setStyleSheet("background: #242A35; color: #B0BAC9; border: 1px solid #363E4E; border-radius: 4px; padding: 2px 8px; font-size: 10px;")
+        self.btn_fit.setStyleSheet("background: #242A35; color: #B0BAC9; border: 1px solid #363E4E; border-radius: 4px; padding: 2px 8px; font-size: 8pt;")
         h_layout.addWidget(self.btn_fit)
 
         self.btn_100 = QToolButton()
         self.btn_100.setText("1:1")
         self.btn_100.setToolTip("Zoom to 100% native resolution")
-        self.btn_100.setStyleSheet("background: #242A35; color: #B0BAC9; border: 1px solid #363E4E; border-radius: 4px; padding: 2px 8px; font-size: 10px;")
+        self.btn_100.setStyleSheet("background: #242A35; color: #B0BAC9; border: 1px solid #363E4E; border-radius: 4px; padding: 2px 8px; font-size: 8pt;")
         h_layout.addWidget(self.btn_100)
 
         layout.addWidget(self.header)
@@ -280,7 +304,7 @@ class SingleViewportPanel(QWidget):
             background-color: rgba(15, 18, 24, 0.85);
             color: #00D2FF;
             font-family: 'Consolas', monospace;
-            font-size: 11px;
+            font-size: 8.5pt;
             font-weight: 600;
             border: 1px solid #2B323D;
             border-radius: 4px;
@@ -290,10 +314,21 @@ class SingleViewportPanel(QWidget):
         self.hud_label.show()
 
         self.graphics_view.pixel_inspected.connect(self._on_pixel_inspected)
+        self.graphics_view.roi_item.roiChanged.connect(self.roi_changed.emit)
+        self.graphics_view.roi_item.roiFinished.connect(self.roi_finished.emit)
         self.btn_fit.clicked.connect(self.graphics_view.fit_image)
         self.btn_100.clicked.connect(self.graphics_view.zoom_100)
 
         layout.addWidget(self.view_container, 1)
+
+    def set_roi_rect(self, x: int, y: int, w: int, h: int, emit_signal: bool = False):
+        self.graphics_view.roi_item.set_rect(x, y, w, h, emit_signal=emit_signal)
+
+    def get_roi_rect(self) -> Tuple[int, int, int, int]:
+        return self.graphics_view.roi_item.get_rect_int()
+
+    def set_roi_visible(self, visible: bool):
+        self.graphics_view.roi_item.setVisible(visible)
 
     def _on_pixel_inspected(self, x: int, y: int, val_str: str):
         self.hud_label.setText(f"X: {x}  Y: {y}  |  {val_str}")
@@ -311,6 +346,9 @@ class FlexibleInspectionViewport(QWidget):
 
     # Emitted when source selection changes: (viewport_index, step_id)
     source_selection_changed = pyqtSignal(int, int)
+    roi_changed = pyqtSignal(int, int, int, int)
+    roi_finished = pyqtSignal(int, int, int, int)
+    roi_toggled = pyqtSignal(bool)
 
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -375,7 +413,7 @@ class FlexibleInspectionViewport(QWidget):
                 border: 1px solid #363E4E;
                 border-radius: 4px;
                 padding: 4px 10px;
-                font-size: 11px;
+                font-size: 8.5pt;
             }
             QPushButton:hover {
                 background-color: #2F3746;
@@ -395,10 +433,19 @@ class FlexibleInspectionViewport(QWidget):
         self.btn_diff.hide()
         tb_layout.addWidget(self.btn_diff)
 
+        # Interactive ROI Tool Button
+        self.btn_roi = QPushButton("📐 Interactive ROI")
+        self.btn_roi.setCheckable(True)
+        self.btn_roi.setChecked(False)
+        self.btn_roi.setToolTip("Toggle interactive on-canvas Region of Interest bounding box with resize handles")
+        self.btn_roi.setStyleSheet(self._get_toggle_btn_style())
+        self.btn_roi.toggled.connect(self._on_roi_toggled)
+        tb_layout.addWidget(self.btn_roi)
+
         tb_layout.addStretch()
 
         self.lbl_fps_stat = QLabel("Synchronized Pan & Zoom: ON")
-        self.lbl_fps_stat.setStyleSheet("color: #00E676; font-size: 11px; font-weight: 700;")
+        self.lbl_fps_stat.setStyleSheet("color: #00E676; font-size: 8.5pt; font-weight: 700;")
         tb_layout.addWidget(self.lbl_fps_stat)
 
         main_layout.addWidget(self.top_toolbar)
@@ -422,7 +469,7 @@ class FlexibleInspectionViewport(QWidget):
             background-color: #FFB300;
             color: #0B0D13;
             font-weight: 800;
-            font-size: 11px;
+            font-size: 8.5pt;
             border-radius: 3px;
             padding: 2px 6px;
         """)
@@ -442,6 +489,35 @@ class FlexibleInspectionViewport(QWidget):
         # Connect source dropdowns
         self.viewport_a.source_combo.currentIndexChanged.connect(self._on_combo_a_changed)
         self.viewport_b.source_combo.currentIndexChanged.connect(self._on_combo_b_changed)
+
+        # Connect ROI signals from primary Viewport A
+        self.viewport_a.roi_changed.connect(self.roi_changed.emit)
+        self.viewport_a.roi_finished.connect(self.roi_finished.emit)
+
+    def _on_roi_toggled(self, checked: bool):
+        self.viewport_a.set_roi_visible(checked)
+        self.roi_toggled.emit(checked)
+        if checked:
+            rx, ry, rw, rh = self.viewport_a.get_roi_rect()
+            if rw <= 15 or rh <= 15:
+                if self.viewport_a.graphics_view._image_cache is not None:
+                    ih, iw = self.viewport_a.graphics_view._image_cache.shape[:2]
+                    self.viewport_a.set_roi_rect(int(iw * 0.2), int(ih * 0.2), int(iw * 0.6), int(ih * 0.6), emit_signal=True)
+
+    def set_roi_rect(self, x: int, y: int, w: int, h: int, emit_signal: bool = False):
+        self.viewport_a.set_roi_rect(x, y, w, h, emit_signal=emit_signal)
+
+    def get_roi_rect(self) -> Tuple[int, int, int, int]:
+        return self.viewport_a.get_roi_rect()
+
+    def set_roi_active(self, active: bool):
+        self.btn_roi.blockSignals(True)
+        self.btn_roi.setChecked(active)
+        self.btn_roi.blockSignals(False)
+        self.viewport_a.set_roi_visible(active)
+
+    def is_roi_active(self) -> bool:
+        return self.btn_roi.isChecked()
 
     def _setup_sync(self):
         """Cross-connects zoom and pan between Viewport A and Viewport B for pixel-perfect alignment."""
@@ -464,7 +540,7 @@ class FlexibleInspectionViewport(QWidget):
                 border-radius: 6px;
                 padding: 4px 12px;
                 font-weight: 700;
-                font-size: 11px;
+                font-size: 8.5pt;
             }
             QPushButton:hover {
                 background-color: #2F3746;

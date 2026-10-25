@@ -72,9 +72,16 @@ Full, production-grade bi-directional communication with factory automation cont
    - Persistent settings stored in `config_industrial_io.json`.
    - Accessible via the **`📡 PLC & Devices`** toolbar dialog with one-click live hardware test buttons.
 
-### 1.5 Dual Interface: Desktop UI + WebHMI
-- **Desktop UI (PyQt6)**: Real-time graphical viewport with visual inspection overlays (green PASS / red FAIL boxes, crosshairs, caliper rays, YOLO bounding boxes), live spreadsheet table with formula bar, tool palette, PLC configuration dialog, and KPI statistics banner.
-- **WebHMI (FastAPI + WebSockets)**: Accessible in any web browser at `http://localhost:8080` for remote shop-floor monitoring.
+### 1.5 Enterprise GUI Architecture & Visual Workflow
+- **Cyber-Industrial Startup Banner**: Frameless translucent splash card with animated 350ms fade-in, neon cyan radial halo around the lion emblem, and author tag *"Made with <3 By Anky Singh"*. Can be previewed standalone via `python preview_banner.py` or launched with `--no-splash`.
+- **Three-Pane Master-Detail Workspace**:
+  1. *Left Pane*: Sequential Spreadsheet Pipeline Table with execution latency benchmarks, step reordering, duplication, bypass toggles, and direct PLC hardware link indicators.
+  2. *Center Pane*: Flexible Inspection Viewport with Single vs 2-Window Split View, synchronized 1000% subpixel pan/zoom, live Difference Heatmap (JET colormap overlay), floating pixel inspector HUD, and **Interactive On-Canvas ROI Handles** (8 resize handles, boundary clamping, live HUD dimension pill).
+  3. *Right Pane*: Dynamic Property Inspector Drawer with auto-generated controls for live parameter tuning, defaults reset, and step-level PLC output dispatch.
+- **Camera Optical Calibration**: Built-in 2-point optical scale factor calculator (`1 px = X mm`) with automatic propagation across all metrology caliper steps.
+- **11 Built-in Factory Presets**: One-click deployment for edge detection, defect inspection, adaptive thresholding, HSV color filtering, YOLO26 neural detection, geometric shapes, hand tracking, OCR, calibrated calipers, and interactive ROI cropping.
+- **WebHMI (FastAPI + WebSockets)**: Accessible in any web browser at `http://localhost:8080` for remote shop-floor telemetry and control.
+- **Interactive User Manual**: Launch anytime via `Launch_User_Manual.bat` to explore the comprehensive dark-themed manual with high-res UI screenshots, formula cheat sheets, and PLC wiring diagrams.
 
 ---
 
@@ -85,6 +92,9 @@ Double click `Launch_VisionStudio.bat` or run:
 ```powershell
 python main.py
 ```
+
+### Launching the Interactive User Manual
+Double click `Launch_User_Manual.bat` or open `user manual/index.html` in your web browser.
 
 ### Starting in Headless Mode (Server & WebHMI only)
 ```powershell

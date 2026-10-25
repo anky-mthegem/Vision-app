@@ -172,6 +172,7 @@ class YoloObjectDetectorOp(BaseOperation):
             if d.obb:
                 first_angle = float(d.obb[4])
 
+        det_classes = [d.class_name for d in result.detections]
         metrics: Dict[str, Any] = {
             "passed": result.found,
             "count": result.count,
@@ -180,6 +181,9 @@ class YoloObjectDetectorOp(BaseOperation):
             "task_mode": task,
             "latency_ms": round(result.latency_ms, 2),
             "model": result.model_name,
+            "detected_classes": det_classes,
+            "class_counts": {c: det_classes.count(c) for c in set(det_classes)},
+            "detections": [d.to_dict() for d in result.detections],
         }
 
         if task == "segment":
@@ -1723,3 +1727,82 @@ class InvertImageOp(BaseOperation):
 
     def process(self, image: np.ndarray) -> np.ndarray:
         return cv2.bitwise_not(image)
+
+
+@register_op
+class CropRoiOp(BaseOperation):
+    name = "Crop / Region of Interest (ROI)"
+    category = "Contours & Calipers"
+    description = "Restricts or crops the inspection region of interest (ROI) to user-defined coordinates with live interactive on-canvas drag & resize."
+    param_schemas = [
+        ParamSchema(
+            name="x",
+            label="ROI X (Left)",
+            param_type=ParamType.INT,
+            default=50,
+            min_val=0,
+            max_val=4096,
+            description="Horizontal start coordinate of the inspection window in pixels."
+        ),
+        ParamSchema(
+            name="y",
+            label="ROI Y (Top)",
+            param_type=ParamType.INT,
+            default=50,
+            min_val=0,
+            max_val=4096,
+            description="Vertical start coordinate of the inspection window in pixels."
+        ),
+        ParamSchema(
+            name="width",
+            label="ROI Width",
+            param_type=ParamType.INT,
+            default=320,
+            min_val=10,
+            max_val=4096,
+            description="Width of the inspection window in pixels."
+        ),
+        ParamSchema(
+            name="height",
+            label="ROI Height",
+            param_type=ParamType.INT,
+            default=240,
+            min_val=10,
+            max_val=4096,
+            description="Height of the inspection window in pixels."
+        ),
+        ParamSchema(
+            name="mode",
+            label="ROI Mode",
+            param_type=ParamType.CHOICE,
+            default="crop",
+            choices=[
+                ("Crop Image to ROI Box", "crop"),
+                ("Mask Outside (Keep Dimensions)", "mask"),
+                ("Highlight Box Only", "draw"),
+            ],
+            description="Crop trims the output down to the box; Mask blacks out the outside; Draw overlays the box border."
+        ),
+    ]
+
+    def process(self, image: np.ndarray) -> np.ndarray:
+        if image is None or image.size == 0:
+            return image
+        h, w = image.shape[:2]
+        x = max(0, min(w - 1, int(self.params.get("x", 0))))
+        y = max(0, min(h - 1, int(self.params.get("y", 0))))
+        rw = max(1, min(w - x, int(self.params.get("width", 320))))
+        rh = max(1, min(h - y, int(self.params.get("height", 240))))
+        mode = self.params.get("mode", "crop")
+
+        if mode == "crop":
+            return image[y:y+rh, x:x+rw].copy()
+        elif mode == "mask":
+            out = np.zeros_like(image)
+            out[y:y+rh, x:x+rw] = image[y:y+rh, x:x+rw]
+            return out
+        else:  # draw
+            out = image.copy()
+            cv2.rectangle(out, (x, y), (x + rw, y + rh), (0, 210, 255), 2)
+            cv2.putText(out, f"ROI: {rw}x{rh}", (x, max(22, y - 6)), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 210, 255), 1, cv2.LINE_AA)
+            return out

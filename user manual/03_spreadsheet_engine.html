@@ -187,6 +187,173 @@
                         <p>Full pipeline recipes (operations, parameters, branching inputs, and remote device links) export to human-readable JSON files, facilitating rapid batch recipe changeover across manufacturing cells.</p>
                     </div>
                 </div>
+
+                <h3 class="subheading" style="margin-top: 24px;">Dual Split Viewport & Real-Time Difference Heatmap</h3>
+                <p>
+                    Operators can split the center viewport into Viewport A (Primary) and Viewport B (Comparison) to inspect intermediate steps side-by-side with synchronized pan and zoom:
+                </p>
+
+                <div class="screenshot-figure">
+                    <div class="screenshot-header">
+                        <div class="window-dots">
+                            <span class="dot-red"></span>
+                            <span class="dot-yellow"></span>
+                            <span class="dot-green"></span>
+                        </div>
+                        <div class="screenshot-title">Dual Split Viewport with Difference Heatmap Overlay</div>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="assets/screenshot_split_diff_viewport.png" alt="Dual Split Viewport with Difference Heatmap Overlay in VisionStudio">
+                    </div>
+                    <figcaption class="figure-caption">
+                        <strong>Figure 3.2:</strong> Dual Split Viewport showing Viewport A (Raw Camera) and Viewport B (JET Difference Heatmap). 
+                        Subtle surface defects and dimensional shifts illuminate immediately in bright yellow and red.
+                    </figcaption>
+                </div>
+            </section>
+
+            <!-- Section 03: Spreadsheet Output Column & Remote Signal Configuration -->
+            <section class="doc-section">
+                <div class="section-header">
+                    <div class="section-title-wrap">
+                        <div class="section-num">03</div>
+                        <h2>Spreadsheet Output Column & Remote Signal Configuration</h2>
+                    </div>
+                </div>
+
+                <p>
+                    The pipeline spreadsheet features a dedicated <strong>Output / Signal</strong> column (Column #5). 
+                    This column displays the evaluated inspection result in real-time and specifies what data or discrete signal 
+                    is transmitted to remote industrial fieldbuses (Delta PLCs, Siemens S7, Beckhoff ADS, Ethernet TCP/UDP, and Raspberry Pi GPIO).
+                </p>
+
+                <div class="table-responsive">
+                    <table class="manual-table">
+                        <thead>
+                            <tr>
+                                <th>Column #</th>
+                                <th>Header Title</th>
+                                <th>Editable Controls</th>
+                                <th>Industrial Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>0</code></td>
+                                <td><strong>Step #</strong></td>
+                                <td>Read-only</td>
+                                <td>Unique step execution identifier (0 = Raw Camera Frame).</td>
+                            </tr>
+                            <tr>
+                                <td><code>1</code></td>
+                                <td><strong>Active</strong></td>
+                                <td>Checkbox toggle</td>
+                                <td>Enable step execution or bypass (pass-through upstream frame).</td>
+                            </tr>
+                            <tr>
+                                <td><code>2</code></td>
+                                <td><strong>Category</strong></td>
+                                <td>Context Menu</td>
+                                <td>Vision algorithm category (YOLO26, Contours, OCR, etc.).</td>
+                            </tr>
+                            <tr>
+                                <td><code>3</code></td>
+                                <td><strong>Operation</strong></td>
+                                <td>Double-click edit</td>
+                                <td>Concrete vision operation name.</td>
+                            </tr>
+                            <tr>
+                                <td><code>4</code></td>
+                                <td><strong>Input Source</strong></td>
+                                <td>Dropdown selector</td>
+                                <td>Branching source step selection (e.g. Step 0 or Step 2).</td>
+                            </tr>
+                            <tr>
+                                <td><code>5</code></td>
+                                <td><strong>Output / Signal</strong></td>
+                                <td><strong>Click / Double-click</strong></td>
+                                <td><strong>Configures exact measurement metric, YOLO object class trigger, or custom signal code sent to remote devices.</strong></td>
+                            </tr>
+                            <tr>
+                                <td><code>6</code></td>
+                                <td><strong>Latency</strong></td>
+                                <td>Read-only</td>
+                                <td>Execution cycle duration in milliseconds (ms).</td>
+                            </tr>
+                            <tr>
+                                <td><code>7</code></td>
+                                <td><strong>Status</strong></td>
+                                <td>Read-only badge</td>
+                                <td>Pass/Fail operational status or error diagnostic.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="subheading" style="margin-top: 24px;">Universal Signal Modes for All Functions</h3>
+                <p>
+                    Clicking on any cell in the <strong>Output / Signal</strong> column opens the 
+                    <strong>Remote Output & Signal Configuration Dialog</strong>. Operators can configure custom signals across 9 universal modes:
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <span class="feat-icon">⚡</span>
+                        <h4>1. Pass / Fail Boolean Logic</h4>
+                        <p>Default industrial mode. Dispatches Signal 1 (M0 coil / GPIO High) on Pass and Signal 0 on Fail.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">📏</span>
+                        <h4>2. Calibrated Measurement Value</h4>
+                        <p>Select which measurement metric (Length, Width, Area, Diameter, Deviation) is streamed as an IEEE-754 32-bit float to PLC D-registers (D108) or Ethernet JSON.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🤖</span>
+                        <h4>3. YOLO Specific Object Class</h4>
+                        <p>Trigger a specific signal ID only when a designated object class is detected (e.g. Signal #101 when 'bottle' is present; ignores other classes).</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">📦</span>
+                        <h4>4. YOLO Combined (All Objects)</h4>
+                        <p>Generates a combined trigger whenever any object meets the minimum count threshold, streaming total detected object count.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🔀</span>
+                        <h4>5. YOLO Multi-Class Signal Map</h4>
+                        <p>Configures a lookup table mapping each detected object class to a different discrete signal code (e.g. Person = 1, Bottle = 2, Forklift = 3).</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🔢</span>
+                        <h4>6. Quantity Count & Blobs</h4>
+                        <p>Streams the quantity of detected contours, defects, or parts to automated sorting gates and batch counters.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">📍</span>
+                        <h4>7. Centroid Coordinates (X, Y)</h4>
+                        <p>Dispatches part coordinates to Delta/Siemens PLC registers for pick-and-place robot arms and automated guidance.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <span class="feat-icon">🏷️</span>
+                        <h4>8. OCR & Decoded Text Strings</h4>
+                        <p>Transmits recognized serial numbers, alphanumeric lot codes, and barcode strings over Ethernet TCP/UDP.</p>
+                    </div>
+                </div>
+
+                <div class="callout callout-info" style="margin-top: 20px;">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-body">
+                        <strong>Remote Link Indicator:</strong> When <code>🔗 Enable Remote Dispatch</code> is active for a step, 
+                        the spreadsheet Output column displays a bright cyan <code>📡</code> satellite badge, 
+                        confirming live transmission to configured factory fieldbuses.
+                    </div>
+                </div>
             </section>
         </main>
     </div>

@@ -52,6 +52,7 @@ from pipeline_table import PipelineTableView
 from camera.camera_manager import CameraDevice, CameraConfig, CameraProtocol
 from comms.io_manager import IndustrialIoManager
 from ui.comms_dialog import IndustrialCommsDialog
+from ui.startup_banner import StartupBannerSplash
 
 
 # ==============================================================================
@@ -62,7 +63,7 @@ QMainWindow, QWidget {
     background-color: #16191D;
     color: #E0E6ED;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    font-size: 12px;
+    font-size: 9pt;
 }
 
 QToolBar {
@@ -77,7 +78,7 @@ QStatusBar {
     color: #8C9BAE;
     border-top: 1px solid #2B323D;
     font-family: 'Consolas', monospace;
-    font-size: 11px;
+    font-size: 8.5pt;
 }
 
 QLabel {
@@ -91,7 +92,7 @@ QLineEdit {
     border-radius: 4px;
     padding: 4px 8px;
     font-family: 'Consolas', monospace;
-    font-size: 11px;
+    font-size: 8.5pt;
 }
 QLineEdit:focus {
     border-color: #00D2FF;
@@ -103,7 +104,7 @@ QComboBox {
     border: 1px solid #363E4E;
     border-radius: 4px;
     padding: 4px 8px;
-    font-size: 11px;
+    font-size: 8.5pt;
 }
 QComboBox:hover {
     border-color: #00D2FF;
@@ -118,8 +119,50 @@ QComboBox QAbstractItemView {
 QSplitter::handle {
     background-color: #2B323D;
 }
-QSplitter::handle:hover {
+QSplitter::handle:horizontal {
+    width: 6px;
+    background-color: #242A35;
+    border-left: 1px solid #1A1F26;
+    border-right: 1px solid #1A1F26;
+}
+QSplitter::handle:horizontal:hover {
     background-color: #00D2FF;
+}
+QSplitter::handle:pressed {
+    background-color: #00E676;
+}
+
+QScrollBar:horizontal {
+    background: #16191D;
+    height: 8px;
+    margin: 0px;
+    border-radius: 4px;
+}
+QScrollBar::handle:horizontal {
+    background: #2B323D;
+    min-width: 20px;
+    border-radius: 4px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #00D2FF;
+}
+QScrollBar:vertical {
+    background: #16191D;
+    width: 8px;
+    margin: 0px;
+    border-radius: 4px;
+}
+QScrollBar::handle:vertical {
+    background: #2B323D;
+    min-height: 20px;
+    border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #00D2FF;
+}
+QScrollBar::add-line, QScrollBar::sub-line {
+    width: 0px;
+    height: 0px;
 }
 
 QToolTip {
@@ -127,7 +170,7 @@ QToolTip {
     color: #E0E6ED;
     border: 1px solid #00D2FF;
     padding: 4px 8px;
-    font-size: 11px;
+    font-size: 8.5pt;
 }
 """
 
@@ -203,6 +246,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("VisionStudio - Industrial Computer Vision Pipeline Manager")
         self.resize(1600, 960)
         self.setMinimumSize(960, 540)
+        self.showMaximized()
         
         icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "app_icon.png")
         if os.path.exists(icon_path):
@@ -232,20 +276,26 @@ class MainWindow(QMainWindow):
         self.worker.start()
 
         # Connect Table & Inspector
-        self.table_view.step_selected.connect(self.inspector.inspect_step)
+        self.table_view.step_selected.connect(self._on_step_selected)
         self.table_view.show_in_viewport_a.connect(self.viewport.set_viewport_a_source)
         self.table_view.show_in_viewport_b.connect(self.viewport.set_viewport_b_source)
         self.table_view.step_remote_link_changed.connect(self._on_step_remote_link_changed)
+        self.table_view.step_output_config_changed.connect(self._on_step_output_config_changed)
 
         self.inspector.parameter_changed.connect(self._on_param_changed)
         self.inspector.reset_defaults_requested.connect(self._on_reset_defaults)
         self.inspector.remote_link_toggled.connect(self._on_step_remote_link_changed)
+        self.inspector.output_config_changed.connect(self._on_step_output_config_changed)
         self.inspector.configure_remote_requested.connect(self._open_plc_dialog)
+
+        # Connect Interactive Canvas ROI Handles
+        self.viewport.roi_changed.connect(self._on_viewport_roi_changed)
+        self.viewport.roi_finished.connect(self._on_viewport_roi_finished)
 
         # Default selection
         if self.engine.steps:
             self.table_view.table.selectRow(0)
-            self.inspector.inspect_step(self.engine.steps[0])
+            self._on_step_selected(self.engine.steps[0])
 
         # Initial button state: DISCONNECTED (Red)
         self._update_connect_button_state(False)
@@ -289,7 +339,7 @@ class MainWindow(QMainWindow):
             toolbar.addWidget(lbl_logo)
 
         lbl_brand = QLabel(" VISIONSTUDIO ")
-        lbl_brand.setStyleSheet("font-weight: 900; font-size: 13px; color: #00D2FF; letter-spacing: 1px;")
+        lbl_brand.setStyleSheet("font-weight: 900; font-size: 10pt; color: #00D2FF; letter-spacing: 1px;")
         toolbar.addWidget(lbl_brand)
         toolbar.addSeparator()
 
@@ -350,6 +400,7 @@ class MainWindow(QMainWindow):
         self.combo_presets.addItem("8. Hand Tracking & Gesture Recognition", "hand")
         self.combo_presets.addItem("9. Optical Character Recognition (OCR)", "ocr")
         self.combo_presets.addItem("10. Calibrated Metrology & Dimension Caliper", "measure")
+        self.combo_presets.addItem("11. Interactive Crop / Region of Interest (ROI)", "roi")
         self.combo_presets.currentIndexChanged.connect(self._apply_preset_recipe)
         toolbar.addWidget(self.combo_presets)
 
@@ -413,12 +464,15 @@ class MainWindow(QMainWindow):
         toolbar.addWidget(self.badge_plc)
 
     def _init_central_ui(self):
-        # Master Horizontal Splitter across 3 Panes
+        # Master Horizontal Splitter across 3 Panes (Left, Center, Right columns)
         self.main_splitter = QSplitter(Qt.Orientation.Horizontal)
+        self.main_splitter.setChildrenCollapsible(False)
+        self.main_splitter.setHandleWidth(6)
         self.setCentralWidget(self.main_splitter)
 
         # 1. Left Pane: Spreadsheet Pipeline Table
         self.left_pane = QWidget()
+        self.left_pane.setMinimumWidth(320)
         left_layout = QVBoxLayout(self.left_pane)
         left_layout.setContentsMargins(6, 6, 6, 6)
         self.table_view = PipelineTableView(self.engine, self)
@@ -427,6 +481,7 @@ class MainWindow(QMainWindow):
 
         # 2. Center Pane: Flexible Inspection Viewport (Single vs. Split)
         self.center_pane = QWidget()
+        self.center_pane.setMinimumWidth(400)
         center_layout = QVBoxLayout(self.center_pane)
         center_layout.setContentsMargins(6, 6, 6, 6)
         self.viewport = FlexibleInspectionViewport(self)
@@ -435,14 +490,20 @@ class MainWindow(QMainWindow):
 
         # 3. Right Pane: Collapsible Dynamic Parameter Inspector Drawer
         self.right_pane = QWidget()
+        self.right_pane.setMinimumWidth(260)
         right_layout = QVBoxLayout(self.right_pane)
         right_layout.setContentsMargins(6, 6, 6, 6)
         self.inspector = PropertyInspectorDrawer(self)
         right_layout.addWidget(self.inspector)
         self.main_splitter.addWidget(self.right_pane)
 
-        # Set Pane Split Ratio: Left=420px, Center=860px, Right=320px
-        self.main_splitter.setSizes([430, 850, 320])
+        # Stretch factors: Left=0 (stable width), Center=1 (absorbs extra width when maximized/resized), Right=0 (stable width)
+        self.main_splitter.setStretchFactor(0, 0)
+        self.main_splitter.setStretchFactor(1, 1)
+        self.main_splitter.setStretchFactor(2, 0)
+
+        # Set Initial Pane Split Ratio: Left=420px, Center=860px, Right=320px
+        self.main_splitter.setSizes([420, 860, 320])
 
     def _init_statusbar(self):
         self.status = QStatusBar()
@@ -588,12 +649,13 @@ class MainWindow(QMainWindow):
             # Update Viewport with intermediate buffers
             self.viewport.update_pipeline_results(results, step_names)
 
-            # Refresh Spreadsheet Table Latency Badges
+            # Refresh Spreadsheet Table Latency & Output Badges
             self.table_view.refresh()
 
             # Dispatch linked step outputs to active remote devices (PLCs, Ethernet, Raspberry Pi)
             for s in self.engine.steps:
                 if getattr(s, "link_to_remote", False):
+                    sig = s.evaluate_output_signal()
                     step_info = {
                         "step_id": s.step_id,
                         "step_name": s.name,
@@ -605,6 +667,14 @@ class MainWindow(QMainWindow):
                         "x": getattr(s, "metrics", {}).get("x", 0.0),
                         "y": getattr(s, "metrics", {}).get("y", 0.0),
                         "angle": getattr(s, "metrics", {}).get("angle", 0.0),
+                        "signal_id": sig.get("signal_id", 0),
+                        "output_value": sig.get("numeric_value", 0.0),
+                        "numeric_value": sig.get("numeric_value", 0.0),
+                        "text_value": sig.get("text_value", ""),
+                        "output_mode": sig.get("output_mode", "default"),
+                        "target_class": sig.get("target_class", ""),
+                        "display_str": sig.get("display_str", ""),
+                        "signal_active": sig.get("active", True),
                     }
                     self.io_manager.dispatch_step_output(step_info)
         except Exception as e:
@@ -643,14 +713,59 @@ class MainWindow(QMainWindow):
         step = self.engine.get_step_by_id(step_id)
         if step:
             step.link_to_remote = enabled
+            if hasattr(step, "output_config") and isinstance(step.output_config, dict):
+                step.output_config["link_to_remote"] = enabled
             self.table_view.refresh()
             self._update_plc_status_badge()
             self.status.showMessage(f"Step #{step_id} ({step.name}) remote dispatch {'ENABLED' if enabled else 'DISABLED'}")
+
+    def _on_step_output_config_changed(self, step_id: int, cfg: dict):
+        step = self.engine.get_step_by_id(step_id)
+        if step:
+            step.output_config = cfg
+            if "link_to_remote" in cfg:
+                step.link_to_remote = cfg["link_to_remote"]
+            self.table_view.refresh()
+            self._update_plc_status_badge()
+            summary = step.get_output_summary()
+            self.status.showMessage(f"Step #{step_id} ({step.name}) output signal configured: {summary}")
 
     def _on_camera_offline(self):
         self._update_connect_button_state(False)
         self.badge_fps.setText("FPS: 0.0")
         self._show_offline_frame()
+
+    def _on_step_selected(self, step: Optional[PipelineStep]):
+        self.inspector.inspect_step(step)
+        self._sync_roi_for_step(step)
+
+    def _sync_roi_for_step(self, step: Optional[PipelineStep]):
+        if step and ("Crop" in step.operation_name or "ROI" in step.name or {"x", "y", "width", "height"}.issubset(step.params.keys())):
+            x = int(step.params.get("x", 50))
+            y = int(step.params.get("y", 50))
+            w = int(step.params.get("width", 320))
+            h = int(step.params.get("height", 240))
+            self.viewport.set_roi_rect(x, y, w, h, emit_signal=False)
+            self.viewport.set_roi_active(True)
+        elif not self.viewport.is_roi_active():
+            self.viewport.set_roi_active(False)
+
+    def _on_viewport_roi_changed(self, x: int, y: int, w: int, h: int):
+        self.status.showMessage(f"ROI Handle: X={x}, Y={y}, Width={w}, Height={h}")
+        step = self.inspector.current_step
+        if step and {"x", "y", "width", "height"}.issubset(step.params.keys()):
+            self.inspector.update_control_value("x", x)
+            self.inspector.update_control_value("y", y)
+            self.inspector.update_control_value("width", w)
+            self.inspector.update_control_value("height", h)
+            self.engine.set_step_param(step.step_id, "x", x)
+            self.engine.set_step_param(step.step_id, "y", y)
+            self.engine.set_step_param(step.step_id, "width", w)
+            self.engine.set_step_param(step.step_id, "height", h)
+
+    def _on_viewport_roi_finished(self, x: int, y: int, w: int, h: int):
+        self._on_viewport_roi_changed(x, y, w, h)
+        self.status.showMessage(f"ROI Boundary Committed: [{x}, {y}, {w}x{h}]", 3000)
 
     def _on_param_changed(self, step_id: int, param_name: str, value: object):
         step = self.engine.get_step_by_id(step_id)
@@ -658,6 +773,13 @@ class MainWindow(QMainWindow):
             step.set_param(param_name, value)
             idx = self.engine.get_step_index(step_id)
             self.engine.mark_dirty_from(idx)
+            if param_name in ("x", "y", "width", "height"):
+                x = int(step.params.get("x", 50))
+                y = int(step.params.get("y", 50))
+                w = int(step.params.get("width", 320))
+                h = int(step.params.get("height", 240))
+                self.viewport.set_roi_rect(x, y, w, h, emit_signal=False)
+                self.viewport.set_roi_active(True)
 
     def _on_reset_defaults(self, step_id: int):
         idx = self.engine.get_step_index(step_id)
@@ -780,12 +902,39 @@ class MainWindow(QMainWindow):
                 link_to_remote=True,
             )
 
+        elif preset_key == "roi":
+            self.engine.add_step(
+                category="Contours & Calipers",
+                operation_name="Crop / Region of Interest (ROI)",
+                name="Crop / Focus ROI",
+                params={"x": 80, "y": 60, "width": 480, "height": 360, "mode": "crop"},
+            )
+            self.engine.add_step(
+                category="Pre-processing & Filtering",
+                operation_name="Gaussian Blur",
+                name="Smooth ROI",
+                params={"ksize": 5, "sigmaX": 1.2},
+            )
+            self.engine.add_step(
+                category="Edges & Gradients",
+                operation_name="Canny Edge",
+                name="Detect Edges in ROI",
+                params={"threshold1": 60.0, "threshold2": 160.0},
+            )
+            self.engine.add_step(
+                category="Contours & Calipers",
+                operation_name="Find Contours & Filter",
+                name="Inspect ROI Features",
+                params={"min_area": 40.0, "draw_mode": "bbox_center", "color": "green"},
+                link_to_remote=True,
+            )
+
         self.table_view.model.endResetModel()
         self.table_view.refresh()
 
         if self.engine.steps:
             self.table_view.table.selectRow(0)
-            self.inspector.inspect_step(self.engine.steps[0])
+            self._on_step_selected(self.engine.steps[0])
             self.viewport.set_viewport_a_source(self.engine.steps[0].step_id)
 
         # Reset combo to first item
@@ -801,11 +950,32 @@ class MainWindow(QMainWindow):
 
 def main():
     app = QApplication.instance() or QApplication(sys.argv)
+    app.setFont(QFont("Segoe UI", 9))
     icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "app_icon.png")
     if os.path.exists(icon_path):
         app.setWindowIcon(QIcon(icon_path))
-    window = MainWindow()
-    window.show()
+
+    show_splash = "--no-splash" not in sys.argv
+    if show_splash:
+        splash = StartupBannerSplash(auto_dismiss_ms=2500)
+        splash.show()
+        app.processEvents()
+
+        window = MainWindow()
+
+        def on_splash_finish():
+            window.showMaximized()
+            window.raise_()
+            window.activateWindow()
+
+        if not splash.isVisible():
+            on_splash_finish()
+        else:
+            splash.finished.connect(on_splash_finish)
+    else:
+        window = MainWindow()
+        window.showMaximized()
+
     sys.exit(app.exec())
 
 

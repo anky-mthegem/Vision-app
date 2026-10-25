@@ -25,6 +25,7 @@ from PyQt6.QtWidgets import (
 )
 
 from pipeline_engine import ParamSchema, ParamType, PipelineStep
+from ui.output_signal_dialog import OutputSignalConfigDialog
 
 
 class PropertyInspectorDrawer(QWidget):
@@ -35,6 +36,7 @@ class PropertyInspectorDrawer(QWidget):
     reset_defaults_requested = pyqtSignal(int)
     remote_link_toggled = pyqtSignal(int, bool)
     configure_remote_requested = pyqtSignal()
+    output_config_changed = pyqtSignal(int, dict)
 
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
@@ -71,16 +73,16 @@ class PropertyInspectorDrawer(QWidget):
         header_layout.setSpacing(4)
 
         self.lbl_title = QLabel("Property Inspector")
-        self.lbl_title.setStyleSheet("font-size: 14px; font-weight: 800; color: #00D2FF;")
+        self.lbl_title.setStyleSheet("font-size: 11pt; font-weight: 800; color: #00D2FF;")
         header_layout.addWidget(self.lbl_title)
 
         self.lbl_subtitle = QLabel("Select a step to inspect parameters")
-        self.lbl_subtitle.setStyleSheet("font-size: 11px; color: #8C9BAE;")
+        self.lbl_subtitle.setStyleSheet("font-size: 8.5pt; color: #8C9BAE;")
         header_layout.addWidget(self.lbl_subtitle)
 
         self.lbl_desc = QLabel("")
         self.lbl_desc.setWordWrap(True)
-        self.lbl_desc.setStyleSheet("font-size: 11px; color: #B0BAC9; font-style: italic; margin-top: 4px;")
+        self.lbl_desc.setStyleSheet("font-size: 8.5pt; color: #B0BAC9; font-style: italic; margin-top: 4px;")
         header_layout.addWidget(self.lbl_desc)
 
         main_layout.addWidget(self.header_card)
@@ -154,7 +156,7 @@ class PropertyInspectorDrawer(QWidget):
         lbl = QLabel("👉 Click on any row in the pipeline spreadsheet to view and edit its parameters in real-time.")
         lbl.setWordWrap(True)
         lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        lbl.setStyleSheet("color: #5A6678; font-size: 12px; padding: 30px;")
+        lbl.setStyleSheet("color: #5A6678; font-size: 9pt; padding: 30px;")
         return lbl
 
     def inspect_step(self, step: Optional[PipelineStep]):
@@ -184,7 +186,7 @@ class PropertyInspectorDrawer(QWidget):
         self.lbl_subtitle.setText(f"Category: {step.category}  |  Op: {step.operation_name}")
         self.lbl_desc.setText(step.operation.description)
 
-        # Remote Device Link Card
+        # Remote Output & Signal Configuration Card
         remote_card = QFrame()
         remote_card.setStyleSheet("""
             QFrame {
@@ -199,40 +201,92 @@ class PropertyInspectorDrawer(QWidget):
         rc_layout.setSpacing(6)
 
         rc_top = QHBoxLayout()
-        chk_remote = QCheckBox("🔗 Link Output to Remote Device (PLC / Ethernet / RPi)")
+        chk_remote = QCheckBox("🔗 Remote Device Output (PLC / Ethernet / GPIO)")
         chk_remote.setChecked(getattr(step, "link_to_remote", False))
-        chk_remote.setStyleSheet("font-size: 11px; font-weight: 700; color: #00D2FF;")
-
-        def _on_remote_toggle(checked: bool):
-            step.link_to_remote = checked
-            self.remote_link_toggled.emit(step.step_id, checked)
-
-        chk_remote.toggled.connect(_on_remote_toggle)
+        chk_remote.setStyleSheet("font-size: 8.5pt; font-weight: 700; color: #00D2FF;")
         rc_top.addWidget(chk_remote, 1)
 
-        btn_cfg = QPushButton("⚙ Configure IPs...")
-        btn_cfg.setStyleSheet("""
+        btn_cfg_ip = QPushButton("📡 IPs...")
+        btn_cfg_ip.setToolTip("Configure remote device IP addresses & protocols (Modbus, S7, ADS, TCP/UDP)")
+        btn_cfg_ip.setStyleSheet("""
             QPushButton {
                 background-color: #242A35;
-                color: #00E676;
+                color: #8C9BAE;
                 border: 1px solid #363E4E;
                 font-weight: 700;
-                font-size: 10px;
+                font-size: 8pt;
                 padding: 4px 8px;
                 border-radius: 4px;
             }
             QPushButton:hover {
                 background-color: #2F3746;
-                border-color: #00E676;
+                color: #00D2FF;
+                border-color: #00D2FF;
             }
         """)
-        btn_cfg.clicked.connect(self.configure_remote_requested.emit)
-        rc_top.addWidget(btn_cfg)
+        btn_cfg_ip.clicked.connect(self.configure_remote_requested.emit)
+        rc_top.addWidget(btn_cfg_ip)
         rc_layout.addLayout(rc_top)
 
-        lbl_remote_hint = QLabel("<span style='color:#8C9BAE; font-size:10px;'>When enabled, pass/fail and coordinates are dispatched live to remote PLCs & Ethernet.</span>")
-        lbl_remote_hint.setWordWrap(True)
-        rc_layout.addWidget(lbl_remote_hint)
+        def _get_summary_html() -> str:
+            summary = step.get_output_summary()
+            is_linked = getattr(step, "link_to_remote", False)
+            link_tag = "<span style='color:#00E676; font-weight:bold;'>[LINKED]</span> " if is_linked else "<span style='color:#8C9BAE;'>[OFFLINE]</span> "
+            return f"<span style='color:#B0BAC9; font-size:8pt;'>Signal: {link_tag}<b style='color:#00D2FF;'>{summary}</b></span>"
+
+        lbl_signal_summary = QLabel(_get_summary_html())
+        lbl_signal_summary.setWordWrap(True)
+        lbl_signal_summary.setStyleSheet("""
+            background: #16191D;
+            border: 1px solid #2B323D;
+            border-radius: 4px;
+            padding: 5px 8px;
+        """)
+        rc_layout.addWidget(lbl_signal_summary)
+
+        btn_cfg_signal = QPushButton("⚙ Configure Output Signal / Function...")
+        btn_cfg_signal.setToolTip("Select output measurement, YOLO object class trigger, or custom signal code sent to remote devices.")
+        btn_cfg_signal.setStyleSheet("""
+            QPushButton {
+                background-color: #1F3044;
+                color: #00E676;
+                border: 1px solid #00E676;
+                font-weight: 700;
+                font-size: 8.5pt;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            QPushButton:hover {
+                background-color: #26405C;
+                color: #69F0AE;
+                border-color: #69F0AE;
+            }
+        """)
+
+        def _on_config_signal_clicked():
+            dlg = OutputSignalConfigDialog(step, parent=self)
+            if dlg.exec():
+                new_cfg = dlg.get_config()
+                step.output_config = new_cfg
+                step.link_to_remote = new_cfg.get("link_to_remote", step.link_to_remote)
+                chk_remote.setChecked(step.link_to_remote)
+                lbl_signal_summary.setText(_get_summary_html())
+                self.output_config_changed.emit(step.step_id, new_cfg)
+                self.remote_link_toggled.emit(step.step_id, step.link_to_remote)
+
+        btn_cfg_signal.clicked.connect(_on_config_signal_clicked)
+        rc_layout.addWidget(btn_cfg_signal)
+
+        def _on_remote_toggle(checked: bool):
+            step.link_to_remote = checked
+            if not hasattr(step, "output_config") or not isinstance(step.output_config, dict):
+                step.output_config = {}
+            step.output_config["link_to_remote"] = checked
+            lbl_signal_summary.setText(_get_summary_html())
+            self.remote_link_toggled.emit(step.step_id, checked)
+            self.output_config_changed.emit(step.step_id, step.output_config)
+
+        chk_remote.toggled.connect(_on_remote_toggle)
 
         self.form_layout.addWidget(remote_card)
 
@@ -264,7 +318,7 @@ class PropertyInspectorDrawer(QWidget):
         # Label Row
         top_row = QHBoxLayout()
         lbl_name = QLabel(schema.label)
-        lbl_name.setStyleSheet("font-weight: 700; color: #E0E6ED; font-size: 11px;")
+        lbl_name.setStyleSheet("font-weight: 700; color: #E0E6ED; font-size: 8.5pt;")
         if schema.description:
             lbl_name.setToolTip(schema.description)
         top_row.addWidget(lbl_name)
@@ -451,7 +505,7 @@ class PropertyInspectorDrawer(QWidget):
                     border: 1px solid #363E4E;
                     border-radius: 4px;
                     padding: 4px 10px;
-                    font-size: 11px;
+                    font-size: 8.5pt;
                 }
                 QComboBox:hover {
                     border-color: #00D2FF;
@@ -485,7 +539,7 @@ class PropertyInspectorDrawer(QWidget):
                     border: 1px solid #363E4E;
                     border-radius: 4px;
                     padding: 4px 8px;
-                    font-size: 11px;
+                    font-size: 8.5pt;
                 }
                 QLineEdit:focus {
                     border-color: #00D2FF;
@@ -521,3 +575,40 @@ class PropertyInspectorDrawer(QWidget):
             self.reset_defaults_requested.emit(step_id)
             # Re-populate UI to show default values
             self.inspect_step(self.current_step)
+
+    def update_control_value(self, param_name: str, value: Any, emit_change: bool = False):
+        """Programmatically updates the control's value without triggering feedback loops."""
+        if param_name not in self._controls:
+            return
+        ctrl = self._controls[param_name]
+        if isinstance(ctrl, tuple) and len(ctrl) == 2:
+            slider, spin = ctrl
+            if isinstance(spin, QSpinBox):
+                spin.blockSignals(True)
+                slider.blockSignals(True)
+                spin.setValue(int(value))
+                slider.setValue(int(value))
+                spin.blockSignals(False)
+                slider.blockSignals(False)
+            elif isinstance(spin, QDoubleSpinBox):
+                spin.blockSignals(True)
+                slider.blockSignals(True)
+                spin.setValue(float(value))
+                slider.setValue(int(float(value) * 10.0))
+                spin.blockSignals(False)
+                slider.blockSignals(False)
+        elif isinstance(ctrl, QComboBox):
+            ctrl.blockSignals(True)
+            idx = ctrl.findData(value)
+            if idx >= 0:
+                ctrl.setCurrentIndex(idx)
+            ctrl.blockSignals(False)
+        elif isinstance(ctrl, QLineEdit):
+            ctrl.blockSignals(True)
+            ctrl.setText(str(value))
+            ctrl.blockSignals(False)
+
+        if self.current_step:
+            self.current_step.params[param_name] = value
+            if emit_change:
+                self.parameter_changed.emit(self.current_step.step_id, param_name, value)

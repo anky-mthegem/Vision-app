@@ -151,6 +151,7 @@ class PipelineStep:
     input_source_id: int = 0  # 0 = Raw Camera Frame; >0 = Output of Step with that ID
     link_to_remote: bool = False  # If True, step output is dispatched to PLC / Ethernet / RPi
     params: Dict[str, Any] = field(default_factory=dict)
+    output_config: Dict[str, Any] = field(default_factory=dict)
     
     # Internal runtime state
     operation: Optional[BaseOperation] = None
@@ -167,6 +168,19 @@ class PipelineStep:
             self.operation = create_operation(self.operation_name, self.params)
             # Synchronize sanitized params
             self.params = copy.deepcopy(self.operation.params)
+
+        if not self.output_config:
+            op_l = (self.operation_name or "").lower()
+            if "yolo" in op_l or "neural" in op_l:
+                self.output_config = {"mode": "yolo_class", "target_class": "person", "signal_id": 1}
+            elif "caliper" in op_l or "measurement" in op_l:
+                self.output_config = {"mode": "measurement", "target_metric": "length", "signal_id": 1}
+            elif "ocr" in op_l or "barcode" in op_l:
+                self.output_config = {"mode": "text", "signal_id": 1}
+            elif "shape" in op_l or "contour" in op_l or "blob" in op_l:
+                self.output_config = {"mode": "count", "signal_id": 1}
+            else:
+                self.output_config = {"mode": "default", "signal_id": 1}
 
     def set_param(self, key: str, value: Any):
         if self.operation:
@@ -189,6 +203,154 @@ class PipelineStep:
         self.name = op_name
         self._dirty = True
 
+    def get_output_summary(self) -> str:
+        """Returns clean human-readable summary of the configured output signal for UI display."""
+        cfg = self.output_config or {}
+        mode = cfg.get("mode", "default")
+        sig_id = cfg.get("signal_id", 1)
+
+        if mode == "default":
+            return f"Pass/Fail [Sig #{sig_id}]"
+        elif mode == "measurement":
+            metric = cfg.get("target_metric", cfg.get("metric", "length"))
+            val = self.metrics.get(metric, self.metrics.get("length", None))
+            unit = self.metrics.get("unit", "mm")
+            if val is not None:
+                return f"Meas: {metric.title()} ({val} {unit})"
+            return f"Meas: {metric.title()}"
+        elif mode == "yolo_class":
+            tgt = cfg.get("target_class", "person")
+            return f"YOLO: [{tgt}] -> Sig #{sig_id}"
+        elif mode == "yolo_combined":
+            return f"YOLO: Combined (All) -> Sig #{sig_id}"
+        elif mode == "yolo_multiclass":
+            cmap = cfg.get("class_signals", {})
+            return f"YOLO: Multi-Sig ({len(cmap)} classes)"
+        elif mode == "count":
+            cnt = self.metrics.get("count", None)
+            return f"Count ({cnt})" if cnt is not None else "Count"
+        elif mode == "coordinates":
+            x = self.metrics.get("x", None)
+            y = self.metrics.get("y", None)
+            if x is not None and y is not None:
+                return f"Coord ({x:.0f}, {y:.0f})"
+            return "Coord (X, Y)"
+        elif mode == "text":
+            txt = self.metrics.get("text", "")
+            return f'Text: "{txt[:12]}"' if txt else "Text String"
+        elif mode == "custom":
+            return f"Custom Sig #{sig_id} ({cfg.get('custom_val', 1.0)})"
+        return f"Output [Sig #{sig_id}]"
+
+    def evaluate_output_signal(self) -> Dict[str, Any]:
+        """Evaluates the live signal code, active boolean, numeric value, and payload for remote devices."""
+        cfg = self.output_config or {}
+        mode = cfg.get("mode", "default")
+        metrics = self.metrics or {}
+        status_ok = self.status_ok
+
+        active = False
+        signal_id = int(cfg.get("signal_id", 1))
+        numeric_value = 0.0
+        text_value = ""
+        target_class = cfg.get("target_class", "all")
+        display_str = ""
+
+        if mode == "default":
+            active = bool(status_ok)
+            numeric_value = 1.0 if active else 0.0
+            display_str = "✔ PASS" if active else "✖ FAIL"
+
+        elif mode == "measurement":
+            metric_key = cfg.get("target_metric", cfg.get("metric", "length"))
+            numeric_value = float(metrics.get(metric_key, metrics.get("length", 0.0)))
+            tolerance_only = bool(cfg.get("tolerance_only", True))
+            active = bool(status_ok) if tolerance_only else True
+            unit = metrics.get("unit", "mm")
+            display_str = f"{numeric_value:.2f} {unit}"
+
+        elif mode == "yolo_class":
+            tgt = str(cfg.get("target_class", "person")).lower()
+            det_classes = [c.lower() for c in metrics.get("detected_classes", [])]
+            class_counts = {str(k).lower(): int(v) for k, v in metrics.get("class_counts", {}).items()}
+            found = (tgt in det_classes) or (tgt in class_counts and class_counts[tgt] > 0) or (tgt == "all" and (len(det_classes) > 0 or len(class_counts) > 0))
+            invert = bool(cfg.get("invert_logic", False))
+            active = (not found) if invert else found
+            if tgt in class_counts:
+                class_cnt = class_counts[tgt]
+            elif tgt == "all":
+                class_cnt = sum(class_counts.values()) if class_counts else len(det_classes)
+            else:
+                class_cnt = det_classes.count(tgt)
+            numeric_value = float(class_cnt) if active else 0.0
+            display_str = f"{tgt}: {class_cnt} found [Sig #{signal_id}]" if found else f"{tgt}: 0 found"
+
+        elif mode == "yolo_combined":
+            total_cnt = int(metrics.get("count", 0))
+            min_cnt = int(cfg.get("min_count", 1))
+            active = total_cnt >= min_cnt
+            numeric_value = float(total_cnt)
+            display_str = f"Combined: {total_cnt} obj [Sig #{signal_id}]"
+
+        elif mode == "yolo_multiclass":
+            class_map = cfg.get("class_signals", {})
+            det_classes = [c.lower() for c in metrics.get("detected_classes", [])]
+            found_signals = []
+            for c_name, sig in class_map.items():
+                if c_name.lower() in det_classes:
+                    found_signals.append(sig)
+            if found_signals:
+                active = True
+                signal_id = found_signals[0]
+                numeric_value = float(signal_id)
+                display_str = f"Signals: {found_signals}"
+            else:
+                active = False
+                numeric_value = 0.0
+                display_str = "No mapped class"
+
+        elif mode == "count":
+            cnt = int(metrics.get("count", metrics.get("instances", 0)))
+            active = cnt > 0
+            numeric_value = float(cnt)
+            display_str = f"Count: {cnt}"
+
+        elif mode == "coordinates":
+            x = float(metrics.get("x", 0.0))
+            y = float(metrics.get("y", 0.0))
+            active = (x != 0.0 or y != 0.0)
+            fmt = cfg.get("coords_format", "xy")
+            numeric_value = x if fmt != "y" else y
+            display_str = f"X:{x:.1f}, Y:{y:.1f}"
+
+        elif mode == "text":
+            txt = str(metrics.get("text", metrics.get("code", "")))
+            active = bool(txt)
+            text_value = txt
+            display_str = f'"{txt[:16]}"' if txt else "None"
+
+        elif mode == "custom":
+            active = bool(status_ok)
+            numeric_value = float(cfg.get("custom_val", 1.0))
+            display_str = f"Custom Sig #{signal_id} ({numeric_value})"
+
+        else:
+            active = bool(status_ok)
+            numeric_value = 1.0 if active else 0.0
+            display_str = "OK" if active else "NG"
+
+        return {
+            "mode": mode,
+            "output_mode": mode,
+            "active": active,
+            "signal_id": signal_id,
+            "numeric_value": numeric_value,
+            "text_value": text_value,
+            "display_str": display_str,
+            "target_class": target_class,
+            "timestamp": time.time(),
+        }
+
     def to_dict(self) -> Dict[str, Any]:
         return {
             "step_id": self.step_id,
@@ -199,6 +361,7 @@ class PipelineStep:
             "input_source_id": self.input_source_id,
             "link_to_remote": self.link_to_remote,
             "params": self.params,
+            "output_config": copy.deepcopy(self.output_config),
         }
 
     @classmethod
@@ -212,6 +375,7 @@ class PipelineStep:
             input_source_id=data.get("input_source_id", 0),
             link_to_remote=data.get("link_to_remote", False),
             params=data.get("params", {}),
+            output_config=data.get("output_config", {}),
         )
 
 
@@ -406,18 +570,16 @@ class PipelineEngine:
     def total_latency_ms(self) -> float:
         return self._total_pipeline_time_ms
 
-    def save_recipe(self, file_path: str):
-        data = {
+    def to_dict(self) -> Dict[str, Any]:
+        """Serializes complete pipeline recipe to a dictionary."""
+        return {
             "version": "1.0",
             "name": "VisionStudio Pipeline Recipe",
             "steps": [s.to_dict() for s in self.steps],
         }
-        with open(file_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
 
-    def load_recipe(self, file_path: str):
-        with open(file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+    def from_dict(self, data: Dict[str, Any]):
+        """Deserializes pipeline recipe from a dictionary."""
         self.steps.clear()
         max_id = 0
         for s_data in data.get("steps", []):
@@ -426,3 +588,13 @@ class PipelineEngine:
             max_id = max(max_id, step.step_id)
         self._step_counter = max_id
         self.mark_all_dirty()
+
+    def save_recipe(self, file_path: str):
+        data = self.to_dict()
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+
+    def load_recipe(self, file_path: str):
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.from_dict(data)

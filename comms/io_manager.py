@@ -172,6 +172,13 @@ class IndustrialIoManager:
             "y": float(step_info.get("y", 0.0)),
             "angle": float(step_info.get("angle", 0.0)),
             "output_info": str(step_info.get("output_info", "")),
+            "output_mode": str(step_info.get("output_mode", "default")),
+            "signal_id": int(step_info.get("signal_id", 0)),
+            "numeric_value": float(step_info.get("numeric_value", step_info.get("output_value", 0.0))),
+            "text_value": str(step_info.get("text_value", "")),
+            "target_class": str(step_info.get("target_class", "")),
+            "display_str": str(step_info.get("display_str", "")),
+            "signal_active": bool(step_info.get("signal_active", True)),
             "timestamp": time.time(),
         }
         self.dispatch_results_async(job_stats, {})
@@ -183,6 +190,8 @@ class IndustrialIoManager:
     def _dispatch_worker(self, stats: Dict[str, Any], cells: Dict[str, Any]):
         passed = bool(stats.get("overall_pass", True))
         count = int(stats.get("count", stats.get("pass_count", 0) if passed else stats.get("fail_count", 0)))
+        signal_id = int(stats.get("signal_id", 0))
+        numeric_val = float(stats.get("numeric_value", 0.0))
 
         # Find first measurement / coordinate
         first_x = float(stats.get("x", 0.0))
@@ -207,12 +216,16 @@ class IndustrialIoManager:
             try:
                 # Write Pass/Fail Coil M0
                 self.delta_client.write_delta_m_coil(self.delta_config.get("m_pass", 0), passed)
-                # Write D-Registers: D100=Pass(1)/Fail(0), D101=Count, D102=X(float), D104=Y(float)
+                # Write D-Registers:
+                # D100=Pass(1)/Fail(0), D101=Count, D102=X(float), D104=Y(float)
+                # D106=Signal ID (or discrete class signal), D108=Continuous Measurement / Value (float)
                 d_base = self.delta_config.get("d_start", 100)
                 self.delta_client.write_delta_d_register(d_base, 1 if passed else 0)
                 self.delta_client.write_delta_d_register(d_base + 1, count)
                 self.delta_client.write_delta_d_float(d_base + 2, first_x)
                 self.delta_client.write_delta_d_float(d_base + 4, first_y)
+                self.delta_client.write_delta_d_register(d_base + 6, signal_id)
+                self.delta_client.write_delta_d_float(d_base + 8, numeric_val)
             except Exception as e:
                 logger.warning(f"Delta PLC dispatch error: {e}")
 
@@ -261,6 +274,13 @@ class IndustrialIoManager:
                     "y": round(first_y, 2),
                     "angle": round(first_angle, 2),
                     "output_info": stats.get("output_info", ""),
+                    "output_mode": stats.get("output_mode", "default"),
+                    "signal_id": signal_id,
+                    "numeric_value": round(numeric_val, 4),
+                    "text_value": stats.get("text_value", ""),
+                    "target_class": stats.get("target_class", ""),
+                    "display_str": stats.get("display_str", ""),
+                    "signal_active": stats.get("signal_active", True),
                     "timestamp": stats.get("timestamp", time.time()),
                 }
                 self.ethernet_client.send_result(payload)
@@ -270,6 +290,7 @@ class IndustrialIoManager:
         # 5. Raspberry Pi GPIO
         if self.enable_gpio:
             try:
-                self.gpio_client.output_inspection_result(passed=passed, class_id=0, strobe_ms=40)
+                # Use evaluated signal_id as class_id for GPIO pin signaling
+                self.gpio_client.output_inspection_result(passed=passed, class_id=signal_id, strobe_ms=40)
             except Exception as e:
                 logger.warning(f"Raspberry Pi GPIO dispatch error: {e}")
