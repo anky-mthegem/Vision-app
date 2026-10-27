@@ -261,29 +261,30 @@
                     <!-- Hand Tracking -->
                     <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 20px;">
                         <div style="font-size: 24px; margin-bottom: 8px;">✋</div>
-                        <h3 style="color: #00E676; margin: 0 0 8px 0;">Hand & Gesture Tracker (MediaPipe & OpenCV)</h3>
+                        <h3 style="color: #00E676; margin: 0 0 8px 0;">Hand & Gesture Tracker (MediaPipe Kinematics)</h3>
                         <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
-                            Vision-based contactless human-machine interface (HMI). Leverages Google MediaPipe Hands (21 3D landmarks) with automatic high-speed OpenCV skin-chroma fallback.
+                            Vision-based contactless human-machine interface (HMI). Uses Google MediaPipe Hands (21 3D landmarks) with customizable index-to-function bindings and optional PyAutoGUI mouse control.
                         </p>
                         <ul style="color: #B0BAC9; font-size: 12px; padding-left: 18px; margin: 10px 0;">
-                            <li>21 anatomical skeletal connections with <code>mp_drawing</code> styles</li>
-                            <li>Index fingertip (ID: 8) callout reticle and pixel coordinates <code>(index_x, index_y)</code></li>
-                            <li>Real-time gesture classification: <em>Fist</em>, <em>Pointing</em>, <em>Peace / V-Sign</em>, <em>OK Sign</em>, <em>Open Palm</em></li>
-                            <li>Selectable mirror viewing (horizontal flip) and multi-hand tracking</li>
+                            <li>21 anatomical skeletal connections with landmark coordinates 0 to 20</li>
+                            <li>Configurable cursor tracking index (Default: Index Tip ID: 8) with screen mapping</li>
+                            <li>Configurable pinch pairs for Left Click (e.g. 4+8), Right Click (e.g. 4+12), and Double Click</li>
+                            <li>Optional OS desktop mouse cursor automation via PyAutoGUI and window transparency</li>
                         </ul>
                     </div>
 
                     <!-- Optical Character Recognition -->
                     <div class="feature-card" style="background: #1F242D; border: 1px solid #2B323D; border-radius: 8px; padding: 20px;">
                         <div style="font-size: 24px; margin-bottom: 8px;">🔤</div>
-                        <h3 style="color: #FFB300; margin: 0 0 8px 0;">Optical Character Recognition (OCR)</h3>
+                        <h3 style="color: #FFB300; margin: 0 0 8px 0;">Optical Character Recognition (OCR & OpenCV DNN)</h3>
                         <p style="color: #8C9BAE; font-size: 13px; line-height: 1.5;">
-                            Reads serial numbers, date codes, and labels on industrial packaging and printed circuit boards (PCBs).
+                            Deep-learning scene text detection, character reading, and polygon inpainting text removal using OpenCV native DNN models (EAST & DB ResNet).
                         </p>
                         <ul style="color: #B0BAC9; font-size: 12px; padding-left: 18px; margin: 10px 0;">
-                            <li>Morphological gradient & horizontal glyph bridging segmentation</li>
-                            <li>Otsu threshold binarization for high-contrast character isolation</li>
-                            <li>Tesseract OCR engine integration with character height filtering</li>
+                            <li>OpenCV native <code>TextDetectionModel_EAST</code> and <code>TextDetectionModel_DB</code> deep learning neural networks</li>
+                            <li>Multi-model ensemble combining EAST and DB detections for high-recall text discovery</li>
+                            <li>Industrial text removal & clean surface inpainting via <code>cv2.inpaint</code> (Navier-Stokes / Telea)</li>
+                            <li>Regex format verification, confidence thresholding, and live HUD metrics</li>
                         </ul>
                     </div>
 

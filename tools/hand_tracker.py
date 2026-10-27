@@ -1,12 +1,23 @@
-"""Industrial Hand & Gesture Tracker Tool with MediaPipe & OpenCV Fallback.
+"""VisionStudio Hand Tracking & Kinematic Gesture Control Tool.
 
-Provides high-precision 21-landmark hand kinematic tracking, skeleton rendering,
-fingertip coordinate extraction, extended finger counting, and gesture recognition.
+Exclusively uses Google MediaPipe Hands (21 3D Landmarks) and PyAutoGUI
+for computer vision hand kinematic tracking, index-based gesture control,
+and optional operating-system cursor automation.
+
+21 MediaPipe Hand Landmark Reference:
+    0:  WRIST (Base of Palm)
+    1:  THUMB_CMC, 2: THUMB_MCP, 3: THUMB_IP, 4: THUMB_TIP
+    5:  INDEX_MCP, 6: INDEX_PIP, 7: INDEX_DIP, 8: INDEX_TIP
+    9:  MIDDLE_MCP, 10: MIDDLE_PIP, 11: MIDDLE_DIP, 12: MIDDLE_TIP
+    13: RING_MCP, 14: RING_PIP, 15: RING_DIP, 16: RING_TIP
+    17: PINKY_MCP, 18: PINKY_PIP, 19: PINKY_DIP, 20: PINKY_TIP
 """
 
 from __future__ import annotations
 import math
+import os
 import logging
+import time
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -15,12 +26,75 @@ import numpy as np
 
 logger = logging.getLogger("HandTrackerTool")
 
+# Import MediaPipe & PyAutoGUI
 try:
     import mediapipe as mp
     HAS_MEDIAPIPE = True
 except ImportError:
     mp = None
     HAS_MEDIAPIPE = False
+
+try:
+    import pyautogui
+    HAS_PYAUTOGUI = True
+except ImportError:
+    pyautogui = None
+    HAS_PYAUTOGUI = False
+
+try:
+    import ctypes
+    HAS_CTYPES = True
+except ImportError:
+    ctypes = None
+    HAS_CTYPES = False
+
+
+# 21 MediaPipe Standard Hand Landmarks Map
+LANDMARK_NAMES: Dict[int, str] = {
+    0: "WRIST",
+    1: "THUMB_CMC",
+    2: "THUMB_MCP",
+    3: "THUMB_IP",
+    4: "THUMB_TIP",
+    5: "INDEX_FINGER_MCP",
+    6: "INDEX_FINGER_PIP",
+    7: "INDEX_FINGER_DIP",
+    8: "INDEX_FINGER_TIP",
+    9: "MIDDLE_FINGER_MCP",
+    10: "MIDDLE_FINGER_PIP",
+    11: "MIDDLE_FINGER_DIP",
+    12: "MIDDLE_FINGER_TIP",
+    13: "RING_FINGER_MCP",
+    14: "RING_FINGER_PIP",
+    15: "RING_FINGER_DIP",
+    16: "RING_FINGER_TIP",
+    17: "PINKY_MCP",
+    18: "PINKY_PIP",
+    19: "PINKY_DIP",
+    20: "PINKY_TIP",
+}
+
+# Standard MediaPipe 21-node hand skeletal connections
+HAND_CONNECTIONS = [
+    (0, 1), (1, 2), (2, 3), (3, 4),           # Thumb
+    (0, 5), (5, 6), (6, 7), (7, 8),           # Index
+    (5, 9), (9, 10), (10, 11), (11, 12),      # Middle
+    (9, 13), (13, 14), (14, 15), (15, 16),   # Ring
+    (13, 17), (17, 18), (18, 19), (19, 20),  # Pinky
+    (0, 17),                                  # Palm base
+]
+
+
+@dataclass
+class NormalizedLandmark:
+    x: float
+    y: float
+    z: float = 0.0
+
+
+@dataclass
+class NormalizedHandLandmarks:
+    landmark: List[NormalizedLandmark]
 
 
 @dataclass
@@ -30,22 +104,21 @@ class HandLandmark:
     x: float  # Normalized 0..1
     y: float  # Normalized 0..1
     z: float
-    px: int   # Pixel X
-    py: int   # Pixel Y
+    px: int   # Pixel coordinate X
+    py: int   # Pixel coordinate Y
 
 
 @dataclass
 class HandInstance:
-    handedness: str = "Unknown"  # "Left", "Right", or "Unknown"
-    confidence: float = 0.0
     landmarks: List[HandLandmark] = field(default_factory=list)
-    bbox: Tuple[int, int, int, int] = (0, 0, 0, 0)  # x, y, w, h
+    pts: Dict[int, Tuple[int, int]] = field(default_factory=dict)
     index_tip_px: Tuple[int, int] = (0, 0)          # ID 8 (INDEX_FINGER_TIP)
     thumb_tip_px: Tuple[int, int] = (0, 0)          # ID 4 (THUMB_TIP)
-    palm_center_px: Tuple[int, int] = (0, 0)
+    palm_center_px: Tuple[int, int] = (0, 0)        # ID 0 (WRIST)
+    gesture: str = "Idle"
+    action: str = "None"
+    pinch_distance: float = 0.0
     fingers_count: int = 0
-    gesture: str = "None"
-    extended_fingers: Dict[str, bool] = field(default_factory=dict)
 
 
 @dataclass
@@ -56,7 +129,10 @@ class HandTrackingResult:
     primary_gesture: str = "None"
     primary_finger_count: int = 0
     primary_index_tip: Tuple[int, int] = (0, 0)
+    primary_thumb_tip: Tuple[int, int] = (0, 0)
     primary_palm: Tuple[int, int] = (0, 0)
+    distance: float = 0.0
+    action: str = "None"
     metrics: Dict[str, Any] = field(default_factory=dict)
 
     @property
@@ -89,77 +165,129 @@ class HandTrackingResult:
 
 
 class HandTrackerTool:
-    """Enterprise Hand Tracker utilizing MediaPipe with automatic OpenCV fallback."""
+    """MediaPipe-Powered Hand Kinematics & Gesture Control Engine.
 
-    # 21 MediaPipe standard hand landmarks
-    LANDMARK_NAMES = [
-        "WRIST",
-        "THUMB_CMC", "THUMB_MCP", "THUMB_IP", "THUMB_TIP",
-        "INDEX_FINGER_MCP", "INDEX_FINGER_PIP", "INDEX_FINGER_DIP", "INDEX_FINGER_TIP",
-        "MIDDLE_FINGER_MCP", "MIDDLE_FINGER_PIP", "MIDDLE_FINGER_DIP", "MIDDLE_FINGER_TIP",
-        "RING_FINGER_MCP", "RING_FINGER_PIP", "RING_FINGER_DIP", "RING_FINGER_TIP",
-        "PINKY_MCP", "PINKY_PIP", "PINKY_DIP", "PINKY_TIP",
-    ]
+    Configurable options for landmark indices:
+    - cursor_index: Which landmark drives cursor coordinates (default: 8 - Index Tip)
+    - click_pair: Pair of indices for Left Click pinch (default: 4 and 8)
+    - right_click_pair: Pair of indices for Right Click pinch (default: 4 and 12)
+    - double_click_pair: Pair of indices for Double Click pinch (default: 4 and 20)
+    - distance_mode: "1d_vertical" abs(y1 - y2) or "2d_euclidean" hypot(dx, dy)
+    - click_threshold: Distance threshold for click (default: 30 px)
+    - move_threshold_min & max: Distance window where cursor moves (default: 70..200 px)
+    - enable_mouse_control: Controls whether PyAutoGUI drives the OS mouse
+    - offset: Mouse coordinate offset (default: 300 px)
+    """
 
     def __init__(
         self,
         static_image_mode: bool = False,
-        max_num_hands: int = 2,
-        min_detection_confidence: float = 0.5,
+        max_num_hands: int = 1,
+        min_detection_confidence: float = 0.7,
         min_tracking_confidence: float = 0.5,
-        prefer_mediapipe: bool = True,
+        cursor_index: int = 8,
+        click_pair: Tuple[int, int] = (4, 8),
+        right_click_pair: Tuple[int, int] = (4, 12),
+        double_click_pair: Tuple[int, int] = (4, 20),
+        click_threshold: float = 30.0,
+        move_threshold_min: float = 70.0,
+        move_threshold_max: float = 200.0,
+        distance_mode: str = "1d_vertical",
+        enable_mouse_control: bool = False,
+        offset: int = 300,
+        click_cooldown: float = 0.35,
     ):
         self.static_image_mode = static_image_mode
         self.max_num_hands = max_num_hands
         self.min_detection_confidence = min_detection_confidence
         self.min_tracking_confidence = min_tracking_confidence
-        self.prefer_mediapipe = prefer_mediapipe
 
-        self._mp_hands = None
-        self._mp_drawing = None
-        self._mp_drawing_styles = None
-        self._detector = None
+        self.cursor_index = cursor_index
+        self.click_pair = click_pair
+        self.right_click_pair = right_click_pair
+        self.double_click_pair = double_click_pair
+        self.click_threshold = click_threshold
+        self.move_threshold_min = move_threshold_min
+        self.move_threshold_max = move_threshold_max
+        self.distance_mode = distance_mode
+        self.enable_mouse_control = enable_mouse_control
+        self.offset = offset
+        self.click_cooldown = click_cooldown
 
-        if HAS_MEDIAPIPE and prefer_mediapipe:
+        self._last_click_time = 0.0
+
+        if HAS_PYAUTOGUI:
+            try:
+                self.screen_width, self.screen_height = pyautogui.size()
+            except Exception:
+                self.screen_width, self.screen_height = 1920, 1080
+        else:
+            self.screen_width, self.screen_height = 1920, 1080
+
+        self.hand_detector = None
+        self.tasks_detector = None
+        self.drawing_utils = None
+
+        if HAS_MEDIAPIPE:
             self._init_mediapipe()
 
     def _init_mediapipe(self):
-        try:
-            self._mp_hands = mp.solutions.hands
-            self._mp_drawing = mp.solutions.drawing_utils
-            self._mp_drawing_styles = mp.solutions.drawing_styles
+        """Initializes MediaPipe Hands via classic solutions or modern tasks API."""
+        # 1. Try legacy Solutions API (mediapipe <= 0.10.x)
+        if hasattr(mp, "solutions") and hasattr(mp.solutions, "hands"):
+            try:
+                self.hand_detector = mp.solutions.hands.Hands(
+                    static_image_mode=self.static_image_mode,
+                    max_num_hands=self.max_num_hands,
+                    min_detection_confidence=self.min_detection_confidence,
+                    min_tracking_confidence=self.min_tracking_confidence,
+                )
+                self.drawing_utils = mp.solutions.drawing_utils
+                logger.info("MediaPipe Solutions Hands initialized.")
+                return
+            except Exception as e:
+                logger.warning(f"MediaPipe solutions.hands error: {e}")
 
-            self._detector = self._mp_hands.Hands(
-                static_image_mode=self.static_image_mode,
-                max_num_hands=self.max_num_hands,
-                min_detection_confidence=self.min_detection_confidence,
-                min_tracking_confidence=self.min_tracking_confidence,
-            )
-            logger.info("MediaPipe Hands initialized successfully.")
+        # 2. Try Tasks API (mediapipe 0.10.30+ / 1.x)
+        try:
+            from mediapipe.tasks.python import vision
+            from mediapipe.tasks import python as mp_python
+
+            # Locate or verify model
+            model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "hand_landmarker.task")
+            if not os.path.exists(model_path):
+                alt_path = "models/hand_landmarker.task"
+                if os.path.exists(alt_path):
+                    model_path = alt_path
+
+            if os.path.exists(model_path):
+                base_options = mp_python.BaseOptions(model_asset_path=model_path)
+                options = vision.HandLandmarkerOptions(
+                    base_options=base_options,
+                    num_hands=self.max_num_hands,
+                    min_hand_detection_confidence=self.min_detection_confidence,
+                    min_tracking_confidence=self.min_tracking_confidence,
+                )
+                self.tasks_detector = vision.HandLandmarker.create_from_options(options)
+                logger.info("MediaPipe Tasks HandLandmarker initialized.")
         except Exception as e:
-            logger.warning(f"Could not initialize MediaPipe Hands: {e}. Falling back to OpenCV.")
-            self._detector = None
+            logger.error(f"Failed to initialize MediaPipe Tasks HandLandmarker: {e}")
+
+    def calc_distance(self, p1: Tuple[int, int], p2: Tuple[int, int]) -> float:
+        """Distance between two landmark points."""
+        if self.distance_mode == "1d_vertical":
+            return float(abs(p1[1] - p2[1]))
+        return float(math.hypot(p1[0] - p2[0], p1[1] - p2[1]))
 
     def process(
         self,
         image: np.ndarray,
-        flip_horizontal: bool = False,
+        flip_horizontal: bool = True,
         draw_skeleton: bool = True,
         highlight_index_tip: bool = True,
-        min_hand_area: float = 2500.0,
+        **kwargs,
     ) -> Tuple[np.ndarray, HandTrackingResult]:
-        """Processes an image for hands, renders visual overlays, and returns metrics.
-
-        Args:
-            image: BGR input image
-            flip_horizontal: Whether to mirror viewing horizontally
-            draw_skeleton: Whether to draw landmark graph and connections
-            highlight_index_tip: Whether to highlight Index Fingertip (ID: 8)
-            min_hand_area: Area threshold for OpenCV fallback
-
-        Returns:
-            Tuple of (annotated_bgr_frame, result_data)
-        """
+        """Processes frame for hand landmarks and gesture commands."""
         if image is None or image.size == 0:
             return image, HandTrackingResult()
 
@@ -167,234 +295,43 @@ class HandTrackerTool:
         if flip_horizontal:
             frame = cv2.flip(frame, 1)
 
-        h, w = frame.shape[:2]
+        frame_height, frame_width = frame.shape[:2]
 
-        # 1. Try MediaPipe Hands
-        if self._detector is not None:
-            try:
-                rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                output = self._detector.process(rgb_frame)
+        if not HAS_MEDIAPIPE or (self.hand_detector is None and self.tasks_detector is None):
+            cv2.putText(
+                frame,
+                "MediaPipe Hands initializing...",
+                (20, 40),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.65,
+                (0, 165, 255),
+                2,
+                cv2.LINE_AA,
+            )
+            return frame, HandTrackingResult(metrics={"error": "MediaPipe not ready"})
 
-                if output.multi_hand_landmarks:
-                    instances: List[HandInstance] = []
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        hands_list: List[NormalizedHandLandmarks] = []
 
-                    for idx, hand_landmarks in enumerate(output.multi_hand_landmarks):
-                        handedness_label = "Unknown"
-                        score = 0.95
-                        if output.multi_handedness and idx < len(output.multi_handedness):
-                            classification = output.multi_handedness[idx].classification[0]
-                            handedness_label = classification.label
-                            score = float(classification.score)
+        # Inference: Classic Solutions
+        if self.hand_detector is not None:
+            output = self.hand_detector.process(rgb_frame)
+            if output.multi_hand_landmarks:
+                for h in output.multi_hand_landmarks:
+                    lms = [NormalizedLandmark(lm.x, lm.y, getattr(lm, "z", 0.0)) for lm in h.landmark]
+                    hands_list.append(NormalizedHandLandmarks(landmark=lms))
 
-                        # Extract pixel coords
-                        pts = []
-                        lm_objs = []
-                        for lm_id, lm in enumerate(hand_landmarks.landmark):
-                            cx = int(round(lm.x * w))
-                            cy = int(round(lm.y * h))
-                            pts.append((cx, cy))
-                            name = self.LANDMARK_NAMES[lm_id] if lm_id < len(self.LANDMARK_NAMES) else f"LM_{lm_id}"
-                            lm_objs.append(HandLandmark(
-                                id=lm_id,
-                                name=name,
-                                x=float(lm.x),
-                                y=float(lm.y),
-                                z=float(lm.z),
-                                px=cx,
-                                py=cy
-                            ))
+        # Inference: Tasks API
+        elif self.tasks_detector is not None:
+            mp_img = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
+            res = self.tasks_detector.detect(mp_img)
+            if res.hand_landmarks:
+                for h in res.hand_landmarks:
+                    lms = [NormalizedLandmark(lm.x, lm.y, getattr(lm, "z", 0.0)) for lm in h]
+                    hands_list.append(NormalizedHandLandmarks(landmark=lms))
 
-                        # Bounding box
-                        xs = [p[0] for p in pts]
-                        ys = [p[1] for p in pts]
-                        min_x, max_x = max(0, min(xs)), min(w - 1, max(xs))
-                        min_y, max_y = max(0, min(ys)), min(h - 1, max(ys))
-                        bbox = (min_x, min_y, max_x - min_x, max_y - min_y)
-
-                        # Palm center (average of wrist 0, index MCP 5, and pinky MCP 17)
-                        palm_cx = int((pts[0][0] + pts[5][0] + pts[17][0]) / 3)
-                        palm_cy = int((pts[0][1] + pts[5][1] + pts[17][1]) / 3)
-
-                        # Fingertips
-                        # Thumb: 4, Index: 8, Middle: 12, Ring: 16, Pinky: 20
-                        index_tip_px = pts[8]
-                        thumb_tip_px = pts[4]
-
-                        # Extended fingers calculation (invariant to rotation using distance from wrist)
-                        wrist = pts[0]
-                        extended = {}
-
-                        # Thumb: distance from thumb tip (4) to pinky MCP (17) vs thumb IP (3) to pinky MCP
-                        d_thumb_tip_pinky = math.dist(pts[4], pts[17])
-                        d_thumb_ip_pinky = math.dist(pts[3], pts[17])
-                        extended["thumb"] = d_thumb_tip_pinky > d_thumb_ip_pinky * 1.1
-
-                        # Other fingers: compare tip distance to wrist vs PIP joint distance to wrist
-                        # Index (8 tip, 6 pip)
-                        extended["index"] = math.dist(pts[8], wrist) > math.dist(pts[6], wrist) * 1.1
-                        # Middle (12 tip, 10 pip)
-                        extended["middle"] = math.dist(pts[12], wrist) > math.dist(pts[10], wrist) * 1.1
-                        # Ring (16 tip, 14 pip)
-                        extended["ring"] = math.dist(pts[16], wrist) > math.dist(pts[14], wrist) * 1.1
-                        # Pinky (20 tip, 18 pip)
-                        extended["pinky"] = math.dist(pts[20], wrist) > math.dist(pts[18], wrist) * 1.1
-
-                        finger_count = sum(1 for v in extended.values() if v)
-
-                        # Gesture classification
-                        if finger_count == 0:
-                            gesture = "Fist"
-                        elif finger_count == 1:
-                            if extended["index"]:
-                                gesture = "Pointing / Index"
-                            elif extended["thumb"]:
-                                gesture = "Thumbs Up"
-                            else:
-                                gesture = "Single Finger"
-                        elif finger_count == 2:
-                            if extended["index"] and extended["middle"]:
-                                gesture = "Peace / Victory (V-Sign)"
-                            elif extended["thumb"] and extended["pinky"]:
-                                gesture = "Call Me / Shaka"
-                            else:
-                                gesture = "Two Fingers"
-                        elif finger_count == 3:
-                            if not extended["thumb"] and not extended["pinky"]:
-                                gesture = "Three Fingers"
-                            elif extended["thumb"] and extended["index"] and extended["pinky"]:
-                                gesture = "Rock On / I Love You"
-                            else:
-                                gesture = "Three Fingers"
-                        elif finger_count == 4:
-                            gesture = "Four Fingers"
-                        else:
-                            gesture = "Open Hand / Palm"
-
-                        # Check for OK Sign: thumb tip close to index tip while other 3 are extended
-                        if math.dist(pts[4], pts[8]) < (math.dist(pts[5], pts[17]) * 0.45) and extended["middle"] and extended["ring"]:
-                            gesture = "OK Sign"
-
-                        instance = HandInstance(
-                            handedness=handedness_label,
-                            confidence=score,
-                            landmarks=lm_objs,
-                            bbox=bbox,
-                            index_tip_px=index_tip_px,
-                            thumb_tip_px=thumb_tip_px,
-                            palm_center_px=(palm_cx, palm_cy),
-                            fingers_count=finger_count,
-                            gesture=gesture,
-                            extended_fingers=extended,
-                        )
-                        instances.append(instance)
-
-                        # Visual Drawing
-                        if draw_skeleton and self._mp_drawing and self._mp_hands:
-                            self._mp_drawing.draw_landmarks(
-                                frame,
-                                hand_landmarks,
-                                self._mp_hands.HAND_CONNECTIONS,
-                                self._mp_drawing_styles.get_default_hand_landmarks_style(),
-                                self._mp_drawing_styles.get_default_hand_connections_style(),
-                            )
-
-                        # Highlight Index Fingertip (ID: 8) as requested
-                        if highlight_index_tip:
-                            cv2.circle(frame, index_tip_px, radius=9, color=(0, 255, 255), thickness=-1)
-                            cv2.circle(frame, index_tip_px, radius=11, color=(22, 25, 29), thickness=2)
-                            cv2.putText(
-                                frame,
-                                "INDEX",
-                                (index_tip_px[0] + 12, index_tip_px[1] - 4),
-                                cv2.FONT_HERSHEY_SIMPLEX,
-                                0.42,
-                                (0, 255, 255),
-                                1,
-                                cv2.LINE_AA,
-                            )
-
-                        # High-tech Bounding Box & Badge
-                        bx, by, bw, bh = bbox
-                        cv2.rectangle(frame, (bx, by), (bx + bw, by + bh), (0, 210, 255), 2)
-                        badge_text = f"✋ {handedness_label}: {gesture} ({finger_count} Fingers)"
-                        tw = len(badge_text) * 8 + 12
-                        cv2.rectangle(frame, (bx, max(0, by - 24)), (bx + tw, by), (22, 25, 29), -1)
-                        cv2.rectangle(frame, (bx, max(0, by - 24)), (bx + tw, by), (0, 230, 118), 1)
-                        cv2.putText(
-                            frame,
-                            badge_text,
-                            (bx + 6, max(16, by - 6)),
-                            cv2.FONT_HERSHEY_SIMPLEX,
-                            0.45,
-                            (0, 230, 118),
-                            1,
-                            cv2.LINE_AA,
-                        )
-
-                    primary = instances[0]
-                    res = HandTrackingResult(
-                        found=True,
-                        count=len(instances),
-                        hands=instances,
-                        primary_gesture=primary.gesture,
-                        primary_finger_count=primary.fingers_count,
-                        primary_index_tip=primary.index_tip_px,
-                        primary_palm=primary.palm_center_px,
-                        metrics={
-                            "passed": True,
-                            "hand_detected": True,
-                            "hand_count": len(instances),
-                            "gesture": primary.gesture,
-                            "fingers_count": primary.fingers_count,
-                            "index_x": primary.index_tip_px[0],
-                            "index_y": primary.index_tip_px[1],
-                            "palm_x": primary.palm_center_px[0],
-                            "palm_y": primary.palm_center_px[1],
-                            "engine": "MediaPipe (21-Landmark Neural)",
-                        }
-                    )
-
-                    # Top HUD
-                    hud = f"MediaPipe Hand Tracking: {primary.gesture} ({len(instances)} Hand{'s' if len(instances)>1 else ''})"
-                    cv2.putText(frame, hud, (18, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.60, (0, 230, 118), 2, cv2.LINE_AA)
-                    return frame, res
-
-            except Exception as e:
-                logger.warning(f"MediaPipe inference failed: {e}. Falling back to OpenCV algorithm.")
-
-        # 2. OpenCV Skin-Chroma / Distance-Transform Fallback
-        return self._process_opencv_fallback(frame, min_hand_area, draw_skeleton, highlight_index_tip)
-
-    def _process_opencv_fallback(
-        self,
-        frame: np.ndarray,
-        min_hand_area: float,
-        draw_skeleton: bool,
-        highlight_index_tip: bool,
-    ) -> Tuple[np.ndarray, HandTrackingResult]:
-        """Robust OpenCV contour and distance-transform based hand tracking."""
-        h, w = frame.shape[:2]
-        output = frame.copy()
-
-        ycrcb = cv2.cvtColor(frame, cv2.COLOR_BGR2YCrCb)
-        mask_ycrcb = cv2.inRange(ycrcb, np.array([0, 133, 77], dtype=np.uint8), np.array([255, 173, 127], dtype=np.uint8))
-
-        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        mask_hsv = cv2.inRange(hsv, np.array([0, 25, 45], dtype=np.uint8), np.array([25, 255, 255], dtype=np.uint8))
-
-        skin_mask = cv2.bitwise_and(mask_ycrcb, mask_hsv)
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-        skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_OPEN, kernel, iterations=1)
-        skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_CLOSE, kernel, iterations=2)
-
-        contours, _ = cv2.findContours(skin_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        hand_contours = [c for c in contours if cv2.contourArea(c) >= min_hand_area]
-        hand_contours.sort(key=cv2.contourArea, reverse=True)
-
-        if not hand_contours:
-            hud = "Hand Tracking: No Hand Detected"
-            cv2.putText(output, hud, (18, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.60, (0, 210, 255), 2, cv2.LINE_AA)
-            return output, HandTrackingResult(
+        if not hands_list:
+            return frame, HandTrackingResult(
                 found=False,
                 count=0,
                 metrics={
@@ -403,124 +340,212 @@ class HandTrackerTool:
                     "hand_count": 0,
                     "gesture": "None",
                     "fingers_count": 0,
-                    "engine": "OpenCV (Skin-Chroma Fallback)",
-                }
+                    "index_x": 0,
+                    "index_y": 0,
+                    "action": "None",
+                },
             )
 
-        hand_c = hand_contours[0]
-        dist = cv2.distanceTransform(skin_mask, cv2.DIST_L2, 5)
-        _, max_val, _, max_loc = cv2.minMaxLoc(dist)
-        palm_cx, palm_cy = max_loc
-        palm_r = max_val
+        instances: List[HandInstance] = []
+        primary_action = "Idle"
+        primary_dist = 0.0
+        screen_x, screen_y = 0, 0
 
-        hull = cv2.convexHull(hand_c, returnPoints=False)
-        fingertips = []
-        if len(hull) > 3:
-            defects = cv2.convexityDefects(hand_c, hull)
-            if defects is not None:
-                for i in range(len(defects)):
-                    s, e, f, d = defects[i].ravel()
-                    start = hand_c[int(s)][0]
-                    end = hand_c[int(e)][0]
-                    far = hand_c[int(f)][0]
+        for hand in hands_list:
+            landmarks = hand.landmark
+            pts: Dict[int, Tuple[int, int]] = {}
+            lm_objs: List[HandLandmark] = []
 
-                    a = math.dist(start, end)
-                    b = math.dist(far, start)
-                    c_dist = math.dist(far, end)
-                    if b * c_dist > 0:
-                        cosine = (b**2 + c_dist**2 - a**2) / (2 * b * c_dist)
-                        angle = math.acos(max(-1.0, min(1.0, cosine))) * 180 / math.pi
-                        depth = d / 256.0
-                        if angle <= 88 and depth > (palm_r * 0.25):
-                            if math.dist(start, (palm_cx, palm_cy)) > palm_r * 1.2:
-                                fingertips.append(start)
+            for lm_id, lm in enumerate(landmarks):
+                x = int(lm.x * frame_width)
+                y = int(lm.y * frame_height)
+                pts[lm_id] = (x, y)
+                lm_name = LANDMARK_NAMES.get(lm_id, f"ID_{lm_id}")
+                lm_objs.append(HandLandmark(
+                    id=lm_id,
+                    name=lm_name,
+                    x=float(lm.x),
+                    y=float(lm.y),
+                    z=float(lm.z),
+                    px=x,
+                    py=y,
+                ))
 
-        unique_tips = []
-        for tip in fingertips:
-            if not any(math.dist(tip, u) < 25 for u in unique_tips):
-                unique_tips.append(tip)
-        finger_count = min(5, len(unique_tips))
+            # Draw skeleton connections
+            if draw_skeleton:
+                for p1_id, p2_id in HAND_CONNECTIONS:
+                    if p1_id in pts and p2_id in pts:
+                        cv2.line(frame, pts[p1_id], pts[p2_id], (0, 255, 128), 2)
+                for pt in pts.values():
+                    cv2.circle(frame, pt, 3, (0, 0, 255), -1)
 
-        if finger_count == 0:
-            gesture = "Fist"
-        elif finger_count == 1:
-            gesture = "Pointing / Index"
-        elif finger_count == 2:
-            gesture = "Peace / Victory (V-Sign)"
-        elif finger_count == 3:
-            gesture = "Three Fingers"
-        elif finger_count == 4:
-            gesture = "Four Fingers"
-        else:
-            gesture = "Open Hand / Palm"
+            # Selected Cursor Landmark (Default: 8 - Index Tip)
+            cursor_pt = pts.get(self.cursor_index, pts.get(8, (0, 0)))
+            index_pt = pts.get(8, (0, 0))
+            thumb_pt = pts.get(4, (0, 0))
+            wrist_pt = pts.get(0, (0, 0))
 
-        bx, by, bw, bh = cv2.boundingRect(hand_c)
-        cv2.rectangle(output, (bx, by), (bx + bw, by + bh), (0, 210, 255), 2)
+            # Screen-mapped coordinates
+            screen_x = int((self.screen_width / frame_width) * cursor_pt[0])
+            screen_y = int((self.screen_height / frame_height) * cursor_pt[1])
 
-        # Primary fingertip
-        primary_tip = unique_tips[0] if unique_tips else (palm_cx, palm_cy - int(palm_r * 1.5))
-        primary_tip_px = (int(primary_tip[0]), int(primary_tip[1]))
+            # Highlight selected active landmarks on frame
+            if highlight_index_tip:
+                # Highlight Cursor Landmark (Yellow circle radius 10)
+                cv2.circle(frame, cursor_pt, 10, (0, 255, 255), cv2.FILLED)
+                cv2.circle(frame, cursor_pt, 12, (20, 20, 20), 2)
+                cv2.putText(
+                    frame,
+                    f"ID:{self.cursor_index}",
+                    (cursor_pt[0] + 12, cursor_pt[1] - 4),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.45,
+                    (0, 255, 255),
+                    1,
+                    cv2.LINE_AA,
+                )
 
-        if draw_skeleton:
-            cv2.circle(output, (palm_cx, palm_cy), int(palm_r), (0, 230, 118), 2)
-            cv2.circle(output, (palm_cx, palm_cy), 4, (0, 230, 118), -1)
-            for tip in unique_tips:
-                cv2.line(output, (palm_cx, palm_cy), tuple(tip), (0, 210, 255), 2)
-                cv2.circle(output, tuple(tip), 6, (0, 23, 255), -1)
-                cv2.circle(output, tuple(tip), 8, (255, 255, 255), 1)
+                # Highlight Click Pair
+                c1, c2 = self.click_pair
+                if c1 in pts:
+                    cv2.circle(frame, pts[c1], 10, (0, 255, 255), cv2.FILLED)
+                    cv2.circle(frame, pts[c1], 12, (20, 20, 20), 2)
+                if c2 in pts:
+                    cv2.circle(frame, pts[c2], 10, (0, 255, 255), cv2.FILLED)
+                    cv2.circle(frame, pts[c2], 12, (20, 20, 20), 2)
 
-        if highlight_index_tip:
-            cv2.circle(output, primary_tip_px, radius=9, color=(0, 255, 255), thickness=-1)
-            cv2.circle(output, primary_tip_px, radius=11, color=(22, 25, 29), thickness=2)
-            cv2.putText(
-                output,
-                "INDEX",
-                (primary_tip_px[0] + 12, primary_tip_px[1] - 4),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.42,
-                (0, 255, 255),
-                1,
-                cv2.LINE_AA,
+            action = "Tracking"
+            now = time.time()
+            can_click = (now - self._last_click_time) >= self.click_cooldown
+
+            # 1. Left Click Check (e.g. Indices 4 & 8)
+            i1, i2 = self.click_pair
+            click_dist = 999.0
+            if i1 in pts and i2 in pts:
+                click_dist = self.calc_distance(pts[i1], pts[i2])
+                primary_dist = click_dist
+                cv2.line(frame, pts[i1], pts[i2], (0, 255, 0), 2)
+
+                if click_dist < self.click_threshold:
+                    action = f"Left Click ({i1}+{i2})"
+                    if self.enable_mouse_control and HAS_PYAUTOGUI and can_click:
+                        pyautogui.click()
+                        self._last_click_time = now
+                elif self.move_threshold_min < click_dist < self.move_threshold_max:
+                    action = f"Move Cursor ({self.cursor_index})"
+                    if self.enable_mouse_control and HAS_PYAUTOGUI:
+                        pyautogui.moveTo(screen_x + self.offset, screen_y + self.offset)
+
+            # 2. Right Click Check (e.g. Indices 4 & 12)
+            r1, r2 = self.right_click_pair
+            if r1 in pts and r2 in pts and (r1, r2) != (i1, i2) and r1 >= 0:
+                r_dist = self.calc_distance(pts[r1], pts[r2])
+                if r_dist < self.click_threshold:
+                    action = f"Right Click ({r1}+{r2})"
+                    if self.enable_mouse_control and HAS_PYAUTOGUI and can_click:
+                        pyautogui.rightClick()
+                        self._last_click_time = now
+
+            # Finger Count (Fingertip higher than PIP joint in camera)
+            fingers_count = 0
+            if 4 in pts and 2 in pts:
+                if abs(pts[4][0] - pts[0][0]) > abs(pts[2][0] - pts[0][0]):
+                    fingers_count += 1
+            for tip_id, pip_id in [(8, 6), (12, 10), (16, 14), (20, 18)]:
+                if tip_id in pts and pip_id in pts:
+                    if pts[tip_id][1] < pts[pip_id][1]:
+                        fingers_count += 1
+
+            inst = HandInstance(
+                landmarks=lm_objs,
+                pts=pts,
+                index_tip_px=index_pt,
+                thumb_tip_px=thumb_pt,
+                palm_center_px=wrist_pt,
+                gesture=action,
+                action=action,
+                pinch_distance=click_dist,
+                fingers_count=fingers_count,
             )
+            instances.append(inst)
+            primary_action = action
 
-        badge_text = f"✋ {gesture} ({finger_count} Fingers)"
-        tw = len(badge_text) * 8 + 12
-        cv2.rectangle(output, (bx, max(0, by - 24)), (bx + tw, by), (22, 25, 29), -1)
-        cv2.rectangle(output, (bx, max(0, by - 24)), (bx + tw, by), (0, 230, 118), 1)
-        cv2.putText(output, badge_text, (bx + 6, max(16, by - 6)), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 230, 118), 1, cv2.LINE_AA)
+        primary = instances[0]
 
-        hud = f"Hand Tracking (OpenCV): {gesture}"
-        cv2.putText(output, hud, (18, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.60, (0, 230, 118), 2, cv2.LINE_AA)
+        hud_text = f"Hand Track | Action: {primary_action} | Dist: {int(primary_dist)}px | Cursor: ({screen_x}, {screen_y})"
+        cv2.putText(frame, hud_text, (20, 32), cv2.FONT_HERSHEY_SIMPLEX, 0.60, (0, 230, 118), 2, cv2.LINE_AA)
 
-        inst = HandInstance(
-            handedness="Single",
-            confidence=0.85,
-            bbox=(bx, by, bw, bh),
-            index_tip_px=primary_tip_px,
-            thumb_tip_px=(palm_cx - int(palm_r), palm_cy),
-            palm_center_px=(palm_cx, palm_cy),
-            fingers_count=finger_count,
-            gesture=gesture,
-        )
-
-        return output, HandTrackingResult(
+        result = HandTrackingResult(
             found=True,
-            count=1,
-            hands=[inst],
-            primary_gesture=gesture,
-            primary_finger_count=finger_count,
-            primary_index_tip=primary_tip_px,
-            primary_palm=(palm_cx, palm_cy),
+            count=len(instances),
+            hands=instances,
+            primary_gesture=primary.gesture,
+            primary_finger_count=primary.fingers_count,
+            primary_index_tip=primary.index_tip_px,
+            primary_thumb_tip=primary.thumb_tip_px,
+            primary_palm=primary.palm_center_px,
+            distance=primary_dist,
+            action=primary_action,
             metrics={
                 "passed": True,
                 "hand_detected": True,
-                "hand_count": 1,
-                "gesture": gesture,
-                "fingers_count": finger_count,
-                "index_x": primary_tip_px[0],
-                "index_y": primary_tip_px[1],
-                "palm_x": palm_cx,
-                "palm_y": palm_cy,
-                "engine": "OpenCV (Skin-Chroma Fallback)",
-            }
+                "hand_count": len(instances),
+                "gesture": primary.gesture,
+                "action": primary_action,
+                "fingers_count": primary.fingers_count,
+                "index_x": primary.index_tip_px[0],
+                "index_y": primary.index_tip_px[1],
+                "thumb_x": primary.thumb_tip_px[0],
+                "thumb_y": primary.thumb_tip_px[1],
+                "palm_x": primary.palm_center_px[0],
+                "palm_y": primary.palm_center_px[1],
+                "cursor_x": screen_x,
+                "cursor_y": screen_y,
+                "pinch_distance": round(primary_dist, 1),
+                "cursor_index": self.cursor_index,
+                "click_pair": f"{self.click_pair[0]},{self.click_pair[1]}",
+                "engine": "MediaPipe Hands",
+            },
         )
+        return frame, result
+
+
+if __name__ == "__main__":
+    offset = 300
+    cap = cv2.VideoCapture(0)
+    tracker = HandTrackerTool(
+        cursor_index=8,
+        click_pair=(4, 8),
+        click_threshold=30.0,
+        move_threshold_min=70.0,
+        move_threshold_max=200.0,
+        distance_mode="1d_vertical",
+        enable_mouse_control=True,
+        offset=offset,
+    )
+
+    print("=" * 60)
+    print("VisionStudio Hand Tracking & Kinematic Control")
+    print("Press 'e' or 'q' to exit")
+    print("=" * 60)
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        annotated_frame, res = tracker.process(frame, flip_horizontal=True)
+        cv2.imshow("Mouse vali Window", annotated_frame)
+
+        if HAS_CTYPES:
+            hwnd = ctypes.windll.user32.FindWindowW(None, "Mouse vali Window")
+            if hwnd:
+                ctypes.windll.user32.SetWindowLongW(hwnd, -20, 0x00080000 | 0x00000020)
+                ctypes.windll.user32.SetLayeredWindowAttributes(hwnd, 0, 128, 2)
+
+        k = cv2.waitKey(1) & 0xFF
+        if k == ord("e") or k == ord("q"):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()

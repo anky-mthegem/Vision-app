@@ -27,7 +27,8 @@ CORE_REQUIREMENTS: List[Tuple[str, str, str]] = [
 
 # Optional advanced vision extensions (software will gracefully fallback if absent)
 OPTIONAL_REQUIREMENTS: List[Tuple[str, str, str]] = [
-    ("mediapipe", "mediapipe", "21-Landmark Skeletal Hand Kinematics (Dual-engine OpenCV fallback active)"),
+    ("mediapipe", "mediapipe", "MediaPipe 21-Landmark Hand & Gesture Kinematics"),
+    ("pyautogui", "pyautogui", "Human-Interface Device Mouse & Input Automation"),
     ("pytesseract", "pytesseract", "Optical Character Recognition (Contour OCR fallback active)"),
 ]
 

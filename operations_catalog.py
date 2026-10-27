@@ -17,6 +17,7 @@ from pipeline_engine import (
 )
 from tools.yolo_detector import YoloDetectorTool, YoloResult
 from tools.hand_tracker import HandTrackerTool
+from tools.ocr import ReadOcrMaxTool, OcrResult
 
 
 def ensure_grayscale(img: np.ndarray) -> np.ndarray:
@@ -1428,77 +1429,128 @@ class BasicShapeDetectorOp(BaseOperation):
 class HandTrackerOp(BaseOperation):
     name = "Hand & Gesture Tracker"
     category = "Feature Detection"
-    description = "Tracks human hands using MediaPipe (21-landmark skeleton, palm center, index fingertip ID: 8) with automatic OpenCV fallback, counting extended fingers to classify gestures."
+    description = "Tracks human hands and landmark kinematics using MediaPipe Hands (21 landmarks) with configurable indices for cursor control, click gestures, and threshold triggers."
     param_schemas = [
         ParamSchema(
-            name="engine",
-            label="Tracking Engine",
+            name="cursor_index",
+            label="Cursor Tracking Landmark (ID)",
             param_type=ParamType.CHOICE,
-            default="auto",
+            default=8,
             choices=[
-                ("Auto (MediaPipe Neural / OpenCV Fallback)", "auto"),
-                ("MediaPipe Neural (21 Landmarks)", "mediapipe"),
-                ("OpenCV Skin-Chroma", "opencv"),
+                ("Index Tip (ID: 8)", 8),
+                ("Thumb Tip (ID: 4)", 4),
+                ("Middle Tip (ID: 12)", 12),
+                ("Ring Tip (ID: 16)", 16),
+                ("Pinky Tip (ID: 20)", 20),
+                ("Wrist Root (ID: 0)", 0),
+                ("Palm Center Knuckle (ID: 9)", 9),
             ],
-            description="Tracking backend: MediaPipe 21-landmark deep neural tracker or OpenCV skin-chroma.",
+            description="Landmark index used to determine cursor position coordinates.",
         ),
         ParamSchema(
-            name="max_num_hands",
-            label="Max Hands to Track",
+            name="enable_mouse_control",
+            label="Drive OS Mouse Cursor (PyAutoGUI)",
+            param_type=ParamType.BOOL,
+            default=False,
+            description="When enabled, moves mouse cursor and executes clicks on the OS desktop.",
+        ),
+        ParamSchema(
+            name="click_pair",
+            label="Left-Click Landmark Pair",
+            param_type=ParamType.CHOICE,
+            default="4,8",
+            choices=[
+                ("Thumb (4) + Index (8) Pinch", "4,8"),
+                ("Thumb (4) + Middle (12) Pinch", "4,12"),
+                ("Thumb (4) + Pinky (20) Pinch", "4,20"),
+                ("Index (8) + Middle (12) Pinch", "8,12"),
+            ],
+            description="Pair of landmark indices whose proximity triggers a left click.",
+        ),
+        ParamSchema(
+            name="right_click_pair",
+            label="Right-Click Landmark Pair",
+            param_type=ParamType.CHOICE,
+            default="4,12",
+            choices=[
+                ("Disabled", "none"),
+                ("Thumb (4) + Middle (12) Pinch", "4,12"),
+                ("Thumb (4) + Pinky (20) Pinch", "4,20"),
+                ("Index (8) + Middle (12) Pinch", "8,12"),
+            ],
+            description="Pair of landmark indices whose proximity triggers a right click.",
+        ),
+        ParamSchema(
+            name="distance_mode",
+            label="Distance Calculation Mode",
+            param_type=ParamType.CHOICE,
+            default="1d_vertical",
+            choices=[
+                ("1D Vertical Distance abs(y1 - y2)", "1d_vertical"),
+                ("2D Euclidean Distance hypot(dx, dy)", "2d_euclidean"),
+            ],
+            description="Distance algorithm between finger landmarks (1D vertical matches reference script).",
+        ),
+        ParamSchema(
+            name="click_threshold",
+            label="Click Distance Threshold (px)",
             param_type=ParamType.INT,
-            default=2,
-            min_val=1,
-            max_val=4,
-            step=1,
-            description="Maximum number of simultaneous hands to track.",
+            default=30,
+            min_val=5,
+            max_val=150,
+            step=5,
+            description="Distance threshold below which pinch executes a mouse click.",
         ),
         ParamSchema(
-            name="confidence",
-            label="Detection Confidence",
-            param_type=ParamType.FLOAT,
-            default=0.50,
-            min_val=0.10,
-            max_val=1.00,
-            step=0.05,
-            description="Minimum confidence threshold for MediaPipe hand detector.",
+            name="move_threshold_min",
+            label="Move Threshold Min (px)",
+            param_type=ParamType.INT,
+            default=70,
+            min_val=0,
+            max_val=300,
+            step=10,
+            description="Minimum distance between click pair to allow mouse cursor movement.",
         ),
         ParamSchema(
-            name="draw_skeleton",
-            label="Draw Hand Skeleton & Landmarks",
-            param_type=ParamType.BOOL,
-            default=True,
-            description="Render MediaPipe 21-landmark skeleton connections and landmark points.",
+            name="move_threshold_max",
+            label="Move Threshold Max (px)",
+            param_type=ParamType.INT,
+            default=200,
+            min_val=50,
+            max_val=600,
+            step=10,
+            description="Maximum distance between click pair to allow mouse cursor movement.",
         ),
         ParamSchema(
-            name="highlight_index_finger",
-            label="Highlight Index Fingertip (ID: 8)",
-            param_type=ParamType.BOOL,
-            default=True,
-            description="Highlight index fingertip (ID: 8) with coordinate reticle and callout.",
-        ),
-        ParamSchema(
-            name="draw_fingers_count",
-            label="Display Finger Count & Gesture",
-            param_type=ParamType.BOOL,
-            default=True,
-            description="Display extended finger count and detected gesture badge.",
+            name="offset",
+            label="Mouse Screen Offset (px)",
+            param_type=ParamType.INT,
+            default=300,
+            min_val=-1000,
+            max_val=1000,
+            step=25,
+            description="Screen pixel coordinate offset added to mouse movements.",
         ),
         ParamSchema(
             name="flip_horizontal",
-            label="Mirror Viewing (Flip Horizontal)",
+            label="Mirror Video (Flip Horizontal)",
             param_type=ParamType.BOOL,
-            default=False,
-            description="Flip frame horizontally for natural mirror-like viewing.",
+            default=True,
+            description="Flip camera frame horizontally for natural mirror interaction.",
         ),
         ParamSchema(
-            name="min_hand_area",
-            label="Min Hand Area (px²)",
-            param_type=ParamType.FLOAT,
-            default=2500.0,
-            min_val=500.0,
-            max_val=50000.0,
-            step=500.0,
-            description="Minimum contour area for OpenCV skin-chroma fallback.",
+            name="draw_skeleton",
+            label="Draw 21-Landmark Skeleton",
+            param_type=ParamType.BOOL,
+            default=True,
+            description="Render MediaPipe standard skeletal lines and landmark nodes.",
+        ),
+        ParamSchema(
+            name="highlight_indices",
+            label="Highlight Active Landmark Circles",
+            param_type=ParamType.BOOL,
+            default=True,
+            description="Draw yellow landmark target circles on active cursor and pinch indices.",
         ),
     ]
 
@@ -1506,41 +1558,70 @@ class HandTrackerOp(BaseOperation):
         super().__init__(params)
         self._tracker: Optional[HandTrackerTool] = None
 
+    def _parse_pair(self, val: Any, default: Tuple[int, int]) -> Tuple[int, int]:
+        if isinstance(val, (tuple, list)) and len(val) >= 2:
+            return int(val[0]), int(val[1])
+        s = str(val).strip().lower()
+        if s == "none" or not s:
+            return (-1, -1)
+        if "," in s:
+            parts = s.split(",")
+            try:
+                return int(parts[0].strip()), int(parts[1].strip())
+            except ValueError:
+                pass
+        return default
+
     def _get_tracker(self) -> HandTrackerTool:
-        engine_choice = str(self.params.get("engine", "auto")).lower()
-        max_h = int(self.params.get("max_num_hands", 2))
-        conf = float(self.params.get("confidence", 0.50))
-        prefer_mp = engine_choice in ("auto", "mediapipe")
+        c_idx = int(self.params.get("cursor_index", 8))
+        c_pair = self._parse_pair(self.params.get("click_pair", "4,8"), (4, 8))
+        rc_pair = self._parse_pair(self.params.get("right_click_pair", "4,12"), (4, 12))
+        dist_m = str(self.params.get("distance_mode", "1d_vertical"))
+        c_thresh = float(self.params.get("click_threshold", 30.0))
+        m_min = float(self.params.get("move_threshold_min", 70.0))
+        m_max = float(self.params.get("move_threshold_max", 200.0))
+        en_mouse = bool(self.params.get("enable_mouse_control", False))
+        offset_val = int(self.params.get("offset", 300))
 
         if (
             self._tracker is None
-            or self._tracker.max_num_hands != max_h
-            or self._tracker.min_detection_confidence != conf
-            or self._tracker.prefer_mediapipe != prefer_mp
+            or self._tracker.cursor_index != c_idx
+            or self._tracker.click_pair != c_pair
+            or self._tracker.right_click_pair != rc_pair
+            or self._tracker.distance_mode != dist_m
+            or self._tracker.click_threshold != c_thresh
+            or self._tracker.move_threshold_min != m_min
+            or self._tracker.move_threshold_max != m_max
+            or self._tracker.enable_mouse_control != en_mouse
+            or self._tracker.offset != offset_val
         ):
             self._tracker = HandTrackerTool(
                 static_image_mode=False,
-                max_num_hands=max_h,
-                min_detection_confidence=conf,
-                min_tracking_confidence=conf,
-                prefer_mediapipe=prefer_mp,
+                max_num_hands=1,
+                cursor_index=c_idx,
+                click_pair=c_pair,
+                right_click_pair=rc_pair,
+                distance_mode=dist_m,
+                click_threshold=c_thresh,
+                move_threshold_min=m_min,
+                move_threshold_max=m_max,
+                enable_mouse_control=en_mouse,
+                offset=offset_val,
             )
         return self._tracker
 
     def process(self, image: np.ndarray) -> np.ndarray:
         bgr = ensure_bgr(image)
         tracker = self._get_tracker()
-        flip_h = bool(self.params.get("flip_horizontal", False))
+        flip_h = bool(self.params.get("flip_horizontal", True))
         draw_skel = bool(self.params.get("draw_skeleton", True))
-        highlight_idx = bool(self.params.get("highlight_index_finger", True))
-        min_a = float(self.params.get("min_hand_area", 2500.0))
+        highlight_idx = bool(self.params.get("highlight_indices", self.params.get("highlight_index_finger", True)))
 
         annotated_frame, result = tracker.process(
             bgr,
             flip_horizontal=flip_h,
             draw_skeleton=draw_skel,
             highlight_index_tip=highlight_idx,
-            min_hand_area=min_a,
         )
 
         self.last_metrics = {
@@ -1549,11 +1630,15 @@ class HandTrackerOp(BaseOperation):
             "hand_count": result.count,
             "fingers_count": result.primary_finger_count,
             "gesture": result.primary_gesture,
+            "action": result.action,
+            "distance": result.distance,
             "x": float(result.primary_palm[0]),
             "y": float(result.primary_palm[1]),
             "index_x": float(result.primary_index_tip[0]),
             "index_y": float(result.primary_index_tip[1]),
-            "engine": result.metrics.get("engine", "MediaPipe"),
+            "thumb_x": float(result.primary_thumb_tip[0]),
+            "thumb_y": float(result.primary_thumb_tip[1]),
+            "engine": "MediaPipe Hands",
         }
         return annotated_frame
 
@@ -1562,8 +1647,102 @@ class HandTrackerOp(BaseOperation):
 class OpticalCharacterRecognitionOp(BaseOperation):
     name = "Optical Character Recognition (OCR)"
     category = "Feature Detection"
-    description = "Discovers and segments text lines, words, character blocks, and performs OCR extraction."
+    description = "Discovers, segments, and recognizes text using OpenCV DNN Text Detectors (EAST / DB ResNet) with optional polygon inpainting text removal."
     param_schemas = [
+        ParamSchema(
+            name="model_type",
+            label="Text Detection Model",
+            param_type=ParamType.CHOICE,
+            default="auto",
+            choices=[
+                ("Auto (OpenCV DNN / Fallback)", "auto"),
+                ("OpenCV EAST (Neural ResNet)", "east"),
+                ("OpenCV DB (Differentiable Binarization)", "db"),
+                ("All Models Ensemble (EAST + DB)", "ensemble"),
+                ("Morphological Gradient Contour", "morphology"),
+            ],
+            description="OpenCV text detection architecture: EAST, DB, Multi-Model Ensemble, or Morphology.",
+        ),
+        ParamSchema(
+            name="task_mode",
+            label="Vision Task Mode",
+            param_type=ParamType.CHOICE,
+            default="detect",
+            choices=[
+                ("Detect & Annotate Text Polygons", "detect"),
+                ("Inpaint & Remove Text (Clean Surface)", "inpaint"),
+                ("Both (Annotate Text & Inpaint)", "both"),
+            ],
+            description="Whether to detect text or inpaint/remove text from image using OpenCV inpainting.",
+        ),
+        ParamSchema(
+            name="conf_thresh",
+            label="Confidence Threshold",
+            param_type=ParamType.FLOAT,
+            default=0.80,
+            min_val=0.10,
+            max_val=1.00,
+            step=0.05,
+            description="Detection confidence threshold for OpenCV EAST/DB models.",
+        ),
+        ParamSchema(
+            name="nms_thresh",
+            label="NMS Suppress Threshold",
+            param_type=ParamType.FLOAT,
+            default=0.40,
+            min_val=0.10,
+            max_val=1.00,
+            step=0.05,
+            description="Non-Maximum Suppression threshold for text box overlap.",
+        ),
+        ParamSchema(
+            name="inpaint_radius",
+            label="Inpainting Radius (px)",
+            param_type=ParamType.INT,
+            default=5,
+            min_val=1,
+            max_val=30,
+            step=1,
+            description="Neighborhood radius for OpenCV Navier-Stokes inpainting.",
+        ),
+        ParamSchema(
+            name="inpaint_method",
+            label="Inpainting Algorithm",
+            param_type=ParamType.CHOICE,
+            default="ns",
+            choices=[
+                ("Navier-Stokes (cv2.INPAINT_NS)", "ns"),
+                ("Alexandru Telea (cv2.INPAINT_TELEA)", "telea"),
+            ],
+            description="OpenCV inpainting method for background reconstruction.",
+        ),
+        ParamSchema(
+            name="box_color",
+            label="Annotation Color",
+            param_type=ParamType.CHOICE,
+            default="green",
+            choices=[
+                ("Green (High-Vis All Models)", "green"),
+                ("Cyan (EAST Classic)", "cyan"),
+                ("Red (DB50 Classic)", "red"),
+                ("Blue (DB18 Classic)", "blue"),
+            ],
+            description="Color of detected polygon boundaries and badges.",
+        ),
+        ParamSchema(
+            name="draw_boxes",
+            label="Draw Polygons / Bounding Boxes",
+            param_type=ParamType.BOOL,
+            default=True,
+            description="Draw high-visibility polygon boundaries around detected text.",
+        ),
+        ParamSchema(
+            name="draw_text",
+            label="Draw Text Badges & HUD",
+            param_type=ParamType.BOOL,
+            default=True,
+            description="Render detected text strings and confidence HUD over image.",
+        ),
         ParamSchema(
             name="min_char_height",
             label="Min Text Block Height (px)",
@@ -1572,99 +1751,98 @@ class OpticalCharacterRecognitionOp(BaseOperation):
             min_val=4,
             max_val=80,
             step=2,
-            description="Minimum height for candidate text regions.",
-        ),
-        ParamSchema(
-            name="draw_boxes",
-            label="Draw Word Bounding Boxes",
-            param_type=ParamType.BOOL,
-            default=True,
-            description="Draw high-visibility boxes around identified text blocks.",
-        ),
-        ParamSchema(
-            name="draw_text",
-            label="Draw Text Badges",
-            param_type=ParamType.BOOL,
-            default=True,
-            description="Draw OCR sequence tags and dimensions above boxes.",
+            description="Minimum height for candidate text regions in fallback mode.",
         ),
     ]
 
-    def process(self, image: np.ndarray) -> np.ndarray:
-        gray = ensure_grayscale(image)
-        output = ensure_bgr(image).copy()
+    def __init__(self, params: Optional[Dict[str, Any]] = None):
+        super().__init__(params)
+        self._tool: Optional[ReadOcrMaxTool] = None
 
-        min_h = int(self.params.get("min_char_height", 10))
+    def _get_tool(self) -> ReadOcrMaxTool:
+        m_type = str(self.params.get("model_type", "auto")).lower()
+        c_th = float(self.params.get("conf_thresh", 0.80))
+        n_th = float(self.params.get("nms_thresh", 0.40))
+        if self._tool is None or self._tool.model_type != m_type or self._tool.conf_thresh != c_th:
+            self._tool = ReadOcrMaxTool(model_type=m_type, conf_thresh=c_th, nms_thresh=n_th)
+        return self._tool
+
+    def process(self, image: np.ndarray) -> np.ndarray:
+        bgr = ensure_bgr(image)
+        tool = self._get_tool()
+
+        task_mode = str(self.params.get("task_mode", "detect")).lower()
+        m_type = str(self.params.get("model_type", "auto")).lower()
+        c_th = float(self.params.get("conf_thresh", 0.80))
+        n_th = float(self.params.get("nms_thresh", 0.40))
+        inpaint_r = int(self.params.get("inpaint_radius", 5))
+        inpaint_m = str(self.params.get("inpaint_method", "ns")).lower()
         draw_b = bool(self.params.get("draw_boxes", True))
         draw_t = bool(self.params.get("draw_text", True))
+        color_choice = str(self.params.get("box_color", "green")).lower()
 
-        kernel_grad = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-        grad = cv2.morphologyEx(gray, cv2.MORPH_GRADIENT, kernel_grad)
+        color_map = {
+            "green": (0, 255, 0),
+            "cyan": (0, 255, 255),
+            "red": (0, 0, 255),
+            "blue": (255, 0, 0),
+        }
+        line_color = color_map.get(color_choice, (0, 255, 0))
 
-        _, thresh = cv2.threshold(grad, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+        should_inpaint = task_mode in ("inpaint", "both")
+        result = tool.read(
+            bgr,
+            model=m_type,
+            perform_inpaint=should_inpaint,
+            inpaint_radius=inpaint_r,
+            inpaint_method=inpaint_m,
+        )
 
-        kernel_conn = cv2.getStructuringElement(cv2.MORPH_RECT, (15, 3))
-        connected = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel_conn)
+        if task_mode == "inpaint" and result.inpainted_image is not None:
+            output = result.inpainted_image.copy()
+        else:
+            output = bgr.copy()
 
-        contours, _ = cv2.findContours(connected, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        text_blocks = []
         first_x, first_y = 0.0, 0.0
+        if result.boxes:
+            first_x, first_y = float(result.boxes[0][0]), float(result.boxes[0][1])
 
-        for c in contours:
-            x, y, w, h = cv2.boundingRect(c)
-            if h >= min_h and w >= 12 and h < (image.shape[0] * 0.7) and w < (image.shape[1] * 0.95):
-                text_blocks.append((x, y, w, h))
+        if draw_b and task_mode != "inpaint":
+            if result.polygons:
+                for poly in result.polygons:
+                    cv2.polylines(output, [poly], isClosed=True, color=line_color, thickness=2)
+            else:
+                for bx, by, bw, bh in result.boxes:
+                    cv2.rectangle(output, (bx, by), (bx + bw, by + bh), line_color, 2)
 
-        text_blocks.sort(key=lambda b: (b[1] // 30, b[0]))
+        if draw_t and task_mode != "inpaint":
+            words = result.text.split() if result.text else []
+            for idx, (bx, by, bw, bh) in enumerate(result.boxes):
+                tag = words[idx] if idx < len(words) else f"TEXT #{idx+1}"
+                badge_w = len(tag) * 8 + 8
+                cv2.rectangle(output, (bx, max(0, by - 18)), (bx + badge_w, by), (22, 25, 29), -1)
+                cv2.putText(output, tag, (bx + 4, max(12, by - 4)), cv2.FONT_HERSHEY_SIMPLEX, 0.42, line_color, 1, cv2.LINE_AA)
 
-        extracted_text_list = []
-        try:
-            import pytesseract
-            has_tess = True
-        except ImportError:
-            has_tess = False
-
-        if text_blocks:
-            first_x, first_y = float(text_blocks[0][0]), float(text_blocks[0][1])
-
-            for idx, (x, y, w, h) in enumerate(text_blocks):
-                tag = f"TEXT #{idx+1}"
-                if has_tess:
-                    crop = gray[y : y + h, x : x + w]
-                    try:
-                        txt = pytesseract.image_to_string(crop, config="--psm 7").strip()
-                        if txt:
-                            tag = txt
-                    except Exception:
-                        pass
-                extracted_text_list.append(tag)
-
-                if draw_b:
-                    cv2.rectangle(output, (x, y), (x + w, y + h), (0, 190, 255), 2)
-                    c_len = min(8, min(w // 4, h // 4))
-                    cv2.line(output, (x, y), (x + c_len, y), (0, 230, 255), 3)
-                    cv2.line(output, (x, y), (x, y + c_len), (0, 230, 255), 3)
-
-                if draw_t:
-                    cv2.rectangle(output, (x, max(0, y - 18)), (x + len(tag) * 8 + 8, y), (22, 25, 29), -1)
-                    cv2.putText(output, tag, (x + 3, max(12, y - 4)), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (0, 210, 255), 1, cv2.LINE_AA)
-
-        hud = f"OCR: {len(text_blocks)} Text Regions Discovered"
+        hud = f"OCR [{result.model_used}]: {len(result.boxes)} Regions Discovered"
+        if task_mode == "inpaint":
+            hud = f"OCR Inpainted [{result.model_used}]: {len(result.boxes)} Regions Removed"
         cv2.putText(
             output,
             hud,
             (18, 30),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.60,
-            (0, 230, 118) if text_blocks else (0, 210, 255),
+            (0, 230, 118) if result.found else (0, 210, 255),
             2,
             cv2.LINE_AA,
         )
 
         self.last_metrics = {
-            "passed": len(text_blocks) > 0,
-            "count": len(text_blocks),
-            "text": " | ".join(extracted_text_list[:5]),
+            "passed": result.found,
+            "count": len(result.boxes),
+            "text": result.text,
+            "confidence": result.confidence,
+            "model": result.model_used,
             "x": first_x,
             "y": first_y,
         }
