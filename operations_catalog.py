@@ -159,7 +159,7 @@ class YoloObjectDetectorOp(BaseOperation):
 
         draw_b = bool(self.params.get("draw_boxes", True))
         output = bgr.copy()
-        if draw_b and (result.found or result.task_mode in ("depth", "semantic", "classify")):
+        if draw_b:
             output = YoloDetectorTool.draw_results(output, result)
 
         first_x = 0.0
@@ -1638,7 +1638,7 @@ class HandTrackerOp(BaseOperation):
             "index_y": float(result.primary_index_tip[1]),
             "thumb_x": float(result.primary_thumb_tip[0]),
             "thumb_y": float(result.primary_thumb_tip[1]),
-            "engine": "MediaPipe Hands",
+            "engine": result.metrics.get("engine", "MediaPipe Hands"),
         }
         return annotated_frame
 

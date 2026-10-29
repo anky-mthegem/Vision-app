@@ -14,6 +14,10 @@ import time
 import copy
 from typing import Dict, Optional
 
+# Suppress harmless Qt Windows DPI awareness context warning
+if "QT_LOGGING_RULES" not in os.environ:
+    os.environ["QT_LOGGING_RULES"] = "qt.qpa.window=false"
+
 import cv2
 import numpy as np
 
@@ -866,7 +870,7 @@ class MainWindow(QMainWindow):
                 category="Feature Detection",
                 operation_name="Hand & Gesture Tracker",
                 name="Hand Tracking & Gestures",
-                params={"min_hand_area": 2000.0, "draw_skeleton": True, "draw_fingers_count": True},
+                params={"draw_skeleton": True, "highlight_indices": True, "flip_horizontal": True, "min_hand_area": 2000.0},
                 link_to_remote=True,
             )
 

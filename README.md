@@ -152,20 +152,27 @@ Production-grade bi-directional communication with factory automation controller
 - Python 3.10, 3.11, 3.12, or 3.14
 - Windows 10/11, Linux (Ubuntu 20.04+), or macOS
 
-### Installation
+### Installation & Virtual Environment Setup
+Double-click `Launch_VisionStudio.bat` to automatically create a dedicated virtual environment (`.venv`), verify all requirements, and start the system!
+
+Alternatively, to configure manually from terminal:
 ```powershell
 # Clone the repository
 git clone https://github.com/anky-mthegem/Vision-app.git
 cd Vision-app
 
-# Install dependencies
+# Create and activate dedicated virtual environment
+python -m venv .venv --system-site-packages
+.venv\Scripts\activate
+
+# Install dependencies into virtual environment
 pip install -r requirements.txt
 ```
 
 ### Starting the Application
-Double-click `Launch_VisionStudio.bat` or run:
+Double-click `Launch_VisionStudio.bat` (which automatically checks/creates `.venv` and verifies all dependencies), or run:
 ```powershell
-python main.py
+.venv\Scripts\python.exe main.py
 ```
 
 ### Launching the Interactive User Manual

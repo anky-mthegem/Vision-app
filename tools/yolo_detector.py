@@ -778,26 +778,82 @@ class YoloDetectorTool:
         return YoloDetectorTool.draw_results(img, result)
 
     @staticmethod
-    def draw_results(img: np.ndarray, result: YoloResult, **kwargs) -> np.ndarray:
-        """Dispatches drawing based on the active task mode."""
-        if not result:
+    def draw_results(img: np.ndarray, result: YoloResult, show_hud: bool = True, **kwargs) -> np.ndarray:
+        """Dispatches drawing based on the active task mode and displays active model banner."""
+        if not result or img is None or img.size == 0:
             return img
 
+        output = img.copy()
         mode = getattr(result, "task_mode", "detect")
         if mode == "segment":
-            return YoloDetectorTool._draw_segmentation(img, result)
+            output = YoloDetectorTool._draw_segmentation(output, result)
         elif mode == "semantic":
-            return YoloDetectorTool._draw_semantic(img, result)
+            output = YoloDetectorTool._draw_semantic(output, result)
         elif mode == "depth":
-            return YoloDetectorTool._draw_depth(img, result)
+            output = YoloDetectorTool._draw_depth(output, result)
         elif mode == "classify":
-            return YoloDetectorTool._draw_classification(img, result)
+            output = YoloDetectorTool._draw_classification(output, result)
         elif mode == "pose":
-            return YoloDetectorTool._draw_pose(img, result)
+            output = YoloDetectorTool._draw_pose(output, result)
         elif mode == "obb":
-            return YoloDetectorTool._draw_obb(img, result)
+            output = YoloDetectorTool._draw_obb(output, result)
         else:
-            return YoloDetectorTool._draw_standard_detection(img, result)
+            output = YoloDetectorTool._draw_standard_detection(output, result)
+
+        if show_hud:
+            output = YoloDetectorTool._draw_model_hud(output, result)
+
+        return output
+
+    @staticmethod
+    def _draw_model_hud(img: np.ndarray, result: YoloResult) -> np.ndarray:
+        """Draws an informative HUD banner indicating which neural model is actively running on camera."""
+        if img is None or img.size == 0 or not result:
+            return img
+
+        h, w = img.shape[:2]
+        model_name = getattr(result, "model_name", "yolo26n.onnx")
+        mode = getattr(result, "task_mode", "detect").upper()
+        lat = getattr(result, "latency_ms", 0.0)
+        cnt = getattr(result, "count", 0)
+
+        # Build clean informative string
+        if cnt > 0 and getattr(result, "class_counts", None):
+            items_str = ", ".join(f"{c}:{n}" for c, n in sorted(result.class_counts.items())[:3])
+            hud_text = f"AI Model: {model_name} | {mode} | Found {cnt} ({items_str}) | {lat:.1f}ms"
+        elif cnt > 0:
+            hud_text = f"AI Model: {model_name} | {mode} | Found: {cnt} | {lat:.1f}ms"
+        else:
+            hud_text = f"AI Model: {model_name} | {mode} | 0 Detections | {lat:.1f}ms"
+
+        # Badge dimensions
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        scale = 0.48
+        thick = 1
+        (tw, th), _ = cv2.getTextSize(hud_text, font, scale, thick)
+        pad_x = 10
+        pad_y = 6
+        bx1, by1 = 18, 12
+        bx2, by2 = min(w - 18, bx1 + tw + 2 * pad_x + 16), by1 + th + 2 * pad_y + 4
+
+        # Translucent dark pill background
+        sub = img[by1:by2, bx1:bx2]
+        if sub.size > 0:
+            dark_rect = np.full_like(sub, 20)
+            cv2.addWeighted(sub, 0.25, dark_rect, 0.75, 0, sub)
+            img[by1:by2, bx1:bx2] = sub
+
+        # Neon Cyan border with green status dot
+        cv2.rectangle(img, (bx1, by1), (bx2, by2), (0, 215, 255), 1, cv2.LINE_AA)
+        cv2.circle(img, (bx1 + 10, (by1 + by2) // 2), 4, (0, 230, 118), -1, cv2.LINE_AA)
+
+        # Text with shadow
+        text_x = bx1 + 20
+        text_y = by1 + th + pad_y + 1
+        cv2.putText(img, hud_text, (text_x + 1, text_y + 1), font, scale, (10, 14, 18), thick + 1, cv2.LINE_AA)
+        cv2.putText(img, hud_text, (text_x, text_y), font, scale, (255, 255, 255), thick, cv2.LINE_AA)
+
+        return img
 
     @staticmethod
     def _draw_standard_detection(img: np.ndarray, result: YoloResult) -> np.ndarray:
